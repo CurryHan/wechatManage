@@ -12,10 +12,6 @@ using SensingCloud.Models;
 using Sensing.Entities.Users;
 using System.Net;
 using SensingCloud.Helpers;
-using SensingCloud.Authentication;
-using System.Web.Script.Serialization;
-using SensingCloud.Services;
-using System.Web.Security;
 
 namespace SensingCloud.Controllers
 {
@@ -24,13 +20,15 @@ namespace SensingCloud.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private readonly IGroupService _groupService;
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IGroupService groupService)
+        //public AccountController()
+        //{
+        //}
+
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
-            _groupService = groupService;
         }
 
         public ApplicationSignInManager SignInManager
@@ -62,12 +60,8 @@ namespace SensingCloud.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            if (!Request.IsAuthenticated)
-            {
-                ViewBag.ReturnUrl = returnUrl;
-                return View();
-            }
-            return RedirectToLocal(returnUrl);
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
         }
 
         //
@@ -113,7 +107,6 @@ namespace SensingCloud.Controllers
                 case SignInStatus.Success:
                     Session[ConstConfig.SessionKey_CurrentLoginGroupID] = user.GroupId.Value;
                     Session[ConstConfig.SessionKey_CurrentLoginGroup] = user.Group;
-                    //CreateAuthenticationTicket(user.UserName, user.GroupId.Value);
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -357,7 +350,7 @@ namespace SensingCloud.Controllers
             {
                 return Content("NotNull");
             }
-            var user= UserManager.Users.Where(u => u.PhoneNumber == PhoneNumber).FirstOrDefault();
+            var user = UserManager.Users.Where(u => u.PhoneNumber == PhoneNumber).FirstOrDefault();
             if (user == null)
             {
                 // Don't reveal that the user does not exist
@@ -500,7 +493,7 @@ namespace SensingCloud.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
-            return RedirectToAction("game", "Home");
+            return RedirectToAction("Index", "Home");
         }
 
         //
@@ -557,7 +550,7 @@ namespace SensingCloud.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Activity");
+            return RedirectToAction("Index", "Home");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult
@@ -589,22 +582,5 @@ namespace SensingCloud.Controllers
             }
         }
         #endregion
-
-        //public void CreateAuthenticationTicket(string username, int groupId)
-        //{
-        //    var userGroup = _groupService.FindById(groupId);
-        //    SensingPrincipalSerializedModel serializeModel = new SensingPrincipalSerializedModel();
-
-        //    serializeModel.GroupID = userGroup.Id;
-        //    serializeModel.GroupType =userGroup.GroupType;
-        //    JavaScriptSerializer serializer = new JavaScriptSerializer();
-        //    string userData = serializer.Serialize(serializeModel);
-
-        //    FormsAuthenticationTicket authTicket = new FormsAuthenticationTicket(
-        //      1, username, DateTime.Now, DateTime.Now.AddHours(8), false, userData);
-        //    string encTicket = FormsAuthentication.Encrypt(authTicket);
-        //    HttpCookie faCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket);
-        //    Response.Cookies.Add(faCookie);
-        //}
     }
 }

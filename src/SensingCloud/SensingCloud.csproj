@@ -282,6 +282,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SoftwareController.cs" />
     <Compile Include="Controllers\SystemSettingController.cs" />
+    <Compile Include="Controllers\WeixinController.cs" />
     <Compile Include="Filters\HMACAuthenticationAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1543,26 +1544,13 @@
     <Content Include="Views\CommonSetting\IPadPasswordPartial.cshtml" />
     <Content Include="Views\CommonSetting\OtherSettingPartial.cshtml" />
     <Content Include="Views\CommonSetting\_EditPlatNotifications.cshtml" />
-    <Content Include="Views\Weixin\CreateQrCode.cshtml" />
     <Content Include="Views\Group\_DetailsPartial.cshtml" />
     <Content Include="Views\Home\Game.cshtml" />
     <Content Include="Views\Shared\_Menu.cshtml" />
-    <Content Include="Views\Weixin\ActivityTemplate.cshtml" />
     <Content Include="Views\Home\GameCenter.cshtml" />
     <Content Include="Views\Shared\_UploadImagePartial.cshtml" />
     <Content Include="Views\Home\_GameList.cshtml" />
-    <Content Include="Views\Weixin\qiandaohudong.cshtml" />
-    <Content Include="Views\Weixin\QiandaohudongNotValidated.cshtml" />
     <Content Include="Views\Shared\_WeixinLayout.cshtml" />
-    <Content Include="Views\Weixin\OnlineNewYearGame.cshtml" />
-    <Content Include="Views\Shared\_AwardLayout.cshtml" />
-    <Content Include="Views\Shared\_ActionLayout.cshtml" />
-    <Content Include="Views\Weixin\ActionIframe.cshtml" />
-    <Content Include="Views\Shared\_ActivityLayout.cshtml" />
-    <Content Include="Views\Hub\Index.cshtml" />
-    <Content Include="Views\Hub\Screen.cshtml" />
-    <Content Include="Views\Weixin\WXPlayPlane.cshtml" />
-    <Content Include="Views\Weixin\WXGameResult.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\ActivityFlow.cshtml" />
     <Content Include="Scripts\UEditor\net\.vs\net\v14\.suo" />
     <Content Include="Scripts\UEditor\net\config.json" />
@@ -1573,13 +1561,28 @@
     <Content Include="Scripts\UEditor\third-party\video-js\font\vjs.eot" />
     <Content Include="Scripts\UEditor\third-party\video-js\font\vjs.ttf" />
     <Content Include="Scripts\UEditor\third-party\video-js\font\vjs.woff" />
-    <Content Include="Views\Hub\GiftBallon.cshtml" />
-    <Content Include="Views\Weixin\WXAward.cshtml" />
+    <Content Include="Views\Weixin\Index.cshtml" />
+    <Content Include="Views\Shared\_BaseListLayout.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login - Copy.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\_ResetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\img\NewFolder1\" />
     <Folder Include="Filters\DynamicNodeProvider\" />
+    <Folder Include="Views\Menu\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

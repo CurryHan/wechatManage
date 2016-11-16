@@ -1,0 +1,70 @@
+﻿@using Microsoft.AspNet.Identity
+@using SensingSite.Data
+@using SensingCloud.Helpers
+@using Sensing.Entities.Users;
+@using Webdiyer.WebControls.Mvc;
+@using Sensing.Entities;
+@model PagedList<Sensing.Entities.Menu>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_BaseListLayout.cshtml";
+    var index = 0;
+    var sequence = 0;
+}
+<table id="simple-table" class="table table-bordered table-striped table-hover table-condensed text-center">
+    <thead>
+        <tr>
+            <th class="hidden-xs">
+                序号
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Resources.Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            index++;
+            sequence = (ViewBag.pageIndex - 1) * ViewBag.pageSize + index;
+
+            <tr id="@item.Id">
+                <td class="hidden-xs">@sequence</td>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    <a href="/Activity/Edit/@item.Id" class="EditLinkA btn btn-primary btn-xs no-border">
+                        @Resources.Edit
+                    </a>
+                    <div class="hidden-md hidden-lg">
+                        <div class="inline pos-rel">
+                            <button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown" data-position="auto">
+                                <i class="ace-icon fa fa-cog icon-only bigger-110"></i>
+                            </button>
+
+                            <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+                                <li>
+                                    <a href="/Weixin/Edit/@item.Id" class="EditLinkA tooltip-success" data-rel="tooltip" title="Edit">
+                                        <span class="green">
+                                            <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="row row-pager">
+    <div class="col-md-12">
+        @Html.Pager(Model, new PagerOptions { ActionName = "Index", PrevPageText = "上页", NextPageText = "下页", FirstPageText = "首页", LastPageText = "尾页", PageIndexParameterName = "pageIndex", ContainerTagName = "ul", CssClass = "pagination", CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>", DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>", PagerItemTemplate = "<li>{0}</li>" })
+    </div>
+</div>
+

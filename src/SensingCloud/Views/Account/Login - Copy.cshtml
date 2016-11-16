@@ -1,0 +1,438 @@
+﻿@using SensingCloud.Models
+@model LoginViewModel
+@{
+    Layout = null;
+    ViewBag.Title = "Log in";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="description" content="User login page" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="~/Scripts/html5shiv.js"></script>
+    <script src="~/Scripts/respond.min.js"></script>
+    <![endif]-->
+
+    <title>@ViewBag.Title</title>
+</head>
+<body class="light-login login-layout" style="background:none;">
+    <header class="login-head">
+        <div class="col-sm-6">
+            <img src="/Content/img/logo.png" alt="">
+        </div>
+        <div class="col-sm-6">
+            <ul class="nav navbar-nav navbar-right login-nav">
+                <li><a href="http://troncell.com/" target="_blank">创思官网</a></li>
+                <li><span class="nav-gap">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span></li>
+                <li><a href="http://troncell.com/" target="_blank">O2O首页</a></li>
+                <li><span class="nav-gap">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span></li>
+                <li><a href="http://troncell.com/" target="_blank">售后服务</a></li>
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+    </header>
+    <div class="main-container login-main-container">
+        <div class="main-content">
+            <div class="row">
+                <div>
+                    <div class="col-md-6 visible-md-block visible-lg-block">
+                        <img src=@Url.Content("~/Content/img/BB61Cmd.png") class="login-img" />
+                    </div>
+
+                    <div class="login-container col-md-6">
+                        <div class="position-relative">
+                            <div class="space-24"></div>
+                            <div class="space-18"></div>
+                            <div id="login-box" class="login-box visible widget-box no-border" style="background-color:#ffffff;box-shadow:none;border-bottom:none;">
+                                <div class="col-xs-12">
+                                    <div class="row">
+                                        <div class="left">
+                                            <span class="icon-tc-logo blue" style="font-size:55px;"></span>
+                                        </div>
+                                        <div style="margin-top:-50px;margin-left:60px;">
+                                            <span class="blue" style="font-size:24px;">
+                                                Sensing Clond  Console
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="space-16"></div>
+                                <div class="space-6"></div>
+                                <div style="background-color:#ffffff">
+                                    @*<h4 class="header blue lighter bigger">
+                                            <i class="ace-icon fa fa-coffee green"></i>
+                                            Sign in with trocell account
+                                        </h4>*@
+                                    <div class="space-24"></div>
+                                    <h4 class="black lighter bigger">
+                                        Sign in with troncell account
+                                    </h4>
+                                    <div class="space-6"></div>
+                                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        <fieldset>
+                                            <label class="block clearfix">
+                                                <span class="block input-icon input-icon-right">
+                                                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "用户名/邮箱/电话" })
+                                                    <i class="ace-icon fa fa-user"></i>
+                                                </span>
+                                                @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                                            </label>
+
+                                            <label class="block clearfix">
+                                                <span class="block input-icon input-icon-right">
+                                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "密码" })
+                                                    <i class="ace-icon fa fa-lock"></i>
+                                                </span>
+                                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                            </label>
+
+                                            <div class="clearfix">
+                                                <div class="inline">
+                                                    @if (Model == null || Model.RememberMe == false)
+                                                    {
+                                                        <input type="checkbox" id="RememberMe" class="ace" name="RememberMe" value="true" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="checkbox" id="RememberMe" class="ace" name="RememberMe" value="true" @(Model.RememberMe ? "checked=\"checked\"" : "") />
+                                                    }
+                                                    @Html.LabelFor(m => m.RememberMe, new { @class = "lbl" })
+                                                </div>
+                                                <div class="space-12"></div>
+
+                                                <div>
+                                                    <button type="submit" class="width-35 btn btn-sm btn-primary no-border">
+                                                        <span class="bigger-110">登录</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <div class="space-4"></div>
+                                        </fieldset>
+                                    }
+
+                                    <div class="space-4"></div>
+                                </div><!-- /.widget-main -->
+
+                                <div class="toolbar" style="border-top:none;background-color:transparent;">
+                                    <div class="row">
+                                        <a href="#" data-target="#forgot-box">
+                                            忘记密码？
+                                        </a>
+                                    </div>
+                                    <div class="space-4"></div>
+                                    <div class="space-4"></div>
+                                    @*<div style="width:100%">
+                                        <span>Don't have a Troncell account?</span>
+
+                                        <a href="#" data-target="#register-box">
+                                            <span class="blue">Sign up Now</span>
+                                        </a>
+                                    </div>*@
+                                </div>
+                            </div>
+
+
+                            <div id="forgot-box" class="forgot-box widget-box no-border" style="background-color:#ffffff;box-shadow:none;border-bottom:none;">
+                                <div class="col-xs-12">
+                                    <span class="blue" style="font-size:30px;">
+                                        Retrieve Password
+                                    </span>
+                                </div>
+                                <div class="space-24"></div>
+                                <div>
+                                    <div class="col-xs-12">
+                                        <div>
+                                            <h5 class="black lighter bigger">
+                                                Selective Mode
+                                            </h5>
+                                        </div>
+                                    </div>
+                                    <div class="space-6"></div>
+                                    <fieldset class="col-xs-12">
+                                        <label class="block clearfix">
+                                            <span class="block input-icon input-icon-right">
+                                                <select id="selectmethod" class="col-xs-12">
+                                                    <option value="phone">Phone</option>
+                                                    <option value="email">Email</option>
+                                                </select>
+                                            </span>
+                                        </label>
+                                        <label id="phone-confirm-pane" style="color:red;"></label>
+                                        <div id="usephone" style="display:block;">
+                                            <form id="sendphoneform">
+                                                <label class="block clearfix">
+                                                    <span class="block input-icon input-icon-right">
+                                                        <input type="text" required name="Phone" class="form-control" placeholder="Phone Number" />
+                                                        <i class="ace-icon fa fa-phone"></i>
+                                                    </span>
+                                                </label>
+                                                <div class="space-8"></div>
+                                                <div>
+                                                    <h5 class="black lighter bigger">
+                                                        Input Code
+                                                    </h5>
+                                                </div>
+
+                                                <button id="sendcodebtn" type="submit" class="pull-right btn btn-xs btn-primary no-border">
+                                                    <span>send code</span>
+                                                </button>
+                                            </form>
+
+                                            <form id="VerifyPhoneCodeForm">
+                                                <div class="inline">
+                                                    <input type="text" required name="Code" placeholder="Code" />
+                                                </div>
+
+                                                <div class="space-24"></div>
+                                                <div>
+                                                    <button type="submit" class="width-35 btn btn-sm btn-primary no-border">
+                                                        <span class="bigger-110">Apply</span>
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                        <div id="useemail" style="display:none">
+                                            <form id="sendemailform">
+                                                <label class="block clearfix">
+                                                    <span class="block input-icon input-icon-right">
+                                                        <input type="text" required name="Email" class="form-control" placeholder="Email Address" />
+                                                        <i class="ace-icon fa fa-envelope-o"></i>
+                                                    </span>
+                                                </label>
+                                                <div class="space-24"></div>
+                                                <div>
+                                                    <button type="submit" class="width-35 btn btn-sm btn-primary no-border">
+                                                        <span class="bigger-110">send me</span>
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </fieldset>
+                                    <div class="space-4"></div>
+                                </div>
+                                <div class="toolbar" style="border-top:none;background-color:transparent;">
+                                    <div class="space-24"></div>
+
+                                    <a href="#" data-target="#login-box">
+                                        Back to login
+                                    </a>
+                                </div>
+                            </div><!-- /.forgot-box -->
+
+
+                            <div id="register-box" class="register-box widget-box no-border" style="background-color:#ffffff;box-shadow:none;border-bottom:none;">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <span class="blue" style="font-size:30px;">
+                                            New User Reginstration
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="space-12"></div>
+                                <div style="background-color:#ffffff">
+                                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                    {
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <fieldset>
+                                    <label class="block clearfix">
+                                        <span class="block input-icon input-icon-right">
+                                            <input type="text" class="form-control" placeholder="Email" />
+                                            <i class="ace-icon fa fa-envelope"></i>
+                                        </span>
+                                    </label>
+                                    <label class="block clearfix">
+                                        <span class="block input-icon input-icon-right">
+                                            <input type="text" class="form-control" placeholder="Username" />
+                                            <i class="ace-icon fa fa-user"></i>
+                                        </span>
+                                    </label>
+                                    <label class="block clearfix">
+                                        <span class="block input-icon input-icon-right">
+                                            <input type="password" class="form-control" placeholder="Password" />
+                                            <i class="ace-icon fa fa-lock"></i>
+                                        </span>
+                                    </label>
+                                    <label class="block clearfix">
+                                        <span class="block input-icon input-icon-right">
+                                            <input type="text" class="form-control" placeholder="Repeat Password" />
+                                            <i class="ace-icon fa fa-retweet"></i>
+                                        </span>
+                                    </label>
+
+                                    <label class="block">
+                                        <input class="ace" type="checkbox">
+                                        <span class="lbl">
+                                            I accept the
+                                            <a href="#">User Agreement</a>
+                                        </span>
+                                    </label>
+
+                                    <div class="space-16"></div>
+                                    <div>
+                                        <button type="submit" class="width-35 btn btn-sm btn-primary no-border">
+                                            <span class="bigger-110">Reginster</span>
+                                        </button>
+                                    </div>
+                                </fieldset>
+                                    }
+
+                                    <div class="space-4"></div>
+                                </div><!-- /.widget-main -->
+
+                                <div class="toolbar" style="border-top:none;background-color:transparent;">
+                                    <div class="space-14"></div>
+                                    <a href="#" data-target="#login-box">
+                                        Back to login
+                                    </a>
+                                </div>
+                            </div><!-- /.signup-box -->
+                            <div id="editpassword-box" class="editpassword-box widget-box no-border" style="background-color:#ffffff;box-shadow:none;border-bottom:none;">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <span class="blue" style="font-size:30px;">
+                                            Create the new password
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="space-12"></div>
+                                <div style="background-color:#ffffff">
+                                    <fieldset>
+                                        <form id="resetpasswordform">
+                                            <label class="block clearfix">
+                                                <span class="block input-icon input-icon-right">
+                                                    <input type="password" required name="NewPassword" id="NewPassword" class="form-control" placeholder="New password" />
+                                                    <i class="ace-icon fa fa-lock"></i>
+                                                </span>
+                                            </label>
+                                            <label class="block clearfix">
+                                                <span class="block input-icon input-icon-right">
+                                                    <input type="password" required name="Confirpassword" id="Confirpassword" onblur="validatepwd()" class="form-control" placeholder="Repeat password" />
+                                                    <i class="ace-icon fa fa-repeat"></i>
+                                                </span>
+                                            </label>
+                                            <label id="confirm-pwd" style="color:red;"></label>
+
+                                            <div class="space-16"></div>
+                                            <div class="space-8"></div>
+                                            <div>
+                                                <button type="submit" class="width-35 btn btn-sm btn-primary no-border">
+                                                    <span class="bigger-110">Apply</span>
+                                                </button>
+                                                <button id="cancelnewpasswordbtn" type="button" class="width-35 pull-right btn btn-sm btn-primary no-border">
+                                                    <span class="bigger-110">Cancle</span>
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </fieldset>
+
+                                    <div class="space-4"></div>
+                                </div><!-- /.widget-main -->
+
+                                <div class="toolbar" style="border-top:none;background-color:transparent;">
+                                    <div class="space-14"></div>
+                                    <a href="/Account/Login">
+                                        Back to login
+                                    </a>
+                                </div>
+                            </div><!-- /.signup-box -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <footer class="login-footer bottom">
+        <div class="bottom_left col-xs-12 col-lg-5">
+            @*<ul>
+                <li class="gsjs"><a href="about.html">公司介绍</a></li>
+                <li class="gsxw"><a href="about.html#news">社交媒体</a></li>
+                <li class="hzhb"><a href="about.html#panter">合作伙伴</a></li>
+                <li class="lxwm"><a href="about.html#contact">联系我们</a></li>
+            </ul>*@
+        </div>
+        <div class="bottom_right col-xs-12 col-lg-7">
+            <div class="weixincode"><img src="../Content/img/weixincode.png" width="121" height="120" alt="创思感知微信公众平台" /></div>
+            <div class="sinacode"><img src="../Content/img/sinacode.png" width="121" height="120" alt="创思感知新浪微博" /></div>
+            <div class="bottom_right_top">
+                <div class="email"><a href="Mailto:sales@troncell.com">sales@troncell.com</a><span class="space-line">&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+                <div class="addr"><a href="about.html#contact">无锡市新区震泽路18号无锡（国家）软件园水瓶座508室</a><span class="space-line">&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+                <div class="sns">
+                    <span class="weixin"></span>
+                    <span class="sina"><a target="_blank" href="http://weibo.com/troncell"></a></span>
+                    <span style="display:block;float:left;margin-left: 10px;">
+                        <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://"); document.write(unescape("%3Cspan id='cnzz_stat_icon_1253761899'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1253761899%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+                    </span>
+                </div>
+            </div>
+            <div class="bottom_right_bottom">
+                <span>
+                    Copyright 2013 TRONCELL Al Rights Reseverd
+                </span>
+                <span class="space-line">&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span>
+                    苏ICP备13045243号-1
+                </span>
+                <div class="language-selector">
+                    @{ Html.RenderPartial("_LanguageSelector");}
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </footer>
+
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/app/login.js"></script>
+    <script>
+
+        function validatepwd() {
+            var txtpwd = $("#NewPassword").val().trim();
+            var txtpwd2 = $("#Confirpassword").val().trim();
+            if (txtpwd != txtpwd2) {
+                $("#confirm-pwd").show();
+                $("#confirm-pwd").text("两次密码不一致");
+            }
+        }
+
+        $(function () {
+            (function () {
+                var select = $("#selectmethod").val()
+                if (select == "phone") {
+                    $("#useemail").hide();
+                    $("#usephone").show();
+                }
+                else if (select == "email") {
+                    $("#useemail").show();
+                    $("#usephone").hide();
+                }
+            })();
+
+            $("#selectmethod").change(function () {
+                var select = $(this).val();
+                if (select == "phone") {
+                    $("#useemail").hide();
+                    $("#usephone").show();
+                }
+                else if (select == "email") {
+                    $("#useemail").show();
+                    $("#usephone").hide();
+                }
+            })
+        });
+    </script>
+</body>
+</html>

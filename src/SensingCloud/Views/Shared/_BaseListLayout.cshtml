@@ -1,0 +1,87 @@
+﻿@{ 
+    Layout = Url.Content("~/Views/Shared/_Layout.cshtml");
+}
+<style>
+
+    th, td {
+        max-width: 100px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    #sample-table-1 {
+        margin-top: 45px;
+    }
+</style>
+<!-- PAGE CONTENT BEGINS -->
+<div id="list">
+    <div class="page-header">
+        <h1>@ViewBag.Title</h1>
+    </div>
+    <section class="menu">
+        <div class="row searchMenu">
+            <div class="col-xs-8">
+                <form class="form-inline" method="post">
+                    <div class="from-group">
+                        <div class="input-group">
+                            <input name="qstr" type="text" class="form-control search-query" placeholder="名称,组名" value="@ViewBag.qstr">
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-primary btn-sm">
+                                    检索
+                                    <i class="ace-icon fa fa-search icon-on-right bigger-110"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="col-xs-4">
+                <a id="addNewBtn" class="btn btn-sm btn-primary no-border" style="float:right">
+                    <i class="fa fa-plus"></i>
+                    添加活动
+                </a>
+            </div>
+        </div><!-- /.row -->
+    </section>
+    <section class="user-table">
+        <div class="alert alert-block alert-warning" style="display: none;">
+            <button type="button" class="close" data-dismiss="alert">
+                <i class="ace-icon fa fa-times"></i>
+            </button>
+            <i class="ace-icon glyphicon glyphicon-remove "></i>
+            删除活动失败,该活动已经被使用
+        </div>
+        <div class="row">
+            <div class="col-xs-12" id="table">
+                @RenderBody()
+            </div><!-- /.span -->
+        </div><!-- /.row -->
+    </section>
+</div>
+<div id="dialog_container"></div>
+
+@section styles{
+    <link href="/Content/ace/js/date-time/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css">
+}
+
+@section scripts{
+    <script src="~/Scripts/jquery.form.js"></script>
+    <script src="~/Scripts/moment-with-locales.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+    <script src="~/Scripts/jquery.pictureSelector.js"></script>
+    <script src="~/Content/ace/js/date-time/bootstrap-datepicker.min.js"></script>
+    <script src="~/Scripts/layer/layer.js"></script>
+    <script src="~/Scripts/jquery.extend.js"></script>
+    <script src="~/Content/ace/js/bootstrap-multiselect.min.js"></script>
+    <script>
+        $(function () {
+            $('.date-picker').datepicker({
+                autoclose: true,
+                todayHighlight: true
+            })
+        });
+    </script>
+    @RenderSection("scripts", required: false)
+}
+
