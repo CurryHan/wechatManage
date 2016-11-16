@@ -1,0 +1,104 @@
+﻿body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+html, body {
+    height: 100%;
+    background-color: #f1f1f1;
+    cursor:pointer;
+    font-size:62.5%;
+}
+
+body{height: 100%;line-height:1.7rem;font-size:1.4rem;-webkit-tap-highlight-color:rgba(0,0,0,0)} 
+
+a:hover, a:focus {
+    text-decoration: none;
+}
+/*i {
+    color:white;
+}
+
+a.weui_tabbar_item:hover i,a.weui_tabbar_item:focus i,a.weui_tabbar_item:hover p,a.weui_tabbar_item:focus p,
+a.weui_tabbar_item:hover img,a.weui_tabbar_item:focus img{
+    color: #04BE02;
+}*/
+
+
+.weuitron_body {
+    width: 100%;
+    height: 100%;
+}
+
+.weuitron_bbar {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+.weuitron_menu {
+    display:none;
+    position:absolute;
+}
+
+.weuitron_sub_item {
+    background-color:#fff;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 18px;
+}
+.weuitron_sub_item:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 1px;
+  border-top: 1px solid #D9D9D9;
+  color: #D9D9D9;
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  -webkit-transform: scaleY(0.5);
+          transform: scaleY(0.5);
+}
+.weuitron_sub_item:hover,.weuitron_sub_item:focus,.weuitron_sub_item:active{
+    background-color:#f1f1f1;
+}
+
+@media only screen and (max-width: 320px) {
+    html {
+        font-size: 12.36px;
+    }
+}
+
+@media only screen and (min-width: 321px) and (max-width: 360px) {
+    html {
+        font-size: 13px;
+    }
+}
+
+@media only screen and (min-width: 361px) and (max-width: 375px) {
+    html {
+        font-size: 14.75px;
+    }
+}
+
+@media only screen and (min-width: 376px) and (max-width: 384px) {
+    html {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (min-width: 385px) and (max-width: 413px) {
+    html {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (min-width: 414px) and (max-width: 480px) {
+    html {
+        font-size: 15.7px;
+    }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 540px) {
+    html {
+        font-size: 16px;
+    }
+}

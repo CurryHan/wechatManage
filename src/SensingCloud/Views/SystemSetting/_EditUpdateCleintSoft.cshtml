@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Sensing.Entities.SystemSettings.TerminalSoftUpdate>
+<div class="col-xs-12">
+        <div class="col-sm-12" style="text-align:right">
+            <button id="addnewSoftpackagebtn" type="button" class="btn btn-primary no-border">
+                <i class="fa fa-plus"></i>
+               @Resources.AddSoftUpdatePackage @*新增软件更新包添加*@
+            </button>
+        </div>
+        <div class="col-sm-12">
+            <h4 class=""><i class="ace-icon fa fa-refresh fa-1 text-primary"></i><span class="icon-ajust">@Resources.SoftUpdatePackageListTBA @*软件更新包历史*@</span></h4>
+            <hr />
+        </div>
+        <div class="form-group center" style="font-size:16px;">
+
+            <div class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Name)
+            </div>
+            <div class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Version)
+            </div>
+            <div class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Remarks)
+            </div>
+            <div class="col-sm-3">
+                @Html.DisplayNameFor(model => model.UpdateTimes)
+            </div>
+        </div>
+        <div class="widget-body">
+            <div class="widget-main padding-8">
+                <!-- #section:pages/profile.feed -->
+                <div id="profile-feed-1" class="profile-feed center">
+                    <br />
+                    @foreach (var item in Model)
+                    {
+                        <div class="row" style="min-height:50px;font-size:12px;">
+                            <div class="col-sm-3">
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </div>
+                            <div class="col-sm-3">
+                                @Html.DisplayFor(modelItem => item.Version)
+                            </div>
+                            <div class="col-sm-3">
+                                @Html.DisplayFor(modelItem => item.Remarks)
+                            </div>
+                            <div class="col-sm-3">
+                                @Html.DisplayFor(modelItem => item.UpdateTimes)
+                            </div>
+                        </div>
+
+                    }
+
+                </div>
+
+                <!-- /section:pages/profile.feed -->
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <hr />
+        </div>
+</div>
+<div class="modal fade" id="ShowAddDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" id="DialogemodalContentDiv">
+
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('#addnewSoftpackagebtn').click(function (e) {
+            $("#ShowAddDialog").modal('show');
+            e.preventDefault();
+            var urlstr = "SystemSetting/AddTerminalSoftPackage";
+            $.get(urlstr, null, function (data, textStatus) {
+                $("#DialogemodalContentDiv").html('');
+                $(data).appendTo($("#DialogemodalContentDiv"));
+            })
+        });
+        //user activities
+        $('#profile-feed-1').ace_scroll({
+            height: '300px',
+            mouseWheelLock: true,
+            alwaysVisible: true
+        });
+    })
+</script>

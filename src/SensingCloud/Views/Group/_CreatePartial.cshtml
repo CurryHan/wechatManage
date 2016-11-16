@@ -1,0 +1,201 @@
+﻿
+@model Sensing.Entities.Group
+
+
+@using (Ajax.BeginForm("Create", "Group", new AjaxOptions { HttpMethod = "Post", OnSuccess = "successSubmit" }, new { @id = "AddNewSubmit" }))
+{
+    <div class="form-horizontal">
+
+        <div class="page-header">
+            <h1>@Resources.CreateGroup</h1>
+        </div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DisplayName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.DisplayName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DisplayName, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.EcommercePlatform, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.EcommercePlatform, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EcommercePlatform, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AddressUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.AddressUrl, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AddressUrl, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.GroupType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.DropDownListFor(model => model.GroupType, ViewBag.GroupType as List<SelectListItem>, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.GroupType, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="parentsGroupselect" class="control-label col-md-2">@Resources.ChoiceGroup</label>
+            <div class="col-md-4">
+                <select name="parentsGroupselect" class="form-control" id="parentsGroupselect">
+                    @foreach (var item in ViewBag.GroupList)
+                    {
+                        <option value="@item.Id">@item.DisplayName</option>
+                    }
+                </select>
+            </div>
+            @Html.LabelFor(model => model.QRCodeUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.QRCodeUrl, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.QRCodeUrl, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Introduction, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.TextAreaFor(model => model.Introduction, 4, 35, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Introduction, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.Declaration, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.TextAreaFor(model => model.Declaration, 4, 35, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Declaration, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">            
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.TextAreaFor(model => model.Description, 4, 35, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.LogoUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-2" data-target-parent="true" style="max-width:190px">
+                <img data-target-preview="true" style="width: 100px; height: 100px;" src="~/Content/img/fileupload.jpg" alt="Image preview">
+                <input class="beforInput" type="file" name="logoImg" id="logoImg" multiple accept="image/*" style="display:none">
+                <button data-action-select="true" type="button" class="btn btn-info btn-sm no-border" style="margin-top:10px">选择图片</button>
+                <button type="button" class="btn btn-danger btn-sm fa fa-times no-border resetpicbtn" style="margin-top:10px" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="form-field-select-1" class="control-label col-md-2">公司图片</label>
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-2" data-target-parent="true" style="max-width:190px">
+                        <img data-target-preview="true" style="width: 100px; height: 100px;" src="~/Content/img/fileupload.jpg" alt="Image preview">
+                        <input class="beforInput" type="file" name="Image01" id="Image01" multiple accept="image/*" style="display:none">
+                        <button data-action-select="true" type="button" class="btn btn-info btn-sm no-border" style="margin-top:10px">选择图片</button>
+                        <button type="button" class="btn btn-danger btn-sm fa fa-times no-border resetpicbtn" style="margin-top:10px" />
+
+                        @*<img data-target-preview="true" style="width: 100px; height: 100px;" src="~/Content/img/fileupload.jpg" alt="Image preview">
+                            <input type="file" name="webshowimg" id="webshowimg" multiple accept="image/*" style="display:none">
+                            <input class="beforInput" id="WebShowImage" name="WebShowImage" value="@Model.WebShowImage" type="hidden">
+                            <button data-action-select="true" type="button" class="btn btn-info btn-sm no-border" style="margin-top:10px">选择图片</button>
+                            <button type="button" class="btn btn-danger btn-sm fa fa-times no-border resetpicbtn" style="margin-top:10px" />*@
+                    </div>
+
+                    <div class="col-md-2" data-target-parent="true" style="max-width:190px">
+                        <img data-target-preview="true" style="width: 100px; height: 100px;" src="~/Content/img/fileupload.jpg" alt="Image preview">
+                        <input class="beforInput" type="file" name="Image02" id="Image02" multiple accept="image/*" style="display:none">
+                        <button data-action-select="true" type="button" class="btn btn-info btn-sm no-border" style="margin-top:10px">选择图片</button>
+                        <button type="button" class="btn btn-danger btn-sm fa fa-times no-border resetpicbtn" style="margin-top:10px" />
+                    </div>
+                    <div class="col-md-2" data-target-parent="true" style="max-width:190px">
+                        <img data-target-preview="true" style="width: 100px; height: 100px;" src="~/Content/img/fileupload.jpg" alt="Image preview">
+                        <input class="beforInput" type="file" name="Image03" id="Image03" multiple accept="image/*" style="display:none">
+                        <button data-action-select="true" type="button" class="btn btn-info btn-sm no-border" style="margin-top:10px">选择图片</button>
+                        <button type="button" class="btn btn-danger btn-sm fa fa-times no-border resetpicbtn" style="margin-top:10px" />
+                    </div>
+                    <div class="col-md-2" data-target-parent="true" style="max-width:190px">
+                        <img data-target-preview="true" style="width: 100px; height: 100px;" src="~/Content/img/fileupload.jpg" alt="Image preview">
+                        <input class="beforInput" type="file" name="Image04" id="Image04" multiple accept="image/*" style="display:none">
+                        <button data-action-select="true" type="button" class="btn btn-info btn-sm no-border" style="margin-top:10px">选择图片</button>
+                        <button type="button" class="btn btn-danger btn-sm fa fa-times no-border resetpicbtn" style="margin-top:10px" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br />
+        <div class="form-group">
+            <div class="col-md-12">
+                <div style="float:left;">
+                    @Html.ActionLink(Resources.ReturnToList, "Index", new { }, new { @class = "label label-info arrowed arrowed-in-right" })
+                </div>
+                <div style="float:right;">
+                    <input type="submit" value="@Resources.Save" class="btn btn-primary btn-sm no-border" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script>
+    function getParentGroup() {
+        var options = {
+            url: "/group/GetParentGroupByType",
+            method: "get",
+            data: { targetGroupType: $("#GroupType").val() }
+        }
+        $.ajax(options).success(function (response) {
+            if (response.data) {
+                $("#parentsGroupselect").empty();
+                for (var i = 0; i < response.data.length; i++) {
+                    var group = response.data[i];
+                    $("<option value='" + group.value + "'>" + group.name + "</option>").appendTo($("#parentsGroupselect"));
+                }
+            }
+        });
+    }
+</script>
+<script>
+    $(function () {
+
+        getParentGroup();
+
+        //表单提交
+        var $form = $("#AddNewSubmit");
+        $form.on('submit', function (e) {
+            e.preventDefault();
+            $form.ajaxSubmit({
+                success: function (data) {
+                    if (data == true) {
+                        window.location.reload();
+                    } else {
+                        $("#DataList_ContentDIV").html('');
+                        $(data).appendTo($("#DataList_ContentDIV"));
+                    }
+
+                },
+            });
+            return false;
+        });
+
+
+
+        $('#logoImg').pictureSelector();
+        $('#Image01').pictureSelector();
+        $('#Image02').pictureSelector();
+        $('#Image03').pictureSelector();
+        $('#Image04').pictureSelector();
+
+        //点击删除按钮，清空input内容
+        $('.resetpicbtn').click(function () {
+            var parentobj = $(this).parent();
+            parentobj.children("img").attr("src", "");
+            parentobj.find(".beforInput").val("");
+        });
+
+
+        $("#GroupType").change(function () {
+            getParentGroup();
+        });
+    })
+</script>

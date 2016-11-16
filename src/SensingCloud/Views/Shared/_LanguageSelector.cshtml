@@ -1,0 +1,21 @@
+﻿@using System.Threading
+<span>
+    @if (Thread.CurrentThread.CurrentCulture.Name.ToLower() == "zh-cn")
+    {
+        <img src="~/Content/img/icon-china.png" style="vertical-align:text-bottom"/>
+        <span class="bigger-120">中文</span>
+        <span>-</span>
+        @Html.ActionLink("English", "SetCulture", new { culture = "en-us" },  new { @class = "bigger-120" } )
+    }
+    else
+    {
+
+       <img src="~/Content/img/icon-english.png" style="vertical-align:text-bottom"/>
+       <span class="bigger-120">English</span>
+        <span>-</span>
+        @Html.ActionLink("中文", "SetCulture", new { culture = "zh-cn" }, new { @class = "bigger-120" })
+
+    }
+    
+    
+</span>

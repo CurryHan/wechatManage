@@ -1,0 +1,62 @@
+﻿
+
+<link href="~/content/game/css/bootstrap.min.css" rel="stylesheet" />
+<script src="~/scripts/bootstrap.min.js"></script>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">导航条</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#" style="width:220px">
+                    <img class="img-responsive" width="192" src="/content/game/img/elements/logo.png" style="z-index:2;margin-top: -25px;position:absolute">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" style="z-index: 5;margin-top:20px;">
+                    <li class="game"><a href="../Home/Game">首页</a></li>
+                    <li class="gamecenter"><a href="../Home/GameCenter">游戏中心</a></li>
+                    <li class="cases "><a href="#">合作案例</a></li>
+                    <li class="aboutus"><a href="#">关于我们</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">
+                    <li><img src="/content/game/img/elements/xxyxxf.png"></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right" style="margin-right: 30px;">
+                    <li><button type="button" onclick="window.location.href = '../Account/Login'" class="btn btn-primary navbar-btn" style="color: #FFF;background-color: #0486eb;margin-top:20px">商家登录</button></li>
+                </ul>
+            </div>
+        </div>
+</nav>
+<script src="~/scripts/jquery-2.1.4.js"></script>
+<script>
+    $(document).ready(function () {
+        var url = window.location.pathname.toLowerCase();
+        url = url.substring(url.lastIndexOf('/') + 1);
+        switch (url) {
+            case "game":
+                $('.game').addClass('active');
+                break;
+            case "gamecenter":
+                $('.gamecenter').addClass('active');
+                break;
+            case "cases":
+                $('.cases').addClass('active');
+                break;
+            case "aboutus":
+                $('.aboutus').addClass('active');
+                break;
+        }
+        //$('ul li').click(function () {
+        //    alert(window.location.pathname);
+        //    $(this).siblings().removeClass('active');
+        //    console.debug($(this).slblings());
+        //    $(this).addClass('active');
+
+        //})}
+    });
+</script>

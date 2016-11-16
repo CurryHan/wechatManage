@@ -1,0 +1,44 @@
+﻿@model MvcSiteMapProvider.Web.Html.Models.SiteMapNodeModel
+@using System.Web.Mvc.Html
+@using MvcSiteMapProvider.Web.Html.Models
+
+@if (!Model.IsClickable)
+{
+    if (Model.Parent != null && Model.Parent.Title.Contains("首页"))
+    {
+        var className = Model.Attributes.ContainsKey("icon") ? Model.Attributes["icon"] : "menu-icon fa fa-tachometer";
+        <a href="#" class="dropdown-toggle">
+            <i class="@className"></i>
+            <span class="menu-text"> @Model.Title </span>
+            <b class="arrow fa fa-angle-down"></b>
+        </a>
+    }
+    else
+    {
+        <a href="#" class="dropdown-toggle">
+            <i class="menu-icon fa fa-caret-right"></i>
+            <span class="menu-text"> @Model.Title </span>
+            <b class="arrow fa fa-angle-down"></b>
+        </a>
+    }
+    <b class="arrow"></b>
+}
+else
+{
+    if (Model.Parent != null && Model.Parent.Title.Contains("首页"))
+    {
+        var className = Model.Attributes.ContainsKey("icon") ? Model.Attributes["icon"] : "menu-icon fa fa-tachometer";
+        <a href="@Model.Url">
+            <i class="@className"></i>
+            <span class="menu-text">@Model.Title</span>
+        </a>
+    }
+    else
+    {
+        <a href="@Model.Url">
+            <i class="menu-icon fa fa-caret-right"></i>
+            <span class="menu-text">@Model.Title</span>
+        </a>
+    }
+    <b class="arrow"></b>
+}

@@ -1,0 +1,127 @@
+﻿@using Webdiyer.WebControls.Mvc;
+@using Sensing.Entities.Users;
+@using SensingCloud.Helpers
+@using Sensing.Entities
+@model PagedList<Sensing.Entities.Group>
+
+@{
+    GroupEnum groupType = User.GetGroupType();
+}
+@if (ViewBag.Mode == "list")
+{
+    <div id="tableListCategory">
+        <table id="simple-table" class="table table-bordered table-striped table-hover table-condensed text-center">
+            <thead>
+                <tr class="active" style="font-size:14px;">
+                    <th class="hidden-xs">
+                        序号
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DisplayName)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Created)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ParentGroup)
+                    </th>
+                    <th class="hidden-xs">
+                        @Html.DisplayNameFor(model => model.Creator)
+                    </th>
+                    <th>
+                        @Resources.Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @{ var row = 0; }
+                @foreach (var item in Model)
+                {
+                    <tr style="font-size:14px;">
+                        <td class="hidden-xs">
+                            @(++row)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DisplayName)
+                        </td>
+
+                        <td>
+                            @(item.Created.HasValue ? item.Created.Value.ToString("yyyy/MM/dd") : "")
+                        </td>
+                        <td>
+                            @if (item.ParentGroup != null)
+                            {
+                                @Html.DisplayFor(modelItem => item.ParentGroup.DisplayName)
+                            }
+                            else
+                            {
+                                <label>平台基组</label>
+                            }
+                        </td>
+                        <td class="hidden-xs">
+                            @Html.DisplayFor(modelItem => item.Creator)
+                        </td>
+                        <td>
+                            <div class="hidden-xs btn-group">
+                                <a href="/Group/Details/@item.Id" class="btn btn-success btn-xs no-border">
+                                    @Resources.Details
+                                </a>
+                                <a href="/Group/Edit/@item.Id" class="btn btn-primary btn-xs no-border">
+                                    @Resources.Edit
+                                </a>
+                                @if (User.IsInRole(RoleString.Admin) && groupType == GroupEnum.SuperLevel)
+                                {
+                                    <a href="#" idval="@item.Id" class="DeleteLinkA btn btn-danger btn-xs no-border">
+                                        @Resources.Delete
+                                    </a>
+                                }
+                            </div>
+
+                            <div class="hidden-sm hidden-md hidden-lg">
+                                <div class="inline pos-rel">
+                                    <button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown" data-position="auto">
+                                        <i class="ace-icon fa fa-cog icon-only bigger-110"></i>
+                                    </button>
+
+                                    <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+                                        <li>
+                                            <a href="/Group/Details/@item.Id" class="tooltip-info" data-rel="tooltip" title="View">
+                                                <span class="blue">
+                                                    <i class="ace-icon fa fa-search-plus bigger-120"></i>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/Group/Edit/@item.Id" class="tooltip-success" data-rel="tooltip" title="Edit">
+                                                <span class="green">
+                                                    <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+                                                </span>
+                                            </a>
+                                        </li>
+                                       @if (User.IsInRole(RoleString.Admin) && groupType == GroupEnum.SuperLevel)
+                                       {
+                                                <li>
+                                                    <a href="#" idval="@item.Id" class="DeleteLinkA tooltip-error" data-rel="tooltip" title="Delete">
+                                                        <span class="red">
+                                                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+                    }
+
+<div class="row row-pager col-xs-12" style="float:right;text-align:right">
+    @Html.Pager(Model, new PagerOptions { ActionName = "Index", PrevPageText = "上页", NextPageText = "下页", FirstPageText = "首页", LastPageText = "尾页", PageIndexParameterName = "pageIndex", ContainerTagName = "ul", CssClass = "pagination", CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>", DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>", PagerItemTemplate = "<li>{0}</li>" })
+</div>

@@ -1,0 +1,113 @@
+﻿@{
+    ViewBag.Title = "创思感知";
+}
+<link href="~/Content/foundation.min.css" rel="stylesheet" />
+<div><h2 class="main-page-title text-center push-up">零售营销O2O系统管理平台</h2>
+    </div>
+<section class="homepage-main">
+    <div class="row">
+        <div class="col-xs-12">
+            <img src="/content/img/main_1.png" class="main_1" />
+            <ul class="product-list medium-block-grid-2 medium-block-grid-3  large-block-grid-2">
+                <li>
+                    <div class="cell-panel">
+                        <div class="short cell sale">
+                            <h4>精准营销</h4>
+                            <p>
+                                定向广告投放<br />
+                                广告关注分析
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="cell-panel">
+                        <div class="short cell client-analysis align-right-large">
+                            <h4>客流统计</h4>
+                            <p>
+                                总客流统计<br />
+                                进店率分析
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="cell-panel">
+                        <div class="short cell buy">
+                            <h4>体验购物</h4>
+                            <p>
+                                体验式购物<br />
+                                商品关注分析
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="cell-panel">
+                        <div class="short cell hotpot align-right-large">
+                            <h4>热点分析</h4>
+                            <p>
+                                区域热点分析<br />
+                                客流动线分析
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="cell-panel ">
+                        <div class="short cell buy-phone">
+                            <h4>手机订购</h4>
+                            <p>
+                                在线下单支付<br />
+                                商家电商接口
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="cell-panel">
+                        <div class="short cell pos align-right-large">
+                            <h4>消费属性分析</h4>
+                            <p>
+                                POS消费属性分析<br />
+                                VIP客户识别服务
+                            </p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+
+        </div>
+    </div>
+</section>
+<section class="homepage-bottom">
+    <div class="message-box row">
+        @*@{Html.RenderAction("UserActivity", "User");}*@
+    </div>
+</section>
+@section scripts{
+    <script>
+        $(function () {
+            $('.page-header').remove();
+
+            //user activities
+            $('#profile-feed-1').ace_scroll({
+                height: '250px',
+                mouseWheelLock: true,
+                alwaysVisible: true
+            });
+
+            $(document).on('reload.ace.widget', '#widget-activities', function (ev) {
+                $.ajax({ url: '/user/UserActivity' }).done(function (content) {
+                    $('#widget-activities').replaceWith(content).trigger('reloaded.ace.widget');
+                    $('#profile-feed-1').ace_scroll({
+                        height: '250px',
+                        mouseWheelLock: true,
+                        alwaysVisible: true
+                    });
+                });
+            });
+        });
+    </script>
+}

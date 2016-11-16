@@ -1,0 +1,387 @@
+﻿@using SensingCloud.Helpers
+@using Sensing.Thirtparty.Exstension.Model;
+@model Sensing.Entities.Weixin.WeixinUserAction
+@{
+    ViewBag.Title = "微信页面";
+    Layout = "~/Views/Shared/_ActionLayout.cshtml";
+    //string CurrentHost = Request.Url.Scheme + "://" + Request.Url.Host + "/weixin/Auth20CallBack";
+    //CurrentHost = System.Web.HttpUtility.UrlEncode(CurrentHost);
+    string wd = ((double)1 / (ViewBag.AdsList as List<Sensing.Entities.Ads.Ads>).Count) * 100 + "%";
+    var thirdParties = ViewBag.ThirdParty as IList<ThirdPartyResponse>;
+}
+@functions{
+
+    public int GetShareCount()
+    {
+        if (Model.WeixinShares == null)
+            return 0;
+        else
+            return Model.WeixinShares.Count;
+    }
+
+    public string GetCurrentDate()
+    {
+        if (Model.LastUpdated == null)
+            return DateTime.Now.ToString("yyyy年MM月dd日 HH:mm");
+        else
+            return Model.LastUpdated.Value.ToString("yyyy年MM月dd日 HH:mm");
+    }
+
+    public string GetLogo()
+    {
+        if (!string.IsNullOrEmpty(Model.ActivityGame.Activity.ActivityLogoPath))
+        {
+            return Model.ActivityGame.Activity.ActivityLogoPath;
+        }
+        else {
+            if (string.IsNullOrEmpty(Model.ActivityGame.Activity.Group.LogoUrl))
+                return "/Content/weixinImage/photoshare/logo.png";
+            else
+                return Model.ActivityGame.Activity.Group.LogoUrl;
+        }
+    }
+
+    public string GetShareImage()
+    {
+        string actionShareImage = "";
+        actionShareImage = Model.ActivityGame.ActionShare.ImageLink;
+        if (string.IsNullOrEmpty(actionShareImage))
+        {
+            actionShareImage = ConstConfig.Common_Share_Image;
+        }
+        if (!string.IsNullOrEmpty(actionShareImage) && !actionShareImage.StartsWith("http"))
+        {
+            actionShareImage = Request.Url.Scheme + "://" + Request.Url.Host + actionShareImage.Replace("\\", "/");
+        }
+        return actionShareImage;
+    }
+}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    @*禁止页面放大缩小*@
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <style>
+        html, body {
+            position: relative;
+            width: 100%;
+            text-align: center;
+            overflow: visible;
+            margin: 0px;
+            padding: 0px;
+            background: url("/Content/weixinImage/photoshare/bg.png");
+            z-index: -3;
+        }
+
+        /*.bg {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+            .bg img {
+                width: 100%;
+                height: 100%;
+            }*/
+        .clear {
+            clear: both;
+        }
+    </style>
+    <title>灵活你的手指,分享起来！</title>
+</head>
+<body>
+    <!--<div class="bg"><img src="img/photoshare/bg.png" alt=""></div>-->
+    <div style="padding-top: 5%;text-align: left;padding-left: 3%;">
+        <img src="@GetLogo()" style="width: 21%;">
+    </div>
+    <div style="padding-left: 2.3%;padding-right:  2.3%; height: 55%;margin-top: -5%">
+        <div style="text-align: right;margin-right: 1.56%;">
+            <img id="wwdzimg" rel="like" src="~/Content/weixinImage/photoshare/wwdz.png" style="width: 24.2%;">
+        </div>
+        <div style="text-align: left">
+            <img src="~/Content/weixinImage/photoshare/bg_01.png" style="position: absolute;z-index: -1;margin-top: 1%;width: 95.9%;">
+        </div>
+        <div style="margin-top: 7.3%;color: #FFFFFF;font-size: 0.8rem;text-align: left;margin-left: 4.7%;">
+            <div style="float: left;width:14%">
+                <img src="@Model.WeixinUserInfo.Headimgurl" style="border-radius:50%;width: 100%;" />
+            </div>
+            <di style="float: left;margin-left: 5%;margin-top: 3%;">
+                <span>@Model.WeixinUserInfo.Nickname @Model.ActivityGame.Name 游戏分享</span>
+            </di>
+        </div>
+        <div style="margin-top: 26%;color: #FFFFFF;">
+            @if (string.IsNullOrEmpty(Model.GameImage))
+            {
+                <img src="~/Content/weixinImage/photoshare/13e.jpg" style="width: 87.5%;">
+            }
+            else
+            {
+                <img src="@Model.GameImage" style="width: 87.5%;">
+            }
+        </div>
+        <div style="margin-top: 5%;color: #FFFFFF;font-size: 0.7rem;text-align: left;padding-left:  5%;">
+            <span>@Model.ActivityGame.Activity.Description</span>
+        </div>
+    </div>
+
+    <div style="margin-top: 10%;color: #FFFFFF;font-size: 0.5rem;text-align: left;padding-left: 20px;padding-right: 1.56%;">
+        <div style="margin-left: 1.56%;float: left;">
+            <img src="~/Content/weixinImage/photoshare/good.png" style="width: 30%;">
+            <span id="likecountSpan">@Model.LikeCount</span>
+        </div>
+        <div style="margin-left: 1.56%;float: left;">
+            <img src="~/Content/weixinImage/photoshare/share.png" style="width: 30%;">
+            <span id="sharecountSpan">@GetShareCount()</span>
+        </div>
+        <div style="margin-left: 1.56%;float: left;">
+            <img src="~/Content/weixinImage/photoshare/eye.png" style="width: 30%;">
+            <span>@Model.ViewCount</span>
+        </div>
+        <div style="margin-right:3.1%;float: right;">
+            <span>@GetCurrentDate()</span>
+        </div>
+        <div class="clear"></div>
+    </div>
+    @if (thirdParties != null && thirdParties.Count > 0)
+    {
+        foreach (var item in thirdParties)
+        {
+            <div style="margin-top: 5%;color: #FFFFFF;font-size: 1rem;text-align: left;padding-left: 40px;padding-right: 1.56%; font-family:微软雅黑;">
+                @if (item.data != null && item.data.isMember.ToLower() == "false")
+                {
+                    <span>您还未注册微会员，注册会员赢积分</span>
+                    <a href="@item.data.registeUrl" style="text-decoration:none; color:#479BD2;  padding-left:5px;">去注册</a>
+                }
+                @if (item.data != null && item.data.isMember.ToLower() == "true")
+                {
+                    <span>恭喜您本次游戏获得了(@item.data.newPoints)个积分</span>
+                    <a href="@item.data.myUrl" style="text-decoration:none; color:#479BD2; padding-left:5px;">查看详情</a>
+                }
+            </div>
+        }
+    }
+
+
+    <div style="margin-top: 20%;color: #FFFFFF;text-align: center;">
+
+        @if (ViewBag.AdsList.Count == 0)
+        {
+            <div style="width: 25%;float: left;">
+                <img src="~/Content/weixinImage/photoshare/体感赛车.png" style="width: 97%;">
+            </div>
+            <div style="width: 25%;float: left;">
+                <img src="~/Content/weixinImage/photoshare/商品接物.png" style="width: 97%;">
+            </div>
+            <div style="width: 25%;float: left;">
+                <img src="~/Content/weixinImage/photoshare/微信抽奖.png" style="width: 97%;">
+            </div>
+            <div style="width: 25%;float: left;">
+                <img src="~/Content/weixinImage/photoshare/更多游戏.png" style="width: 97%;">
+            </div>
+        }
+        else
+        {
+            foreach (var item in ViewBag.AdsList as List<Sensing.Entities.Ads.Ads>)
+            {
+                <!--根据广告类型，来处理文字，图片和链接-->
+                <div style="float:left; width:@wd;">
+                    <a href="@item.Url"><img src="@item.PicUrl" style="width:97%;" /></a>
+                </div>
+            }
+        }
+    </div>
+
+    <div style="height: 50px;width: 100%;">
+        <span>&nbsp;</span>
+    </div>
+
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    @*<script>
+                function setpagesize(){
+            var scaleX = window.innerWidth;
+            var scaleY = window.innerHeight;
+
+            //        $('body,html').css({
+            //            'width':scaleX +'px',
+            //            'height':scaleY +'px',
+            //            'overflow':'hidden',
+            ////            'overflow':'visible'
+            //        });
+        }
+                </script>*@
+
+    @*<script>
+        wx.config({
+            debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            appId: '@ViewBag.appId', // 必填，公众号的唯一标识
+            timestamp: @ViewBag.timestamp, // 必填，生成签名的时间戳
+            nonceStr:'@ViewBag.nonceStr', // 必填，生成签名的随机串
+            signature: '@ViewBag.signature',// 必填，签名，见附录1
+            jsApiList: [
+            'onMenuShareTimeline',
+            'onMenuShareAppMessage',
+            'onMenuShareQQ',
+            'onMenuShareWeibo'
+            ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        });
+
+        wx.ready(function(){
+            // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+            wx.checkJsApi({
+                jsApiList: [
+                  'onMenuShareTimeline'
+                  ,'onMenuShareAppMessage'
+                  ,'onMenuShareQQ'
+                   ,'onMenuShareWeibo'
+                ],
+                success: function (res) {
+                    //alert(JSON.stringify(res));
+                }
+            });
+
+            // 2.1 监听“分享给朋友”，按钮点击、自定义分享内容及分享结果接口
+
+            wx.onMenuShareAppMessage({
+                title: '@Model.Activity.ActionShare.Title',
+                desc: '@Model.Activity.ActionShare.Description',
+                link:'https://open.weixin.qq.com/connect/oauth2/authorize?appid=@Model.WeixinUserInfo.WeixinAppID&redirect_uri=@CurrentHost&response_type=code&scope=snsapi_base&state=@ViewBag.state&component_appid=@ViewBag.ComponentAppID#wechat_redirect',
+                imgUrl: '@GetShareImage()',
+                //imgUrl:'http://images.apple.com/cn/ipad/home/images/ipadmini_large.jpg',
+                type:'link',
+
+                //trigger: function (res) {
+                //    alert('用户点击发送给朋友');
+                //},
+                success: function (res) {
+                    //分享给朋友 1
+                    //分享到朋友圈 2
+                    //分享到QQ 3
+                    //分享到微博 4
+                    //分享到QQ空间 5
+                    doShareAppMessage(1);
+                },
+                cancel: function (res) {
+                    //alert('已取消');
+                },
+                fail: function (res) {
+                    alert(JSON.stringify(res));
+                }
+            });
+
+
+            // 2.2 监听“分享到朋友圈”按钮点击、自定义分享内容及分享结果接口
+
+            wx.onMenuShareTimeline({
+                title: '@Model.Activity.ActionShare.Title',
+                link:'https://open.weixin.qq.com/connect/oauth2/authorize?appid=@Model.WeixinUserInfo.WeixinAppID&redirect_uri=@CurrentHost&response_type=code&scope=snsapi_base&state=@ViewBag.state&component_appid=@ViewBag.ComponentAppID#wechat_redirect',
+                imgUrl: '@GetShareImage()',
+                trigger: function (res) {
+                    //alert('用户点击分享到朋友圈');
+                },
+                success: function (res) {
+                    //分享给朋友 1
+                    //分享到朋友圈 2
+                    //分享到QQ 3
+                    //分享到微博 4
+                    //分享到QQ空间 5
+                    doShareAppMessage(2);
+                },
+                cancel: function (res) {
+                    //alert('已取消');
+                },
+                fail: function (res) {
+                    alert(JSON.stringify(res));
+                }
+            });
+
+
+
+        });
+
+
+
+        wx.error(function(res){
+
+            // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+            alert(JSON.stringify(res));
+        });
+
+
+        function doShareAppMessage(shareType)
+        {
+            @*var o = {};
+        o.useractionid = @ViewBag.useractionid；
+            o.shareType = shareType;
+        o.fromOpenid = "@ViewBag.currentOpenId";
+
+            var options = {
+                url: '/weixin/UpdateShare',
+                method: 'post',
+                data: { id: @Model.Id,shareType: shareType,fromOpenid:"@ViewBag.currentOpenId",type:"@ConstConfig.ACTION"}
+            };
+
+
+            $.ajax(options)
+                .success(function (data1) {
+                    var shacount=parseInt($("#sharecountSpan").text());
+                    shacount = shacount+1;
+                    $("#sharecountSpan").text(shacount);
+                })
+                .error(function (data1) {
+                });
+            //alert(JSON.stringify(options));
+            //location.href = "http://www.baidu.com";
+        }
+    </script>*@
+
+    <script>
+        $(function () {
+            $('#wwdzimg').click(function() {
+                var num=0;
+                var wxid=@Model.Id;
+                var D=$(this).attr("rel");
+                var licount=parseInt($("#likecountSpan").text());
+                console.debug(licount);
+                if(D == 'like')
+                {
+                    licount = licount+1;
+                    $(this).attr("rel","unlike");
+                    $(this).attr('src',"/Content/weixinImage/photoshare/wwdzlike.png");
+                    num+=1;
+
+                }
+                else
+                {
+                    $(this).attr("rel","like");
+                    $(this).attr('src',"/Content/weixinImage/photoshare/wwdz.png");
+                    num=num-1;
+                    licount = licount-1;
+                }
+                console.debug(licount);
+                $("#likecountSpan").text(licount);
+                var options = {
+                    method: 'get',
+                    data: { id: wxid,addnum:num,wholikedOpenid:"@ViewBag.currentOpenId" }
+                };
+                var url = "/Weixin/LikeCountChange";
+                $.ajax(url, options).success(function (data) {
+                    if (data == true) {
+                        console.debug("点赞/取消点赞成功！")
+                    } else {
+                        console.error("点赞失败！")
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

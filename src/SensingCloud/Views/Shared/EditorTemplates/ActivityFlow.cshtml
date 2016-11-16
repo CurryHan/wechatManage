@@ -1,0 +1,401 @@
+﻿@model Sensing.Entities.Weixin.ActivityFlow
+@using Sensing.Entities.Weixin
+@using Sensing.Entities
+@using SensingCloud.Services
+@using SensingCloud.Helpers
+@{
+    string preUrl = LogicalConstConfig.PLATHOST;
+
+}
+
+@Html.HiddenFor(model => model.Id)
+@Html.HiddenFor(model => model.ActivityID)
+@Html.HiddenFor(model => model.FlowType)
+@Html.HiddenFor(model => model.Creator)
+@Html.HiddenFor(model => model.Created)
+@Html.HiddenFor(model => model.Updater)
+@Html.HiddenFor(model => model.LastUpdated)
+@Html.HiddenFor(model => model.Deleted)
+@Html.HiddenFor(model => model.Description)
+@Html.HiddenFor(model => model.InsideHtml)
+@if (Model.FlowType == FlowType.Introduction)
+{
+    <div id="tabIntroduction" class="tab-pane active">
+        <div class="row">
+            <div id="tabIntroduction_content" class="col-sm-12">
+                <div class="form-group">
+                    <label class="control-label col-md-2">活动介绍Url</label>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" disabled="disabled" value="@preUrl/Activity/Introduce?activityId=@Model.ActivityID" />
+                    </div>
+                </div>
+                <div class="form-group divcheckbox">
+                    <div class="col-md-2" style="text-align:right;">
+                        @Html.CheckBoxFor(model => model.IsUseOutside, htmlAttributes: new { @class = "isusecheckbox" })
+                        @Html.ValidationMessageFor(model => model.IsUseOutside, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.LabelFor(model => model.IsUseOutside, htmlAttributes: new { @class = "control-label col-md-3",@style= "text-align:left;padding-top:0px;" })
+                </div>
+                <div class="form-group divselect">
+                    @Html.LabelFor(model => model.HtmlTemplate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-3">
+                        <select name="IntroductionTemp" class="form-control templateselect" id="form-field-select-1">
+                            @if (((List<HtmlTemplate>)ViewBag.AcIntroductionTemplateList).Count > 0)
+                            {
+                                foreach (var item in ViewBag.AcIntroductionTemplateList)
+                                {
+                                    string name = item.Title + "(" + ((Sensing.Entities.Weixin.UrlTypeEnum)item.UrlType).GetDisplayName() + ")";
+                                    if (Model.HtmlTemplateID.HasValue&&item.Id == Model.HtmlTemplateID.Value)
+                                    {
+                            <option value="@item.Id" selected="selected">@name</option>
+                                    }
+                                    else
+                                    {
+                            <option value="@item.Id">@name</option>
+                                    }
+                                }
+                            }
+
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group" id="ueditor">
+                    <script id="container" name="content" type="text/plain">
+                    </script>
+                </div>
+                <div class="form-group ctr-outsidelink">
+                    @Html.LabelFor(model => model.OutsideLink, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-3">
+                        @Html.EditorFor(model => model.OutsideLink, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.OutsideLink, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <h4 class="text-primary col-sm-8">勾选以下单选框定义页面菜单</h4>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <div class="col-md-2" style="text-align:right;">
+                        @Html.CheckBoxFor(model => model.IsHasRegister)
+                        @Html.ValidationMessageFor(model => model.IsHasRegister, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.LabelFor(model => model.IsHasRegister, new { Class = "control-label col-md-3",Style= "text-align:left;padding-top:0px;" })
+                    <div class="col-md-2" style="text-align:right;">
+                        @Html.CheckBoxFor(model => model.IsHasGame, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.IsHasGame, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.LabelFor(model => model.IsHasGame, htmlAttributes: new { Class = "control-label col-md-3",Style = "text-align:left;padding-top:0px;" })
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2" style="text-align:right;">
+                        @Html.CheckBoxFor(model => model.IsHasGameResult, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.IsHasGameResult, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.LabelFor(model => model.IsHasGameResult, htmlAttributes: new { @class = "control-label col-md-3",@style= "text-align:left;padding-top:0px;" })
+
+                    <div class="col-md-2" style="text-align:right;">
+                        @Html.CheckBoxFor(model => model.IsHasReward, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.IsHasReward, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.LabelFor(model => model.IsHasReward, htmlAttributes: new { Class = "control-label col-md-3",Style= "text-align:left;padding-top:0px;" })
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@if (Model.FlowType == FlowType.Game)
+{
+    <div id="tabGame" class="tab-pane">
+        <div class="row">
+            <div id="tabGame_content" class="col-sm-12">
+                <div class="form-group divcheckbox">
+                    <div class="col-md-2" style="text-align:right;">
+                        @Html.CheckBoxFor(model => model.IsUseOutside, htmlAttributes: new { @class = "isusecheckbox" })
+                        @Html.ValidationMessageFor(model => model.IsUseOutside, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.LabelFor(model => model.IsUseOutside, htmlAttributes: new { @class = "control-label col-md-3", @style = "text-align:left;padding-top:0px;" })
+                </div>
+                <div class="form-group divselect">
+                    <label class="control-label col-md-2">线上游戏</label>
+                    <div class="col-md-3">
+                        <select name="OnLineGameTemp" class="form-control templateselect" id="form-field-select-1">
+
+                            @if (((List<ActivityGame>)ViewBag.AcOnLineTemplateList).Count > 0)
+                            {
+                                foreach (var item in ViewBag.AcOnLineTemplateList)
+                                {
+                                    if (Model.GameID.HasValue && item.Game.Id == Model.GameID.Value)
+                                    {
+                                        <option value="@item.Game.Id" selected="selected">@item.Name</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@item.Game.Id">@item.Name</option>
+                                    }
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group ctr-outsidelink">
+                    @Html.LabelFor(model => model.OutsideLink, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-3">
+                        @Html.EditorFor(model => model.OutsideLink, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.OutsideLink, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <h4 class="text-primary col-sm-8">勾选以下单选框定义页面菜单</h4>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group divcheckbox">
+                    <div class="col-md-2" style="text-align:right;">
+                        @Html.CheckBoxFor(model => model.IsHasIntroduce, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.IsHasIntroduce, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.LabelFor(model => model.IsHasIntroduce, new { Class = "control-label col-md-3", Style = "text-align:left;padding-top:0px;" })
+                    <div class="col-md-2" style="text-align:right;">
+                        @Html.CheckBoxFor(model => model.IsHasRegister, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.IsHasRegister, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.LabelFor(model => model.IsHasRegister, new { Class = "control-label col-md-3", Style = "text-align:left;padding-top:0px;" })
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2" style="text-align:right;">
+                        @Html.CheckBoxFor(model => model.IsHasGameResult, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.IsHasGameResult, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.LabelFor(model => model.IsHasGameResult, new { Class = "control-label col-md-3", Style = "text-align:left;padding-top:0px;" })
+                    <div class="col-md-2" style="text-align:right;">
+                        @Html.CheckBoxFor(model => model.IsHasReward, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.IsHasReward, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.LabelFor(model => model.IsHasReward, new { Class = "control-label col-md-3", Style = "text-align:left;padding-top:0px;" })
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@if (Model.FlowType == FlowType.Register)
+{
+    <div id="tabRegister" class="tab-pane">
+        <div class="row">
+            <div id="tabRegister_content" class="col-sm-12">
+                <div class="form-group">
+                    <label class="control-label col-md-2">注册Url</label>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" disabled="disabled" value="@preUrl/Activity/Register?activityId=@Model.ActivityID" />
+                    </div>
+                </div>
+                <div class="form-group divcheckbox">
+                    <div class="col-md-2" style="text-align:right;">
+                        @Html.CheckBoxFor(model => model.IsUseOutside, htmlAttributes: new { @class = "isusecheckbox" })
+                        @Html.ValidationMessageFor(model => model.IsUseOutside, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.LabelFor(model => model.IsUseOutside, htmlAttributes: new { @class = "control-label col-md-3", @style = "text-align:left;padding-top:0px;" })
+                </div>
+                <div class="form-group divselect">
+                    @Html.LabelFor(model => model.HtmlTemplate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-3">
+                        <select name="RegisterTemp" class="form-control templateselect" id="form-field-select-1">
+                            @if (((List<HtmlTemplate>)ViewBag.AcRegisterTemplateList).Count > 0)
+                            {
+                                foreach (var item in ViewBag.AcRegisterTemplateList)
+                                {
+                                    string name = item.Title + "(" + ((Sensing.Entities.Weixin.UrlTypeEnum)item.UrlType).GetDisplayName() + ")";
+                                    if (Model.HtmlTemplateID.HasValue && item.Id == Model.HtmlTemplateID.Value)
+                                    {
+                                        <option value="@item.Id" selected="selected">@name</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@item.Id">@name</option>
+                                    }
+                                }
+                            }
+
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group ctr-outsidelink" style="display:none;">
+                    @Html.LabelFor(model => model.OutsideLink, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-3">
+                        @Html.EditorFor(model => model.OutsideLink, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.OutsideLink, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <h4 class="text-primary col-sm-8">勾选以下单选框定义页面菜单</h4>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <div class="col-md-2" style="text-align:right;">
+                        @Html.CheckBoxFor(model => model.IsHasIntroduce, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.IsHasIntroduce, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.LabelFor(model => model.IsHasIntroduce, new { Class = "control-label col-md-3", Style = "text-align:left;padding-top:0px;" })
+                    <div class="col-md-2" style="text-align:right;">
+                        @Html.CheckBoxFor(model => model.IsHasGame, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.IsHasGame, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.LabelFor(model => model.IsHasGame, new { Class = "control-label col-md-3", Style = "text-align:left;" })
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2" style="text-align:right;">
+                        @Html.CheckBoxFor(model => model.IsHasGameResult, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.IsHasGameResult, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.LabelFor(model => model.IsHasGameResult, new { Class = "control-label col-md-3", Style = "text-align:left;padding-top:0px;" })
+                    <div class="col-md-2" style="text-align:right;">
+                        @Html.CheckBoxFor(model => model.IsHasReward, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.IsHasReward, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.LabelFor(model => model.IsHasReward, new { Class = "control-label col-md-3", Style = "text-align:left;padding-top:0px;" })
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@if (Model.FlowType == FlowType.GameResult)
+{
+    <div id="tabGameResult" class="tab-pane">
+        <div class="row">
+            <div id="tabIntroduction_content" class="col-sm-12">
+                <div class="form-group divcheckbox">
+                    <div class="col-md-2" style="text-align:right;">
+                        @Html.CheckBoxFor(model => model.IsUseOutside, htmlAttributes: new { @class = "isusecheckbox" })
+                        @Html.ValidationMessageFor(model => model.IsUseOutside, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.LabelFor(model => model.IsUseOutside, htmlAttributes: new { @class = "control-label col-md-3", @style = "text-align:left;padding-top:0px;" })
+                </div>
+                <div class="form-group divselect">
+                    @Html.LabelFor(model => model.HtmlTemplate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-3">
+                        <select name="GameResultTemp" class="form-control templateselect" id="form-field-select-1">
+                            @if (((List<HtmlTemplate>)ViewBag.AcGameResultTemplateList).Count > 0)
+                            {
+                                foreach (var item in ViewBag.AcGameResultTemplateList)
+                                {
+                                    string name = item.Title + "(" + ((Sensing.Entities.Weixin.UrlTypeEnum)item.UrlType).GetDisplayName() + ")";
+                                    if (Model.HtmlTemplateID.HasValue && item.Id == Model.HtmlTemplateID.Value)
+                                    {
+                                        <option value="@item.Id" selected="selected">@name</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@item.Id">@name</option>
+                                    }
+                                }
+                            }
+
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group ctr-outsidelink">
+                    @Html.LabelFor(model => model.OutsideLink, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-3">
+                        @Html.EditorFor(model => model.OutsideLink, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.OutsideLink, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <h4 class="text-primary col-sm-8">勾选以下单选框定义页面菜单</h4>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <div class="col-md-2" style="text-align:right;">
+                        @Html.CheckBoxFor(model => model.IsHasIntroduce, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.IsHasIntroduce, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.LabelFor(model => model.IsHasIntroduce, new { Class = "control-label col-md-3", Style = "text-align:left;padding-top:0px;" })
+                    <div class="col-md-2" style="text-align:right;">
+                        @Html.CheckBoxFor(model => model.IsHasGame, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.IsHasGame, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.LabelFor(model => model.IsHasGame, new { Class = "control-label col-md-3", Style = "text-align:left;padding-top:0px;" })
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2" style="text-align:right;">
+                        @Html.CheckBoxFor(model => model.IsHasReward, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.IsHasReward, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.LabelFor(model => model.IsHasReward, new { Class = "control-label col-md-3", Style = "text-align:left;padding-top:0px;" })
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@if (Model.FlowType == FlowType.Reward)
+{
+    <div id="tabReward" class="tab-pane">
+        <div class="row">
+            <div id="tabIntroduction_content" class="col-sm-12">
+                <div class="form-group divcheckbox">
+                    <div class="col-md-2" style="text-align:right;">
+                        @Html.CheckBoxFor(model => model.IsUseOutside, htmlAttributes: new { @class = "isusecheckbox" })
+                        @Html.ValidationMessageFor(model => model.IsUseOutside, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.LabelFor(model => model.IsUseOutside, htmlAttributes: new { @class = "control-label col-md-3", @style = "text-align:left;padding-top:0px;" })
+                </div>
+                <div class="form-group divselect">
+                    @Html.LabelFor(model => model.HtmlTemplate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-3">
+                        <select name="RewardTemp" class="form-control templateselect" id="form-field-select-1">
+                            @if (((List<HtmlTemplate>)ViewBag.AcAwardTemplateList).Count > 0)
+                            {
+                                foreach (var item in ViewBag.AcAwardTemplateList)
+                                {
+                                    string name = item.Title + "(" + ((Sensing.Entities.Weixin.UrlTypeEnum)item.UrlType).GetDisplayName() + ")";
+                                    if (Model.HtmlTemplateID.HasValue && item.Id == Model.HtmlTemplateID.Value)
+                                    {
+                                        <option value="@item.Id" selected="selected">@name</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@item.Id">@name</option>
+                                    }
+                                }
+                            }
+
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group ctr-outsidelink">
+                    @Html.LabelFor(model => model.OutsideLink, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-3">
+                        @Html.EditorFor(model => model.OutsideLink, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.OutsideLink, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <h4 class="text-primary col-sm-8">勾选以下单选框定义页面菜单</h4>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <div class="col-md-2" style="text-align:right;">
+                        @Html.CheckBoxFor(model => model.IsHasIntroduce, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.IsHasIntroduce, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.LabelFor(model => model.IsHasIntroduce, new { Class = "control-label col-md-3", Style = "text-align:left;padding-top:0px;" })
+                    <div class="col-md-2" style="text-align:right;">
+                        @Html.CheckBoxFor(model => model.IsHasGame, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.IsHasGame, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.LabelFor(model => model.IsHasGame, new { Class = "control-label col-md-3", Style = "text-align:left;padding-top:0px;" })
+                </div>
+                <div class="form-group" style="text-align:right;">
+                    <div class="col-md-2">
+                        @Html.CheckBoxFor(model => model.IsHasGameResult, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.IsHasGameResult, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.LabelFor(model => model.IsHasGameResult, new { Class = "control-label col-md-3", Style = "text-align:left;padding-top:0px;" })
+                </div>
+            </div>
+        </div>
+    </div>
+}

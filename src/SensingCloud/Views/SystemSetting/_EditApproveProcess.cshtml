@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Sensing.Entities.SystemSettings.ApproveProcess>
+<div class="col-xs-12">
+    @if (ViewBag.Success == true)
+    {
+        <div class="alert alert-block alert-success">
+            <button type="button" class="close" data-dismiss="alert">
+                <i class="ace-icon fa fa-times"></i>
+            </button>
+            <i class="ace-icon fa fa-check green"></i>
+            @Resources.UpdateSuccess @*修改成功.*@
+        </div>
+    }
+    @foreach (var item in Model)
+    {
+        using (Ajax.BeginForm("EditApproveProcess", "SystemSetting", new AjaxOptions { HttpMethod = "Post", InsertionMode = InsertionMode.Replace, UpdateTargetId = "tab2_contentDiv", OnSuccess = "ApproveProcessSuccess" }, new { @class = "form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="col-xs-6">
+                @Html.HiddenFor(modelItem => item.Id)
+                <div class="form-group">
+                    <h5 class=""><i class="ace-icon fa @item.Description text-primary fa-1"></i><span class="icon-ajust">@Html.DisplayFor(modelItem => item.Name, new { htmlAttributes = new { @class = "icon-ajust" } })</span></h5>
+                </div>
+                <div class="form-group">
+                    <label class="label-1">
+                        @Html.CheckBoxFor(modelItem => item.NeedApprove, new { @class = "ajust needapproveCBX" })
+                        @Resources.NeedApprove @*需要审批*@
+                    </label>
+                </div>
+                <div class="form-group" style="text-align:left">
+                    <label class="row col-xs-3">@Resources.ApproverRole: @*审批权限*@</label>
+                    @if (item.NeedApprove)
+                    {
+                        <select class="col-xs-6 needapproveSlct" name="ApproveRolesSelect">
+                            @foreach (var role in ViewBag.ApproverRole)
+                            {
+                                <option>@role</option>
+                            }
+
+                        </select>}
+                    else
+                    {
+                        <select class="col-xs-6 needapproveSlct" disabled="disabled" name="ApproveRolesSelect">
+                            @foreach (var role in ViewBag.ApproverRole)
+                            {
+                                <option>@role</option>
+                            }
+
+                        </select>
+                    }
+                </div>
+                <div class="form-group" style="text-align:left">
+                    <input type="submit" value="@Resources.Save" class="btn btn-primary btn-sm no-border" />
+                </div>
+            </div>
+        }
+    }
+</div>
+
+
+<script>
+    function ApproveProcessSuccess() {
+        $(".alert-success").fadeIn().delay(1000).fadeOut();
+    }
+
+    $(function () {
+        $('.needapproveCBX').change(function () {
+            if ($(this).is(':checked')) {
+                $(this).parent().parent().next().find('.needapproveSlct').removeAttr("disabled");
+            } else {
+                $(this).parent().parent().next().find('.needapproveSlct').attr("disabled", "disabled");
+            }
+        });
+    });
+
+</script>

@@ -1,0 +1,84 @@
+﻿
+<div class="modal" id="uploadImageDialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">上传图片</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <div class="col-xs-2"></div>
+                    <div class="col-sm-9">
+                        <!-- #section:elements.tab.option -->
+                        <div class="tabbable">
+                            <ul class="nav nav-tabs" id="myTab4">
+                                <li class="active">
+                                    <a data-toggle="tab" href="#tab1" aria-expanded="false">网络图片</a>
+                                </li>
+                                <li class="">
+                                    <a data-toggle="tab" href="#tab2" aria-expanded="false">本地图片</a>
+                                </li>
+                            </ul>
+                            <div id="productTabble" class="tab-content">
+                                <div id="tab1" class="tab-pane active">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <h4 class="text-primary col-xs-8">请输入图片地址</h4>
+                                        </div>
+
+                                        <div id="tab_1_content" class="col-sm-12">
+
+
+                                            <div class="form-group">
+                                                <div class="col-md-6">
+                                                    @Html.Editor("webImageUrl", new { htmlAttributes = new { @class = "form-control" } })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="tab2" class="tab-pane ">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h4 class="text-primary col-sm-8">请选择本地图片</h4>
+                                        </div>
+                                        <div id="tab_2_content" class="col-sm-12">
+                                            <div class="form-group">
+                                                <div class="col-md-2" data-target-parent="true" style="max-width:190px">
+                                                    <img data-target-preview="true" style="width: 100px; height: 100px;" src="~/Content/img/fileupload.jpg" alt="Image preview">
+                                                    <input type="file" name="localImageUrl" id="localImageUrl" multiple accept="image/*" style="display:none">
+
+                                                    <button data-action-select="true" type="button" class="btn btn-info btn-sm no-border" style="margin-top:10px">选择图片</button>
+                                                    <button type="button" class="btn btn-danger btn-sm fa fa-times no-border resetpicbtn" style="margin-top:10px" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <a id="cancel_dialog" class="btn btn-default" onclick="doCloseDialog()">取消</a>
+                <a id="confirm_edit_resource_value" class="btn btn-primary">确定</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function()
+    {
+        $('#localImageUrl').pictureSelector();
+
+    })
+    function doCloseDialog() {
+        $('#uploadImageDialog').modal('hide');
+    }
+
+</script>

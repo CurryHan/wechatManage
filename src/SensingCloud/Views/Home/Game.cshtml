@@ -1,0 +1,436 @@
+﻿
+@{
+    ViewBag.Title = "感知互动游戏";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Link Swiper's CSS -->
+    <link href="~/content/game/css/animate.min.css" rel="stylesheet" />
+    <link href="~/content/game/css/swiper.min.css" rel="stylesheet" />  
+
+    <script src="~/scripts/jquery-2.1.4.js"></script>
+    <script src="~/scripts/swiper.min.js"></script>
+    <script src="~/scripts/swiper.animate1.0.2.min.js"></script>
+    <!-- styles -->
+    <style>
+        html, body {
+            position: relative;
+            height: 100%;
+            background-color: #000;
+            overflow-y: hidden;
+        }
+
+        body {
+            background: #eee;
+            font-family: Helvetica, Tahoma, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei", STXihei, STHeiti, Heiti, SimSun, sans-serif;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            background-color:#000;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            background: #fff;
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+
+        .swiper-wrapper .bg {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .swiper-wrapper .ele {
+            position: absolute;
+            z-index: 1;
+        }
+
+        .swiper-wrapper .bg img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-wrapper p {
+            color: white;
+        }
+
+        .swiper-container-v {
+            background: #eee;
+        }
+        .titlesswiper {
+            width:100%;
+            position: absolute;
+            left:50%;top:50%;
+            -webkit-transform:translate(-50%,-50%);
+            -moz-transform:translate(-50%,-50%);
+            -ms-transform:translate(-50%,-50%);
+            bottom:0;
+        }
+        .contentdiv {
+            width:53%;
+            height: 100%;
+            text-align: center;
+            position: relative;
+        }
+        .titlefont {
+            font-size: 3.5vw;
+        }
+        .introducefont {
+            font-size: 2vw;
+        }
+        @@media screen and (min-width: 1280px) {
+            .titlefont {
+            font-size: 55px;
+        }
+
+        .introducefont {
+            font-size: 36px;
+            }
+        .active{
+            color:#337ab7;
+        }
+        }
+    </style>
+    <!--[if IE]
+    <script type="text/javascript">
+    alert("ie")
+    </script>
+    <![endif]-->
+    
+    
+
+</head>
+<body>
+    @Html.Partial("_Menu")
+    <!-- Swiper -->
+    <div class="swiper-container swiper-container-h">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="swiper-container swiper-container-v">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" style="background-image: url('/content/game/img/P1.jpg');background-repeat: no-repeat;background-size: cover;background-position: center;">
+                            <div class="contentdiv">
+                                <div class="titlesswiper">
+                                    <img style="width: 55.2%;" class="ani" swiper-animate-effect="bounceIn" swiper-animate-duration="0.6s" swiper-animate-delay="0.3s" src="/content/game/img/elements/HD01.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide" style="background-image: url('/content/game/img/P1_2.jpg');background-repeat: no-repeat;background-size: cover;background-position: center;">
+                            <div class="contentdiv">
+                                <div class="titlesswiper">
+                                    <img style="width:98%;" class="ani" swiper-animate-effect="bounceIn" swiper-animate-duration="0.6s" swiper-animate-delay="0.3s" src="/content/game/img/elements/title_2.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide" style="background-image: url('/content/game/img/P1_3.jpg');background-repeat: no-repeat;background-size: cover;background-position: center;">
+                            <div class="contentdiv">
+                                <div class="titlesswiper">
+                                    <img style="width: 98%;" class="ani" swiper-animate-effect="bounceIn" swiper-animate-duration="0.6s" swiper-animate-delay="0.3s" src="/content/game/img/elements/title_3.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide" style="background-image: url('/content/game/img/P1_4.jpg');background-repeat: no-repeat;background-size: cover;background-position: center;">
+                            <div class="contentdiv">
+                                <div class="titlesswiper">
+                                    <img style="width: 98%;" class="ani" swiper-animate-effect="bounceIn" swiper-animate-duration="0.6s" swiper-animate-delay="0.3s" src="/content/game/img/elements/title_4.png">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination swiper-pagination-v"></div>
+                </div>
+            </div>
+
+            <div class="swiper-slide" style="background-image: url('/content/game/img/P2.jpg');background-repeat: no-repeat;background-size: cover;background-position: center;">
+                <div class="contentdiv">
+                    <div style="width: 100%; position: absolute; left:50%;top:50%;-webkit-transform:translate(-50%,-50%);-moz-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%); ">
+                        <div>
+                            <img style="width: 93%;" class="ani" swiper-animate-effect="zoomIn" src="/content/game/img/elements/TG01.png">
+                        </div>
+                    </div>
+                    <div style="width: 50%; position: absolute;left: 50%;top: 50%;text-align: left;-webkit-transform:translate(5%,-50%);-moz-transform:translate(5%,-50%);-ms-transform: translate(5%,-50%);">
+                        <div class="ani" swiper-animate-effect="zoomIn">
+                            <p  class="titlefont">体感游戏</p>
+                            <p  class="introducefont">身临其境互动,欢乐无处不在！</p>
+                        </div>
+                        <img class="ani" style="width: 22%;" swiper-animate-effect="flipInY" swiper-animate-duration="0.6s" swiper-animate-delay="1s" src="/content/game/img/elements/TG02.png">
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide" style="background-color:#406bb2;">
+                <div class="contentdiv">
+                    <div style="width: 100%; position: absolute; left:50%;top:100%;-webkit-transform:translate(-50%,-100%);-moz-transform:translate(-50%,-100%);-ms-transform:translate(-50%,-100%); ">
+                        <div>
+                            <img style="width: 93%;" src="/content/game/img/elements/shou.png">
+                        </div>
+                    </div>
+                    <div style="width: 100%; position: absolute; left:50%;top:100%;-webkit-transform:translate(-50%,-100%);-moz-transform:translate(-50%,-100%);-ms-transform:translate(-50%,-100%); ">
+                        <img class="ani" style="width: 64.5%;" swiper-animate-effect="fadeInUp" src="/content/game/img/elements/SJ01.png">
+                    </div>
+                    <div style="width: 100%; position: absolute;left: 10%;top: 20%;text-align: left;">
+                        <div class="ani" swiper-animate-effect="zoomIn">
+                            <p  class="titlefont">社交分享</p>
+                            <p  class="introducefont">精彩不容错过，随时与朋友分享!</p>
+                        </div>
+                        <div id="rotate" style="width: 8%; cursor:pointer; position:absolute;">
+                            <img style="width: 100%;" src="/content/game/img/elements/SJ02.png" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide" style="background-image: url('/content/game/img/P4.jpg');background-repeat: no-repeat;background-size: cover;background-position: center;">
+                <div class="contentdiv">
+                    <div style="width: 100%; position: absolute; left:50%;top:100%;-webkit-transform:translate(-50%,-100%);-moz-transform:translate(-50%,-100%);-ms-transform: translate(-50%,-100%);">
+                        <div>
+                            <img style="width: 60%;" src="/content/game/img/elements/P4_sjyh.png">
+                        </div>
+                    </div>
+                    <div style="width: 100%; position: absolute; left:-10%;top:70%;-webkit-transform:translate(0%,-70%);-moz-transform:translate(0%,-70%);-ms-transform:translate(0%,-70%); ">
+                        <div class="ani" swiper-animate-effect="zoomIn">
+                            <img style="width: 57%;" src="/content/game/img/elements/SHEJIA01.png">
+                        </div>
+                    </div>
+                    <div style="width: 50%; position: absolute;left: 50%;top: 70%;text-align: left;-webkit-transform:translate(5%,-70%);-moz-transform:translate(5%,-70%);-ms-transform:translate(5%,-70%); ">
+                        <div class="ani" swiper-animate-effect="bounceInRight">
+                            <p  class="titlefont">商家优惠</p>
+                            <p  class="introducefont">优惠折扣更多，为您而省更多！</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide" style="background-image: url('/content/game/img/P5.jpg');background-repeat: no-repeat;background-size: cover;background-position: center;">
+                <div class="contentdiv">
+                    <div style="width: 100%; position: absolute; left:50%;top:100%;-webkit-transform:translate(-30%,-100%);-moz-transform:translate(-30%,-100%);-ms-transform:translate(-30%,-100%); ">
+                        <div>
+                            <img style="width: 60%;" class="ani" swiper-animate-effect="bounceInRight" src="/content/game/img/elements/WX01.png">
+                        </div>
+                    </div>
+                    <div style="width: 100%; position: absolute;left: 0%;top: 50%;text-align: left;-webkit-transform:translate(10%,-50%);-moz-transform:translate(10%,-50%);-ms-transform:translate(10%,-50%); ">
+                        <div class="ani" swiper-animate-effect="zoomIn">
+                            <p  class="titlefont">微信吸粉</p>
+                            <p  class="introducefont">现场人气爆棚，粉丝超乎你想象！</p>
+                        </div>
+                        <div style="width: 50%" class="ani" swiper-animate-effect="zoomIn">
+                            <img style="width: 22%;float: left;" src="/content/game/img/elements/WX02.png" alt="">
+                            <div style="float: left;margin-left: 5%;margin-top:5%;">
+                                <span style="font-size: 1.5vw;color: white;">日增粉</span>
+                                <span class="ani" swiper-animate-effect="pulse" style="font-size: 2vw;color: red;text-align: center;">1000+</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide" style="background-image: url('/content/game/img/P6.jpg');background-repeat: no-repeat;background-size: cover;background-position: center;">
+                <div class="contentdiv">
+                    <div style="width: 100%; position: absolute;left: 50%;top:30%;text-align: center;-webkit-transform:translate(-50%,-50%);-moz-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);">
+                        <div class="ani" swiper-animate-effect="zoomIn">
+                            <p  class="titlefont">会员运维</p>
+                            <p  class="introducefont">感知您的行为，提供更懂您的服务！</p>
+                        </div>
+                    </div>
+                    <div style="width: 100%; position: absolute; left:50%;top:90%;-webkit-transform:translate(-50%,-100%);-moz-transform:translate(-50%,-100%); -ms-transform:translate(-50%,-100%);">
+                        <img style="width: 58%;" class="ani" swiper-animate-effect="fadeInLeft" src="/content/game/img/elements/HY01.png">
+                        <img class="ani" swiper-animate-effect="fadeInRight" src="/content/game/img/elements/HY02.png" style="width: 19.6%;margin-left: -8%;margin-top:12%;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide" style="background-image: url('/content/game/img/P7.jpg');background-repeat: no-repeat;background-size: cover;background-position: center;">
+                <div class="contentdiv">
+                    <div style="width: 100%; position: absolute; left:30%;top:50%;-webkit-transform:translate(0%,-50%);-moz-transform:translate(0%,-50%);-ms-transform:translate(0%,-50%);">
+                        <div>
+                            <img class="ani" swiper-animate-effect="bounceInRight" style="width: 33%;" src="/content/game/img/elements/JC01.png">
+                        </div>
+                    </div>
+                    <div style="width: 100%; position: absolute;left: 0%;top: 30%;text-align: left;-webkit-transform:translate(5%,-30%);-moz-transform:translate(5%,-30%);-ms-transform:translate(5%,-30%); ">
+                        <div class="ani" swiper-animate-effect="zoomIn">
+                            <p  class="titlefont">集成扩展</p>
+                            <p  class="introducefont">行为数据共享，让服务一如既往！</p>
+                        </div>
+                        <div style="width: 100%;position: relative" class="ani" swiper-animate-effect="zoomIn">
+                            <div style="width: 100%;margin-top: 5%;">
+                                <img style="width: 5%;float: left;" src="/content/game/img/elements/JC02_1.png" alt="">
+                                <div style="font-size: 2vw;margin-left: 6%;">
+                                    <p>CRM管理系统</p>
+                                </div>
+                            </div>
+                            <div style="width: 100%;margin-top: 5%;">
+                                <img style="width: 5%;float: left;" src="/content/game/img/elements/JC02_2.png" alt="">
+                                <div style="font-size: 2vw;margin-left: 6%;">
+                                    <p>ERP系统</p>
+                                </div>
+                            </div>
+                            <div style="width: 100%;margin-top: 5%;">
+                                <img style="width: 5%;float: left;" src="/content/game/img/elements/JC02_1.png" alt="">
+                                <div style="font-size: 2vw;margin-left: 6%;">
+                                    <p>定制CRM系统</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="contentdiv" style="width: 100%;height: 200px;position: relative;background-color: #1f2227; ">
+                    <div style="width: 50%; position: absolute;top: 10%;left: 10%;-webkit-transform:translate(0%,0%);-moz-transform:translate(0%,0%); -ms-transform:translate(0%,0%);">
+                        <div style="width: 100%;">
+                            <img style="width: 45%" src="/content/game/img/elements/foot.png">
+                        </div>
+                        <div style="width: 100%;padding-left: 3%;color: #fff;margin-top: 5%;">
+                            <span style="font-size: 1vw">联系电话</span> <span style="font-size:1.5vw">0510-85381098&nbsp; &nbsp;18616300540</span>
+                        </div>
+
+                    </div>
+                    <div style="width: 50%; position: absolute;right:10%; top: 20%;-webkit-transform:translate(0%,0%);-moz-transform:translate(0%,0%);-ms-transform:translate(0%,0%);text-align: right;">
+                        <div style="width: 100%;right: 10%;">
+                            <div style="width: 14%;float: right;">
+                                <img style="width: 100%" src="/content/game/img/elements/wxcode.png">
+                            </div>
+                            <div style="width: 30%;float: right;margin-top: 8%;margin-right: 2%">
+                                <img style="width: 20%;margin-left: 5%;" src="/content/game/img/elements/WC.png">
+                                <img style="width: 20%;margin-left: 5%;" src="/content/game/img/elements/WB.png">
+                                <img style="width: 20%;margin-left: 5%;" src="/content/game/img/elements/QQ.png">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div style=" width: 100%;position: relative;background-color: #000;margin: auto;padding: auto;color: #fff;padding: 5px;bottom:0; ">
+                <span style="float:left;font-size: 1vw;margin-left: 10%;">©Copyright 2015 感知互动  Al Rights Resever. </span>
+                <span style="float:right;font-size: 1vw;margin-right: 10%;">苏ICP备13045243号 </span>
+            </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination swiper-pagination-h"></div>
+    </div>
+        <!-- Initialize Swiper -->
+        <script>
+            $(function () {
+                var sss = $(".headerdiv")
+                //左右移动的翻转
+                var swiperV = new Swiper('.swiper-container-v', {
+                    pagination: '.swiper-pagination-v',
+                    paginationClickable: true,
+                    direction: 'horizontal',
+                    speed: 1000,
+                    autoplay: 4000,
+                    loop: true,
+                    spaceBetween: 0,
+                    //mousewheelControl: true,
+
+                    //onInit: function (swiperV) { //Swiper2.x的初始化是onFirstInit
+                    //    swiperAnimateCache(swiperV); //隐藏动画元素
+                    //    swiperAnimate(swiperV); //初始化完成开始动画
+                    //},
+                    //onSlideChangeEnd: function (swiperV) {
+                    //    swiperAnimate(swiperV); //每个slide切换结束时也运行当前slide动画
+                    //},
+                });
+
+                var swiper = new Swiper('.swiper-container-h', {
+                    pagination: '.swiper-pagination-h',
+                    paginationClickable: true,
+                    direction: 'vertical',
+                    speed: 700,
+                    spaceBetween: 0,
+                    mousewheelControl: true,
+                    slidesPerView: 1.31,
+                    slidesPerColumn: 1,
+                    slidesOffsetAfter: 233,
+                    resistanceRatio: 0,
+
+                    breakpoints: {
+                        //当宽度小于等于1024
+                        1366: {
+                            slidesPerView: 1.25,
+                            spaceBetweenSlides: 0
+                        }
+                    },
+
+                    onInit: function (swiper) { //Swiper2.x的初始化是onFirstInit
+                        swiperAnimateCache(swiper); //隐藏动画元素
+                        swiperAnimate(swiper); //初始化完成开始动画
+                    },
+                    onSlideChangeEnd: function (swiper) {
+                        swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
+                    },
+                    onSlideNextStart: function (swiper) {
+                        if (!swiper.isBeginning) {
+                            sss.slideUp();
+                        }
+                    },
+                    onSlidePrevStart: function (swiper) {
+                        if (swiper.isBeginning) {
+                            sss.slideDown();
+                        }
+                    },
+
+                });
+            });
+        </script>
+    <script>
+        $(document).ready(function () {
+
+        });
+    </script>
+
+        <!--朋友圈图片旋转-->
+        <script>
+            (function () {
+                var element = document.getElementById("rotate");
+                var r = 0;
+                var i = 1;
+                function rotate() {
+                    r += i;
+                    if (Math.abs(r) >= 360) i *= -1
+                    element.style.MozTransform = "rotate(" + r + "deg)";
+                    element.style.webkitTransform = "rotate(" + r + "deg)";
+                    element.style.msTransform = "rotate(" + r + "deg)";
+                    element.style.OTransform = "rotate(" + r + "deg)";
+                    element.style.transform = "rotate(" + r + "deg)";
+                }
+
+                var timer = setInterval(rotate, 10);
+
+                element.onmouseover = function () {
+                    clearInterval(timer);
+                    timer = null;
+                };
+
+                element.onmouseout = function () {
+                    if (timer) return;
+                    timer = setInterval(rotate, 10);
+                };
+            }());
+        </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿@using Resources
+@model Sensing.Entities.Group
+@{
+    ViewBag.Title = Resources.CreateGroup;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Resources.CreateGroup</h2>
+
+@using (Html.BeginForm("CreateGroup", "User", FormMethod.Post, new { @id = "createForm" }))
+{
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-md-2">@Resources.GroupName</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DisplayName)
+                @Html.ValidationMessageFor(model => model.DisplayName)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <a href="#" class="btn btn-default btn-xs no-border">@Resources.ReturnToList</a>
+                <button type="submit" class="btn btn-primary btn-xs no-border">&nbsp;&nbsp;&nbsp;@Resources.Save&nbsp;&nbsp;&nbsp;</button>
+            </div>
+        </div>
+    </div>
+}
+

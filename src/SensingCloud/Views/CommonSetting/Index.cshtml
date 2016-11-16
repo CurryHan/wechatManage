@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "系统设置";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="page-header text-primary"> 通用</h2>
+<div class="row">
+    <div>
+        <div class="tabbable">
+            <ul class="nav nav-tabs" id="myTab4">
+                @*<li class="active">
+                    <a data-toggle="tab" href="#tab1" aria-expanded="false">iPad密码</a>
+                </li>
+                <li>
+                    <a data-toggle="tab" href="#tab2" aria-expanded="false">其他设置</a>
+                </li>*@
+                <li>
+                    <a data-toggle="tab" href="#tab3" aria-expanded="true">平台通知</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                @*<div id="tab1" class="tab-pane active">
+                    <div id="tabl_contentDiv" class="row"></div>
+                </div>
+                <div id="tab2" class="tab-pane ">
+                    <div id="tab2_contentDiv" class="row"></div>
+                </div>*@
+                <div id="tab3" class="tab-pane ">
+                    <div id="tab3_contentDiv" class="row"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+        $(function () {
+            (function () {
+                var options = {
+                    method: 'get'
+                };
+                var Url = "/CommonSetting/EditPlatformNotification";
+                $.ajax(Url, options).success(function (data) {
+                    $('#tab3_contentDiv').html(data);
+                });
+                setTimeout( $('a[href=#tab3]').click(),1)
+            })();
+
+            //切换修改ipad密码
+            $('a[href=#tab1]').click(function () {
+                var options = {
+                    method: 'get'
+                };
+                var Url = "CommonSetting/IPadPasswordPartial"
+                $.ajax(Url, options).success(function (data) {
+                    $('#tab1_contentDiv').html(data);
+                });
+            });
+
+            //切换至其它设置
+            $('a[href=#tab2]').click(function () {
+                var options = {
+                    method: 'get'
+                };
+                var Url = "CommonSetting/OtherSettingPartial"
+                $.ajax(Url, options).success(function (data) {
+                    $('#tab2_contentDiv').html(data);
+                });
+            });
+
+            //切换至平台通知
+            $('a[href=#tab3]').click(function () {
+                var options = {
+                    method: 'get'
+                };
+                var Url = "/CommonSetting/EditPlatformNotification";
+                $.ajax(Url, options).success(function (data) {
+                    $('#tab3_contentDiv').html(data);
+                });
+            });
+
+            //点击手动同步
+            $('#tab2').on('click', '#synchonizeSettingBtn', function () {
+                var Url = "CommonSetting/SynchonizeSetting";
+                $.post(Url, function (data) {
+                    console.info(data);
+                });
+            });
+
+        });
+    </script>
+}

@@ -1,0 +1,101 @@
+﻿@model Sensing.Entities.Group
+@{
+    ViewBag.Title = "分组编辑";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="form-horizontal">
+
+    <div class="page-header">
+        <h1>详细信息</h1>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DisplayName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-4">
+            @Html.EditorFor(model => model.DisplayName, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+        </div>
+
+        @Html.LabelFor(model => model.EcommercePlatform, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-4">
+            @Html.EditorFor(model => model.EcommercePlatform, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.AddressUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-4">
+            @Html.EditorFor(model => model.AddressUrl, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+        </div>
+        @Html.LabelFor(model => model.QRCodeUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-4">
+            @Html.EditorFor(model => model.QRCodeUrl, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Introduction, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-4">
+            @Html.TextAreaFor(model => model.Introduction, 4, 35, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+
+        @Html.LabelFor(model => model.Declaration, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-4">
+            @Html.TextAreaFor(model => model.Declaration, 4, 35, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-4">
+            @Html.TextAreaFor(model => model.Description, 4, 35, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.LogoUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-2" data-target-parent="true" style="max-width:190px">
+            @if (Model.LogoUrl != null)
+            {
+                <img data-target-preview="true" style="width: 100px; height: 100px;" src="@Model.LogoUrl" alt="Image preview">
+            }
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="form-field-select-1" class="control-label col-md-2">公司图片</label>
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-md-2" data-target-parent="true" style="max-width:190px">
+                    @if (Model.Image01Url != null)
+                    {
+                        <img data-target-preview="true" style="width: 100px; height: 100px;" src="@Model.Image01Url" alt="Image preview">
+                    }
+                </div>
+
+                <div class="col-md-2" data-target-parent="true" style="max-width:190px">
+                    @if (Model.Image02Url != null)
+                    {
+                        <img data-target-preview="true" style="width: 100px; height: 100px;" src="@Model.Image02Url" alt="Image preview">
+                    }
+                </div>
+                <div class="col-md-2" data-target-parent="true" style="max-width:190px">
+                    @if (Model.Image03Url != null)
+                    {
+                        <img data-target-preview="true" style="width: 100px; height: 100px;" src="@Model.Image03Url" alt="Image preview">
+                    }
+                </div>
+                <div class="col-md-2" data-target-parent="true" style="max-width:190px">
+                    @if (Model.Image04Url != null)
+                    {
+                        <img data-target-preview="true" style="width: 100px; height: 100px;" src="@Model.Image04Url" alt="Image preview">
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <div class="col-md-12">
+            <div style="float:left;">
+                @Html.ActionLink(Resources.ReturnToList, "Index", new { }, new { @class = "label label-info arrowed arrowed-in-right" })
+            </div>
+        </div>
+    </div>
+</div>

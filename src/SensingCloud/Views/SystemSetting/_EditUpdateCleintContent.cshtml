@@ -1,0 +1,94 @@
+﻿@model Sensing.Entities.SystemSettings.TerminalContentUpdate
+@using (Ajax.BeginForm("EditUpdateCleintContent", "SystemSetting", new AjaxOptions { HttpMethod = "Post", InsertionMode = InsertionMode.Replace, UpdateTargetId = "tab3_contentDiv", OnSuccess = "UpdateClientContentSuccess" }, new { @class = "form-horizontal" }))
+{
+    if (ViewBag.Success == true)
+    {
+        <div class="alert alert-block alert-success">
+            <button type="button" class="close" data-dismiss="alert">
+                <i class="ace-icon fa fa-times"></i>
+            </button>
+            <i class="ace-icon fa fa-check green"></i>
+            @Resources.UpdateSuccess @*修改成功.*@
+        </div>
+    }
+    @Html.HiddenFor(model => model.Id)
+    @Html.AntiForgeryToken()
+    <br />
+    <br />
+    <div class="form-group center">
+        <div class="col-sm-3">
+            @Html.RadioButtonFor(model => model.IsAutoUpdate, true, new { @class = "autoUpdateRdb", @idval = "auto" }) @Resources.AutoUpdate @*自动更新*@
+        </div>
+        <label class="col-sm-2 control-label no-padding-right" for="form-field-1-1"> @Resources.UpdateFrequency @*自动更新频率*@: </label>
+
+        <div class="col-sm-4">
+            @if (!Model.IsAutoUpdate)
+            {
+                <select id="autoUpdateTbx" name="updatefrequencySlct" disabled="disabled" class="form-control">
+                    <option value="程序启动时自动更新">程序启动时自动更新</option>
+                    <option value="每天一次固定时间点更新">每天一次固定时间点更新</option>
+                </select>
+            }
+            else
+            {
+                <select id="autoUpdateTbx" name="updatefrequencySlct" class="form-control">
+                    <option value="程序启动时自动更新">程序启动时自动更新</option>
+                    <option value="每天一次固定时间点更新">每天一次固定时间点更新</option>
+                </select>
+            }
+        </div>
+    </div>
+    <br />
+    <div class="form-group center">
+        <div class="col-sm-3">
+            @Html.RadioButtonFor(model => model.IsAutoUpdate, false, new { @class = "timeUpdateRdb", @idval = "timeset" }) @Resources.HourlyUpdate @*定时更新*@
+        </div>
+        <label class="col-sm-2 control-label no-padding-right" for="form-field-1-1">@Resources.UpdateTime @*定时更新时间*@: </label>
+
+        <div class="col-sm-4">
+            <div class='input-group date' data-datetimepicker="true">
+                <input type='text' name="UpdateTime" id="UpdateTime" class="form-control" data-date-format="YYYY-MM-DD H:mm" value="@Model.UpdateTime" />
+                <span class="input-group-addon">
+                    <i class="fa fa-calendar bigger-110"></i>
+                </span>
+            </div>
+
+            @*<div class="input-group">
+                    @Html.EditorFor(model => model.UpdateTime, new { htmlAttributes = new { @class = "form-control", @placeholder = "输入更新时间"} })
+                    <span class="input-group-addon">
+                        <i class="fa fa-clock-o bigger-110"></i>
+                    </span>
+                </div>*@
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-9" style="text-align:right">
+            <input type="submit" value="@Resources.Save" class="btn btn-primary btn-sm no-border" />
+        </div>
+    </div>
+}
+
+<script src="~/Scripts/moment-with-locales.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+<script>
+
+    function UpdateClientContentSuccess(data) {
+        $(".alert-success").fadeIn().delay(1000).fadeOut();
+    }
+
+    $(function () {
+        $(".autoUpdateRdb").change(function () {
+            $("#UpdateTime").attr("disabled", "disabled");
+            $("#autoUpdateTbx").removeAttr("disabled");
+        });
+
+        $(".timeUpdateRdb").change(function () {
+            $("#autoUpdateTbx").attr("disabled", "disabled");
+            $("#UpdateTime").removeAttr("disabled");
+        });
+
+        $("div[data-datetimepicker] > input").datetimepicker({ language: 'zh-cn' }).next().on('click', function () {
+            $(this).prev().focus();
+        });
+    })
+</script>

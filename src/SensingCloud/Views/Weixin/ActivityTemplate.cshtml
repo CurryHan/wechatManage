@@ -1,0 +1,153 @@
+﻿@model Sensing.Entities.Activity
+@{
+    Layout = null;
+    string CurrentHost = Request.Url.Scheme + "://" + Request.Url.Host + "/weixin/Auth20CallBack";
+    CurrentHost = System.Web.HttpUtility.UrlEncode(CurrentHost);
+}
+@functions{
+    public string GetShareImage()
+    {
+        string actionShareImage = "";
+        actionShareImage = Model.ActivityShare.ImageLink;
+
+        if (!string.IsNullOrEmpty(actionShareImage) && !actionShareImage.StartsWith("http"))
+        {
+            actionShareImage = Request.Url.Scheme + "://" + Request.Url.Host + actionShareImage.Replace("\\", "/");
+        }
+        return actionShareImage;
+    }
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ActivityTemplate</title>
+</head>
+<body>
+    <iframe src="@Model.ActivityShare.Link"></iframe>
+    <div> 
+    </div>
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script>
+        wx.config({
+            debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            appId:'@ViewBag.WeixinAppID', // 必填，公众号的唯一标识
+            timestamp: @ViewBag.timestamp, // 必填，生成签名的时间戳
+            nonceStr:'@ViewBag.nonceStr', // 必填，生成签名的随机串
+            signature: '@ViewBag.signature',// 必填，签名，见附录1
+            jsApiList: [
+            'onMenuShareTimeline',
+            'onMenuShareAppMessage',
+            'onMenuShareQQ',
+            'onMenuShareWeibo'
+            ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        });
+
+        wx.ready(function(){
+            // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+            wx.checkJsApi({
+                jsApiList: [
+                  'onMenuShareTimeline'
+                  ,'onMenuShareAppMessage'
+                  ,'onMenuShareQQ'
+                   ,'onMenuShareWeibo'
+                ],
+                success: function (res) {
+                    //alert(JSON.stringify(res));
+                }
+            });
+
+            // 2.1 监听“分享给朋友”，按钮点击、自定义分享内容及分享结果接口
+
+            wx.onMenuShareAppMessage({
+                title: '@Model.ActivityShare.Title',
+                desc: '',
+                //link: 'http://www.troncell.com',
+                link:'https://open.weixin.qq.com/connect/oauth2/authorize?appid=@ViewBag.WeixinAppID&redirect_uri=@CurrentHost&response_type=code&scope=snsapi_base&state=@ViewBag.activityId&component_appid=@ViewBag.ComponentAppID#wechat_redirect',
+                imgUrl: '@GetShareImage()',
+                type:'link',
+                //trigger: function (res) {
+                //    alert('用户点击发送给朋友');
+                //},
+                success: function (res) {
+                    //分享给朋友 1
+                    //分享到朋友圈 2
+                    //分享到QQ 3
+                    //分享到微博 4
+                    //分享到QQ空间 5
+                    doShareAppMessage(1);
+                },
+                cancel: function (res) {
+                    //alert('已取消');
+                },
+                fail: function (res) {
+                    alert(JSON.stringify(res));
+                }
+            });
+
+
+            // 2.2 监听“分享到朋友圈”按钮点击、自定义分享内容及分享结果接口
+
+            wx.onMenuShareTimeline({
+                title: '@Model.ActivityShare.Title',
+                link:'https://open.weixin.qq.com/connect/oauth2/authorize?appid=@ViewBag.WeixinAppID&redirect_uri=@CurrentHost&response_type=code&scope=snsapi_base&state=@ViewBag.activityId&component_appid=@ViewBag.ComponentAppID#wechat_redirect',
+                imgUrl: '@GetShareImage()',
+                trigger: function (res) {
+                    //alert('用户点击分享到朋友圈');
+                },
+                success: function (res) {
+                    //分享给朋友 1
+                    //分享到朋友圈 2
+                    //分享到QQ 3
+                    //分享到微博 4
+                    //分享到QQ空间 5
+                    doShareAppMessage(2);
+                },
+                cancel: function (res) {
+                    alert('已取消');
+                },
+                fail: function (res) {
+                    alert(JSON.stringify(res));
+                }
+            });
+
+
+
+        });
+
+
+
+        wx.error(function(res){
+
+            // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+            alert(JSON.stringify(res));
+        });
+
+
+        function doShareAppMessage(shareType)
+        {
+            @*var o = {};
+            o.useractionid = @ViewBag.useractionid；
+            o.shareType = shareType;
+            o.fromOpenid = "@ViewBag.currentOpenId";*@
+
+            var options = {
+                url: '/weixin/UpdateShare',
+                method: 'post',
+                data: { useractionid: @ViewBag.useractionid,shareType: shareType,fromOpenid:"@ViewBag.currentOpenId"}
+            };
+
+
+            $.ajax(options)
+                .success(function (data1) {
+                })
+                .error(function (data1) {
+                });
+            //alert(JSON.stringify(options));
+            //location.href = "http://www.baidu.com";
+        }
+    </script>
+</body>
+</html>

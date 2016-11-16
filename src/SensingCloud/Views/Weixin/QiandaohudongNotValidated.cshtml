@@ -1,0 +1,148 @@
+﻿@model Sensing.Entities.Weixin.WeixinUserAction
+
+@{
+    ViewBag.Title = "创思星球登陆失败！";
+    Layout = null;
+    string CurrentHost = Request.Url.Scheme + "://" + Request.Url.Host + "/weixin/Auth20CallBack";
+    CurrentHost = System.Web.HttpUtility.UrlEncode(CurrentHost);
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创思大乱聊</title>
+    <meta name='viewport' content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: "Microsoft YaHei", "宋体", "Segoe UI", "Lucida Grande", Helvetica, Arial, sans-serif, FreeSans, Arimo;
+        }
+
+        .bg {
+            width: 100%;
+            height: 100%;
+            background: url('../content/weixinimage/nianhuiimg/bgredimg.jpg') no-repeat left top;
+            background-size: 100% 100%;
+        }
+
+        .titlediv {
+            width: 100%;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding: 0;
+            margin: 0;
+        }
+
+        .titleimg {
+            /*z-index: 2;*/
+            /*position: absolute;*/
+            width: 100%;
+            transform: rotate(180deg);
+            -ms-transform: rotate(180deg); /* Internet Explorer */
+            -moz-transform: rotate(180deg); /* Firefox */
+            -webkit-transform: rotate(180deg); /* Safari 和 Chrome */
+            -o-transform: rotate(180deg); /* Opera */
+        }
+
+        .footdiv {
+            width: 100%;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            padding: 0;
+            margin: 0;
+            /*background-color: #245269;*/
+        }
+
+        .footdiv img
+        {
+            width: 100%;
+            margin-bottom: -5px;
+        }
+        .qddiv {
+            width: 70%;
+            height: 50%;
+            position: relative;
+            z-index: 1;
+            left: 50%;
+            top: 45%;
+            -webkit-transform: translate(-50%,-50%);
+            -moz-transform: translate(-50%,-50%);
+            -ms-transform: translate(-50%,-50%);
+            /*background-color: cadetblue;*/
+        }
+    </style>
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script>
+        window.onload=function()
+        {
+            var innerheght = $(window).height();
+            bodyheigt=$("body").height();
+            $("body").height(innerheght);
+        }
+        var HEIGHTmain = $('body').height();
+        $(window).resize(function() {
+            $('.main').height(HEIGHTmain);
+        });
+    </script>
+</head>
+<body>
+    <div class="bg">
+        <div class="titlediv">
+            <img src="~/content/weixinimage/nianhuiimg/TitleImg.png" class="titleimg">
+        </div>
+        @*<div class="qddiv">
+            <img src="~/content/weixinimage/nianhuiimg/csxq.png" style="width: 100%; position: absolute;z-index: -1;">
+            <div style="width: 100%;height: 13%;padding-top: 25%;text-align: center;position: relative;">
+                <div style="height:40%;position:absolute;text-align:center;left:20%;">
+                    <img src="~/content/weixinimage/nianhuiimg/redquan.png" style="height: 100%;position: absolute;z-index: 1;">
+                    <img src="@Model.WeixinUserInfo.Headimgurl" style="height: 80%;border-radius: 50%;margin-left:14%;margin-top:14%;">
+                </div>   
+                <div style="width: auto;height: 100%;float: left;position: relative;text-align: left;margin-left:38%;">                 
+                    <p style="font-size: 4vw;margin-left: 1vw;margin-top: 3.3vw;">@Model.WeixinUserInfo.Nickname</p>
+                </div>
+            </div>
+            <div style="width: 100%;height: 13%;margin-top: 13%;color: #bc5d0f;font-size: 6.5vw;text-align: center;">
+                <img src="~/content/weixinimage/nianhuiimg/ren.png" style="height: 100%;float: left;margin-left: 5%;">
+                <div style="float: left;">
+                    <span style="margin-left: 2vw;">很遗憾,您没报名！</span>
+                </div>
+            </div>
+        </div>*@
+
+        <div class="qddiv">
+        <img src="~/content/weixinimage/nianhuiimg/csxq.png" style="width: 100%; position: absolute;z-index: -1;">
+        <div style="width: 100%;height: 13%;padding-top: 25%;text-align: center;position: relative;" >
+            <div style="width: 40%;height: 100%;float: left;position: relative;">
+                <img src="~/content/weixinimage/nianhuiimg/redquan.png" style="height: 100%;position: absolute;left: 55%;z-index: 1;">
+                <img src="@Model.WeixinUserInfo.Headimgurl" style="height: 80%;position: absolute;left:59%;top: 10%;border-radius: 50%;">
+            </div>
+            <div style="width: 55%;height: 100%;float: left;position: relative;text-align: left;">
+                <p style="font-size: 3vh;margin-left: 1vw;margin-top: 1.3vh;">@Model.WeixinUserInfo.Nickname</p>
+            </div>
+        </div>
+        <div style="width: 100%;height: 13%;margin-top: 13%;color: #bc5d0f;font-size: 6.5vw;text-align: center;" >
+            <img src="~/content/weixinimage/nianhuiimg/ren.png" style="height: 100%;float: left;margin-left: 5%;">
+            <div style="float: left;">
+                <span style="margin-left: 2vw;">很遗憾,您没报名！</span>
+            </div>
+        </div>
+
+            <div style="width: 100%;height: 13%;margin-top: 20%;color: #bc5d0f;font-size: 4.5vw;text-align: right;color:#fff">
+                <a href="@Model.Activity.ActivityUrl" ><span style="margin-left: 2vw;">返回注册</span></a>
+            </div>
+    </div>
+        <div class="footdiv">
+            <img src="~/content/weixinimage/nianhuiimg/TitleImg.png" class="footimg">
+        </div>
+    </div>
+</body>
+</html>

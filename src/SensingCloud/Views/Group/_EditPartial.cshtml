@@ -1,0 +1,214 @@
+﻿@using SensingCloud.Helpers;
+@model Sensing.Entities.Group
+@{
+    ViewBag.Title = "分组编辑";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("Edit", "Group", FormMethod.Post, new { @id = "EditSubmit" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <div class="page-header">
+            <h1>@Resources.Edit</h1>
+        </div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.Deleted)
+        @Html.HiddenFor(model => model.ParentGroupId)
+        @Html.HiddenFor(model => model.Created)
+        @Html.HiddenFor(model => model.Creator)
+        @Html.HiddenFor(model => model.GroupType)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DisplayName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.DisplayName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DisplayName, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.EcommercePlatform, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.EcommercePlatform, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EcommercePlatform, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AddressUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.AddressUrl, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AddressUrl, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.GroupType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @*@Html.EnumDropDownListFor(model => model.GroupType, new { @class = "form-control", @disabled = "disabled"  })*@
+                @Html.TextBox("txtgrouptype",Model.GroupType.ToName(), new { @class = "form-control", @disabled = "disabled" })
+                @Html.ValidationMessageFor(model => model.GroupType, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.QRCodeUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.QRCodeUrl, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.QRCodeUrl, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Introduction, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.TextAreaFor(model => model.Introduction, 4, 35, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Introduction, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.Declaration, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.TextAreaFor(model => model.Declaration, 4, 35, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Declaration, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.TextAreaFor(model => model.Description, 4, 35, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.LogoUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-2" data-target-parent="true" style="max-width:190px">
+                @if (Model.LogoUrl != null)
+                {
+                    <img data-target-preview="true" style="width: 100px; height: 100px;" src="@Model.LogoUrl" alt="Image preview">
+                }
+                else
+                {
+                    <img data-target-preview="true" style="width: 100px; height: 100px;" src="~/Content/img/fileupload.jpg" alt="Image preview">
+                }
+                <input type="file" name="logoImg" id="logoImg" multiple accept="image/*" style="display:none">
+                <input class="beforInput" id="LogoUrl" name="LogoUrl" value="@Model.LogoUrl" type="hidden">
+                <button data-action-select="true" type="button" class="btn btn-info btn-sm no-border" style="margin-top:10px">选择图片</button>
+                <button type="button" class="btn btn-danger btn-sm fa fa-times no-border resetpicbtn" style="margin-top:10px" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="form-field-select-1" class="control-label col-md-2">公司图片</label>
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-2" data-target-parent="true" style="max-width:190px">
+                        @if (Model.Image01Url != null)
+                        {
+                            <img data-target-preview="true" style="width: 100px; height: 100px;" src="@Model.Image01Url" alt="Image preview">
+                        }
+                        else
+                        {
+                            <img data-target-preview="true" style="width: 100px; height: 100px;" src="~/Content/img/fileupload.jpg" alt="Image preview">
+                        }
+                        <input type="file" name="Image01" id="Image01" multiple accept="image/*" style="display:none">
+                        <input class="beforInput" id="Image01Url" name="Image01Url" value="@Model.Image01Url" type="hidden">
+                        <button data-action-select="true" type="button" class="btn btn-info btn-sm no-border" style="margin-top:10px">选择图片</button>
+                        <button type="button" class="btn btn-danger btn-sm fa fa-times no-border resetpicbtn" style="margin-top:10px" />
+                    </div>
+
+                    <div class="col-md-2" data-target-parent="true" style="max-width:190px">
+                        @if (Model.Image02Url != null)
+                        {
+                            <img data-target-preview="true" style="width: 100px; height: 100px;" src="@Model.Image02Url" alt="Image preview">
+                        }
+                        else
+                        {
+                            <img data-target-preview="true" style="width: 100px; height: 100px;" src="~/Content/img/fileupload.jpg" alt="Image preview">
+                        }
+                        <input type="file" name="Image02" id="Image02" multiple accept="image/*" style="display:none">
+                        <input class="beforInput" id="Image02Url" name="Image02Url" value="@Model.Image02Url" type="hidden">
+                        <button data-action-select="true" type="button" class="btn btn-info btn-sm no-border" style="margin-top:10px">选择图片</button>
+                        <button type="button" class="btn btn-danger btn-sm fa fa-times no-border resetpicbtn" style="margin-top:10px" />
+                    </div>
+                    <div class="col-md-2" data-target-parent="true" style="max-width:190px">
+                        @if (Model.Image03Url != null)
+                        {
+                            <img data-target-preview="true" style="width: 100px; height: 100px;" src="@Model.Image03Url" alt="Image preview">
+                        }
+                        else
+                        {
+                            <img data-target-preview="true" style="width: 100px; height: 100px;" src="~/Content/img/fileupload.jpg" alt="Image preview">
+                        }
+                        <input type="file" name="Image03" id="Image03" multiple accept="image/*" style="display:none">
+                        <input class="beforInput" id="Image03Url" name="Image03Url" value="@Model.Image03Url" type="hidden">
+                        <button data-action-select="true" type="button" class="btn btn-info btn-sm no-border" style="margin-top:10px">选择图片</button>
+                        <button type="button" class="btn btn-danger btn-sm fa fa-times no-border resetpicbtn" style="margin-top:10px" />
+                    </div>
+                    <div class="col-md-2" data-target-parent="true" style="max-width:190px">
+                        @if (Model.Image04Url != null)
+                        {
+                            <img data-target-preview="true" style="width: 100px; height: 100px;" src="@Model.Image04Url" alt="Image preview">
+                        }
+                        else
+                        {
+                            <img data-target-preview="true" style="width: 100px; height: 100px;" src="~/Content/img/fileupload.jpg" alt="Image preview">
+                        }
+                        <input type="file" name="Image04" id="Image04" multiple accept="image/*" style="display:none">
+                        <input class="beforInput" id="Image04Url" name="Image04Url" value="@Model.Image04Url" type="hidden">
+                        <button data-action-select="true" type="button" class="btn btn-info btn-sm no-border" style="margin-top:10px">选择图片</button>
+                        <button type="button" class="btn btn-danger btn-sm fa fa-times no-border resetpicbtn" style="margin-top:10px" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="col-md-12">
+                <div style="float:left;">
+                    @Html.ActionLink(Resources.ReturnToList, "Index", new { }, new { @class = "label label-info arrowed arrowed-in-right" })
+                </div>
+                <div style="float:right;">
+                    <input type="submit" value="@Resources.Save" class="btn btn-primary btn-sm no-border" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+@*@section scripts{*@
+@*<script src="~/Scripts/jquery.form.js"></script>
+<script src="~/Scripts/moment-with-locales.js"></script>
+<script src="~/Scripts/jquery.pictureSelector.js"></script>*@
+<script>
+    $(function () {
+        //表单提交
+        var $form = $("#EditSubmit");
+        $form.on('submit', function (e) {
+            e.preventDefault();
+            $form.ajaxSubmit({
+                success: function (data) {
+                    if (data == true) {
+                        window.location.reload();
+                    } else {
+                        $("#DataList_ContentDIV").html('');
+                        $(data).appendTo($("#DataList_ContentDIV"));
+                    }
+
+                },
+            });
+            return false;
+        });
+        $('#logoImg').pictureSelector();
+        $('#Image01').pictureSelector();
+        $('#Image02').pictureSelector();
+        $('#Image03').pictureSelector();
+        $('#Image04').pictureSelector();
+
+        //点击删除按钮，清空input内容
+        $('.resetpicbtn').click(function () {
+            var parentobj = $(this).parent();
+            parentobj.children("img").attr("src", "");
+            parentobj.find(".beforInput").val("");
+        });
+
+
+    })
+</script>
+@*}*@

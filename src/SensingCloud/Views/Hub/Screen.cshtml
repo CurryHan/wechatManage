@@ -1,0 +1,87 @@
+﻿@model Sensing.Entities.Weixin.WeixinUserAction
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <style>
+         #shape {
+            width: 50px;
+            height: 50px;
+            background-color: #FF0000;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>大屏</h1>
+    <div style="width:100%;">
+        <input type="button"  value="发放奖品" class="btn btn-primary btn-sm no-border" />
+    </div>
+    <div id="Logs" style="width:100%;height:200px;">
+
+    </div>
+    
+    <div style="width:100%;height:800px;position:relative;">
+        <div id="shape" style="position:absolute;left:300px;top:200px;"></div>
+    </div>
+</body>
+</html>
+<script src="~/Content/ace/js/jquery.min.js"></script>
+<script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
+<script src="~/signalr/hubs"></script>
+<script>
+    $(function () {
+
+        var chat = $.connection.activityChatHub;
+        chat.client.addNewMessageToPage = function (data) {
+            $('#Logs').append('<li>玩家<strong>' + htmlEncode(data.OpenId)
+                + '</strong>: '+"加入到伊利活动中"+'</li>');
+        };
+        chat.client.UpdateControlGlass = function (data) {
+            var left = parseInt($("#shape").css('left'));
+            var top = parseInt($("#shape").css('top'));
+            if (data.Action == "move") {
+                switch (data.Direction) {
+                    case "左上": left = left - 50; top = top - 50; break;
+                    case "上": left = left - 0; top = top - 50; break;
+                    case "右上": left = left + 50; top = top - 50; break;
+                    case "右": left = left + 50; top = top + 0; break;
+                    case "右下": left = left + 50; top = top + 50; break;
+                    case "下": left = left + 0; top = top + 50; break;
+                    case "左下": left = left - 50; top = top + 50; break;
+                    case "左": left = left - 50; top = top + 0; break;
+                }
+                $("#shape").css({ left: left, top: top });
+            } else if (data.Action == "confirm") {
+                console.log("1111");
+            }
+        };
+
+        $.connection.hub.start().done(function () {
+            var hubClient = {
+                ActivityId: 1147,
+                Type: "offline",
+                OpenId: ""
+            };
+            chat.server.join(hubClient);
+        });
+
+        $("input[type=button]").on('click', function () {
+            var o = {};
+            chat.server.numerousAdwards();
+            return false;
+        });
+    });
+    function htmlEncode(value) {
+        var encodedValue = $('<div />').text(value).html();
+        return encodedValue;
+    }
+
+    
+</script>

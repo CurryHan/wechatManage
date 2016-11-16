@@ -1,0 +1,333 @@
+﻿@using Microsoft.AspNet.Identity
+@using Sensing.Entities.Users
+@using Microsoft.AspNet.Identity.EntityFramework
+@using Sensing.Data
+@model ApplicationUser
+@{
+    ViewBag.Title = "个人中心";
+    var currentUser = Model;
+}
+
+<div class="page-header">
+    <h1>@Resources.UserInfo</h1>
+</div>
+<div class="row">
+    <div class="col-sm-12 widget-container-col ui-sortable">
+        <div class="tabbable">
+            <ul class="nav nav-tabs" id="myTab">
+                <li class="active">
+                    <a data-toggle="tab" href="#home">@Resources.BasicInfo</a>
+                </li>
+
+                <li class="">
+                    <a data-toggle="tab" href="#profile">@Resources.PasswordSetting</a>
+                </li>
+
+  
+            </ul>
+            <div class="tab-content">
+                <div id="home" class="tab-pane active">
+                    <div id="user-profile-1" class="user-profile row">
+                        <div class="col-xs-12 col-sm-3 center">
+                            <div>
+                                <!-- #section:pages/profile.picture -->
+                                <span class="profile-picture">
+                                    <img id="avatar"  class="editable img-responsive editable-click editable-empty" alt="Alex's Avatar" src="@currentUser.AvatarUrl">
+                                </span>
+
+                                <!-- /section:pages/profile.picture -->
+                                <div class="space-4"></div>
+
+                                <div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
+                                    <div class="inline position-relative">
+                                        <a href="#" class="user-title-label dropdown-toggle" data-toggle="dropdown">
+                                            <i class="ace-icon fa fa-circle light-green"></i>
+                                            &nbsp;
+                                            <span class="white">@currentUser.DisplayName</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="space-6"></div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-9">
+                            <!-- #section:pages/profile.info -->
+                            <div class="profile-user-info">
+                                <div class="profile-info-row">
+                                    <div class="profile-info-name"> 姓名</div>
+
+                                    <div class="profile-info-value">
+                                        <span class="editable editable-click" id="name">@currentUser.DisplayName</span>
+                                    </div>
+                                </div>
+                                <div class="profile-info-row">
+                                    <div class="profile-info-name">@Resources.UserName</div>
+
+                                    <div class="profile-info-value">
+                                        <span id="username">@currentUser.UserName</span>
+                                    </div>
+                                </div>
+                                <div class="profile-info-row">
+                                    <div class="profile-info-name">@Resources.CompanyName</div>
+
+                                    <div class="profile-info-value">
+                                        <span class="editable editable-click" id="company">@currentUser.CompanyName</span>
+                                    </div>
+                                </div>
+                                <div class="profile-info-row">
+                                    <div class="profile-info-name">性别</div>
+
+                                    <div class="profile-info-value">
+                                        <span class="editable editable-click" id="gender">男</span>
+                                    </div>
+                                </div>
+
+                                <div class="profile-info-row">
+                                    <div class="profile-info-name">@Resources.Email</div>
+
+                                    <div class="profile-info-value">
+                                        <span class="editable editable-click" id="email">@currentUser.Email</span>
+                                    </div>
+                                </div>
+
+                                <div class="profile-info-row">
+                                    <div class="profile-info-name">@Resources.PhoneNumber</div>
+
+                                    <div class="profile-info-value">
+                                        <span class="editable editable-click" id="phone">@currentUser.PhoneNumber</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- /section:pages/profile.info -->
+                            <div class="space-20"></div>
+                            <div class="space-6"></div>
+
+                            <div class="center">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="profile" class="tab-pane">
+                    <div class="row">
+                        @{Html.RenderAction("ChangePassword");}
+                    </div>
+                </div>
+
+                <div id="info" class="tab-pane">
+                    @{Html.RenderAction("UserActivity");}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+<script src="~/Content/ace/js/x-editable/bootstrap-editable.min.js"></script>
+    <script src="~/Content/ace/js/x-editable/ace-editable.min.js"></script>
+<script src="~/Content/ace/js/jquery.gritter.min.js"></script>
+    <script>
+        $(function () {
+            //editables on first profile page
+            $.fn.editable.defaults.mode = 'inline';
+            $.fn.editableform.loading = "<div class='editableform-loading'><i class='ace-icon fa fa-spinner fa-spin fa-2x light-blue'></i></div>";
+            $.fn.editableform.buttons = '<button type="submit" class="btn btn-info editable-submit"><i class="ace-icon fa fa-check"></i></button>' +
+                                        '<button type="button" class="btn editable-cancel"><i class="ace-icon fa fa-times"></i></button>';
+
+            $('#name').editable({ type: 'text', name: 'Name', url: '/user/update', pk: '' });
+            $('#company').editable({ type: 'text', name: 'Company', url: '/user/update', pk: '' });
+            $('#gender').editable({ type: 'select', name: 'Male', value: 1, source: [{ value: 1, text: '男' }, { value: 2, text: '女' }] });
+            $('#email').editable({ type: 'text', name: 'Email', url: '/user/update', pk: '' });
+            $('#phone').editable({ type: 'text', name: 'PhoneNumber', url: '/user/update', pk: '' });
+            // *** editable avatar *** //
+            try {//ie8 throws some harmless exceptions, so let's catch'em
+
+                //first let's add a fake appendChild method for Image element for browsers that have a problem with this
+                //because editable plugin calls appendChild, and it causes errors on IE
+                try {
+                    document.createElement('IMG').appendChild(document.createElement('B'));
+                } catch (e) {
+                    Image.prototype.appendChild = function (el) { }
+                }
+
+                var last_gritter
+                $('#avatar').editable({
+                    type: 'image',
+                    name: 'avatar',
+                    value: null,
+                    image: {
+                        //specify ace file input plugin's options here
+                        btn_choose: 'Change Avatar',
+                        droppable: true,
+                        maxSize: 110000,//~100Kb
+
+                        //and a few extra ones here
+                        name: 'avatar',//put the field name here as well, will be used inside the custom plugin
+                        on_error: function (error_type) {//on_error function will be called when the selected file has a problem
+                            if (last_gritter) $.gritter.remove(last_gritter);
+                            if (error_type == 1) {//file format error
+                                last_gritter = $.gritter.add({
+                                    title: 'File is not an image!',
+                                    text: 'Please choose a jpg|gif|png image!',
+                                    class_name: 'gritter-error gritter-center'
+                                });
+                            } else if (error_type == 2) {//file size rror
+                                last_gritter = $.gritter.add({
+                                    title: 'File too big!',
+                                    text: 'Image size should not exceed 100Kb!',
+                                    class_name: 'gritter-error gritter-center'
+                                });
+                            }
+                            else {//other error
+                            }
+                        },
+                        on_success: function () {
+                            $.gritter.removeAll();
+                        }
+                    },
+                    url: function (params) {
+                        // ***UPDATE AVATAR HERE*** //
+                        var submit_url = '/user/Update';//please modify submit_url accordingly
+                        var deferred = null;
+                        var avatar = '#avatar';
+
+                        //if value is empty (""), it means no valid files were selected
+                        //but it may still be submitted by x-editable plugin
+                        //because "" (empty string) is different from previous non-empty value whatever it was
+                        //so we return just here to prevent problems
+                        var value = $(avatar).next().find('input[type=hidden]:eq(0)').val();
+                        if (!value || value.length == 0) {
+                            deferred = new $.Deferred
+                            deferred.resolve();
+                            return deferred.promise();
+                        }
+
+                        var $form = $(avatar).next().find('.editableform:eq(0)')
+                        var file_input = $form.find('input[type=file]:eq(0)');
+                        var pk = $(avatar).attr('data-pk');//primary key to be sent to server
+
+                        var ie_timeout = null
+
+
+                        if ("FormData" in window) {
+                            var formData_object = new FormData();//create empty FormData object
+
+                            //serialize our form (which excludes file inputs)
+                            $.each($form.serializeArray(), function (i, item) {
+                                //add them one by one to our FormData 
+                                formData_object.append(item.name, item.value);
+                            });
+                            //and then add files
+                            $form.find('input[type=file]').each(function () {
+                                var field_name = $(this).attr('name');
+                                var files = $(this).data('ace_input_files');
+                                if (files && files.length > 0) {
+                                    formData_object.append(field_name, files[0]);
+                                }
+                            });
+
+                            //append primary key to our formData
+                            formData_object.append('pk', pk);
+
+                            deferred = $.ajax({
+                                url: submit_url,
+                                type: 'POST',
+                                processData: false,//important
+                                contentType: false,//important
+                                data: formData_object
+                            });
+                        }
+                        else {
+                            deferred = new $.Deferred
+
+                            var temporary_iframe_id = 'temporary-iframe-' + (new Date()).getTime() + '-' + (parseInt(Math.random() * 1000));
+                            var temp_iframe =
+									$('<iframe id="' + temporary_iframe_id + '" name="' + temporary_iframe_id + '" \
+									frameborder="0" width="0" height="0" src="about:blank"\
+									style="position:absolute; z-index:-1; visibility: hidden;"></iframe>')
+									.insertAfter($form);
+
+                            $form.append('<input type="hidden" name="temporary-iframe-id" value="' + temporary_iframe_id + '" />');
+
+                            //append primary key (pk) to our form
+                            $('<input type="hidden" name="pk" />').val(pk).appendTo($form);
+
+                            temp_iframe.data('deferrer', deferred);
+                            //we save the deferred object to the iframe and in our server side response
+                            //we use "temporary-iframe-id" to access iframe and its deferred object
+
+                            $form.attr({
+                                action: submit_url,
+                                method: 'POST',
+                                enctype: 'multipart/form-data',
+                                target: temporary_iframe_id //important
+                            });
+
+                            $form.get(0).submit();
+
+                            //if we don't receive any response after 30 seconds, declare it as failed!
+                            ie_timeout = setTimeout(function () {
+                                ie_timeout = null;
+                                temp_iframe.attr('src', 'about:blank').remove();
+                                deferred.reject({ 'status': 'fail', 'message': 'Timeout!' });
+                            }, 30000);
+                        }
+
+
+                        //deferred callbacks, triggered by both ajax and iframe solution
+                        deferred
+						.success(function (result) {//success
+						    var res = result[0];//the `result` is formatted by your server side response and is arbitrary
+						        //$(avatar).get(0).src = res.url;
+						        var thumb = $('#avatar').next().find('img').data('thumb');
+						        if (thumb) $('#avatar').get(0).src = thumb;
+						        $('.nav-user-photo').get(0).src = thumb;
+                              
+						        if (last_gritter) $.gritter.remove(last_gritter);
+						        last_gritter = $.gritter.add({
+						            title: '更改图像成功',
+						            
+						            class_name: 'gritter-info gritter-center'
+						        });
+						})
+						.fail(function (result) {//failure
+						    alert("There was an error");
+						})
+						.always(function () {//called on both success and failure
+						    if (ie_timeout) clearTimeout(ie_timeout)
+						    ie_timeout = null;
+						});
+                        return deferred.promise();
+                        // ***END OF UPDATE AVATAR HERE*** //
+                    },
+
+                    success: function (response, newValue) {
+                    }
+                })
+            } catch (e) { }
+
+            //user activities
+            $('#profile-feed-1').ace_scroll({
+                height: '250px',
+                mouseWheelLock: true,
+                alwaysVisible: true
+            });
+
+            $(document).on('reload.ace.widget', '#widget-activities', function (ev) {
+                $.ajax({ url: '/user/UserActivity' }).done(function (content) {
+                    $('#widget-activities').replaceWith(content).trigger('reloaded.ace.widget');
+                    $('#profile-feed-1').ace_scroll({
+                        height: '250px',
+                        mouseWheelLock: true,
+                        alwaysVisible: true
+                    });
+                });
+            });
+
+
+        });
+    </script>
+}

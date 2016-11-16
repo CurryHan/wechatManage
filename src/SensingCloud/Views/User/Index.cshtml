@@ -1,0 +1,77 @@
+﻿@using Webdiyer.WebControls.Mvc;
+@using SensingCloud.Helpers;
+@using Sensing.Entities.Users;
+@using Sensing.Entities;
+@model PagedList<SensingCloud.Models.UserViewModel>
+
+@{
+    ViewBag.Title = "用户浏览";
+    //GroupEnum groupType = (Session[ConstConfig.SessionKey_CurrentLoginGroup] as Group).GroupType;
+    GroupEnum groupType = User.GetGroupType();
+}
+
+
+<style>
+    th, td {
+        max-width: 100px;
+    }
+
+    #sample-table-1 {
+        margin-top: 45px;
+    }
+</style>
+
+<div id="list">
+    <div class="page-header">
+        <h1>用户列表</h1>
+    </div>
+    <div class="row searchMenu">
+            <div class="col-xs-10 col-md-4">
+                <form class="search-form" action="@Url.Action("Index","User")" method="post">
+                    <div class="input-group">
+                        <input name="query" type="text" class="form-control search-query" placeholder="@Resources.UserName/@Resources.CompanyName/@Resources.RoleName" value="@ViewBag.query">
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-primary btn-sm">
+                                @Resources.Search
+                                <i class="ace-icon fa fa-search icon-on-right bigger-110"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+
+                
+
+            </div>
+@if ((groupType == GroupEnum.SuperLevel && ( User.IsInRole(RoleString.Admin) || User.IsInRole(RoleString.Editor)))
+                                    || (groupType == GroupEnum.SI && (User.IsInRole(RoleString.Admin))))
+{
+    <div class="col-xs-2 col-md-offset-6">
+        <a href="#/new_user" class="btn btn-sm btn-primary no-border" style="float:right">
+            <i class="fa fa-plus">
+                @Resources.CreateUser
+            </i>
+        </a>
+    </div>
+}
+        </div><!-- /.row -->
+
+    <section class="user-table">
+        <div class="row">
+            <div class="col-xs-12">
+                <div id="userTable">
+                </div>
+            </div><!-- /.span -->
+        </div><!-- /.row -->
+
+    </section>
+</div>
+<div id="dialog_container"></div>
+
+@section scripts{
+    <script src="~/Scripts/jquery.form.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.pictureSelector.js"></script>
+    <script src="~/Scripts/sammy/sammy.js"></script>
+    <script src="~/Scripts/app/user.js"></script>
+}

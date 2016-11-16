@@ -1,0 +1,113 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="page-header text-primary">@Resources.SystemSettingTAB @*系统参数配置一览表*@</h2>
+<div class="row">
+    <div style="margin-top:10px;">
+        <div class="tabbable">
+            <ul class="nav nav-tabs" id="myTab4">
+                <li class="active">
+                    <a data-toggle="tab" href="#tab1" aria-expanded="false">@Resources.PlatNotifications @*平台通知*@</a>
+                </li>
+
+                <li>
+                    <a data-toggle="tab" href="#tab2" aria-expanded="false">@Resources.ApproveProcess @*审批流程*@</a>
+                </li>
+
+                <li>
+                    <a data-toggle="tab" href="#tab3" aria-expanded="true">@Resources.ClientContentUpdate @*终端内容更新*@</a>
+                </li>
+                <li>
+                    <a data-toggle="tab" href="#tab4" aria-expanded="true">@Resources.ClientSoftUpdate @*终端软件更新*@</a>
+                </li>
+                <li>
+                    <a data-toggle="tab" href="#tab5" aria-expanded="true">@Resources.OtherSet @*其他设置*@</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div id="tab1" class="tab-pane active">
+                    <div id="tabl_contentDiv" class="row"></div>
+                </div>
+
+                <div id="tab2" class="tab-pane ">
+                    <div id="tab2_contentDiv" class="row"></div>
+                </div>
+
+                <div id="tab3" class="tab-pane">
+                    <div id="tab3_contentDiv" class="row"></div>
+                </div>
+
+                <div id="tab4" class="tab-pane">
+                    <div id="tab4_contentDiv" class="row"></div>
+                </div>
+
+                <div id="tab5" class="tab-pane">
+                    <p>暂无.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        $(function () {
+            (function () {
+                var Url = "SystemSetting/EditPlatformNotification";
+                var options =
+                    {
+                        method: 'get'
+                    };
+                $.ajax(Url, options).success(function (data) {
+                    $('#tabl_contentDiv').html(data);
+                });
+            })();
+
+            //切换至平台通知
+            $('a[href=#tab1]').click(function () {
+                var options = {
+                    method: 'get'
+                };
+                var Url = "SystemSetting/EditPlatformNotification"
+                $.ajax(Url, options).success(function (data) {
+                    $('#tab1_contentDiv').html(data);
+                });
+            });
+
+            //切换至审批流程
+            $('a[href=#tab2]').click(function () {
+                var options = {
+                    method: 'get'
+                };
+                var Url = "SystemSetting/EditApproveProcess"
+                $.ajax(Url, options).success(function (data) {
+                    $('#tab2_contentDiv').html(data);
+                });
+            });
+
+            //切换至终端内容更新
+            $('a[href=#tab3]').click(function () {
+                var options = {
+                    method: 'get'
+                };
+                var Url = "SystemSetting/EditUpdateCleintContent"
+                $.ajax(Url, options).success(function (data) {
+                    $('#tab3_contentDiv').html(data);
+                });
+            });
+            //切换至终端软件更新
+            $('a[href=#tab4]').click(function () {
+                var options = {
+                    method: 'get'
+                };
+                var Url = "SystemSetting/EditUpdateCleintSoft"
+                $.ajax(Url, options).success(function (data) {
+                    $('#tab4_contentDiv').html(data);
+                });
+            });
+        });
+    </script>
+}

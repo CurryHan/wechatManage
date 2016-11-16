@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Ballon dancing from troncell</title>
+    <script src="/Content/ace/js/jquery.min.js"></script>
+    <script src="cocos2d-js-v3.12.js"></script>
+    <script src="ballonfly.min.js"></script>
+    <script src="main.js"></script>
+
+    <script src="/Scripts/jquery.signalR-2.2.0.min.js"></script>
+    <script src="/signalr/hubs"></script>
+    <script>
+        var chat = $.connection.gameControlHub;
+
+        var screen = {
+            RoomId: uuid()
+        };
+        $(function () {
+            var params = location.search.substring(1).split('&');
+            var activityId = 0;
+            var subscriptionKey = '';
+            for (var i = 0; i < params.length; i++) {
+                var item = params[i];
+                if (item.indexOf('activityId') >= 0) activityId = item.split('=')[1];
+                else if (item.indexOf('securityKey') >= 0) subscriptionKey = item.split('=')[1];
+            }
+
+            $.connection.hub.start().done(function () {
+                //´´½¨·¿¼ä
+                chat.server.createRoom(screen, 40, activityId);
+                chat.server.registerLogger();
+                //Éú³É¶þÎ¬Âë
+                //var url = 'http://localhost:4469/api/v1/WeixinApi/QrCode4Login';
+                var url = 'http://wx.troncell.com/api/v1/WeixinApi/QrCode4Login';
+                var options = {
+                    method: 'post',
+                    data: {
+                        subscriptionKey: subscriptionKey,
+                        gameNo: 40,
+                        clientUniueId: '111',
+                        roomNo: screen.RoomId
+                    }
+                };
+                $.ajax(url, options).success(function (result) {
+                    $('#divQrcode').append("<img style='width:100%;height:100%;' src='" + result.data.qrCodeUrl + "' />");
+                });
+            });
+
+            chat.client.createRoomSuccess = function () {
+                console.log("login success");
+            }
+
+            chat.client.createRoomError = function () {
+                console.log("login fail");
+            }
+
+            chat.client.NewPlayer = function (p) {
+                var arg = {
+                    openid: p.OpenId,
+                    actionid: p.ActionId,
+                    headImgUrl: p.HeadImgUrl,
+                    nickname: p.NickName,
+                    subscriptionKey: subscriptionKey
+                };
+                g_sharedflyLayer.PlayerIn(arg);
+            };
+
+            chat.client.update = function (p, data) {
+                var cursor = g_sharedflyLayer.getCursor(p.ActionId);
+                cursor.runAction(cc.MoveTo.create(0.5, cc.p(data.Direction.X, data.Direction.Y)));
+                if (!cursor.IsPlay&&data.Key == "Y") {
+                    cursor.play();
+                }
+            };
+
+            chat.client.playerLeave = function (p) {
+                g_sharedflyLayer.removeCursor(p.ActionId);
+                g_sharedflyLayer.SortRank();
+
+            };
+            
+           
+            chat.client.debug = function (e) {
+                console.log(e);
+            };
+        });
+
+        function PlayerGameOver(data) {
+            chat.server.gameOver(screen, data);
+        }
+
+        function uuid() {
+            var s = [];
+            var hexDigits = "0123456789abcdef";
+            for (var i = 0; i < 36; i++) {
+                s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+            }
+            s[14] = "4";  // bits 12-15 of the time_hi_and_version field to 0010
+            s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1);  // bits 6-7 of the clock_seq_hi_and_reserved to 01
+            s[8] = s[13] = s[18] = s[23] = "-";
+
+            var uuid = s.join("");
+            return uuid;
+        }
+    </script>
+</head>
+<body style="margin:0">
+    <canvas id="gameCanvas" width="1920" height="1080"></canvas>
+    <div style="position:absolute;bottom:0;right:0;padding:20px;width:150px;height:150px;" id="divQrcode"></div>
+</body>
+</html>

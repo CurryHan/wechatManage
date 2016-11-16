@@ -1,0 +1,58 @@
+﻿@using Microsoft.AspNet.Identity.EntityFramework
+@using Microsoft.AspNet.Identity
+@using SensingSite.Data
+@using Sensing.Entities.Users
+@using Sensing.Entities;
+@using SensingCloud.Helpers;
+@model SensingCloud.Models.UserViewModel
+@{
+    //GroupEnum groupType = (Session[ConstConfig.SessionKey_CurrentLoginGroup] as Group).GroupType;
+    GroupEnum groupType = User.GetGroupType();
+}
+<tr id="@Model.Id">
+    <td class="hidden-xs">@ViewData["row"]</td>
+    <td>@Html.DisplayFor(modelItem => Model.UserName)</td>
+    <td>@Html.DisplayFor(modelItem => Model.Role)</td>
+    <td>@Html.DisplayFor(modelItem => Model.Company)</td>
+    <td>
+        @if (Model.IsActived)
+        {
+            <label class="activeStatus">未锁定</label>
+        }
+        else
+        {
+            <label class="activeStatus">@Resources.LockUser</label>
+        }
+    </td>
+    <td>
+        @if ((groupType == GroupEnum.SuperLevel && (User.IsInRole(RoleString.Admin) || User.IsInRole(RoleString.Editor)))
+                                                                                || (groupType == GroupEnum.SI && (User.IsInRole(RoleString.Admin))))
+        {
+            if ((groupType == GroupEnum.SuperLevel && Model.Group.GroupType != GroupEnum.SuperLevel)
+            || (groupType == GroupEnum.SI && Model.Group.GroupType == GroupEnum.Brand)
+            || (User.IsInRole(RoleString.Admin) && (Model.Role == RoleString.Editor || Model.Role == RoleString.Viewer))
+            || (User.IsInRole(RoleString.Editor) && (Model.Role == RoleString.Viewer)))
+            {
+
+                <div class="btn-group">
+                    <a href="#/reset_user/@Model.Id" class="btn btn-xs btn-primary edit-user">@Resources.ResetPassword</a>
+
+                    @if (Model.IsActived)
+                    {
+                        <a data-action-lock="@Model.Id" class="btn btn-xs btn-warning">@Resources.LockUser</a>
+                    }
+                    else
+                    {
+                        <a data-action-unlock="@Model.Id" class="btn btn-xs btn-warning">@Resources.UnLockUser</a>
+                    }
+
+                    <a href="#/delete_user/@Model.Id" class="btn btn-danger btn-xs no-border">
+                        @Resources.Delete
+                    </a>
+
+                </div>
+            }
+
+        }
+    </td>
+</tr>

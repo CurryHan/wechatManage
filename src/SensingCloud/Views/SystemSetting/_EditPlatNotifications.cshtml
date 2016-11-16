@@ -1,0 +1,104 @@
+﻿@model Sensing.Entities.SystemSettings.PlatformNotification
+<div class="col-xs-12">
+    @using (Ajax.BeginForm("EditPlatformNotification", "SystemSetting", new AjaxOptions { HttpMethod = "Post",InsertionMode=InsertionMode.Replace,UpdateTargetId= "tabl_contentDiv", OnSuccess = "PlatnotificatrionsSuccess" }, new { @class = "form-horizontal" }))
+    {
+        if (ViewBag.Success == true)
+        {
+            <div class="alert alert-block alert-success">
+                <button type="button" class="close" data-dismiss="alert">
+                    <i class="ace-icon fa fa-times"></i>
+                </button>
+                <i class="ace-icon fa fa-check green"></i>
+                @Resources.UpdateSuccess @*修改成功.*@
+            </div>
+        }
+        @Html.HiddenFor(model => model.Id)
+        @Html.AntiForgeryToken()
+        @*<form id="formbyEmailInfo" action="Edit" method="post" class="form-horizontal" role="form">*@
+        <h4 class=""><i class="ace-icon fa fa-envelope text-primary"></i><span class="icon-ajust">@Resources.EmailSetting @*邮箱通知配置*@</span></h4>
+        <div class="form-group">
+            <label class="col-sm-2 control-label no-padding-right" for="form-field-1-1"> @Html.DisplayNameFor(model => model.ServerAddress) </label>
+            <div class="col-sm-4">
+                @*<input id="ServerAddress" placeholder="smtp.qq.com" class="form-control" type="text">*@
+                @Html.EditorFor(model => model.ServerAddress, new { htmlAttributes = new { @class = "form-control", @placeholder = "smtp.qq.com" } })
+                @Html.ValidationMessageFor(model => model.ServerAddress, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label no-padding-right" for="form-field-1-1"> @Html.DisplayNameFor(model => model.ServerPort) </label>
+
+            <div class="col-sm-4">
+                @*<input id="ServerPort" placeholder="8080" class="form-control" type="text">*@
+                @Html.EditorFor(model => model.ServerPort, new { htmlAttributes = new { @class = "form-control", @placeholder = "8080" } })
+                @Html.ValidationMessageFor(model => model.ServerPort, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label no-padding-right" for="form-field-1-1"> @Html.DisplayNameFor(model => model.EmailName) </label>
+
+            <div class="col-sm-4">
+                @*<input id="UserName" placeholder="example@troncell.com" class="form-control" type="text">*@
+                @Html.EditorFor(model => model.EmailName, new { htmlAttributes = new { @class = "form-control", @placeholder = "someone@example.com" } })
+                @Html.ValidationMessageFor(model => model.EmailName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label no-padding-right" for="form-field-2"> @Html.DisplayNameFor(model => model.EmailPassword) </label>
+
+            <div class="col-sm-4">
+                @*<input id="Password" placeholder="Password" class="form-control" type="password">*@
+                @Html.EditorFor(model => model.EmailPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password", type = "password" } })
+                @Html.ValidationMessageFor(model => model.EmailPassword, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <br />
+        <h4 class=""><i class="ace-icon fa fa-comments text-primary"></i><span class="icon-ajust">@Resources.SMSSetting @*短信通知接口*@</span></h4>
+        <div class="form-group">
+            <label class="col-sm-2 control-label no-padding-right" for="form-field-1-1"> @Html.DisplayNameFor(model => model.SmsUrl) </label>
+
+            <div class="col-sm-4">
+                @*<input id="SmsUrl" placeholder="http://api.sms.cn/mtutf8/" class="form-control" type="text">*@
+                @Html.EditorFor(model => model.SmsUrl, new { htmlAttributes = new { @class = "form-control", @placeholder = "http://api.sms.cn/mtutf8/" } })
+                @Html.ValidationMessageFor(model => model.SmsUrl, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label no-padding-right" for="form-field-1-1"> @Html.DisplayNameFor(model => model.MessageSignatrue) </label>
+
+            <div class="col-sm-4">
+                @*<input id="MessageSignatrue" placeholder="无锡创思感知" class="form-control" type="text">*@
+                @Html.EditorFor(model => model.MessageSignatrue, new { htmlAttributes = new { @class = "form-control", @placeholder = "无锡创思感知" } })
+                @Html.ValidationMessageFor(model => model.MessageSignatrue, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label no-padding-right" for="form-field-1-1"> @Html.DisplayNameFor(model => model.SmsUID) </label>
+
+            <div class="col-sm-4">
+                @*<input id="SmsUID" placeholder="UserName" class="form-control" type="text">*@
+                @Html.EditorFor(model => model.SmsUID, new { htmlAttributes = new { @class = "form-control", @placeholder = "UserName" } })
+                @Html.ValidationMessageFor(model => model.SmsUID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label no-padding-right" for="form-field-2"> @Html.DisplayNameFor(model => model.SmsPassword) </label>
+
+            <div class="col-sm-4">
+                @*<input id="SmsPassword" placeholder="Password" class="form-control" type="password">*@
+                @Html.EditorFor(model => model.SmsPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password", type = "password" } })
+                @Html.ValidationMessageFor(model => model.SmsPassword, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-sm-6" style="text-align:right">
+            <input type="submit" value="@Resources.Save" class="btn btn-primary btn-sm no-border" />
+        </div>
+        @*</form>*@
+    }
+</div>
+
+<script>
+    function PlatnotificatrionsSuccess(data) {
+        $(".alert-success").fadeIn().delay(1000).fadeOut();
+    }
+</script>

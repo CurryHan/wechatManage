@@ -1,0 +1,83 @@
+﻿@using Microsoft.AspNet.Identity
+@using Sensing.Entities.Users
+@using Microsoft.AspNet.Identity.EntityFramework
+@using Sensing.Data
+@using SensingCloud.Helpers
+@if (Request.IsAuthenticated)
+{
+    var userName = HttpContext.Current.User.Identity.Name;
+    var UserManager = new Microsoft.AspNet.Identity.UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new SensingSiteDbContext()));
+    var currentUser = UserManager.FindByName(userName);
+    var rolsString = UserManager.GetRoles(currentUser.Id)[0];
+
+    <li class="green">
+        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+            <i class="ace-icon fa fa-users icon-animated-vertical"></i>
+            <span class="h5">@(currentUser.Group.GroupType.ToName()+"("+ rolsString + ")")</span>
+        </a>
+
+        <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+            <li class="dropdown-header">
+                <i class="ace-icon fa fa-users"></i>
+                您当前所在的组为: @(currentUser.Group.GroupType.ToName())
+            </li>
+        </ul>
+    </li>
+
+    <li class="light-blue">
+        <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+            @if(!string.IsNullOrEmpty(currentUser.AvatarUrl))
+            {
+                <img src="@currentUser.AvatarUrl" class="nav-user-photo" />
+            }
+            else
+            {
+                <img src="~/content/ace/avatars/avatar2.png" class="nav-user-photo" />
+            }
+            <span class="user-info">
+                <small>Welcome,</small>
+                @(User.Identity.Name)!
+            </span>
+            <i class="ace-icon fa fa-caret-down"></i>
+        </a>
+
+        <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+            <li>
+                <a href="#">
+                    <i class="ace-icon fa fa-cog"></i>
+                    Settings
+                </a>
+            </li>
+
+            <li>
+                <a href=@Url.Action("UserProfile", "User", new { area=""})>
+                    <i class=" ace-icon fa fa-user">
+                    </i>
+                    Profile
+                </a>
+            </li>
+
+            <li class="divider"></li>
+
+            <li>
+
+                <a href="@Url.Action("LogOff", "Account", new { area=""})">
+                    <i class="ace-icon fa fa-power-off"></i>
+                    Logout
+                </a>
+                
+            </li>
+        </ul>
+    </li>
+}
+else
+{
+    <li class="light-blue">
+        <a id="loginLink" href="@Url.Action("Login", "Account")">
+            <i class="ace-icon fa fa-user"></i>
+            Log in
+        </a>
+    </li>
+}
+
+

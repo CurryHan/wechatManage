@@ -1,0 +1,22 @@
+﻿@using Webdiyer.WebControls.Mvc;
+@model PagedList<Sensing.Entities.Game>
+
+<ul class="ace-thumbnails clearfix">
+    @foreach (var item in Model)
+    {
+        <li class="col-md-3" style="border:0;margin:0px;margin-top:30px;">
+            <div class="text-center" style="width: 100%">
+                @if (!string.IsNullOrEmpty(item.ImagePath))
+                {
+                    <img src="@item.ImagePath" style="width:90%" />
+                }
+                else
+                {
+                    <img src="~/content/game/img/default.jpg" style="width:90%" />
+                }
+                <br>
+                <h3>@item.Name</h3>
+            </div>
+        </li>
+    }
+</ul>

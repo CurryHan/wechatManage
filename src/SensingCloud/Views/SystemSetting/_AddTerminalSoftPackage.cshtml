@@ -1,0 +1,93 @@
+﻿@model Sensing.Entities.SystemSettings.TerminalSoftUpdate
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <h4 class="modal-title" id="myModalLabel">@Resources.AddSoftUpdatePackage @*添加软件更新包*@</h4>
+</div>
+@using (Ajax.BeginForm("AddTerminalSoftPackage", "SystemSetting", new AjaxOptions { HttpMethod = "Post", OnSuccess = "successSubmit" }, new { @id = "AddTerminalSoftUpdate", @class = "form-horizontal" }))
+{
+    <div class="modal-body">
+        @Html.AntiForgeryToken()
+        @*<form id="formbyEmailInfo" action="Edit" method="post" class="form-horizontal" role="form">*@
+
+        <div class="form-group">
+            <label class="col-sm-4 control-label no-padding-right" for="form-field-1-1"> @Html.DisplayNameFor(model => model.Name)</label>
+
+            <div class="col-sm-8">
+                @*<input id="ServerAddress" placeholder="smtp.qq.com" class="form-control" type="text">*@
+                @Html.EditorFor(model => model.Name, new { @class = "form-control"})
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label no-padding-right" for="form-field-1-1"> @Html.DisplayNameFor(model => model.Version) </label>
+
+            <div class="col-sm-8">
+                @*<input id="ServerAddress" placeholder="smtp.qq.com" class="form-control" type="text">*@
+                @Html.EditorFor(model => model.Version, new { @class = "form-control"})
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label no-padding-right" for="form-field-1-1"> @Html.DisplayNameFor(model => model.Remarks) </label>
+
+            <div class="col-sm-5">
+                @*<input id="ServerAddress" placeholder="smtp.qq.com" class="form-control" type="text">*@
+                @Html.TextAreaFor(model => model.Remarks, new { @class = "form-control"})
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label no-padding-right" for="form-field-1-1"> @Html.DisplayNameFor(model => model.UpdateTimes) </label>
+            <div class="col-sm-6">
+                <div class='input-group date' data-datetimepicker="true">
+                    <input type='text' name="SoftUpdatedTime" class="form-control" data-date-format="YYYY-MM-DD H:mm" value="@DateTime.Now.ToString("yyyy-MM-dd H:mm")" />
+                    <span class="input-group-addon">
+                        <i class="fa fa-calendar bigger-110"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label no-padding-right" for="form-field-1-1">@Html.DisplayNameFor(model => model.SoftPath) </label>
+
+            <div class="col-sm-8">
+                <input type="file" name="softpackage" class="btn-primary" />
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">@Resources.Save</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">@Resources.ReturnToList</button>
+    </div>
+}
+
+<script src="~/scripts/jquery.form.js"></script>
+<script src="~/Scripts/moment-with-locales.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+<script>
+        $(function () {
+            var $form = $("#AddTerminalSoftUpdate");
+            $form.on('submit', function (e) {
+                e.preventDefault();
+                //$form.ajaxSubmit({ success: refreshData(data) });
+                $form.ajaxSubmit({
+                    success: function (data) {
+                        $('#ShowAddDialog').modal('hide');
+                        //表单提交完成后 返回查询所有数据
+                        var options = {
+                            method: 'get'
+                        };
+                        var Url = "SystemSetting/EditUpdateCleintSoft"
+                        $.ajax(Url, options).success(function (data) {
+                            $('#tab4_contentDiv').html(data);
+                        });
+                    },
+                });
+                return false;
+            });
+
+            $("div[data-datetimepicker] > input").datetimepicker({ language: 'zh-cn' }).next().on('click', function () {
+                $(this).prev().focus();
+            });
+
+        });
+</script>

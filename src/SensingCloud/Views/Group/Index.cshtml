@@ -1,0 +1,292 @@
+﻿
+@using Webdiyer.WebControls.Mvc;
+@using Sensing.Entities.Users;
+@using SensingCloud.Helpers;
+@using Sensing.Entities;
+@model PagedList<Sensing.Entities.Group>
+@{
+    ViewBag.Title = "用户分组";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int index = 0;
+    int sequence = 0;
+    GroupEnum groupType = User.GetGroupType();
+    int currentGroupID = User.GetGroupID();
+}
+
+<div id="groupIndexDiv">
+    <div class="page-header">
+        <h1 class="pageheadTitle">@Resources.GroupManager </h1>
+    </div>
+
+    <div class="tab-pane">
+        <div class="row searchMenu">
+            <div class="col-xs-8">
+                <form class="search-form">
+                    <div class="input-group">
+                        <input name="query" type="text" class="form-control search-query" placeholder="@Resources.PName" value="@ViewBag.Query">
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-primary btn-sm no-border">
+                                @Resources.Search
+                                <i class="ace-icon fa fa-search icon-on-right bigger-110"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+            @if ((groupType == GroupEnum.SuperLevel && (User.IsInRole(RoleString.Admin) || User.IsInRole(RoleString.Editor)))
+                        || (groupType == GroupEnum.SI && (User.IsInRole(RoleString.Admin) || User.IsInRole(RoleString.Editor))))
+            {
+                <div class="col-xs-4 align-right-large ">
+                    <p style="float:right;">
+                        <a id="addNewGroupBtn" class="btn btn-sm btn-primary no-border">
+                            <i class="fa fa-plus"></i>
+                            &nbsp;@Resources.CreateGroup
+                        </a>
+                        @*@Html.ActionLink("添加分类", "Create", null, new { style = "font-size:14px;", @class = "btn btn-sm btn-primary no-border" })*@
+                    </p>
+                </div>
+            }
+        </div>
+    </div>
+
+
+</div>
+<div id="DataList_ContentDIV">
+
+    @if (ViewBag.Mode == "list")
+    {
+        <div id="tableListCategory">
+            <table id="simple-table" class="table table-bordered table-striped table-hover table-condensed text-center">
+                <thead>
+                    <tr class="active" style="font-size:14px;">
+                        <th class="hidden-xs">
+                            序号
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DisplayName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.GroupType)
+                        </th>
+                        <th class="hidden-xs">
+                            @Html.DisplayNameFor(model => model.Created)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ParentGroup)
+                        </th>
+                        <th class="hidden-xs">
+                            @Html.DisplayNameFor(model => model.Creator)
+                        </th>
+                        <th>
+                            @Resources.Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        index++;
+                        sequence = (ViewBag.pageIndex - 1) * ViewBag.pageSize + index;
+                        <tr style="font-size:14px;">
+                            <td class="hidden-xs">
+                                @sequence
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DisplayName)
+                            </td>
+                            <td>
+                                @item.GroupType.ToName()
+                            </td>
+                            <td class="hidden-xs">
+                                @(item.Created.HasValue ? item.Created.Value.ToString("yyyy/MM/dd") : "")
+                            </td>
+
+
+                            <td>
+                                @if (item.ParentGroup != null)
+                                {
+                                    @Html.DisplayFor(modelItem => item.ParentGroup.DisplayName)
+                                }
+                                else
+                                {
+                                    <label>平台基组</label>
+                                }
+                            </td>
+                            <td class="hidden-xs">
+                                @Html.DisplayFor(modelItem => item.Creator)
+                            </td>
+                            <td>
+                                <div class="hidden-xs btn-group">
+                                    <a href="/Group/Details/@item.Id" class="btn btn-success btn-xs no-border">
+                                        @Resources.Details
+                                    </a>
+                                    @if (!User.IsInRole(RoleString.Viewer))
+                                    {
+                                        <a href="/Group/Edit/@item.Id" class="btn btn-primary btn-xs no-border EditLinkA">
+                                            @Resources.Edit
+                                        </a>
+                                    }
+                                    @if (User.IsInRole(RoleString.Admin) && groupType == GroupEnum.SuperLevel && item.Id!= currentGroupID)
+                                    {
+                                        <a href="#" idval="@item.Id" class="DeleteLinkA btn btn-danger btn-xs no-border">
+                                            @Resources.Delete
+                                        </a>
+                                    }
+                                </div>
+
+                                <div class="hidden-sm hidden-md hidden-lg">
+                                    <div class="inline pos-rel">
+                                        <button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown" data-position="auto">
+                                            <i class="ace-icon fa fa-cog icon-only bigger-110"></i>
+                                        </button>
+
+                                        <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+                                            <li>
+                                                <a href="/Group/Details/@item.Id" class="tooltip-info" data-rel="tooltip" title="View">
+                                                    <span class="blue">
+                                                        <i class="ace-icon fa fa-search-plus bigger-120"></i>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            @if (!User.IsInRole(RoleString.Viewer))
+                                            {
+                                                <li>
+                                                    <a href="/Group/Edit/@item.Id" class="tooltip-success EditLinkA" data-rel="tooltip" title="Edit">
+                                                        <span class="green">
+                                                            <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            }
+                                            @if (User.IsInRole(RoleString.Admin) && groupType == GroupEnum.SuperLevel)
+                                            {
+                                                <li>
+                                                    <a href="#" idval="@item.Id" class="DeleteLinkA tooltip-error" data-rel="tooltip" title="Delete">
+                                                        <span class="red">
+                                                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+        <div class="row row-pager col-xs-12" style="float:right;text-align:right">
+            @Html.Pager(Model, new PagerOptions { ActionName = "Index", PrevPageText = "上页", NextPageText = "下页", FirstPageText = "首页", LastPageText = "尾页", PageIndexParameterName = "pageIndex", ContainerTagName = "ul", CssClass = "pagination", CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>", DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>", PagerItemTemplate = "<li>{0}</li>" })
+        </div>
+    }
+</div>
+
+@section scripts{
+    <script src="~/Scripts/jquery.form.js"></script>
+    <script src="~/Scripts/moment-with-locales.js"></script>
+    <script src="~/Scripts/jquery.pictureSelector.js"></script>
+    <script>
+        $(function () {
+            var Url = "/Group/GetGroupList";
+            //(function () {
+            //    var options = {
+            //        method: 'get',
+            //        data: { query: $('input[name=query]').val() }
+            //    };
+            //    $.ajax(Url, options).success(function (data) {
+            //        $('#DataList_ContentDIV').html(data);
+            //    });
+            //})();
+            //添加
+            $("#addNewGroupBtn").click(function () {
+                $("#groupIndexDiv").css("display", "none");
+                $("#DataList_ContentDIV").html('');
+                var urlstr = "/Group/Create";
+                $.get(urlstr, null, function (data, textStatus) {
+                    $(data).appendTo($("#DataList_ContentDIV"));
+                })
+                return false;
+            });
+
+            //查询分组信息
+            $(".search-form").submit(function (e) {
+
+                e.preventDefault();
+                var options = {
+                    method: 'get',
+                    url: Url,
+                    data: $(this).serialize()
+                };
+                $.ajax(Url, options).success(function (data) {
+                    $('#DataList_ContentDIV').html(data);
+                });
+            });
+
+            //使用ajax请求分页
+            //$('#DataList_ContentDIV').on('click', '.row-pager a', function (e) {
+            //    e.preventDefault();
+            //    var url = $(e.target).attr('href');
+            //    if (url) {
+            //        var options = {
+            //            method: 'get',
+
+            //        };
+            //        $.ajax(url, options).success(function (data) {
+            //            $('#DataList_ContentDIV').html(data);
+            //        });
+            //    }
+            //    return false;
+            //});
+
+            //编辑
+            $("#DataList_ContentDIV").on('click', '.EditLinkA', function (e) {
+                $("#groupIndexDiv").css("display", "none");
+                $("#DataList_ContentDIV").html('');
+                e.preventDefault();
+                var urlstr = $(this).attr("href");
+                $.get(urlstr, null, function (data, textStatus) {
+                    $(data).appendTo($("#DataList_ContentDIV"));
+                })
+                return false;
+            });
+            //详情
+            $("#DataList_ContentDIV").on('click', '.DetailsLinkA', function (e) {
+                $("#groupIndexDiv").css("display", "none");
+                $("#DataList_ContentDIV").html('');
+                e.preventDefault();
+                var url = $(this).attr("href");
+                $.get(url, null, function (data, textStatus) {
+                    $(data).appendTo($("#DataList_ContentDIV"));
+                })
+            });
+            //删除
+            $('#DataList_ContentDIV').on('click', '.DeleteLinkA', function (e) {
+                var ids = $(this).attr("idval");
+                if (confirm("确定要删除该分组，以及该分组下面所有的活动，用户等信息？")) {
+                //if (confirm("@Resources.ConfirmDelete")) {
+                    var options = {
+                        method: 'get',
+                        data: { id: ids }
+                    };
+                    var urlstr = "/Group/Delete";
+                    $.ajax(urlstr, options).success(function (data) {
+                        if (data == "Ok") {
+                            window.location.reload();
+                        } else if (data == "No") {
+                            //alert("该分组内子类信息太多，请先清除改组子类再删除该组！")
+                            alert("@Resources.CannotDeleteGroup")
+                            window.location.reload();
+                        }
+
+                    });
+                }
+            });
+
+        });
+    </script>
+}

@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0D2E4108-9FFE-476E-B610-2DBBEA0EA9BD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sensing.Weixin</RootNamespace>
+    <AssemblyName>Sensing.Weixin</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommonAPIs\CommonJsonSend.cs" />
+    <Compile Include="ComponentAPIs\AuthorizerContainer.cs" />
+    <Compile Include="ComponentAPIs\ComponentApi.cs" />
+    <Compile Include="ComponentAPIs\ComponentContainer.cs" />
+    <Compile Include="ComponentAPIs\ComponentJson\AuthorizerOptionResult.cs" />
+    <Compile Include="ComponentAPIs\ComponentJson\GetAuthorizerInfoResult.cs" />
+    <Compile Include="ComponentAPIs\ComponentJson\QueryAuthResult.cs" />
+    <Compile Include="ComponentAPIs\ComponentJson\RefreshAuthorizerTokenResult.cs" />
+    <Compile Include="Config.cs" />
+    <Compile Include="ConstEntity.cs" />
+    <Compile Include="Cryptography.cs" />
+    <Compile Include="Entities\EntityBase.cs" />
+    <Compile Include="Entities\JsonResult\ComponentAccessTokenResult.cs" />
+    <Compile Include="Entities\JsonResult\JsApiTicketResult.cs" />
+    <Compile Include="Entities\JsonResult\PreAuthCodeResult.cs" />
+    <Compile Include="Entities\JsonResult\WxJsonResult.cs" />
+    <Compile Include="Entities\Request\PostModel.cs" />
+    <Compile Include="Entities\Request\RequestMessageBase.cs" />
+    <Compile Include="Entities\Request\RequestMessageComponentVerifyTicket.cs" />
+    <Compile Include="Entities\Request\RequestMessageUnauthorized.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="Exceptions\ErrorJsonResultException.cs" />
+    <Compile Include="Exceptions\MessageHandlerException.cs" />
+    <Compile Include="Exceptions\UnknownRequestMsgTypeException.cs" />
+    <Compile Include="Exceptions\WeixinException.cs" />
+    <Compile Include="Exceptions\WeixinMenuException.cs" />
+    <Compile Include="Exceptions\WeixinOpenException.cs" />
+    <Compile Include="Helpers\Conventers\ExpandoJsonConverter.cs" />
+    <Compile Include="Helpers\Conventers\WeixinJsonConventer.cs" />
+    <Compile Include="Helpers\DateTimeHelper.cs" />
+    <Compile Include="Helpers\EntityHelper.cs" />
+    <Compile Include="Helpers\Extensions\IDictionaryExtensions.cs" />
+    <Compile Include="Helpers\FileHelper.cs" />
+    <Compile Include="Helpers\InfoTypeHelper.cs" />
+    <Compile Include="Helpers\SerializerHelper.cs" />
+    <Compile Include="HttpRequestUtil.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sample.cs" />
+    <Compile Include="Tools.cs" />
+    <Compile Include="Utilities\BrowserUtility\BroswerUtility.cs" />
+    <Compile Include="Utilities\HttpUtility\Get.cs" />
+    <Compile Include="Utilities\HttpUtility\Post.cs" />
+    <Compile Include="Utilities\HttpUtility\RequestUtility.cs" />
+    <Compile Include="Utilities\StreamUtility\StreamUtility.cs" />
+    <Compile Include="Utilities\WeixinUtility\ApiUtility.cs" />
+    <Compile Include="Utilities\XmlUtility\XmlUtility.cs" />
+    <Compile Include="WeixinTrace.cs" />
+    <Compile Include="wxAPI.cs" />
+    <Compile Include="WXBizMsgCrypt.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LogService\LogService.csproj">
+      <Project>{e21c90df-f6de-4a2c-8103-443ec18a738a}</Project>
+      <Name>LogService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sensing.Data\Sensing.Data.csproj">
+      <Project>{9cdf48ae-09c5-43b2-a5b1-7ce472f1081e}</Project>
+      <Name>Sensing.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

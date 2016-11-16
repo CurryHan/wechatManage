@@ -1,0 +1,35 @@
+﻿@model MvcSiteMapProvider.Web.Html.Models.SiteMapPathHelperModel
+@using System.Web.Mvc.Html
+@using System.Linq
+@using MvcSiteMapProvider.Web.Html.Models
+
+@{
+    string url = "";
+}
+<ul class="breadcrumb">
+        @foreach (var node in Model)
+        {
+            if (node == Model.Last())
+            {
+                <li class="active">
+                    @node.Title
+                </li>
+
+
+            }
+            else if (node == Model.First())
+            {
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="@node.Url">@node.Title</a>
+                </li>
+            }
+            else
+            {
+                url = "/" + node.Controller + "/" + node.Action;
+                <li>
+                    <a href="@url">@node.Title</a>
+                </li>
+            }
+        }
+</ul>

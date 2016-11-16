@@ -1,0 +1,68 @@
+﻿@model SensingCloud.Models.ChangeCommonSettingViewModel
+<div class="col-xs-12">
+    @using (Ajax.BeginForm("OtherSetting", "CommonSetting", new AjaxOptions { HttpMethod = "Post", InsertionMode = InsertionMode.Replace, UpdateTargetId = "tab2_contentDiv", OnSuccess = "ChangeSettingSuccess" }, new { @class = "form-horizontal" }))
+    {
+        if (ViewBag.Success == true)
+        {
+            <div class="alert alert-block alert-success">
+                <button type="button" class="close" data-dismiss="alert">
+                    <i class="ace-icon fa fa-times"></i>
+                </button>
+                <i class="ace-icon fa fa-check green"></i>
+                修改成功.
+            </div>
+        }
+
+        @Html.HiddenFor(model => model.Id)
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label no-padding-right" for="form-field-1-1"> PAD超时间隔: </label>
+            <div class="col-sm-4">
+                @*<input id="ServerAddress" placeholder="smtp.qq.com" class="form-control" type="text">*@
+                @Html.EditorFor(model => model.PadTimeOut, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PadTimeOut, "", new { @class = "text-danger" })
+            </div>
+            <label class="col-sm-0 control-label no-padding-right" for="form-field-1-1"> 分钟</label>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label no-padding-right" for="form-field-1-1"> 自动同步时间: </label>
+            <div class="col-sm-4">
+                @*<input id="ServerAddress" placeholder="smtp.qq.com" class="form-control" type="text">*@
+                @Html.EditorFor(model => model.AutoSync, new { htmlAttributes = new { @class = "form-control"} })
+                @Html.ValidationMessageFor(model => model.AutoSync, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label no-padding-right" for="form-field-1-1"> PPT无人操作自动翻页间隔: </label>
+            <div class="col-sm-4">
+                @*<input id="ServerAddress" placeholder="smtp.qq.com" class="form-control" type="text">*@
+                @Html.EditorFor(model => model.PptTimeOut, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PptTimeOut, "", new { @class = "text-danger" })
+            </div>
+            <label class="col-sm-0 control-label no-padding-right" for="form-field-1-1"> 秒</label>
+        </div>
+
+        <div class="col-md-6" style="text-align:right">
+            <input type="submit" value="保存" class="btn btn-primary btn-sm no-border" />
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-12">
+               
+                    <button id="synchonizeSettingBtn" type="button" class="btn btn-primary col-sm-2">立刻手动同步</button>
+                    <label class="col-sm-4 control-label text-right "> 注意：此操作可能会中断某些终端正在进行的播放</label>
+               
+
+
+            </div>
+        </div>
+    }
+</div>
+<script>
+    function ChangeSettingSuccess(data) {
+        $(".alert-success").fadeIn().delay(1000).fadeOut();
+    }
+</script>

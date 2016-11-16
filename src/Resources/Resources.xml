@@ -1,0 +1,555 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <!--  Chinese (zh-CN) -->
+  <resource culture="zh-cn" name="SensingTitle" value="O2O解决方案"></resource>
+  <resource culture="zh-cn" name="TestingValue" value="多语言测试"></resource>
+  <resource culture="zh-cn" name="CreateGroup" value="新建组"></resource>
+  <resource culture="zh-cn" name="GroupName" value="组名"></resource>
+  <resource culture="zh-cn" name="DeviceNameAlreadyExists" value="设备名已存在."></resource>
+  <resource culture="zh-cn" name="ChoiceGroup" value="选择分组"></resource>
+  
+  <!--通用-->
+  <resource culture="zh-cn" name="Save" value="保存"></resource>
+  <resource culture="zh-cn" name="Copy" value="复制"></resource>
+  <resource culture="zh-cn" name="Confirm" value=" 确认"></resource>
+  <resource culture="zh-cn" name="Search" value="检索"></resource>
+  <resource culture="zh-cn" name="Edit" value="编辑"></resource>
+  <resource culture="zh-cn" name="Delete" value="删除"></resource>
+  <resource culture="zh-cn" name="Details" value="详细"></resource>
+  <resource culture="zh-cn" name="Create" value="添加"></resource>
+  <resource culture="zh-cn" name="ReturnToList" value="返回列表"></resource>
+  <resource culture="zh-cn" name="About" value="关于"></resource>
+  <resource culture="zh-cn" name="Action" value="操作"></resource>
+
+  <resource culture="zh-cn" name="Creator" value="创建者"></resource>
+  <resource culture="zh-cn" name="Created" value="创建日期"></resource>
+  <resource culture="zh-cn" name="Updater" value="修改者"></resource>
+  <resource culture="zh-cn" name="LastUpdated" value="修改日期"></resource>
+  <resource culture="zh-cn" name="ParentGroup" value="所属分组"></resource>
+
+  <resource culture="zh-cn" name="NextPage" value="下页"></resource>
+  <resource culture="zh-cn" name="LastPage" value="上页"></resource>
+  <resource culture="zh-cn" name="HomePage" value="首页"></resource>
+  <resource culture="zh-cn" name="EndPage" value="尾页"></resource>
+  
+  <resource culture="zh-cn" name="Name" value="名称"></resource>
+  <resource culture="zh-cn" name="Status" value="状态"></resource>
+
+  <!--验证-->
+   <resource culture="zh-cn" name="InvalidIP" value="IP地址格式不符"></resource>
+   <resource culture="zh-cn" name="InvalidMac" value="Mac地址格式不符"></resource>
+  <resource culture="zh-cn" name="InvalidUrl" value="Url地址格式不符"></resource>
+  <resource culture="zh-cn" name="InvalidPhone" value="手机格式不符"></resource>
+
+  <!--商品-->
+  <resource culture="zh-cn" name="Product" value="商品"></resource>
+  <resource culture="zh-cn" name="PName" value="名称"></resource>
+  <resource culture="zh-cn" name="CategoryManager" value="品类管理"></resource>
+  <resource culture="zh-cn" name="ProductManager" value="商品管理"></resource>
+  <resource culture="zh-cn" name="GroupManager" value="分组管理"></resource>    
+  <resource culture="zh-cn" name="AddProductInventory" value="添加商品库存"></resource>
+  <resource culture="zh-cn" name="ProductToCategory" value="商品绑定到分类"></resource>
+
+  <resource culture="zh-cn" name="CreateCategory" value="添加品类"></resource>
+  <resource culture="zh-cn" name="CategoryDetails" value="品类详细信息"></resource>
+  <resource culture="zh-cn" name="CategoryEdit" value="编辑品类"></resource>
+  <resource culture="zh-cn" name="CreateProduct" value="添加商品"></resource>
+  <resource culture="zh-cn" name="ProductDetails" value="商品详细信息"></resource>
+  <resource culture="zh-cn" name="ProductEdit" value="编辑商品"></resource>
+  
+  <!--页面提示-->
+  <resource culture="zh-cn" name="ConfirmDelete" value="确定删除？"></resource>
+  <resource culture="zh-cn" name="ConfirmApplyOffline" value="确定申请商品下线吗？"></resource>
+  <resource culture="zh-cn" name="ConfirmApplyOnline" value="确定申请商品上线吗？"></resource>
+  <resource culture="zh-cn" name="ConfirmCancel" value="确定取消申请吗？"></resource>
+  <resource culture="zh-cn" name="ConfirmChoiceData" value="请选择数据!"></resource>
+  <resource culture="zh-cn" name="ConfirmAgreeOffline" value="确定同意商品下线吗？"></resource>
+  <resource culture="zh-cn" name="ConfirmAgreeOnline" value="确定同意商品上线吗？"></resource>
+  <resource culture="zh-cn" name="ConfirmRefuseOffline" value="确定拒绝商品下线吗？"></resource>
+  <resource culture="zh-cn" name="ConfirmRefuseOnline" value="确定拒绝商品上线吗？"></resource>  
+  <resource culture="zh-cn" name="ConfirmGiveupNewProduct" value="确认放弃添加新商品？"></resource>
+  <resource culture="zh-cn" name="UseFailed" value="操作失败!"></resource>
+  <resource culture="zh-cn" name="CannotDeleteGroup" value="该分组内子类信息太多，请先清除改组子类再删除该组！"></resource>
+  <resource culture="zh-cn" name="UpdateSuccess" value="修改成功."></resource>
+  <resource culture="zh-cn" name="CreateSuccess" value="创建成功."></resource>
+  <resource culture="zh-cn" name="NotNULL" value="不能为空."></resource>
+  <resource culture="zh-cn" name="AlreadyHave" value="已存在."></resource>
+  
+  <resource culture="zh-cn" name="Sex" value="性别"></resource>
+  <resource culture="zh-cn" name="AuditStatus" value="商品状态"></resource>
+  <resource culture="zh-cn" name="Brand" value="品牌"></resource>
+  <resource culture="zh-cn" name="LargeClass" value="大分类"></resource>
+  <resource culture="zh-cn" name="SubClass" value="小分类"></resource>
+  <resource culture="zh-cn" name="Style" value="款式"></resource>
+  <resource culture="zh-cn" name="Model" value="版型"></resource>
+  <resource culture="zh-cn" name="Material" value="面料"></resource>
+  <resource culture="zh-cn" name="Fashion" value="风格"></resource>
+  <resource culture="zh-cn" name="Trend" value="潮流发布"></resource>
+  <resource culture="zh-cn" name="Sku" value="商品SKU"></resource>
+  <resource culture="zh-cn" name="Spu" value="货号Spu"></resource>
+  <resource culture="zh-cn" name="Price" value="销售价"></resource>
+  <resource culture="zh-cn" name="ListedPrice" value="吊牌价"></resource>
+  <resource culture="zh-cn" name="ColorId" value="色号"></resource>
+  <resource culture="zh-cn" name="ColorName" value="颜色"></resource>
+  <resource culture="zh-cn" name="OnsaleDate" value="上架日期"></resource>
+  <resource culture="zh-cn" name="SizeDescription" value="尺码参照"></resource>
+  <resource culture="zh-cn" name="Description" value="描述"></resource>
+  <resource culture="zh-cn" name="Maintain" value="产品保养"></resource>
+  <resource culture="zh-cn" name="Keyword" value="商品KeyWords"></resource>
+  
+  <resource culture="zh-cn" name="ProductImg" value="商品图"></resource>
+  <resource culture="zh-cn" name="ModelImg" value="模特图"></resource>
+  <resource culture="zh-cn" name="BigImg" value="大图"></resource>
+  <resource culture="zh-cn" name="MiddleImg" value="中图"></resource>
+  <resource culture="zh-cn" name="SmallImg" value="小图"></resource>
+  
+  <resource culture="zh-cn" name="BProductImg" value="单品大图"></resource>
+  <resource culture="zh-cn" name="MProductImg" value="单品中图"></resource>
+  <resource culture="zh-cn" name="SProductImg" value="单品小图"></resource>
+  <resource culture="zh-cn" name="BModelImg" value="模特大图"></resource>
+  <resource culture="zh-cn" name="MModelImg" value="模特中图"></resource>
+  <resource culture="zh-cn" name="SModelImg" value="模特小图"></resource>
+  <resource culture="zh-cn" name="Colors" value="商品其他颜色"></resource>
+  <resource culture="zh-cn" name="Matchs" value="最佳搭配"></resource>
+  <resource culture="zh-cn" name="Favorites" value="其他可能喜欢"></resource>
+  <resource culture="zh-cn" name="Inventorys" value="商品库存"></resource>
+  <resource culture="zh-cn" name="Remarks" value="备注"></resource>
+  <resource culture="zh-cn" name="Sizeid" value="尺码ID"></resource>
+  <resource culture="zh-cn" name="Sizename" value="尺码名称"></resource>
+  <resource culture="zh-cn" name="InventoryNum" value="商品库存量"></resource>
+  <resource culture="zh-cn" name="ItemNumber" value="商品项编码"></resource>
+  <resource culture="zh-cn" name="ItemBarcode" value="国标码"></resource>
+  <resource culture="zh-cn" name="BImg" value="搭配效果大图"></resource>
+  <resource culture="zh-cn" name="ShowImage" value="搭配效果展示图"></resource>
+  <resource culture="zh-cn" name="MImg" value="搭配效果中图"></resource>
+  <resource culture="zh-cn" name="SImg" value="搭配效果小图"></resource>
+  <resource culture="zh-cn" name="MatchItems" value="搭配列表"></resource>
+  <resource culture="zh-cn" name="Reason" value="理由"></resource>
+  <resource culture="zh-cn" name="Introduce" value="介绍"></resource>
+
+  <resource culture="zh-cn" name="OnlineProduct" value="在线商品"></resource>
+  <resource culture="zh-cn" name="OnlineProductTAB" value="在线商品一览表"></resource>
+  <resource culture="zh-cn" name="ApplyOffLine" value="申请下线"></resource>
+  <resource culture="zh-cn" name="OneKeyApplyOffLine" value="一键申请下线"></resource>  
+  <resource culture="zh-cn" name="OfflineProduct" value="离线商品"></resource>
+  <resource culture="zh-cn" name="OfflineProductTAB" value="离线商品一览表"></resource>
+  <resource culture="zh-cn" name="ApplyOnLine" value="申请上线"></resource>
+  <resource culture="zh-cn" name="OneKeyApplyOnLine" value="一键申请上线"></resource>
+  <resource culture="zh-cn" name="PendingProduct" value="待审核商品"></resource>
+  <resource culture="zh-cn" name="PendingProductTAB" value="待审核商品一览表"></resource>
+  <resource culture="zh-cn" name="CancelPendingProduct" value="取消审核商品"></resource>
+  <resource culture="zh-cn" name="OneKeyCancelPendingProduct" value="一键取消待审核商品"></resource>
+
+  <resource culture="zh-cn" name="ApplyOffLineProduct" value="申请下线商品"></resource>
+  <resource culture="zh-cn" name="ApplyOffLineProductTAB" value="申请下线商品一览表"></resource>
+  <resource culture="zh-cn" name="OneKeyOffLineProduct" value="一键下线商品"></resource>
+  <resource culture="zh-cn" name="ApplyOnLineProduct" value="申请上线商品"></resource>
+  <resource culture="zh-cn" name="ApplyOnLineProductTAB" value="申请上线商品一览表"></resource>
+  <resource culture="zh-cn" name="OneKeyOnLineProduct" value="一键上线商品"></resource>  
+  <resource culture="zh-cn" name="AgreeApply" value="同意"></resource>
+  <resource culture="zh-cn" name="RefuseApply" value="拒绝"></resource>
+
+  <!--系统设置-->
+  <resource culture="zh-cn" name="SystemSettingTAB" value="系统参数配置一览表"></resource>
+  <resource culture="zh-cn" name="PlatNotifications" value="平台通知"></resource>
+  <resource culture="zh-cn" name="EmailSetting" value="邮箱通知配置"></resource>
+  <resource culture="zh-cn" name="SMSSetting" value="短信通知接口"></resource>
+  <resource culture="zh-cn" name="ApproveProcess" value="审批流程"></resource>
+  <resource culture="zh-cn" name="ClientContentUpdate" value="终端内容更新"></resource>
+  <resource culture="zh-cn" name="ClientSoftUpdate" value="终端软件更新"></resource>
+  <resource culture="zh-cn" name="AddSoftUpdatePackage" value="新增软件更新包"></resource>
+  <resource culture="zh-cn" name="SoftUpdatePackageListTBA" value="软件更新包历史"></resource>
+  <resource culture="zh-cn" name="OtherSet" value="其他设置"></resource>
+
+
+  <resource culture="zh-cn" name="NeedApprove" value="是否需要审批"></resource>
+  <resource culture="zh-cn" name="ApproverRole" value="审批者角色"></resource>
+  <resource culture="zh-cn" name="ServerAddress" value="服务器地址"></resource>
+  <resource culture="zh-cn" name="ServerPort" value="端口号"></resource>
+  <resource culture="zh-cn" name="EmailName" value="服务用户名"></resource>
+  <resource culture="zh-cn" name="EmailPassword" value="服务密码"></resource>
+  <resource culture="zh-cn" name="SmsUrl" value="短信服务商url"></resource>
+  <resource culture="zh-cn" name="SmsUID" value="短信用户名"></resource>
+  <resource culture="zh-cn" name="SmsPassword" value="短信密码"></resource>
+  <resource culture="zh-cn" name="MessageSignatrue" value="短信签名"></resource>
+  <resource culture="zh-cn" name="IsAutoUpdate" value="是否自动更新"></resource>
+  <resource culture="zh-cn" name="UpdateFrequency" value="自动更新频率"></resource>
+  <resource culture="zh-cn" name="UpdateTime" value="定时更新时间"></resource>
+  <resource culture="zh-cn" name="HourlyUpdate" value="定时更新"></resource>
+  <resource culture="zh-cn" name="AutoUpdate" value="自动更新"></resource>
+  <resource culture="zh-cn" name="SoftVersion" value="版本号"></resource>
+  <resource culture="zh-cn" name="SoftPath" value="更新包地址"></resource>
+  
+  <!--商品分类-->
+  <resource culture="zh-cn" name="Category" value="分类"></resource>
+  <resource culture="zh-cn" name="Priority" value="排列序号"></resource>
+  <resource culture="zh-cn" name="Image" value="类目图片"></resource>
+  <resource culture="zh-cn" name="WebShowImg" value="后台展示图"></resource>
+   
+  <!---设备类型-->
+  <resource culture="zh-cn" name="CreateDeviceType" value="新建设备类型"></resource>
+  <resource culture="zh-cn" name="EditDeviceType" value="更改设备类型"></resource>
+  <resource culture="zh-cn" name="SelectDeviceType" value="选择设备类型"></resource>
+  
+  <!--设备 -->
+  <resource culture="zh-cn" name="DeviceName" value="设备名称"></resource>
+  <resource culture="zh-cn" name="DeviceType" value="设备分类"></resource>
+  <resource culture="zh-cn" name="DeviceAuditStatus" value="审核状态"></resource>
+  <resource culture="zh-cn" name="DeviceGroup" value="设备分组"></resource>
+  <resource culture="zh-cn" name="DeviceStatus" value="设备状态"></resource>
+  <resource culture="zh-cn" name="DeviceDetail" value="设备详细"></resource>
+  <resource culture="zh-cn" name="AuditOnlineDevice" value="审核上线设备"></resource>
+  <resource culture="zh-cn" name="AuditOfflineDevice" value="审核下线设备"></resource>
+  <resource culture="zh-cn" name="OneKeyOnlineDevices" value="一键同意上线"></resource>
+  <resource culture="zh-cn" name="OneKeyOfflineDevices" value="一键同意下线"></resource>
+  <resource culture="zh-cn" name="AddDeviceDetail" value="设备详情填加"></resource>
+  <resource culture="zh-cn" name="Building" value="楼宇"></resource>
+  <resource culture="zh-cn" name="Floor" value="楼层"></resource>
+  <resource culture="zh-cn" name="DeviceAddress" value="设备地址"></resource>
+  <resource culture="zh-cn" name="Room" value="房间"></resource>
+  <resource culture="zh-cn" name="DeviceIP" value="设备IP"></resource>
+  <resource culture="zh-cn" name="DeviceMac" value="Mac地址"></resource>
+  <resource culture="zh-cn" name="DeviceRelativeX" value="相对静态图片坐标X"></resource>
+  <resource culture="zh-cn" name="DeviceRelativeY" value="相对静态图片坐标Y"></resource>
+  <resource culture="zh-cn" name="Latitude" value="经度"></resource>
+  <resource culture="zh-cn" name="Longtitude" value="纬度"></resource>
+  <resource culture="zh-cn" name="Location" value="坐标"></resource>
+  <resource culture="zh-cn" name="LocationX" value="坐标X"></resource>
+  <resource culture="zh-cn" name="LocationY" value="坐标Y"></resource>
+  <resource culture="zh-cn" name="CreateDevice" value="添加设备"></resource>
+  <resource culture="zh-cn" name="OfflineDevices" value="线下设备"></resource>
+  <resource culture="zh-cn" name="OnlineDevices" value="线上设备"></resource>
+  <resource culture="zh-cn" name="AuditingDevices" value="待审核设备"></resource>
+  <resource culture="zh-cn" name="OnlineDevicesChart" value="线上设备一览表"></resource>
+  <resource culture="zh-cn" name="OfflineDevicesChart" value="线下设备一览表"></resource>
+  <resource culture="zh-cn" name="AuditingDevicesChart" value="待审核设备一览表"></resource>
+  <resource culture="zh-cn" name="OneKeyCancel" value="一键取消申请"></resource>
+  <resource culture="zh-cn" name="OneKeyOnline" value="设备一键上线"></resource>
+  <resource culture="zh-cn" name="OneKeyOffline" value="设备一键下线"></resource>
+  <resource culture="zh-cn" name="CancelAuditing" value="取消设备申请"></resource>
+  <resource culture="zh-cn" name="Target" value="目标"></resource>
+  <resource culture="zh-cn" name="DeviceImage" value="设备图片"></resource>
+
+  <!--用户-->
+  <resource culture="zh-cn" name="DeviceList" value="设备一览表"></resource>
+  <resource culture="zh-cn" name="CreateUser" value="添加用户"></resource>
+  <resource culture="zh-cn" name="Head" value="头像"></resource>
+  <resource culture="zh-cn" name="UserName" value="用户名"></resource>
+  <resource culture="zh-cn" name="CompanyName" value="公司名"></resource>
+  <resource culture="zh-cn" name="PhoneNumber" value="电话"></resource>
+  <resource culture="zh-cn" name="Email" value="邮箱"></resource>
+  <resource culture="zh-cn" name="RoleName" value="角色"></resource>
+  <resource culture="zh-cn" name="ComfirmDeleteUser" value="要删掉这个用户吗?"></resource>
+  <resource culture="zh-cn" name="EditUser" value="编辑用户"></resource>
+  <resource culture="zh-cn" name="ResetPassword" value="密码重置"></resource>
+  <resource culture="zh-cn" name="ResetPasswordSuccess" value="密码重置成功"></resource>
+  <resource culture="zh-cn" name="LockUser" value="锁定"></resource>
+  <resource culture="zh-cn" name="UnLockUser" value="解锁"></resource>
+  <resource culture="zh-cn" name="UserInfo" value="个人信息"></resource>
+  <resource culture="zh-cn" name="BasicInfo" value="基本信息"></resource>
+  <resource culture="zh-cn" name="PasswordSetting" value="密码设置"></resource>
+  <resource culture="zh-cn" name="RecentActivity" value="最近记录"></resource>
+  
+  <!--登录-->
+  <resource culture="zh-cn" name="TroncellOfficalSite" value="创思官网"></resource>
+  <resource culture="zh-cn" name="o2opage" value="O2O首页"></resource>
+  <resource culture="zh-cn" name="AfterService" value="售后服务"></resource>
+  <resource culture="zh-cn" name="ManagerLogin" value="管理后台登陆"></resource>
+  <resource culture="zh-cn" name="Login" value="登录"></resource>
+  <resource culture="zh-cn" name="CanUserBeblowLoginMethod" value="可以使用以下方式登录"></resource>
+  <resource culture="zh-cn" name="ForgotPasswordQuestion" value="忘记密码？"></resource>
+  <resource culture="zh-cn" name="GetBackPassword" value="找回密码"></resource>
+  <resource culture="zh-cn" name="SendEmail" value="发送邮件"></resource>
+  <resource culture="zh-cn" name="SendSms" value="发送短信"></resource>
+  <resource culture="zh-cn" name="Relogin" value="重新登陆"></resource>
+  <resource culture="zh-cn" name="CompanyIntroduction" value="公司介绍"></resource>
+  <resource culture="zh-cn" name="SocialMedia" value="社交媒体"></resource>
+  <resource culture="zh-cn" name="Partnership" value="合作伙伴"></resource>
+  <resource culture="zh-cn" name="ContactUs" value="合作伙伴"></resource>
+  <resource culture="zh-cn" name="CompanyAddress" value="无锡市新区震泽路18号无锡（国家）软件园水瓶座508室"></resource>
+  
+  <!--楼层-->
+  <resource culture="zh-cn" name="SelectBuilding" value="选择楼宇"></resource>
+  <resource culture="zh-cn" name="SelectFloor" value="选择楼层"></resource>
+  <resource culture="zh-cn" name="SelectRoom" value="选择房间"></resource>
+  
+
+  <!-- Spanish (zh-CN) -->
+
+  <!--  English (en-US) -->
+  <resource culture="en-us" name="SensingTitle" value="O2O Cloud Solution."></resource>
+  <resource culture="en-us" name="TestingValue" value="International Testing."></resource>
+  <resource culture="en-us" name="CreateGroup" value="CreateGroup"></resource>
+  <resource culture="en-us" name="GroupName" value="GroupName"></resource>
+  <resource culture="en-us" name="DeviceNameAlreadyExists" value="Device name already taken."></resource>
+  <resource culture="en-us" name="ChoiceGroup" value="ChoiceGroup"></resource>
+
+
+  <!--通用-->
+  <resource culture="en-us" name="Save" value="Save"></resource>
+
+  <resource culture="en-us" name="Confirm" value="Confirm"></resource>
+  <resource culture="en-us" name="Search" value="Search"></resource>
+  <resource culture="en-us" name="Edit" value="Edit"></resource>
+  <resource culture="en-us" name="Delete" value="Delete"></resource>
+  <resource culture="en-us" name="Details" value="Details"></resource>
+  <resource culture="en-us" name="Create" value="Create"></resource>
+  <resource culture="en-us" name="ReturnToList" value="ReturnToList"></resource>
+  <resource culture="en-us" name="About" value="About"></resource>
+  <resource culture="en-us" name="Creator" value="Creator"></resource>
+  <resource culture="en-us" name="Created" value="Created"></resource>
+  <resource culture="en-us" name="Updater" value="Updater"></resource>
+  <resource culture="en-us" name="LastUpdated" value="LastUpdated"></resource>
+  <resource culture="en-us" name="ParentGroup" value="ParentGroup"></resource>
+
+  <resource culture="en-us" name="NextPage" value="Next"></resource>
+  <resource culture="en-us" name="LastPage" value="Last"></resource>
+  <resource culture="en-us" name="HomePage" value="Home"></resource>
+  <resource culture="en-us" name="EndPage" value="End"></resource>
+  
+  <resource culture="en-us" name="Name" value="Name"></resource>
+  <resource culture="en-us" name="Status" value="Status"></resource>
+  
+    <!--验证-->
+   <resource culture="en-us" name="InvalidIP" value="Invalid IP"></resource>
+   <resource culture="en-us" name="InvalidMac" value="Invalid Mac"></resource>
+  <resource culture="en-us" name="InvalidUrl" value="Invalid Url"></resource>
+  <resource culture="en-us" name="InvalidPhone" value="Invalid Phone"></resource>
+
+  <!--商品-->
+  <resource culture="en-us" name="Product" value="Product"></resource>
+  <resource culture="en-us" name="PName" value="Name"></resource>
+
+  <resource culture="en-us" name="CategoryManager" value="Category Manager"></resource>
+  <resource culture="en-us" name="ProductManager" value="Product Manager"></resource>
+  <resource culture="en-us" name="GroupManager" value="Group Manager"></resource>
+  <resource culture="en-us" name="AddProductInventory" value="AddProductInventory"></resource>
+  <resource culture="en-us" name="ProductToCategory" value="ProductToCategory"></resource>
+
+  <resource culture="en-us" name="CreateCategory" value="CreateCategory"></resource>
+  <resource culture="en-us" name="CategoryDetails" value="CategoryDetails"></resource>
+  <resource culture="en-us" name="CategoryEdit" value="CategoryEdit"></resource>
+  <resource culture="en-us" name="CreateProduct" value="CreateProduct"></resource>
+  <resource culture="en-us" name="ProductDetails" value="ProductDetails"></resource>
+  <resource culture="en-us" name="ProductEdit" value="ProductEdit"></resource>
+
+  <resource culture="en-us" name="Action" value="Action"></resource>
+  <resource culture="en-us" name="ProductImg" value="ProductImg"></resource>
+  <resource culture="en-us" name="ModelImg" value="ModelImg"></resource>
+  <resource culture="en-us" name="BigImg" value="BigImg"></resource>
+  <resource culture="en-us" name="MiddleImg" value="MiddleImg"></resource>
+  <resource culture="en-us" name="SmallImg" value="SmallImg"></resource>
+  
+  <resource culture="en-us" name="Introduce" value="Introduce"></resource>
+  <resource culture="en-us" name="Reason" value="Reason"></resource>
+  <resource culture="en-us" name="MatchItems" value="MatchItems"></resource>
+  <resource culture="en-us" name="SImg" value="SImg"></resource>
+  <resource culture="en-us" name="ShowImage" value="ShowImage"></resource>
+  <resource culture="en-us" name="MImg" value="MImg"></resource>
+  <resource culture="en-us" name="BImg" value="BigImage"></resource>
+  <resource culture="en-us" name="ItemBarcode" value="ItemBarcode"></resource>
+  <resource culture="en-us" name="ItemNumber" value="ItemNumber"></resource>
+  <resource culture="en-us" name="InventoryNum" value="InventoryNum"></resource>
+  <resource culture="en-us" name="Sizename" value="Sizename"></resource>
+  <resource culture="en-us" name="Sizeid" value="Sizeid"></resource>
+  <resource culture="en-us" name="Remarks" value="Remarks"></resource>
+  <resource culture="en-us" name="Inventorys" value="Inventorys"></resource>
+  <resource culture="en-us" name="Matchs" value="Matchs"></resource>
+  <resource culture="en-us" name="Colors" value="Colors"></resource>
+  <resource culture="en-us" name="SModelImg" value="SModelImg"></resource>
+  <resource culture="en-us" name="MModelImg" value="MModelImg"></resource>
+  <resource culture="en-us" name="BModelImg" value="BModelImg"></resource>
+  <resource culture="en-us" name="SProductImg" value="SProductImg"></resource>
+  <resource culture="en-us" name="MProductImg" value="MProductImg"></resource>
+  <resource culture="en-us" name="BProductImg" value="BProductImg"></resource>
+  <resource culture="en-us" name="Keyword" value="Keyword"></resource>
+  <resource culture="en-us" name="Maintain" value="Maintain"></resource>
+  <resource culture="en-us" name="Description" value="Description"></resource>
+  <resource culture="en-us" name="SizeDescription" value="SizeDescription"></resource>
+  <resource culture="en-us" name="OnsaleDate" value="OnsaleDate"></resource>
+  <resource culture="en-us" name="ColorName" value="Color"></resource>
+  <resource culture="en-us" name="ColorId" value="Color Num"></resource>
+  <resource culture="en-us" name="ListedPrice" value="ListedPrice"></resource>
+  <resource culture="en-us" name="Price" value="Price"></resource>
+  <resource culture="en-us" name="Spu" value="Spu"></resource>
+  <resource culture="en-us" name="Sku" value="Sku"></resource>
+  <resource culture="en-us" name="Sex" value="Sex"></resource>
+  <resource culture="en-us" name="AuditStatus" value="AuditStatus"></resource>
+  <resource culture="en-us" name="Brand" value="Brand"></resource>
+  <resource culture="en-us" name="LargeClass" value="LargeClass"></resource>
+  <resource culture="en-us" name="SubClass" value="SubClass"></resource>
+  <resource culture="en-us" name="Style" value="Style"></resource>
+  <resource culture="en-us" name="Model" value="Model"></resource>
+  <resource culture="en-us" name="Material" value="Material"></resource>
+  <resource culture="en-us" name="Fashion" value="Fashion"></resource>
+  <resource culture="en-us" name="Trend" value="Trend"></resource>
+
+  <resource culture="en-us" name="OnlineProduct" value="OnlineProduct"></resource>
+  <resource culture="en-us" name="OnlineProductTAB" value="OnlineProductTAB"></resource>
+  <resource culture="en-us" name="ApplyOffLine" value="ApplyOffLine"></resource>
+  <resource culture="en-us" name="OneKeyApplyOffLine" value="OneKeyApplyOffLine"></resource>
+  <resource culture="en-us" name="OfflineProduct" value="OfflineProduct"></resource>
+  <resource culture="en-us" name="OfflineProductTAB" value="OfflineProductTAB"></resource>
+  <resource culture="en-us" name="ApplyOnLine" value="ApplyOnLine"></resource>
+  <resource culture="en-us" name="OneKeyApplyOnLine" value="OneKeyApplyOnLine"></resource>
+  <resource culture="en-us" name="PendingProduct" value="PendingProduct"></resource>
+  <resource culture="en-us" name="PendingProductTAB" value="PendingProductTAB"></resource>
+  <resource culture="en-us" name="CancelPendingProduct" value="CancelPendingProduct"></resource>
+  <resource culture="en-us" name="OneKeyCancelPendingProduct" value="OneKeyCancelPendingProduct"></resource>
+
+  <resource culture="en-us" name="ApplyOffLineProduct" value="ApplyOffLineProduct"></resource>
+  <resource culture="en-us" name="ApplyOffLineProductTAB" value="ApplyOffLineProductTAB"></resource>
+  <resource culture="en-us" name="OneKeyOffLineProduct" value="OneKeyOffLineProduct"></resource>
+  <resource culture="en-us" name="ApplyOnLineProduct" value="ApplyOnLineProduct"></resource>
+  <resource culture="en-us" name="ApplyOnLineProductTAB" value="ApplyOnLineProductTAB"></resource>
+  <resource culture="en-us" name="OneKeyOnLineProduct" value="OneKeyOnLineProduct"></resource>
+  <resource culture="en-us" name="AgreeApply" value="Agree"></resource>
+  <resource culture="en-us" name="RefuseApply" value="Refuse"></resource>
+
+  <resource culture="en-us" name="SystemSettingTAB" value="SystemSettingTAB"></resource>
+  <resource culture="en-us" name="PlatNotifications" value="PlatNotifications"></resource>
+  <resource culture="en-us" name="EmailSetting" value="EmailSetting"></resource>
+  <resource culture="en-us" name="SMSSetting" value="SMSSetting"></resource>
+  <resource culture="en-us" name="ApproveProcess" value="ApproveProcess"></resource>
+  <resource culture="en-us" name="ClientContentUpdate" value="ClientContentUpdate"></resource>
+  <resource culture="en-us" name="ClientSoftUpdate" value="ClientSoftUpdate"></resource>
+  <resource culture="en-us" name="AddSoftUpdatePackage" value="AddSoftUpdatePackage"></resource>
+  <resource culture="en-us" name="SoftUpdatePackageListTBA" value="SoftUpdatePackageListTBA"></resource>
+  <resource culture="en-us" name="OtherSet" value="OtherSet"></resource>
+  
+  <resource culture="en-us" name="NeedApprove" value="NeedApprove"></resource>
+  <resource culture="en-us" name="ApproverRole" value="ApproverRole"></resource>
+  <resource culture="en-us" name="ServerAddress" value="ServerAddress"></resource>
+  <resource culture="en-us" name="ServerPort" value="ServerPort"></resource>
+  <resource culture="en-us" name="EmailName" value="EmailName"></resource>
+  <resource culture="en-us" name="EmailPassword" value="EmailPassword"></resource>
+  <resource culture="en-us" name="SmsUrl" value="SmsUrl"></resource>
+  <resource culture="en-us" name="SmsUID" value="SmsUID"></resource>
+  <resource culture="en-us" name="SmsPassword" value="SmsPassword"></resource>
+  <resource culture="en-us" name="MessageSignatrue" value="MessageSignatrue"></resource>
+  <resource culture="en-us" name="IsAutoUpdate" value="IsAutoUpdate"></resource>
+  <resource culture="en-us" name="UpdateFrequency" value="UpdateFrequency"></resource>
+  <resource culture="en-us" name="UpdateTime" value="UpdateTime"></resource>
+  <resource culture="en-us" name="HourlyUpdate" value="HourlyUpdate"></resource>
+  <resource culture="en-us" name="AutoUpdate" value="HourlyUpdate"></resource>
+  <resource culture="en-us" name="SoftVersion" value="SoftVersion"></resource>
+  <resource culture="en-us" name="SoftPath" value="SoftPath"></resource>
+  
+  <!--商品分类-->
+  <resource culture="en-us" name="Category" value="Category"></resource>
+  <resource culture="en-us" name="Priority" value="Priority"></resource>
+  <resource culture="en-us" name="Image" value="Image"></resource>
+  <resource culture="en-us" name="WebShowImg" value="Display Image"></resource>
+
+
+  <!--页面提示-->
+  <resource culture="en-us" name="ConfirmDelete" value="ConfirmDelete？"></resource>
+  <resource culture="en-us" name="ConfirmApplyOffline" value="ConfirmApplyOffline？"></resource>
+  <resource culture="en-us" name="ConfirmApplyOnline" value="ConfirmApplyOnline？"></resource>
+  <resource culture="en-us" name="ConfirmCancel" value="ConfirmCancel？"></resource>
+  <resource culture="en-us" name="ConfirmChoiceData" value="ConfirmChoiceData!"></resource>
+  <resource culture="en-us" name="ConfirmAgreeOffline" value="ConfirmAgreeOffline？"></resource>
+  <resource culture="en-us" name="ConfirmAgreeOnline" value="ConfirmAgreeOnline？"></resource>
+  <resource culture="en-us" name="ConfirmRefuseOffline" value="ConfirmRefuseOffline？"></resource>
+  <resource culture="en-us" name="ConfirmRefuseOnline" value="ConfirmRefuseOnline？"></resource>
+  <resource culture="en-us" name="ConfirmGiveupNewProduct" value="ConfirmGiveupNewProduct？"></resource>
+  <resource culture="en-us" name="UseFailed" value="UseFailed!"></resource>
+  <resource culture="en-us" name="CannotDeleteGroup" value="The group my wife too much information, clear the restructuring of the subclass and then delete the group!"></resource>
+  <resource culture="en-us" name="UpdateSuccess" value="Update Success."></resource>
+  <resource culture="en-us" name="CreateSuccess" value="Create Success."></resource>
+  <resource culture="en-us" name="NotNULL" value="Not Null."></resource>
+  <resource culture="en-us" name="AlreadyHave" value="Already Have."></resource>
+
+  <!--设备 -->
+  <resource culture="en-us" name="DeviceName" value="Device Name"></resource>
+  <resource culture="en-us" name="DeviceType" value="Device Type"></resource>
+  <resource culture="en-us" name="DeviceAuditStatus" value="Audit Status"></resource>
+  <resource culture="en-us" name="DeviceGroup" value="Device Group"></resource>
+  <resource culture="en-us" name="DeviceStatus" value="Device Status"></resource>
+  <resource culture="en-us" name="DeviceDetail" value="Device Detail"></resource>
+  <resource culture="en-us" name="DeviceList" value="Device List"></resource>
+  <resource culture="en-us" name="AuditOnlineDevice" value="Audit Online Device"></resource>
+  <resource culture="en-us" name="AuditOfflineDevice" value="Audit Offline Device"></resource>
+  <resource culture="en-us" name="OneKeyOnlineDevices" value="Agree All"></resource>
+  <resource culture="en-us" name="OneKeyOfflineDevices" value="Agree All"></resource>
+  <resource culture="en-us" name="AddDeviceDetail" value="Add Device Detail"></resource>
+  <resource culture="en-us" name="Building" value="Building"></resource>
+  <resource culture="en-us" name="Floor" value="Floor"></resource>
+  <resource culture="en-us" name="DeviceAddress" value="Device Addr"></resource>
+  <resource culture="en-us" name="Room" value="Room"></resource>
+  <resource culture="en-us" name="DeviceIP" value="IP"></resource>
+  <resource culture="en-us" name="DeviceMac" value="Mac"></resource>
+  <resource culture="en-us" name="DeviceRelativeX" value="RelativeXX"></resource>
+  <resource culture="en-us" name="DeviceRelativeY" value="RelativeYY"></resource>
+  <resource culture="en-us" name="Latitude" value="Latitude"></resource>
+  <resource culture="en-us" name="Longtitude" value="Longtitude"></resource>
+  <resource culture="en-us" name="Location" value="Location"></resource>
+  <resource culture="en-us" name="LocationX" value="LocationX"></resource>
+  <resource culture="en-us" name="LocationY" value="LocationY"></resource>
+  <resource culture="en-us" name="CreateDevice" value="Create Device"></resource>
+  <resource culture="en-us" name="OfflineDevices" value="Offline Devices"></resource>
+  <resource culture="en-us" name="OnlineDevices" value="Online Devices"></resource>
+  <resource culture="en-us" name="AuditingDevices" value="Auditing Devices"></resource>
+  <resource culture="en-us" name="OnlineDevicesChart" value="Online Devices Chart"></resource>
+  <resource culture="en-us" name="OfflineDevicesChart" value="Offline Devices Chart"></resource>
+  <resource culture="en-us" name="AuditingDevicesChart" value="Auditing Devices Chart"></resource>
+  <resource culture="en-us" name="OneKeyCancel" value="Cancel All"></resource>
+  <resource culture="en-us" name="OneKeyOnline" value="Aggree All"></resource>
+  <resource culture="en-us" name="OneKeyOffline" value="Aggree All"></resource>
+  <resource culture="en-us" name="CancelAuditing" value="Cancel Auditing"></resource>
+  <resource culture="en-us" name="Target" value="Target"></resource>
+  <resource culture="en-us" name="DeviceImage" value="DeviceImage"></resource>
+  <!---设备类型-->
+  <resource culture="en-us" name="CreateDeviceType" value="Create Device Type"></resource>
+  <resource culture="en-us" name="EditDeviceType" value="Edit Device Type"></resource>
+  <resource culture="en-us" name="SelectDeviceType" value="Select Device Type"></resource>
+
+
+
+
+  <!--用户-->
+  <resource culture="en-us" name="CreateUser" value="Create User"></resource>
+  <resource culture="en-us" name="Head" value="Head"></resource>
+  <resource culture="en-us" name="UserName" value="UserName"></resource>
+  <resource culture="en-us" name="CompanyName" value="Company Name"></resource>
+  <resource culture="en-us" name="PhoneNumber" value="PhoneNumber"></resource>
+  <resource culture="en-us" name="Email" value="Email"></resource>
+  <resource culture="en-us" name="RoleName" value="Role"></resource>
+  <resource culture="en-us" name="ComfirmDeleteUser" value="Do you want delete the user?"></resource>
+  <resource culture="en-us" name="EditUser" value="Edit User"></resource>
+  <resource culture="en-us" name="ResetPassword" value="ResetPassword"></resource>
+  <resource culture="en-us" name="ResetPasswordSuccess" value="Reset Password Successed"></resource>
+  <resource culture="en-us" name="LockUser" value="LockUser"></resource>
+  <resource culture="en-us" name="UnLockUser" value="UnLockUser"></resource>
+  <resource culture="en-us" name="UserInfo" value="UserInfo"></resource>
+  <resource culture="en-us" name="BasicInfo" value="BasicInfo"></resource>
+  <resource culture="en-us" name="PasswordSetting" value="Password Setting"></resource>
+  <resource culture="en-us" name="RecentActivity" value="Recent Activity"></resource>
+
+  <!--登录-->
+  <resource culture="en-us" name="TroncellOfficalSite" value="Troncell Offical Site"></resource>
+  <resource culture="en-us" name="o2opage" value="O2O Page"></resource>
+  <resource culture="en-us" name="AfterService" value="After Service"></resource>
+  <resource culture="en-us" name="ManagerLogin" value="ManagerLogin"></resource>
+  <resource culture="en-us" name="Login" value="Login"></resource>
+  <resource culture="en-us" name="CanUserBeblowLoginMethod" value="Can Use Beblow Login Method"></resource>
+  <resource culture="en-us" name="ForgotPasswordQuestion" value="Forgot Password？"></resource>
+  <resource culture="en-us" name="GetBackPassword" value="Get Back Password"></resource>
+  <resource culture="en-us" name="SendEmail" value="SendEmail"></resource>
+  <resource culture="en-us" name="SendSms" value="SendSms"></resource>
+  <resource culture="en-us" name="Relogin" value="Relogin"></resource>
+  <resource culture="en-us" name="CompanyIntroduction" value="Company Introduction"></resource>
+  <resource culture="en-us" name="SocialMedia" value="Social Media"></resource>
+  <resource culture="en-us" name="Partnership" value="Partnership"></resource>
+  <resource culture="en-us" name="ContactUs" value="ContactUs"></resource>
+  <resource culture="en-us" name="CompanyAddress" value="wuxiguojiarunajianruna508"></resource>
+
+  <!--楼层-->
+  <resource culture="en-us" name="SelectBuilding" value="Select Building"></resource>
+  <resource culture="en-us" name="SelectFloor" value="Select Floor"></resource>
+  <resource culture="en-us" name="SelectRoom" value="Select Room"></resource>
+  
+
+  <!-- English (en-US) -->
+
+</resources>
