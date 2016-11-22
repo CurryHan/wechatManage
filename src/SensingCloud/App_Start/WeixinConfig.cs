@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using SensingCloud.Helpers;
-using Senparc.Weixin.MP.Containers;
 using System.Text;
 using System.Net;
 using System.Net.Security;

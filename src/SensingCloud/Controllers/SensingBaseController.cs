@@ -11,11 +11,6 @@ using Sensing.Data;
 using LogService;
 using Sensing.Entities.Users;
 using System.Data.Entity;
-using SensingCloud.Apis;
-using Top.Api.Request;
-using Top.Api;
-using Top.Api.Response;
-
 namespace SensingCloud.Controllers
 {
     public class SensingBaseController : Controller
@@ -156,36 +151,5 @@ namespace SensingCloud.Controllers
                 return _temp;
             return null;
         }
-
-        #region 商品API
-        public string GetOnSaleProducts(string sessionkey)
-        {
-            ITopClient client = new DefaultTopClient(server_Url, AppKey, Secret, "json");
-            ItemsOnsaleGetRequest req = new ItemsOnsaleGetRequest();
-            req.Fields = "num_iid";
-            ItemsOnsaleGetResponse rsp = client.Execute(req, sessionkey);
-            return rsp.Body;
-        }
-
-        public string GetSellerProductList(string num_ids, string sessionkey)
-        {
-            ITopClient client = new DefaultTopClient(server_Url, AppKey, Secret, "json");
-            ItemsSellerListGetRequest req = new ItemsSellerListGetRequest();
-            req.Fields = "num_iid,title,nick,approve_status,num,sku,price,pic_url,item_imgs,prop_imgs,cid,seller_cids";
-            req.NumIids = num_ids;
-            ItemsSellerListGetResponse rsp = client.Execute(req, sessionkey);
-            return rsp.Body;
-        }
-        #endregion
-        #region 店铺API
-        public string GetSellerCatsList(string nick,string sessionkey)
-        {
-            ITopClient client = new DefaultTopClient(server_Url, AppKey, Secret, "json");
-            SellercatsListGetRequest req = new SellercatsListGetRequest();
-            req.Nick = nick;
-            SellercatsListGetResponse rsp = client.Execute(req, sessionkey);
-            return rsp.Body;
-        }
-        #endregion
     }
 }

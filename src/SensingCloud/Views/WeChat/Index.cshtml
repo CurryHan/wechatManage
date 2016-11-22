@@ -10,6 +10,14 @@
     var index = 0;
     var sequence = 0;
 }
+@functions
+{
+    public string GetMediaName(Menu menu)
+    {
+        if(menu.Media==null) return "";
+        else return menu.Media.Title;
+    }
+}
 <style>
     th, td {
         max-width: 100px;
@@ -65,6 +73,9 @@
                                 @Html.DisplayNameFor(model => model.Name)
                             </th>
                             <th>
+                                素材名称
+                            </th>
+                            <th>
                                 @Resources.Action
                             </th>
                         </tr>
@@ -81,7 +92,10 @@
                                     @item.Name
                                 </td>
                                 <td>
-                                    <a href="/Activity/Edit/@item.Id" class="EditLinkA btn btn-primary btn-xs no-border">
+                                    @GetMediaName(item)
+                                </td>
+                                <td>
+                                    <a idval="@item.Id" class="EditLinkA btn btn-primary btn-xs no-border">
                                         @Resources.Edit
                                     </a>
                                     <div class="hidden-md hidden-lg">
@@ -92,7 +106,7 @@
 
                                             <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
                                                 <li>
-                                                    <a href="/Weixin/Edit/@item.Id" class="EditLinkA tooltip-success" data-rel="tooltip" title="Edit">
+                                                    <a idval="@item.Id" class="EditLinkA tooltip-success" data-rel="tooltip" title="Edit">
                                                         <span class="green">
                                                             <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
                                                         </span>
@@ -135,7 +149,46 @@
             $('.date-picker').datepicker({
                 autoclose: true,
                 todayHighlight: true
-            })
+            });
         });
+        
+        $("#list").on('click', '.EditLinkA', function () {
+            var id = $(this).attr("idval");
+            var $dialog_container = $("#dialog_container");
+            var url = "/WeChat/Edit?id=" + id;
+            $.get(url).success(function (data) {
+                $dialog_container.html(data);
+                $.validator.unobtrusive.parse("form");
+                $('#editDialog').modal('show');
+
+                $('#btn_confirm').click(function (e) {
+                    e.preventDefault();
+                    if (!$('#editForm').valid()) return false;
+                    var options = {
+                        url: '/WeChat/Edit',
+                        method: 'post',
+                        data: $('#editForm').serialize()
+                    };
+
+                    $.ajax(options)
+                        .success(function (data) {
+                            $('#editDialog').modal('hide');
+                            $(".modal-backdrop").remove();
+                            location.href = location.href;
+                        })
+                        .error(function (data) {
+                            $.msg("系统错误");
+                        });
+                });
+            })
+            .error(function (data) {
+                alert(data);
+            });
+            return false;
+        });
+
+        function doCloseDialog() {
+            $('#editDialog').modal('hide');
+        }
     </script>
 }

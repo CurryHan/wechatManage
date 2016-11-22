@@ -247,7 +247,7 @@ namespace Sensing.Data
             context.Menus.Add(new Menu() { Name = "优惠信息2" });
             context.Menus.Add(new Menu() { Name = "优惠信息3" });
 
-            context.Menus.Add(new Menu() { Name = "照片信息" });
+            context.Menus.Add(new Menu() { Name = "招聘信息" });
             context.Menus.Add(new Menu() { Name = "联系我们" });
             context.SaveChanges();
         }
