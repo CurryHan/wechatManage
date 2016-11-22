@@ -28,8 +28,6 @@ namespace Resources.Abstract
         /// <returns>Resource</returns>
         public object GetResource(string name, string culture)
         {
-            if (!"zh-cn,en-us".Contains(culture))
-                culture = "zh-cn";
             if (string.IsNullOrWhiteSpace(name))
                 throw new ArgumentException("Resource name cannot be null or empty.");
 

@@ -2,8 +2,8 @@
 using Microsoft.AspNet.SignalR;
 using Microsoft.Owin;
 using Owin;
+using SensingCloud.Hubs;
 using System.IO;
-using System;
 
 [assembly: OwinStartupAttribute(typeof(SensingCloud.Startup))]
 [assembly: log4net.Config.XmlConfigurator(ConfigFile = "bin/LogService.dll.config", Watch = true)]
@@ -16,18 +16,20 @@ namespace SensingCloud
         {
             logger.Debug("Startup is coming.");
             AutoConfiguration(app);
-            //app.Map("/EnableDetailedErrors", map =>
-            //{
-            //    var hubConfiguration = new HubConfiguration
-            //    {
-            //        EnableDetailedErrors = true
-            //    };
-            //    map.MapSignalR(hubConfiguration);
-            //});
+
+
             app.MapSignalR();
-#if DEBUG
-            GlobalHost.Configuration.DisconnectTimeout = TimeSpan.FromSeconds(6);
-#endif
+
+
+            app.Map("/EnableDetailedErrors", map =>
+            {
+                var hubConfiguration = new HubConfiguration
+                {
+                    EnableDetailedErrors = true
+                };
+                map.MapSignalR(hubConfiguration);
+            });
+
         }
     }
 }

@@ -62,7 +62,7 @@
     <Content Include="ResourceBuilder.exe" />
     <Content Include="Resources.dll" />
     <Content Include="Resources.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>

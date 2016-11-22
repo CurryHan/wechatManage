@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<ArrayOfHeatMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <HeatMap>
+    <Id>1</Id>
+    <Title>热力图1</Title>
+    <CameraIP>192.168.1.10</CameraIP>
+    <Backgroud>../Upload/DeviceImage/3.jpg</Backgroud>
+  </HeatMap>
+  <HeatMap>
+    <Id>2</Id>
+    <Title>热力图2</Title>
+    <CameraIP>192.168.1.11</CameraIP>
+    <Backgroud>../Upload/DeviceImage/20150819074205.png</Backgroud>
+  </HeatMap>
+</ArrayOfHeatMap>

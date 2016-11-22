@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <Chart Title="进门出门过线人数" XLabel="小时" YLabel="人" TimeUnit="Hour" ChartType="Line">
+    <CounterName LegendTitle="进门">Enter</CounterName>
+    <CounterName LegendTitle="出门">Exit</CounterName>
+  </Chart>
+  <Chart Title="区域A逗留人数" XLabel="小时" YLabel="人" TimeUnit="Hour" ChartType="Bar">
+    <CounterName LegendTitle="A区域">A</CounterName>
+  </Chart>
+  <Chart Title="区域B逗留人数" XLabel="小时" YLabel="人" TimeUnit="Hour" ChartType="Line">
+    <CounterName LegendTitle="B区域">B</CounterName>
+  </Chart>
+  <Chart Title="区域C逗留人数" XLabel="小时" YLabel="人" TimeUnit="Hour" ChartType="Line">
+    <CounterName LegendTitle="C区域">C</CounterName>
+  </Chart>
+</root>

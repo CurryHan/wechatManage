@@ -12,40 +12,26 @@ namespace SensingCloud.Services
     {
         bool NeedApprove(string name);
         PlatformNotification GetPlatformNotification();
-
-        void Add(PlatformNotification notice);
-
-        void Update(PlatformNotification notice);
     }
     public class SystemSettingService : ISystemSettingService
     {
-        public SystemSettingService(IPlatformNotificationRepository platformNotification)
+        public SystemSettingService(ISystemSettingRepository systemSettingRepository, IPlatformNotificationRepository platformNotification)
         {
-            //this._systemSettingRepository = systemSettingRepository;
+            this._systemSettingRepository = systemSettingRepository;
             this._platformNotificationRepository = platformNotification;
         }
 
 
-        //private ISystemSettingRepository _systemSettingRepository;
+        private ISystemSettingRepository _systemSettingRepository;
         private IPlatformNotificationRepository _platformNotificationRepository;
 
         public bool NeedApprove(string name)
         {
-            return true;
+            return _systemSettingRepository.NeedApprove(name);
         }
         public PlatformNotification GetPlatformNotification()
         {
             return _platformNotificationRepository.GetPlatformNotification();
-        }
-
-        public void Add(PlatformNotification notice)
-        {
-            _platformNotificationRepository.Add(notice);
-        }
-
-        public void Update(PlatformNotification notice)
-        {
-            _platformNotificationRepository.Update(notice);
         }
     }
 }

@@ -5,8 +5,7 @@ namespace Sensing.Data.Infrastructure
 {
     public interface IUnitOfWork
     {
-        SensingSiteDbContext DataContext { get;}
-
+        SensingSiteDbContext DataContext { get; }
         void Commit();
 
         void CommitAsync();

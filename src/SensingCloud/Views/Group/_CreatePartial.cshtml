@@ -40,7 +40,7 @@
         </div>
 
         <div class="form-group">
-            <label for="parentsGroupselect" class="control-label col-md-2">@Resources.ChoiceGroup</label>
+            <label for="parentsGroupselect" class="control-label col-md-2">父分组</label>
             <div class="col-md-4">
                 <select name="parentsGroupselect" class="form-control" id="parentsGroupselect">
                     @foreach (var item in ViewBag.GroupList)
@@ -54,6 +54,16 @@
                 @Html.EditorFor(model => model.QRCodeUrl, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.QRCodeUrl, "", new { @class = "text-danger" })
             </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model=>model.StoreId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.StoreId, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.ValidationMessageFor(model => model.StoreId, "", new { @class = "text-danger" })*@
+            </div>
+            <span class="help-inline col-xs-12 col-md-6">
+                <span class="middle">商户进入中心门店管理页面可查看(前提是商家已上传门店信息)，新建品牌商时必填</span>
+            </span>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.Introduction, htmlAttributes: new { @class = "control-label col-md-2" })

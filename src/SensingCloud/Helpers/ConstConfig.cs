@@ -38,52 +38,30 @@ namespace SensingCloud.Helpers
         private const string Upload_Base = "/upload";
 
         public const string ComponentAppID = "wxd8b7c1de18511fff";
-        /// <summary>
-        /// {0} groupId
-        /// {1} activityId
-        /// {2} activityGameId
-        /// </summary>
-        private const string Customer_ActivityGame_Path = Upload_Base + "/Customer/{0}/Activities/{1}/ActivityGames/{2}/";
+        
 
-        public static string GetCustomerActivityGamePath(int groupId, int activityId,int activityGameId)
-        {
-            return string.Format(Customer_ActivityGame_Path, groupId, activityId,activityGameId);
-        }
-
-        /// <summary>
-        /// {0} groupId
-        /// {1} activityId
-        /// {2} activityGameId
-        /// </summary>
-        private const string Customer_ActivityGame_Path_UserData = Upload_Base + "/Customer/{0}/Activities/{1}/ActivityGames/{2}/UserData/";
-
-        /// <summary>
-        /// {0} groupId
-        /// {1} activityId
-        /// {2} activityGameId
-        /// </summary>
-        private const string Customer_ActivityGame_Path_Data = Upload_Base + "/Customer/{0}/Activities/{1}/ActivityGames/{2}/Data/";
-
-        public static string GetCustomerActivityGameUserDataPath(int groupId, int activityId, int activityGameId)
-        {
-            return string.Format(Customer_ActivityGame_Path_UserData, groupId, activityId, activityGameId);
-        }
-
-        public static string GetCustomerActivityGameDataPath(int groupId, int activityId, int activityGameId)
-        {
-            return string.Format(Customer_ActivityGame_Path_Data, groupId, activityId, activityGameId);
-        }
-
+       
+       
         /// <summary>
         /// {0} groupid
-        /// {1} Activityid
         /// </summary>
-        private const string Customer_Activity_Path = Upload_Base + "/Customer/{0}/Activity/{1}/Data/";
+        public const string Customer_Group_Path = "/upload/Customer/{0}/";
+        /// <summary>
+        /// {0} groupid
+        /// {1} ProductId
+        /// </summary>
+        public const string Customer_Product_Path = "/upload/Customer/{0}/Products/{1}/";
+        /// <summary>
+        /// {0} groupid
+        /// {1} CategoryId
+        /// </summary>
+        public const string Customer_Category_ImagePath = "/upload/Customer/{0}/Categorys/";
+        /// <summary>
+        /// {0} groupid
+        /// {1} CategoryId
+        /// </summary>
+        public const string Customer_Device_Path = "/upload/Customer/{0}/Device/";
 
-        public static string GetCustomerActivityDataPath(int groupId, int activityId)
-        {
-            return string.Format(Customer_Activity_Path, groupId, activityId);
-        }
 
         /// <summary>
         /// {0} groupid
@@ -94,27 +72,6 @@ namespace SensingCloud.Helpers
         {
             return string.Format(Customer_Ads_Path, groupId);
         }
-
-        /// <summary>
-        /// {0} groupid
-        /// {1} Activityid
-        /// {2} Awardid
-        /// </summary>
-        private const string Customer_Activity_Award_Path = Upload_Base + "/Customer/{0}/Activity/{1}/Award/{2}/";
-
-
-        public static string GetCustomerActivityAwardPath(int groupId,int activityId,int awardId)
-        {
-            return string.Format(Customer_Ads_Path, groupId,activityId,awardId);
-        }
-
-        /// <summary>
-        /// {0} groupid
-        /// {1} Activityid
-        /// {2} activitygameid
-        /// </summary>
-        private const string Customer_Activity_Game_Path = Upload_Base + "/Customer/{0}/Activity/{1}/Game/{2}/";
-        
 
 
         /// <summary>

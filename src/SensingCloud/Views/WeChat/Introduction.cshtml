@@ -1,0 +1,38 @@
+﻿@model  SensingCloud.Models.IntroductionViewModel
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+ <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>酒店</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- Theme Style -->
+    <!-- FOR IE9 below -->
+    <!--[if lt IE 9]>
+
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="page page1">
+        <div class="nav">
+            <a class="jdgk" href="@Model.Url1"><img src="~/Content/image/gaik.png" />酒店概况</a>
+            <a class="sskf" href="@Model.Url2"><img src="~/Content/image/taofang.png" />舒适客房</a>
+            <a class="msty" href="@Model.Url3"><img src="~/Content/image/meishi.png" />美食体验</a>
+            <a class="hyyh" href="@Model.Url4"><img src="~/Content/image/huiyi.png" />会议宴会</a>
+            <a class="xxyl" href="@Model.Url5"><img src="~/Content/image/yule.png" />休闲娱乐</a>
+        </div>
+        <img class="page1BG" src="~/Content/image/bg1.jpg" />
+    </div>
+</body>
+</html>

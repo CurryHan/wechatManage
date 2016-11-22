@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -16,11 +17,6 @@ namespace Sensing.Data.Infrastructure
             dbset = DataContext.Set<T>();
         }
 
-        public IDbSet<T> DbSet
-        {
-            get { return dbset; }
-        }
-
         protected IDatabaseFactory DatabaseFactory
         {
             get;
@@ -33,7 +29,8 @@ namespace Sensing.Data.Infrastructure
         }
         public virtual T Add(T entity)
         {
-            return dbset.Add(entity);
+            dbset.Add(entity);
+            return entity;
         }
         public virtual void Update(T entity)
         {
@@ -41,15 +38,6 @@ namespace Sensing.Data.Infrastructure
             dataContext.Entry(entity).State = EntityState.Modified;
 
         }
-        public virtual void Update(T entity, params Expression<Func<T, object>>[] properties)
-        {
-            dbset.Attach(entity);
-            foreach (var property in properties)
-            {
-                dataContext.Entry(entity).Property(property).IsModified = true;
-            }
-        }
-
         public virtual void Delete(T entity)
         {
             dbset.Remove(entity);
@@ -73,11 +61,10 @@ namespace Sensing.Data.Infrastructure
             return dbset.ToList();
         }
 
-        public virtual IEnumerable<T> GetMany(Expression<Func<T, bool>> where = null)
+        public virtual IEnumerable<T> GetMany(Expression<Func<T, bool>> where)
         {
             return dbset.Where(where).ToList();
         }
-
 
         /// <summary>
         /// Return a paged list of entities
@@ -87,19 +74,15 @@ namespace Sensing.Data.Infrastructure
         /// <param name="where">Where clause to apply</param>
         /// <param name="order">Order by to apply</param>
         /// <returns></returns>
-        //public virtual IPagedList<T> GetPage<TOrder>(Page page, Expression<Func<T, bool>> where, Expression<Func<T, TOrder>> order)
-        //{
-        //    var results = dbset.OrderBy(order).Where(where).GetPage(page).ToList();
-        //    var total = dbset.Count(where);
-        //    return new StaticPagedList<T>(results, page.PageNumber, page.PageSize, total);
-        //}
+        public virtual IPagedList<T> GetPage<TOrder>(Page page, Expression<Func<T, bool>> where, Expression<Func<T, TOrder>> order)
+        {
+            var results = dbset.OrderBy(order).Where(where).GetPage(page).ToList();
+            var total = dbset.Count(where);
+            return new StaticPagedList<T>(results, page.PageNumber, page.PageSize, total);
+        }
 
         public T Get(Expression<Func<T, bool>> where)
         {
-            if(where == null)
-            {
-                return dbset.FirstOrDefault();
-            }
             return dbset.Where(where).FirstOrDefault<T>();
         }
     }

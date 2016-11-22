@@ -18,7 +18,7 @@ namespace DI.Autofac.Modules
 {
     public class MvcSiteMapProviderModule: global::Autofac.Module
     {
-        //bool visibilityAffectsDescendants = false;
+        bool visibilityAffectsDescendants = false;
         protected override void Load(ContainerBuilder builder)
         {
             bool enableLocalization = true;

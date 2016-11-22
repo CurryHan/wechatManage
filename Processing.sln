@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E9DA77A7-8DDD-4E04-821C-21C8CB49DF9F}"
 EndProject
@@ -23,16 +23,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{36580B52-4
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sensing.Data.Test", "test\Sensing.Data.Test\Sensing.Data.Test.csproj", "{2E3DF5C2-8A38-4A03-86D7-8D463C917E47}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensingCloud.Test", "test\SensingCloud.Test\SensingCloud.Test.csproj", "{7ADA513A-64F0-4087-A047-AD2F162B5A15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceBuilder", "src\ResourceBuilder\ResourceBuilder.csproj", "{ED69B8C6-88C2-4A77-8233-BC0153DCF609}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0F487170-CD8B-4858-9E5F-67A287EF938C}"
 	ProjectSection(SolutionItems) = preProject
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
 		README.md = README.md
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sensing.Thirtparty.Exstension", "src\Sensing.Thirtparty.Exstension\Sensing.Thirtparty.Exstension.csproj", "{A4209ED8-AE0C-439E-B70C-37FE5A0E3020}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sensing.WeChat", "src\Sensing.WeChat\Sensing.WeChat.csproj", "{14609191-35E8-41A6-8DBE-11FC7ABFF8D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,14 +72,14 @@ Global
 		{2E3DF5C2-8A38-4A03-86D7-8D463C917E47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E3DF5C2-8A38-4A03-86D7-8D463C917E47}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E3DF5C2-8A38-4A03-86D7-8D463C917E47}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A4209ED8-AE0C-439E-B70C-37FE5A0E3020}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A4209ED8-AE0C-439E-B70C-37FE5A0E3020}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A4209ED8-AE0C-439E-B70C-37FE5A0E3020}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A4209ED8-AE0C-439E-B70C-37FE5A0E3020}.Release|Any CPU.Build.0 = Release|Any CPU
-		{14609191-35E8-41A6-8DBE-11FC7ABFF8D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{14609191-35E8-41A6-8DBE-11FC7ABFF8D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{14609191-35E8-41A6-8DBE-11FC7ABFF8D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{14609191-35E8-41A6-8DBE-11FC7ABFF8D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7ADA513A-64F0-4087-A047-AD2F162B5A15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ADA513A-64F0-4087-A047-AD2F162B5A15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ADA513A-64F0-4087-A047-AD2F162B5A15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ADA513A-64F0-4087-A047-AD2F162B5A15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED69B8C6-88C2-4A77-8233-BC0153DCF609}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED69B8C6-88C2-4A77-8233-BC0153DCF609}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED69B8C6-88C2-4A77-8233-BC0153DCF609}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED69B8C6-88C2-4A77-8233-BC0153DCF609}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -93,7 +93,7 @@ Global
 		{E21C90DF-F6DE-4A2C-8103-443EC18A738A} = {E9DA77A7-8DDD-4E04-821C-21C8CB49DF9F}
 		{B010ECFE-7140-4DBD-ABBB-A30A05DFC259} = {E9DA77A7-8DDD-4E04-821C-21C8CB49DF9F}
 		{2E3DF5C2-8A38-4A03-86D7-8D463C917E47} = {36580B52-42E2-4362-AB23-AC095F8B7072}
-		{A4209ED8-AE0C-439E-B70C-37FE5A0E3020} = {E9DA77A7-8DDD-4E04-821C-21C8CB49DF9F}
-		{14609191-35E8-41A6-8DBE-11FC7ABFF8D3} = {E9DA77A7-8DDD-4E04-821C-21C8CB49DF9F}
+		{7ADA513A-64F0-4087-A047-AD2F162B5A15} = {36580B52-42E2-4362-AB23-AC095F8B7072}
+		{ED69B8C6-88C2-4A77-8233-BC0153DCF609} = {E9DA77A7-8DDD-4E04-821C-21C8CB49DF9F}
 	EndGlobalSection
 EndGlobal

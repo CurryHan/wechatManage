@@ -1,0 +1,5 @@
+﻿@using SensingCloud.Models
+@model DashboardViewModel
+@{Html.RenderPartial("_Charts", Model.ChartViewModels); }
+
+@{ Html.RenderPartial("_HeatMaps", Model.HeatMapViewModels);}

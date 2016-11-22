@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SensingCloud.Services</RootNamespace>
     <AssemblyName>SensingCloud.Services</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,18 +46,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Senparc.Weixin, Version=4.5.20.25374, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Senparc.Weixin.4.5.20\lib\net45\Senparc.Weixin.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Senparc.Weixin.MP, Version=13.8.4.26917, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Senparc.Weixin.MP.13.8.4\lib\net45\Senparc.Weixin.MP.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Senparc.Weixin.Open, Version=1.6.5.36610, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Senparc.Weixin.Open.1.6.5\lib\net45\Senparc.Weixin.Open.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -64,6 +53,7 @@
       <HintPath>..\..\packages\Ix-Async.1.2.3\lib\net45\System.Interactive.Async.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -73,21 +63,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GroupService.cs" />
-    <Compile Include="IService.cs" />
+    <Compile Include="MenuService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SoftwareUpdateService.cs" />
     <Compile Include="SystemSettingService.cs" />
     <Compile Include="UserService.cs" />
-    <Compile Include="Utils\Extensions.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LogService\LogService.csproj">
-      <Project>{e21c90df-f6de-4a2c-8103-443ec18a738a}</Project>
-      <Name>LogService</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Resources\Resources.csproj">
-      <Project>{b010ecfe-7140-4dbd-abbb-a30a05dfc259}</Project>
-      <Name>Resources</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Sensing.Data\Sensing.Data.csproj">
       <Project>{9cdf48ae-09c5-43b2-a5b1-7ce472f1081e}</Project>
       <Name>Sensing.Data</Name>
@@ -96,17 +78,11 @@
       <Project>{e8497f93-6e57-432f-b056-9f6b6dcd6c84}</Project>
       <Name>Sensing.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Sensing.WeChat\Sensing.WeChat.csproj">
-      <Project>{14609191-35e8-41a6-8dbe-11fc7abff8d3}</Project>
-      <Name>Sensing.WeChat</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

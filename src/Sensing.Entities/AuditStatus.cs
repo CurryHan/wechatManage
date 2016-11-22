@@ -12,24 +12,25 @@ namespace Sensing.Entities
     public enum AuditStatus
     {
         //当前什么状态都不是,如新建一个设备后就是None,为默认值.
-        None,
+        [Display(Name ="初始状态")]
+        None=0,
         //当前设备没有入组,处于
         [Display(Name = "下线")]
-        Offline,
+        Offline=1,
         //上线审核中...
         [Display(Name = "上线审核中")]
-        OnlineAuditing,
+        OnlineAuditing=2,
         //审核通过,在线
         [Display(Name = "上线")]
-        Online,
+        Online=3,
         //上线审核被拒绝.
         [Display(Name = "上线审核被拒绝")]
-        OnlineAuditRejected,
+        OnlineAuditRejected=4,
         //下线审核中...
         [Display(Name = "下线审核中")]
-        OfflineAuiting,
+        OfflineAuiting=5,
         //下线审核被拒绝.
         [Display(Name = "下线审核被拒绝")]
-        OfflineAuditRejected
+        OfflineAuditRejected=6
     }
 }

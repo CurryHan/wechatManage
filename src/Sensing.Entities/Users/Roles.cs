@@ -8,13 +8,23 @@ namespace Sensing.Entities.Users
 {
     public class RoleString
     {
-        /// <summary>
-        /// this role is for platform administrator.
-        /// </summary>
-        //public const string PlatformAdmin = "PlatformAdmin";
-
         //Administartor for managing basic data in cloud management console.
-        public const string Admin = "Admin";
+        public const string Admin = "Administrator";
+
+        //Resource editor.
+        public const string Editor = "Editor";
+
+        //Auditor for managing online.
+        public const string Auditor = "Auditor";
+
+        //Manager for viewing data reports.
+        public const string Manager = "Manager";
+
+        //Member for CRM System.
+        public const string Member = "Member";
+
+        //
+        public const string User = "User";
     }
 
     public class RoleSet

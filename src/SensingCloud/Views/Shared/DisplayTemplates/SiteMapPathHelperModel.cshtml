@@ -3,9 +3,6 @@
 @using System.Linq
 @using MvcSiteMapProvider.Web.Html.Models
 
-@{
-    string url = "";
-}
 <ul class="breadcrumb">
         @foreach (var node in Model)
         {
@@ -26,9 +23,8 @@
             }
             else
             {
-                url = "/" + node.Controller + "/" + node.Action;
                 <li>
-                    <a href="@url">@node.Title</a>
+                    <a href="@node.Url">@node.Title</a>
                 </li>
             }
         }

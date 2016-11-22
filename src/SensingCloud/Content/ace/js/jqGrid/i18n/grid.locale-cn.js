@@ -1,3 +1,4 @@
+;(function($){
 /**
  * jqGrid Chinese Translation
  * 咖啡兔 yanhonglei@gmail.com
@@ -6,46 +7,13 @@
  * http://www.opensource.org/licenses/mit-license.php
  * http://www.gnu.org/licenses/gpl.html
 **/
-/*global jQuery, define */
-(function( factory ) {
-	"use strict";
-	if ( typeof define === "function" && define.amd ) {
-		// AMD. Register as an anonymous module.
-		define([
-			"jquery",
-			"../grid.base"
-		], factory );
-	} else {
-		// Browser globals
-		factory( jQuery );
-	}
-}(function( $ ) {
-
 $.jgrid = $.jgrid || {};
-if(!$.jgrid.hasOwnProperty("regional")) {
-	$.jgrid.regional = [];
-}
-$.jgrid.regional["cn"] = {
+$.extend($.jgrid,{
     defaults : {
         recordtext: "{0} - {1}\u3000共 {2} 条", // 共字前是全角空格
         emptyrecords: "无数据显示",
         loadtext: "读取中...",
-		savetext: "Saving...",
-        pgtext : " {0} 共 {1} 页",
-		pgfirst : "First Page",
-		pglast : "Last Page",
-		pgnext : "Next Page",
-		pgprev : "Previous Page",
-		pgrecs : "Records per Page",
-		showhide: "Toggle Expand Collapse Grid",
-		// mobile
-		pagerCaption : "Grid::Page Settings",
-		pageText : "Page:",
-		recordPage : "Records per Page",
-		nomorerecs : "No more records...",
-		scrollPullup: "Pull up to load more...",
-		scrollPulldown : "Pull down to refresh...",
-		scrollRefresh : "Release to refresh..."
+        pgtext : " {0} 共 {1} 页"
     },
     search : {
         caption: "搜索...",
@@ -105,12 +73,7 @@ $.jgrid.regional["cn"] = {
         alertcap: "注意",
         alerttext: "请选择记录",
         viewtext: "",
-        viewtitle: "查看所选记录",
-		savetext: "",
-		savetitle: "Save row",
-		canceltext: "",
-		canceltitle : "Cancel row editing",
-		selectcaption : "Actions..."
+        viewtitle: "查看所选记录"
     },
     col : {
         caption: "选择列",
@@ -194,8 +157,7 @@ $.jgrid.regional["cn"] = {
                 //    F - A full textual representation of a month
                 YearMonth: "F, Y" // in jQuery UI Datepicker: "MMMM, yyyy"
             },
-            reformatAfterEdit : false,
-			userLocalTime : false
+            reformatAfterEdit : false
         },
         baseLinkUrl: '',
         showAction: '',
@@ -203,5 +165,5 @@ $.jgrid.regional["cn"] = {
         checkbox : {disabled:true},
         idName : 'id'
     }
-};
-}));
+});
+})(jQuery);

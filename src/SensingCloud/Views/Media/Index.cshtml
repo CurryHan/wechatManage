@@ -1,0 +1,123 @@
+﻿@using Microsoft.AspNet.Identity
+@using SensingSite.Data
+@using SensingCloud.Helpers
+@using Sensing.Entities.Users;
+@using Webdiyer.WebControls.Mvc;
+@using Sensing.Entities;
+@model PagedList<Media>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var index = 0;
+    var sequence = 0;
+}
+<style>
+    th, td {
+        max-width: 100px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    #sample-table-1 {
+        margin-top: 45px;
+    }
+</style>
+<!-- PAGE CONTENT BEGINS -->
+<div id="list">
+    <div class="page-header">
+        <h1>@ViewBag.Title</h1>
+    </div>
+    <section class="menu">
+        <div class="row searchMenu">
+            <div class="col-xs-8">
+                <form class="form-inline" method="post">
+                    <div class="from-group">
+                        <div class="input-group">
+                            <input name="qstr" type="text" class="form-control search-query" placeholder="名称,组名" value="@ViewBag.qstr">
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-primary btn-sm">
+                                    检索
+                                    <i class="ace-icon fa fa-search icon-on-right bigger-110"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="col-xs-4">
+                <a id="addNewBtn" class="btn btn-sm btn-primary no-border" style="float:right">
+                    <i class="fa fa-plus"></i>
+                    获取微信素材列表
+                </a>
+            </div>
+        </div><!-- /.row -->
+    </section>
+    <section class="user-table">
+        <div class="row">
+            <div class="col-xs-12" id="table">
+                <table id="simple-table" class="table table-bordered table-striped table-hover table-condensed text-center">
+                    <thead>
+                        <tr>
+                            <th class="hidden-xs">
+                                序号
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Title)
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            index++;
+                            sequence = (ViewBag.pageIndex - 1) * ViewBag.pageSize + index;
+
+                            <tr id="@item.Id">
+                                <td class="hidden-xs">@sequence</td>
+                                <td>
+                                    @item.Title
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div class="row row-pager">
+                    <div class="col-md-12">
+                        @Html.Pager(Model, new PagerOptions { ActionName = "Index", PrevPageText = "上页", NextPageText = "下页", FirstPageText = "首页", LastPageText = "尾页", PageIndexParameterName = "pageIndex", ContainerTagName = "ul", CssClass = "pagination", CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>", DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>", PagerItemTemplate = "<li>{0}</li>" })
+                    </div>
+                </div>
+            </div><!-- /.span -->
+        </div><!-- /.row -->
+    </section>
+</div>
+<div id="dialog_container"></div>
+
+@section scripts{
+    <script src="~/Scripts/jquery.form.js"></script>
+    <script src="~/Scripts/moment-with-locales.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+    <script src="~/Scripts/jquery.pictureSelector.js"></script>
+    <script src="~/Content/ace/js/date-time/bootstrap-datepicker.min.js"></script>
+    <script src="~/Scripts/layer/layer.js"></script>
+    <script src="~/Scripts/jquery.extend.js"></script>
+    <script src="~/Content/ace/js/bootstrap-multiselect.min.js"></script>
+    <script>
+        $(function () {
+            $('.date-picker').datepicker({
+                autoclose: true,
+                todayHighlight: true
+            })
+
+
+            $("#list").on('click', '#addNewBtn', function () {
+                var url = "/Media/SyscMedias";
+                $.ajax(url).success(function (data) {
+                    location.href = location.href;
+                });
+            });
+        });
+
+
+
+    </script>
+}

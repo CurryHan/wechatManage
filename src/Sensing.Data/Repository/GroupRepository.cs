@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
 using System.Globalization;
+using Sensing.Entities.Versions;
 using Sensing.Entities;
 using Sensing.Data.Infrastructure;
 using System.Data.Entity;
@@ -32,16 +33,7 @@ namespace Sensing.Data.Repository
             return details;
         }
 
-        //public override Group GetById(string id)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public Group GetById(int id)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
+       
         public Group GetInclude(Group group)
         {
             return dbset.Where(g => g.Deleted == false && g.Id == group.Id).Include(g => g.Children).Include(g => g.ParentGroup).FirstOrDefault();

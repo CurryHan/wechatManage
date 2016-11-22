@@ -9,7 +9,6 @@ namespace SensingCloud
     {
         public static void Register(HttpConfiguration config)
         {
-            //不在使用webapi
             // Web API configuration and services
 
             // Web API routes

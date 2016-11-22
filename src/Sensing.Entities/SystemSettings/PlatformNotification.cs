@@ -42,25 +42,25 @@ namespace Sensing.Entities.SystemSettings
         /// <summary>
         /// 短信服务商url
         /// </summary>
-     
+        [Required]
         [Display(Name = "SmsUrl", ResourceType = typeof(Resources.Resources))]
         public string SmsUrl { get; set; }
         /// <summary>
         /// 短信发送用户名
         /// </summary>
-      
+        [Required]
         [Display(Name = "SmsUID", ResourceType = typeof(Resources.Resources))]
         public string SmsUID { get; set; }
         /// <summary>
         /// 短信发送用户密码
         /// </summary>
-       
+        [Required]
         [Display(Name = "SmsPassword", ResourceType = typeof(Resources.Resources))]
         public string SmsPassword { get; set; }
         /// <summary>
         /// 短信的签名
         /// </summary>
-       
+        [Required]
         [Display(Name = "MessageSignatrue", ResourceType = typeof(Resources.Resources))]
         public string MessageSignatrue { get; set; }
         /// <summary>

@@ -1,8 +1,4 @@
-﻿using Sensing.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using rs = Resources.Resource;
 
@@ -12,13 +8,26 @@ namespace Sensing.Entities
     public enum GroupEnum
     {
         [Display(Name = "超级组")]
-        SuperLevel = 1
+        SuperLevel = 1,
+        [Display(Name = "集成商")]
+        SI = 2,
+        [Display(Name = "品牌商")]
+        Brand = 4,
+        [Display(Name = "门店")]
+        Store = 8
     }
 
     public class GroupTypeString
     {
         public const string SuperLevel = "SuperLevel";
 
+        //Administartor for managing basic data in cloud management console.
+        public const string SI = "SI";
+
+        //Resource editor.
+        public const string Brand = "Brand";
+
+        public const string Store = "Store";
     }
 
     /// <summary>
@@ -30,6 +39,10 @@ namespace Sensing.Entities
         [Display(Name = nameof(rs.Name), ResourceType = typeof(rs))]
         public string DisplayName { get; set; }
 
+        /// <summary>
+        /// this key is used for api authorization.
+        /// </summary>
+        public string SubscriptionKey { get; set; }
 
         /// <summary>
         /// 组的类型
@@ -38,20 +51,18 @@ namespace Sensing.Entities
         public GroupEnum GroupType { get; set; }
 
         public int? ParentGroupId { get; set; }
-        [Display(Name = nameof(rs.ParentGroup), ResourceType = typeof(rs))]
         public virtual Group ParentGroup { get; set; }
 
         /// <summary>
         /// all the chidren after the current group.
         /// </summary>
-        [Display(Name = nameof(rs.Children), ResourceType = typeof(rs))]
-        public virtual List<Group> Children { get; set;}
+        public virtual List<Group> Children { get; set; }
 
         /// <summary>
         /// 电商平台
         /// </summary>
         [Display(Name = nameof(rs.EcommercePlatform), ResourceType = typeof(rs))]
-        public string EcommercePlatform{get;set;}
+        public string EcommercePlatform { get; set; }
 
         /// <summary>
         /// 公司logo
@@ -63,7 +74,7 @@ namespace Sensing.Entities
         /// 网址
         /// </summary>
         [Display(Name = nameof(rs.AddressUrl), ResourceType = typeof(rs))]
-        public string AddressUrl {get;set; }
+        public string AddressUrl { get; set; }
 
         /// <summary>
         /// 介绍
@@ -80,11 +91,8 @@ namespace Sensing.Entities
         /// <summary>
         /// 二维码
         /// </summary>
-        [Display(Name = nameof(rs.Qrcode_url), ResourceType = typeof(rs))]
+        [Display(Name = nameof(rs.QRCodeUrl), ResourceType = typeof(rs))]
         public string QRCodeUrl { get; set; }
-
-
-        //todo:hanqi, need to refactory. add a resource table.
 
         /// <summary>
         /// 图片1
@@ -106,5 +114,22 @@ namespace Sensing.Entities
         /// </summary>
         [Display(Name = nameof(rs.Image04Url), ResourceType = typeof(rs))]
         public string Image04Url { get; set; }
+
+        //todo:卖家信息
+
+        //SessionKey,SellerId,StoreId
+        public string SessionKey { get; set; }
+
+        public string SellerId { get; set; }
+
+        public string SellerNickName { get; set; }
+
+        public int expires_in { get; set; }
+        [Display(Name = nameof(rs.StoreId), ResourceType = typeof(rs))]
+        public string StoreId { get; set; }
+        public string Location { get; set; }
+
+        public string access_token { get; set; }
+
     }
 }

@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace SensingSite.Data.Repository
 {
-    public interface IUserActivityRepository : IRepository<UserLog>
+    public interface IUserActivityRepository : IRepository<UserActivity>
     {
 
     }
-    public class UserActivityRepository : RepositoryBase<UserLog>, IUserActivityRepository
+    public class UserActivityRepository : RepositoryBase<UserActivity>, IUserActivityRepository
     {
         public UserActivityRepository(IDatabaseFactory databaseFactory)
             : base(databaseFactory)

@@ -9,11 +9,10 @@
     var UserManager = new Microsoft.AspNet.Identity.UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new SensingSiteDbContext()));
     var currentUser = UserManager.FindByName(userName);
     var rolsString = UserManager.GetRoles(currentUser.Id)[0];
-
     <li class="green">
         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
             <i class="ace-icon fa fa-users icon-animated-vertical"></i>
-            <span class="h5">@(currentUser.Group.GroupType.ToName()+"("+ rolsString + ")")</span>
+            <span class="h5">@(currentUser.Group.GroupType.ToName() + "(" + rolsString + ")")</span>
         </a>
 
         <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
@@ -23,17 +22,9 @@
             </li>
         </ul>
     </li>
-
     <li class="light-blue">
         <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-            @if(!string.IsNullOrEmpty(currentUser.AvatarUrl))
-            {
-                <img src="@currentUser.AvatarUrl" class="nav-user-photo" />
-            }
-            else
-            {
-                <img src="~/content/ace/avatars/avatar2.png" class="nav-user-photo" />
-            }
+            <img src="@currentUser.AvatarUrl" class="nav-user-photo" />
             <span class="user-info">
                 <small>Welcome,</small>
                 @(User.Identity.Name)!

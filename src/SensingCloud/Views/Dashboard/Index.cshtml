@@ -1,0 +1,184 @@
+﻿@using SensingCloud.Models
+@model DashboardViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+
+.canvas-holder {
+  position: relative;
+  width:800px;
+  padding-bottom:15px;
+}
+.canvas-holder h2{
+  color: #2679b5;
+  text-align: center;
+}
+
+.canvas-holder .xaxis {
+  position: absolute;
+  bottom: 0;
+  right: -20px;
+}
+.canvas-holder .yaxis {
+  position: absolute;
+  top: 40px;
+  left: 0;
+}
+.download{
+    position:absolute;
+    right:0;
+    margin-right:50px;
+    z-index:10;
+}
+.legend-holder{
+    position:absolute;
+    bottom:0;
+    width:100%;
+}
+
+ul[class*='-legend']{
+    list-style:none;
+    display:block;
+}
+ul[class*='-legend'] li{
+    float:left;
+    display:table;
+    margin-right:10px;
+}
+ul[class*='-legend'] li span{
+    display:table-cell;
+    width:20px;
+    height:10px;
+}
+#dateSelector{
+    width:30%;
+    margin-left:20px;
+}
+
+.heatmap-pane{
+        position:relative;
+        margin-left:20px;
+        width:800px;
+}
+.heatmap-pane h2{
+     color: #2679b5;
+}
+.heatmap-pane img{
+   position:absolute;
+   height:600px;
+   width:800px;
+
+}
+.heatmap{
+      width:800px;
+      height:600px;
+}
+</style>
+<script src="~/Scripts/Chart.js"></script>
+<script src="~/Scripts/echarts.js"></script>
+
+<div id="dateSelector">
+    
+    <form id="queryForm" style="width:600px" method="get">
+        <h4>选择日期：</h4>
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="input-group">
+                    <input id="qDay" name="qDay" class="form-control datepicker" data-date-format="yyyy-mm-dd" type="text" value="@DateTime.Today.ToString("yyyy-MM-dd")" />
+                    <span class="input-group-addon">
+                        <i class="fa fa-calendar bigger-110"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="col-lg-5" id="daypicker2" style="display:none">
+                <div class="input-group">
+                    <input id="qDay2" name="qDay2" class="form-control datepicker" data-date-format="yyyy-mm-dd" type="text" value="@DateTime.Today.ToString("yyyy-MM-dd")" />
+                    <span class="input-group-addon">
+                        <i class="fa fa-calendar bigger-110"></i>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-lg-2">
+                <button id="btnSearch" class="btn btn-primary btn-sm">查询</button>
+             </div>
+        </div>
+        <h4>时间单位：</h4>
+        <div data-toggle="buttons" class="btn-group">
+            <label class="btn btn-primary active">
+                <input name="timeunit" type="radio" value="1">
+                时
+            </label>
+            <label class="btn btn-primary ">
+                <input name="timeunit" type="radio" value="2">
+                周
+            </label>
+
+            <label class="btn btn-primary">
+                <input name="timeunit" type="radio" value="3">
+                月
+            </label>
+            <label class="btn btn-primary">
+                <input name="timeunit" type="radio" value="4">
+                时间段
+            </label>
+        </div>
+    </form>
+
+</div>
+<div id="charts">
+    @{ Html.RenderPartial("_Dashboard", Model);}
+</div>
+@section scripts{
+    <script src="~/Content/ace/js/date-time/bootstrap-datepicker.min.js"></script>
+
+    <script src="~/Scripts/bootstrap-datepicker.zh-CN.js"></script>
+
+    <script>
+        $(function () {
+
+            var $charts = $("#charts");
+            var form = $("#queryForm")
+            function submitForm() {
+                var url = '/Dashboard/Index';
+
+                var data = form.serialize();
+                console.log(data);
+                $.get(url, data)
+                 .success(function (data) {
+                     $charts.html(data);
+                 })
+                 .error(function (xhr, error, status) {
+                     console.error(error);
+                 })
+            }
+
+            $("input[name='qDay']").datepicker({ language: 'zh-CN' });
+            $("input[name='qDay2']").datepicker({ language: 'zh-CN' });
+
+            $("input[type='radio']").change(function () {
+                if ($(this).val() == 4) {
+                    $('#daypicker2').show();
+                }
+                else {
+                    $('#daypicker2').hide();
+                }
+            });
+
+            $("#btnSearch").click(function () {
+                submitForm();
+                return false;
+            });
+
+            $charts.on('click', 'button', function () {
+                var chartId = $(this).attr("data-download");
+                window.location.href = "/Dashboard/DownloadCSV?" + form.serialize() + "&chartId=" + chartId;
+                return false;
+
+            });
+
+        });
+    </script>
+}

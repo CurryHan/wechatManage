@@ -40,6 +40,11 @@ namespace SensingCloud.Helpers
         public SMSHelper(ISystemSettingService systemSettingService)
         {
             this._systemSetting = systemSettingService;
+           
+        }
+
+        public async  Task<bool> SendSMS(string mobiles, string message)
+        {
             var temp = _systemSetting.GetPlatformNotification();
             if (temp != null)
             {
@@ -49,10 +54,6 @@ namespace SensingCloud.Helpers
                 Signature = "【" + temp.MessageSignatrue + "】";
                 SMSFormat = @"uid={0}&pwd={1}&mobile={2}&content={3}" + Signature;
             }
-        }
-
-        public async  Task<bool> SendSMS(string mobiles, string message)
-        {
             var sbTemp = new StringBuilder();
             using (var httpClient = new HttpClient())
             {

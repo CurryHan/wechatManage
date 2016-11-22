@@ -1,49 +1,17 @@
+;(function ($) {
 /**
  * jqGrid Persian Translation
  * Dual licensed under the MIT and GPL licenses:
  * http://www.opensource.org/licenses/mit-license.php
  * http://www.gnu.org/licenses/gpl.html
 **/
-/*global jQuery, define */
-(function( factory ) {
-	"use strict";
-	if ( typeof define === "function" && define.amd ) {
-		// AMD. Register as an anonymous module.
-		define([
-			"jquery",
-			"../grid.base"
-		], factory );
-	} else {
-		// Browser globals
-		factory( jQuery );
-	}
-}(function( $ ) {
-
-$.jgrid = $.jgrid || {};
-if(!$.jgrid.hasOwnProperty("regional")) {
-	$.jgrid.regional = [];
-}
-$.jgrid.regional["fa"] = {
+	$.jgrid = $.jgrid || {};
+	$.extend($.jgrid,{
         defaults: {
             recordtext: "نمابش {0} - {1} از {2}",
             emptyrecords: "رکوردی یافت نشد",
             loadtext: "بارگزاري...",
-			savetext: "Saving...",
-			pgtext: "صفحه {0} از {1}",
-			pgfirst : "First Page",
-			pglast : "Last Page",
-			pgnext : "Next Page",
-			pgprev : "Previous Page",
-			pgrecs : "Records per Page",
-			showhide: "Toggle Expand Collapse Grid",
-		// mobile
-		pagerCaption : "Grid::Page Settings",
-		pageText : "Page:",
-		recordPage : "Records per Page",
-		nomorerecs : "No more records...",
-		scrollPullup: "Pull up to load more...",
-		scrollPulldown : "Pull down to refresh...",
-		scrollRefresh : "Release to refresh..."
+            pgtext: "صفحه {0} از {1}"
         },
         search: {
             caption: "جستجو...",
@@ -110,12 +78,7 @@ $.jgrid.regional["fa"] = {
             alertcap: "اخطار",
             alerttext: "لطفا يک رديف انتخاب کنيد",
             viewtext: "",
-            viewtitle: "نمایش رکورد های انتخاب شده",
-			savetext: "",
-			savetitle: "Save row",
-			canceltext: "",
-			canceltitle : "Cancel row editing",
-			selectcaption : "Actions..."
+            viewtitle: "نمایش رکورد های انتخاب شده"
         },
         col: {
             caption: "نمايش/عدم نمايش ستون",
@@ -170,8 +133,7 @@ $.jgrid.regional["fa"] = {
                     UniversalSortableDateTime: "Y-m-d H:i:sO",
                     YearMonth: "F, Y"
                 },
-                reformatAfterEdit: false,
-				userLocalTime : false
+                reformatAfterEdit: false
             },
             baseLinkUrl: "",
             showAction: "نمايش",
@@ -181,5 +143,5 @@ $.jgrid.regional["fa"] = {
             },
             idName: "id"
         }
-    };
-}));
+    });
+})(jQuery);

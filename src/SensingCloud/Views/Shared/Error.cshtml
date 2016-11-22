@@ -1,52 +1,17 @@
-﻿@model System.Web.Mvc.HandleErrorInfo
-@{
+﻿{
     Layout = null;
 }
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Error</title>
-    <style>
-        .container{
-            text-align:center;
-        }
-        .center{
-            text-align:center;
-
-        }
-        .error_logo{
-            width:60%;
-            max-width:291px;
-        }
-
-        .error_des{
-            width:80%;
-            max-width:354px;
-        }
-    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="center">
-            <img class="error_logo" src="~/Content/imgs/error_logo.png" />
-        </div>
-        <div class="center">
-            <img class="error_des" src="~/Content/imgs/error_desc.png" />
-        </div>
-        <hgroup>
-            @if (ViewBag.StatusCode != null)
-            {
-                <h1>Status Code @ViewBag.StatusCode</h1>
-                <h2>An error occurred while processing your request.</h2>
-                <h5>@ViewBag.Excetpion</h5>
-            }
-            @if (ViewBag.Message != null)
-            {
-                <h2>详细信息:</h2>
-                <h3>@ViewBag.Message</h3>
-            }
-        </hgroup>
-    </div>
+    <hgroup>
+        <h1>Error.</h1>
+        <h2>An error occurred while processing your request.</h2>
+    </hgroup>
 </body>
 </html>

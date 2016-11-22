@@ -40,8 +40,6 @@ namespace Resources.Concrete
 
         protected override ResourceEntry ReadResource(string name, string culture)
         {
-            if (!"zh-cn,en-us".Contains(culture))
-                culture = "zh-cn";
             // Parse the XML file
             return XDocument.Parse(File.ReadAllText(filePath))
                 .Element("resources")

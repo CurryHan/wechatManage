@@ -10,7 +10,7 @@ namespace Sensing.Entities
     {
         public string Name { get; set; }
 
-        public int MediaId { get; set; }
+        public int? MediaId { get; set; }
         public virtual Media Media { get; set; }
     }
 }

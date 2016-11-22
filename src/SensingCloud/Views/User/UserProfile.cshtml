@@ -4,7 +4,7 @@
 @using Sensing.Data
 @model ApplicationUser
 @{
-    ViewBag.Title = "个人中心";
+    ViewBag.Title = "Profile";
     var currentUser = Model;
 }
 
@@ -23,7 +23,9 @@
                     <a data-toggle="tab" href="#profile">@Resources.PasswordSetting</a>
                 </li>
 
-  
+                <li class="">
+                    <a data-toggle="tab" href="#info">@Resources.RecentActivity</a>
+                </li>
             </ul>
             <div class="tab-content">
                 <div id="home" class="tab-pane active">
@@ -76,7 +78,7 @@
                                     </div>
                                 </div>
                                 <div class="profile-info-row">
-                                    <div class="profile-info-name">性别</div>
+                                    <div class="profile-info-name">姓别</div>
 
                                     <div class="profile-info-value">
                                         <span class="editable editable-click" id="gender">男</span>

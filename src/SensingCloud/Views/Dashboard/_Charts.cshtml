@@ -1,0 +1,81 @@
+﻿@using  Sensing.Entities.VCA
+@model List<SensingCloud.Models.ChartViewModel>
+@{
+    var fillColors = new string[] { "rgb(254, 0, 0)",
+                                   "rgb(254, 141, 1)",
+                                   "rgb(255, 255, 0)",
+                                   "rgb(0, 191, 0)",
+                                    "rgb(0, 0, 254)",
+                                     "rgb(198, 0, 199)",
+                                     "rgb(178, 178, 178)",
+                                      "rgb(147, 46, 0)",
+                                     "rgb(220, 220, 220)"};
+}
+
+@foreach (var chart in Model)
+{
+    <div class="canvas-holder">
+        <h2>@chart.Title</h2>
+        <canvas id="chart_@chart.Id"></canvas>
+        <div class="xaxis">@chart.XLabel</div>
+        <button data-download="@chart.Id" class="download btn-sm btn-primary">下载CSV</button>
+    </div>
+        <script>
+            var data = {
+                labels: [@Html.Raw(string.Join(",", chart.XAxis))],
+                datasets: [
+                   @{ int i = 0;}
+                   @foreach(var dataset in chart.Data)
+                   {
+                       <text>
+                        {
+                            label: '@chart.Legends[i]',
+                            fillColor: '@fillColors[i]',
+                            strokeColor: "rgba(220,220,220,1)",
+                            pointColor: "@fillColors[i]",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(220,220,220,1)",
+                            data: [@string.Join(",", dataset.Value)]
+                        },
+                        </text>
+                       i++;
+                   }
+                ]
+            };
+
+            var chartCanvas = document.getElementById("chart_@chart.Id");
+            var ctx = chartCanvas.getContext("2d");
+
+            @if (chart.ChartType == ChartType.Bar)
+            {
+                <text>
+                var chart = new Chart(ctx).Bar(data, {
+                    responsive: true,
+                    legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
+                });
+                var legendDiv = document.createElement("div");
+                legendDiv.setAttribute("class", "legend-holder")
+                legendDiv.innerHTML = chart.generateLegend();
+                chartCanvas.parentElement.appendChild(legendDiv);
+            </text>
+            }
+            else
+            {
+                 <text>
+                    var chart = new Chart(ctx).Line(data, {
+                    responsive: true,
+                        legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
+                    });
+                    var legendDiv = document.createElement("div");
+                    legendDiv.setAttribute("class","legend-holder")
+                    legendDiv.innerHTML = chart.generateLegend();
+                    chartCanvas.parentElement.appendChild(legendDiv);
+                </text>
+            }
+
+
+
+
+        </script>
+}

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Reflection;
 
 namespace SensingCloud.Helpers
 {
@@ -27,25 +26,6 @@ namespace SensingCloud.Helpers
         {
             var attribute = value.GetAttribute<DisplayAttribute>();
             return attribute == null ? value.ToString() : attribute.Name;
-        }
-
-        public static int GetEnumIdByString(Type enumType, string enumStringValue)
-        {
-            foreach (object e in Enum.GetValues(enumType))
-            {
-                if ((e as Enum).ToName() == enumStringValue)
-                    return ((int)e);
-            }
-            return -99;
-        }
-
-        public static string GetDisplayName(this Enum enumValue)
-        {
-            return enumValue.GetType()
-                            .GetMember(enumValue.ToString())
-                            .First()
-                            .GetCustomAttribute<DisplayAttribute>()
-                            .GetName();
         }
 
     }

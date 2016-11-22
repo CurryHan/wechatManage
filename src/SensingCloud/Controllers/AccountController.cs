@@ -350,7 +350,7 @@ namespace SensingCloud.Controllers
             {
                 return Content("NotNull");
             }
-            var user = UserManager.Users.Where(u => u.PhoneNumber == PhoneNumber).FirstOrDefault();
+            var user= UserManager.Users.Where(u => u.PhoneNumber == PhoneNumber).FirstOrDefault();
             if (user == null)
             {
                 // Don't reveal that the user does not exist

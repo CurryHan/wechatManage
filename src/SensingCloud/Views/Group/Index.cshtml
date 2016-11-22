@@ -20,7 +20,7 @@
 
     <div class="tab-pane">
         <div class="row searchMenu">
-            <div class="col-xs-8">
+            <div class="col-xs-4">
                 <form class="search-form">
                     <div class="input-group">
                         <input name="query" type="text" class="form-control search-query" placeholder="@Resources.PName" value="@ViewBag.Query">
@@ -118,12 +118,12 @@
                             </td>
                             <td>
                                 <div class="hidden-xs btn-group">
-                                    <a href="/Group/Details/@item.Id" class="btn btn-success btn-xs no-border">
+                                    <a href="/Group/Details/@item.Id" class="DetailsLinkA btn btn-success btn-xs no-border ">
                                         @Resources.Details
                                     </a>
-                                    @if (!User.IsInRole(RoleString.Viewer))
+                                    @if (!User.IsInRole(RoleString.User))
                                     {
-                                        <a href="/Group/Edit/@item.Id" class="btn btn-primary btn-xs no-border EditLinkA">
+                                        <a href="/Group/Edit/@item.Id" class="EditLinkA btn btn-primary btn-xs no-border ">
                                             @Resources.Edit
                                         </a>
                                     }
@@ -143,13 +143,13 @@
 
                                         <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
                                             <li>
-                                                <a href="/Group/Details/@item.Id" class="tooltip-info" data-rel="tooltip" title="View">
+                                                <a href="/Group/Details/@item.Id" class="tooltip-info DetailsLinkA" data-rel="tooltip" title="View">
                                                     <span class="blue">
                                                         <i class="ace-icon fa fa-search-plus bigger-120"></i>
                                                     </span>
                                                 </a>
                                             </li>
-                                            @if (!User.IsInRole(RoleString.Viewer))
+                                            @if (!User.IsInRole(RoleString.User))
                                             {
                                                 <li>
                                                     <a href="/Group/Edit/@item.Id" class="tooltip-success EditLinkA" data-rel="tooltip" title="Edit">
@@ -192,7 +192,7 @@
     <script src="~/Scripts/jquery.pictureSelector.js"></script>
     <script>
         $(function () {
-            var Url = "/Group/GetGroupList";
+            //var Url = "/Group/GetGroupList";
             //(function () {
             //    var options = {
             //        method: 'get',
@@ -245,6 +245,7 @@
 
             //编辑
             $("#DataList_ContentDIV").on('click', '.EditLinkA', function (e) {
+                debugger;
                 $("#groupIndexDiv").css("display", "none");
                 $("#DataList_ContentDIV").html('');
                 e.preventDefault();
@@ -256,6 +257,7 @@
             });
             //详情
             $("#DataList_ContentDIV").on('click', '.DetailsLinkA', function (e) {
+                debugger;
                 $("#groupIndexDiv").css("display", "none");
                 $("#DataList_ContentDIV").html('');
                 e.preventDefault();

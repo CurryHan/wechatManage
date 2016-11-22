@@ -1,0 +1,75 @@
+﻿
+@using SensingCloud.Models
+@model List<HeatMapViewModel>
+    @foreach (var heatmap in Model)
+    {
+       
+        <div class="heatmap-pane">
+            <h2 class="h1 text-center">@heatmap.Title</h2>
+            <img src="@heatmap.Background" />
+            <div id="heatmap_@heatmap.Id"  class="heatmap"></div>
+        </div>
+    }
+    <!-- ECharts单文件引入 -->
+
+<script type="text/javascript">
+    // 路径配置
+    require.config({
+        paths: {
+            echarts: 'http://echarts.baidu.com/build/dist'
+        }
+    });
+
+    // 使用
+    require(
+        [
+            'echarts',
+            'echarts/chart/heatmap' // 使用柱状图就加载bar模块，按需加载
+        ],
+        function (ec) {
+            // 基于准备好的dom，初始化echarts图表
+
+            @foreach(var heatmap in Model)
+            {
+                <text>
+            var myChart = ec.init(document.getElementById('heatmap_@heatmap.Id'));
+                 
+                var heatData = [@string.Join(",", heatmap.Data.Select(d =>"[" + string.Join(",", d) + "]"))];
+
+                option = {
+                    title: {
+                        text: '@heatmap.Ip'
+                    },
+                    series: [
+                        {
+                            type: 'heatmap',
+                            data: heatData,
+                            hoverable: false,
+                            gradientColors: [{
+                                offset: 0.4,
+                                color: 'green'
+                            }, {
+                                offset: 0.5,
+                                color: 'yellow'
+                            }, {
+                                offset: 0.8,
+                                color: 'orange'
+                            }, {
+                                offset: 1,
+                                color: 'red'
+                            }],
+                            minAlpha: 0.2,
+                            valueScale: 2,
+                            opacity: 0.6
+                        }
+                    ]
+                };
+
+                // 为echarts对象加载数据
+                myChart.setOption(option);
+                </text>
+            }
+
+        }
+    );
+</script>

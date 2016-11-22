@@ -18,6 +18,8 @@ namespace SensingCloud.Services
         IEnumerable<ApplicationUser> GetUsers(string username);
         ApplicationUser GetUserProfile(string userid);
         ApplicationUser GetUsersByEmail(string email);
+
+        ApplicationUser GetUserbyName(string userName);
         IEnumerable<ApplicationUser> GetUserByUserId(IEnumerable<string> userid);
         IEnumerable<ApplicationUser> SearchUser(string searchString);
 
@@ -28,7 +30,7 @@ namespace SensingCloud.Services
         void SaveImageURL(string userId, string imageUrl);
 
         void AddUserActivity(string userId, string log);
-        IEnumerable<UserLog> GetAllUserActivity();
+        IEnumerable<UserActivity> GetAllUserActivity();
     }
 
     public class UserService : IUserService
@@ -56,6 +58,11 @@ namespace SensingCloud.Services
         public ApplicationUser GetUser(string userId)
         {
             return userRepository.Get(u => u.Id == userId);
+        }
+
+        public ApplicationUser GetUserbyName(string userName)
+        {
+            return userRepository.Get(u => u.UserName == userName);
         }
 
         public IEnumerable<ApplicationUser> GetUsers()
@@ -128,10 +135,10 @@ namespace SensingCloud.Services
 
         public void AddUserActivity(string userId, string log)
         {
-            userActivityRepository.Add(new UserLog { ApplicationUserId = userId, Content = log, CreatedTime = DateTime.Now });
+            userActivityRepository.Add(new UserActivity { ApplicationUserId = userId, Content = log, CreatedTime = DateTime.Now });
         }
 
-        public IEnumerable<UserLog> GetAllUserActivity()
+        public IEnumerable<UserActivity> GetAllUserActivity()
         {
             return userActivityRepository.GetAll();
         }

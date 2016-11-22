@@ -117,188 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ActionName" xml:space="preserve">
-    <value>动作名称</value>
-  </data>
-  <data name="ActionShare" xml:space="preserve">
-    <value>Action分享</value>
-  </data>
-  <data name="ActionStatus" xml:space="preserve">
-    <value>游戏状态</value>
-  </data>
-  <data name="ActionUrl" xml:space="preserve">
-    <value>模板地址</value>
-  </data>
-  <data name="Activity" xml:space="preserve">
-    <value>活动</value>
-  </data>
-  <data name="ActivityShare" xml:space="preserve">
-    <value>活动分享</value>
-  </data>
-  <data name="ActivityUrl" xml:space="preserve">
-    <value>活动页Url</value>
-  </data>
-  <data name="ActualQty" xml:space="preserve">
-    <value>已发奖品数</value>
-  </data>
-  <data name="Address" xml:space="preserve">
-    <value>活动地址</value>
-  </data>
   <data name="AddressUrl" xml:space="preserve">
     <value>网址</value>
   </data>
-  <data name="AfterGameMessage" xml:space="preserve">
-    <value>游戏后扫码反馈消息</value>
+  <data name="API_DeviceDisableStatus" xml:space="preserve">
+    <value>Device in disable status</value>
   </data>
-  <data name="Alias" xml:space="preserve">
-    <value>授权方公众号所设置的微信号</value>
+  <data name="API_InnerExceptions" xml:space="preserve">
+    <value>InnerExceptions</value>
   </data>
-  <data name="ApplicationUser" xml:space="preserve">
-    <value>ApplicationUser</value>
+  <data name="API_NG" xml:space="preserve">
+    <value>NG</value>
   </data>
-  <data name="ApplicationUserId" xml:space="preserve">
-    <value>ID</value>
+  <data name="API_OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="API_ParamsNotExist" xml:space="preserve">
+    <value>Params not exist</value>
   </data>
   <data name="AuditStatus" xml:space="preserve">
-    <value>审核状态</value>
-  </data>
-  <data name="AuthorizationTime" xml:space="preserve">
-    <value>授权时间</value>
-  </data>
-  <data name="Authorizer_access_token" xml:space="preserve">
-    <value>授权方令牌</value>
-  </data>
-  <data name="Authorizer_refresh_token" xml:space="preserve">
-    <value>刷新令牌</value>
-  </data>
-  <data name="AvatarUrl" xml:space="preserve">
-    <value>头像</value>
-  </data>
-  <data name="AwardImagePath" xml:space="preserve">
-    <value>奖品图片</value>
-  </data>
-  <data name="AwardMessage" xml:space="preserve">
-    <value>中奖反馈的文本消息</value>
-  </data>
-  <data name="AwardProduct" xml:space="preserve">
-    <value>奖品</value>
-  </data>
-  <data name="Awards" xml:space="preserve">
-    <value>中奖信息</value>
-  </data>
-  <data name="AwardSeq" xml:space="preserve">
-    <value>奖品等级</value>
-  </data>
-  <data name="BackgroundImage" xml:space="preserve">
-    <value>背景图片</value>
-  </data>
-  <data name="BeforeGameMessage" xml:space="preserve">
-    <value>游戏前扫码反馈消息</value>
-  </data>
-  <data name="BigImage" xml:space="preserve">
-    <value>大图</value>
-  </data>
-  <data name="BusinessInfo" xml:space="preserve">
-    <value>公司信息</value>
-  </data>
-  <data name="Children" xml:space="preserve">
-    <value>子分组</value>
-  </data>
-  <data name="City" xml:space="preserve">
-    <value>城市</value>
-  </data>
-  <data name="ClientName" xml:space="preserve">
-    <value>客户端装置</value>
-  </data>
-  <data name="ClientUniueID" xml:space="preserve">
-    <value>线下设备ID</value>
-  </data>
-  <data name="CompanyName" xml:space="preserve">
-    <value>公司</value>
-  </data>
-  <data name="ComponentAppID" xml:space="preserve">
-    <value>AppID</value>
-  </data>
-  <data name="ComponentAppSecret" xml:space="preserve">
-    <value>AppSecret</value>
-  </data>
-  <data name="ComponentKey" xml:space="preserve">
-    <value>Key</value>
-  </data>
-  <data name="ComponentToken" xml:space="preserve">
-    <value>Token</value>
-  </data>
-  <data name="Component_access_token" xml:space="preserve">
-    <value>Access_token</value>
-  </data>
-  <data name="Component_verify_ticket" xml:space="preserve">
-    <value>Verify_ticket</value>
-  </data>
-  <data name="Content" xml:space="preserve">
-    <value>内容</value>
-  </data>
-  <data name="Country" xml:space="preserve">
-    <value>国家</value>
-  </data>
-  <data name="CreatedTime" xml:space="preserve">
-    <value>创建日期</value>
+    <value>平台状态</value>
   </data>
   <data name="Declaration" xml:space="preserve">
     <value>声明</value>
   </data>
-  <data name="Description" xml:space="preserve">
-    <value>描述</value>
-  </data>
-  <data name="DisplayName" xml:space="preserve">
-    <value>姓名</value>
-  </data>
   <data name="EcommercePlatform" xml:space="preserve">
     <value>电商平台</value>
   </data>
-  <data name="EndDate" xml:space="preserve">
-    <value>结束时间</value>
-  </data>
-  <data name="EndTime" xml:space="preserve">
-    <value>结束时间</value>
-  </data>
-  <data name="ExpiredTime" xml:space="preserve">
-    <value>使用到期时间</value>
-  </data>
-  <data name="Expires_in" xml:space="preserve">
-    <value>有效期</value>
-  </data>
-  <data name="FirstName" xml:space="preserve">
-    <value>名</value>
-  </data>
-  <data name="Game" xml:space="preserve">
-    <value>游戏</value>
-  </data>
-  <data name="GameImage" xml:space="preserve">
-    <value>游戏图片</value>
-  </data>
-  <data name="GameUrl" xml:space="preserve">
-    <value>游戏地址</value>
-  </data>
-  <data name="Gender" xml:space="preserve">
-    <value>性别</value>
-  </data>
-  <data name="GenerateUserIdentityAsync" xml:space="preserve">
-    <value>GenerateUserIdentityAsync</value>
-  </data>
-  <data name="Group" xml:space="preserve">
-    <value>组名</value>
-  </data>
-  <data name="Headimgurl" xml:space="preserve">
-    <value>头像</value>
-  </data>
-  <data name="Head_img" xml:space="preserve">
-    <value>公众号头像</value>
-  </data>
-  <data name="HtmlTemplate" xml:space="preserve">
-    <value>页面模板</value>
-  </data>
-  <data name="IconPath" xml:space="preserve">
-    <value>图标</value>
+  <data name="GroupType" xml:space="preserve">
+    <value>组类型</value>
   </data>
   <data name="Image01Url" xml:space="preserve">
     <value>图片1</value>
@@ -312,364 +159,31 @@
   <data name="Image04Url" xml:space="preserve">
     <value>图片4</value>
   </data>
-  <data name="ImageLink" xml:space="preserve">
-    <value>分享图标</value>
-  </data>
-  <data name="ImagePath" xml:space="preserve">
-    <value>活动图片</value>
-  </data>
   <data name="Introduction" xml:space="preserve">
     <value>介绍</value>
   </data>
-  <data name="IsActived" xml:space="preserve">
-    <value>锁定</value>
-  </data>
-  <data name="IsScaned" xml:space="preserve">
-    <value>是否被扫过</value>
-  </data>
-  <data name="IsSendAwardMessage" xml:space="preserve">
-    <value>中奖消息</value>
-  </data>
-  <data name="IsSendWechatAfterGame" xml:space="preserve">
-    <value>游戏后发消息</value>
-  </data>
-  <data name="IsSendWechatBeforeGame" xml:space="preserve">
-    <value>游戏前发消息</value>
-  </data>
-  <data name="isSendWeChatMsg" xml:space="preserve">
-    <value>是否发送消息</value>
-  </data>
-  <data name="IsSigned" xml:space="preserve">
-    <value>是否签到</value>
-  </data>
-  <data name="Jsapi_ticket" xml:space="preserve">
-    <value>Jsapi_ticket</value>
-  </data>
-  <data name="Language" xml:space="preserve">
-    <value>语言</value>
-  </data>
-  <data name="LastLoginTime" xml:space="preserve">
-    <value>最后登录</value>
-  </data>
-  <data name="LastName" xml:space="preserve">
-    <value>姓</value>
-  </data>
-  <data name="LikeCount" xml:space="preserve">
-    <value>点赞次数</value>
-  </data>
-  <data name="Link" xml:space="preserve">
-    <value>链接</value>
-  </data>
   <data name="Logo" xml:space="preserve">
-    <value>Logo</value>
-  </data>
-  <data name="Media_id" xml:space="preserve">
-    <value>媒体文件ID</value>
+    <value>公司Logo</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>名称</value>
   </data>
-  <data name="NickName" xml:space="preserve">
-    <value>公众号名称</value>
+  <data name="Price" xml:space="preserve">
+    <value>价格</value>
   </data>
-  <data name="OpenDate" xml:space="preserve">
-    <value>开始时间</value>
+  <data name="ProductCategoryId" xml:space="preserve">
+    <value>商品类别</value>
   </data>
-  <data name="Openid" xml:space="preserve">
-    <value>OpenID</value>
-  </data>
-  <data name="Owner" xml:space="preserve">
-    <value>开发者</value>
-  </data>
-  <data name="ParentGroup" xml:space="preserve">
-    <value>父分组</value>
-  </data>
-  <data name="PicUrl" xml:space="preserve">
-    <value>图片地址</value>
-  </data>
-  <data name="PlanQty" xml:space="preserve">
-    <value>计划奖品数</value>
-  </data>
-  <data name="PlayerAge" xml:space="preserve">
-    <value>玩家当时年龄</value>
-  </data>
-  <data name="PlayerEmail" xml:space="preserve">
-    <value>玩家邮箱</value>
-  </data>
-  <data name="PlayerImage" xml:space="preserve">
-    <value>玩家当时头像</value>
-  </data>
-  <data name="PlayerPhone" xml:space="preserve">
-    <value>玩家手机</value>
-  </data>
-  <data name="PostUrl" xml:space="preserve">
-    <value>推送url</value>
-  </data>
-  <data name="Province" xml:space="preserve">
-    <value>地区</value>
-  </data>
-  <data name="QrCodeKey" xml:space="preserve">
-    <value>二维码Key</value>
-  </data>
-  <data name="QRCodesImg" xml:space="preserve">
-    <value>二维码路径</value>
-  </data>
-  <data name="Qrcode_url" xml:space="preserve">
+  <data name="QRCodeUrl" xml:space="preserve">
     <value>二维码URL</value>
   </data>
-  <data name="QRStatus" xml:space="preserve">
-    <value>二维码状态</value>
+  <data name="Qrcode_url" xml:space="preserve">
+    <value />
   </data>
-  <data name="QueueNum" xml:space="preserve">
-    <value>排队号码</value>
+  <data name="Source" xml:space="preserve">
+    <value>来源</value>
   </data>
-  <data name="Remark" xml:space="preserve">
-    <value>标记</value>
-  </data>
-  <data name="Scene_id" xml:space="preserve">
-    <value>二维码Scene_id</value>
-  </data>
-  <data name="Score" xml:space="preserve">
-    <value>游戏得分</value>
-  </data>
-  <data name="SecurityCode" xml:space="preserve">
-    <value>验证码</value>
-  </data>
-  <data name="Service_type_info" xml:space="preserve">
-    <value>授权方公众号类型</value>
-  </data>
-  <data name="Sex" xml:space="preserve">
-    <value>性别</value>
-  </data>
-  <data name="Subscribe" xml:space="preserve">
-    <value>是否关注</value>
-  </data>
-  <data name="SubscribeTime" xml:space="preserve">
-    <value>关注时间</value>
-  </data>
-  <data name="SupportedPlayersCount" xml:space="preserve">
-    <value>支持人数</value>
-  </data>
-  <data name="TextMessage" xml:space="preserve">
-    <value>文本内容</value>
-  </data>
-  <data name="Thumbnail" xml:space="preserve">
-    <value>缩略图</value>
-  </data>
-  <data name="Title" xml:space="preserve">
-    <value>标题</value>
-  </data>
-  <data name="UnAuthorizationTime" xml:space="preserve">
-    <value>取消授权时间</value>
-  </data>
-  <data name="Unionid" xml:space="preserve">
-    <value>Unionid</value>
-  </data>
-  <data name="UnSubScribeTime" xml:space="preserve">
-    <value>取关时间</value>
-  </data>
-  <data name="Url" xml:space="preserve">
-    <value>URL</value>
-  </data>
-  <data name="UserAddresses" xml:space="preserve">
-    <value>地址</value>
-  </data>
-  <data name="User_name" xml:space="preserve">
-    <value>授权方公众号的原始ID</value>
-  </data>
-  <data name="Verify_type_info" xml:space="preserve">
-    <value>授权方认证类型</value>
-  </data>
-  <data name="ViewCount" xml:space="preserve">
-    <value>被浏览次数</value>
-  </data>
-  <data name="WeChatType" xml:space="preserve">
-    <value>消息类型</value>
-  </data>
-  <data name="WeixinAppID" xml:space="preserve">
-    <value>公众号</value>
-  </data>
-  <data name="WeixinAuthStatus" xml:space="preserve">
-    <value>状态</value>
-  </data>
-  <data name="WeixinFuncscopeCategoryItem" xml:space="preserve">
-    <value>Func_infos</value>
-  </data>
-  <data name="WeixinGroupid" xml:space="preserve">
-    <value>Groupid</value>
-  </data>
-  <data name="WeixinPublicAccountInfo" xml:space="preserve">
-    <value>微信信息</value>
-  </data>
-  <data name="WeixinPublicAccountInfoID" xml:space="preserve">
-    <value>公众平台信息</value>
-  </data>
-  <data name="WeixinShares" xml:space="preserve">
-    <value>微信分享</value>
-  </data>
-  <data name="WeixinUserActions" xml:space="preserve">
-    <value>WeixinUserActions</value>
-  </data>
-  <data name="WeixinUserInfo" xml:space="preserve">
-    <value>公众号</value>
-  </data>
-  <data name="WImagePath" xml:space="preserve">
-    <value>图片地址</value>
-  </data>
-  <data name="WNickname" xml:space="preserve">
-    <value>昵称</value>
-  </data>
-  <data name="ActivityExcutedDate" xml:space="preserve">
-    <value>活动执行时间</value>
-  </data>
-  <data name="ActivityHtmlTemplate" xml:space="preserve">
-    <value>活动模板</value>
-  </data>
-  <data name="ActivityHtmlTemplateID" xml:space="preserve">
-    <value>活动模板</value>
-  </data>
-  <data name="IsAllowedRepeatAward" xml:space="preserve">
-    <value>是否允许重复中奖</value>
-  </data>
-  <data name="IsEnableWhiteUser" xml:space="preserve">
-    <value>是否启用白名单</value>
-  </data>
-  <data name="IsNeedAwardInfo" xml:space="preserve">
-    <value>是否需要填写中奖信息</value>
-  </data>
-  <data name="Organizer" xml:space="preserve">
-    <value>活动主办方</value>
-  </data>
-  <data name="Rules" xml:space="preserve">
-    <value>活动规则</value>
-  </data>
-  <data name="SubscriptionKey" xml:space="preserve">
-    <value>线下游戏密钥</value>
-  </data>
-  <data name="IsTemplate" xml:space="preserve">
-    <value>是否是模板</value>
-  </data>
-  <data name="AdsName" xml:space="preserve">
-    <value>广告名称</value>
-  </data>
-  <data name="AdsText" xml:space="preserve">
-    <value>文本内容</value>
-  </data>
-  <data name="AdsType" xml:space="preserve">
-    <value>广告类型</value>
-  </data>
-  <data name="ImgHeight" xml:space="preserve">
-    <value>图片高度</value>
-  </data>
-  <data name="ImgWidth" xml:space="preserve">
-    <value>图片宽度</value>
-  </data>
-  <data name="ActivityLogoPath" xml:space="preserve">
-    <value>活动Logo</value>
-  </data>
-  <data name="FlowType" xml:space="preserve">
-    <value>流程</value>
-  </data>
-  <data name="InsideLink" xml:space="preserve">
-    <value>本地链接</value>
-  </data>
-  <data name="IsUseOutside" xml:space="preserve">
-    <value>是否使用外部链接</value>
-  </data>
-  <data name="OutsideLink" xml:space="preserve">
-    <value>外部链接</value>
-  </data>
-  <data name="IsHasGame" xml:space="preserve">
-    <value>是否显示线上游戏</value>
-  </data>
-  <data name="IsHasGameResult" xml:space="preserve">
-    <value>是否显示游戏记录</value>
-  </data>
-  <data name="IsHasIntroduce" xml:space="preserve">
-    <value>是否显示活动介绍</value>
-  </data>
-  <data name="IsHasRegister" xml:space="preserve">
-    <value>是否显示注册</value>
-  </data>
-  <data name="IsHasReward" xml:space="preserve">
-    <value>是否显示中奖列表</value>
-  </data>
-  <data name="IsHasVote" xml:space="preserve">
-    <value>是否显示投票</value>
-  </data>
-  <data name="IsNeedRegister" xml:space="preserve">
-    <value>是否需要注册</value>
-  </data>
-  <data name="OwnerName" xml:space="preserve">
-    <value>活动所有者</value>
-  </data>
-  <data name="IsShareAction" xml:space="preserve">
-    <value>是否支持分享</value>
-  </data>
-  <data name="IsNeedCheckBeforScanQRCode" xml:space="preserve">
-    <value>扫码前是否需要检查限制</value>
-  </data>
-  <data name="MaterialPacketUrl" xml:space="preserve">
-    <value>游戏素材路径</value>
-  </data>
-  <data name="OfflineBackground" xml:space="preserve">
-    <value>线下游戏图片</value>
-  </data>
-  <data name="OfflineForeground" xml:space="preserve">
-    <value>线下前景图片</value>
-  </data>
-  <data name="OnlineBackground" xml:space="preserve">
-    <value>线上模板背景图片</value>
-  </data>
-  <data name="OnlineForeground" xml:space="preserve">
-    <value>线上前景背景图片</value>
-  </data>
-  <data name="IsPublic" xml:space="preserve">
-    <value>是否正式使用</value>
-  </data>
-  <data name="GameCode" xml:space="preserve">
-    <value>游戏编号</value>
-  </data>
-  <data name="GameLogo" xml:space="preserve">
-    <value>游戏图标</value>
-  </data>
-  <data name="GameType" xml:space="preserve">
-    <value>游戏类型</value>
-  </data>
-  <data name="IsSendWechatAfterGame4Game" xml:space="preserve">
-    <value>游戏后是否可交互</value>
-  </data>
-  <data name="IsSendWechatBeforeGame4Game" xml:space="preserve">
-    <value>游戏前是否可交互</value>
-  </data>
-  <data name="IsShareAction4Game" xml:space="preserve">
-    <value>游戏是否支持分享</value>
-  </data>
-  <data name="SendWeChatAfterGameTabName" xml:space="preserve">
-    <value>游戏后消息配置名称</value>
-  </data>
-  <data name="SendWeChatBeforGameTabName" xml:space="preserve">
-    <value>游戏前消息配置名称</value>
-  </data>
-  <data name="ShareActionTabName" xml:space="preserve">
-    <value>游戏分享配置名称</value>
-  </data>
-  <data name="MaterialPacketUrl4Game" xml:space="preserve">
-    <value>游戏素材</value>
-  </data>
-  <data name="GroupType" xml:space="preserve">
-    <value>组的类型</value>
-  </data>
-  <data name="IsSupportAsync" xml:space="preserve">
-    <value>是否支持同步</value>
-  </data>
-  <data name="IsSendMessage" xml:space="preserve">
-    <value>是否发送消息</value>
-  </data>
-  <data name="GameEnvType" xml:space="preserve">
-    <value>游戏环境</value>
-  </data>
-  <data name="IsRegisterInCurrPage" xml:space="preserve">
-    <value>是否在当前页快速注册</value>
+  <data name="StoreId" xml:space="preserve">
+    <value>商户中心门店Id</value>
   </data>
 </root>

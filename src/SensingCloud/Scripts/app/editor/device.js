@@ -89,7 +89,7 @@
             $('#tab_1_content').html(data);
         });
     });
-    //用户申请上线设备
+    //用户申请下线设备
     $('#tab_1_content').on('click', 'a[data-action-disable]', function (e) {
         e.preventDefault();
         var device_id = $(this).attr('data-action-disable');

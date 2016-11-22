@@ -60,16 +60,7 @@ namespace Resources {
                    return (string) resourceProvider.GetResource("Save", CultureInfo.CurrentUICulture.Name);
                }
             }
-
-        /// <summary>复制</summary>
-        public static string Copy
-        {
-            get
-            {
-                return (string)resourceProvider.GetResource("Copy", CultureInfo.CurrentUICulture.Name);
-            }
-        }
-
+            
         /// <summary> 确认</summary>
         public static string Confirm {
                get {
@@ -223,21 +214,7 @@ namespace Resources {
                    return (string) resourceProvider.GetResource("InvalidMac", CultureInfo.CurrentUICulture.Name);
                }
             }
-
-
-        public static string InvalidUrl {
-            get
-            {
-                return (string)resourceProvider.GetResource("InvalidUrl", CultureInfo.CurrentUICulture.Name);
-            }
-        }
-
-        public static string InvalidPhone {
-            get {
-                return (string)resourceProvider.GetResource("InvalidPhone", CultureInfo.CurrentUICulture.Name);
-            }
-        }
-
+            
         /// <summary>商品</summary>
         public static string Product {
                get {
@@ -853,6 +830,13 @@ namespace Resources {
                    return (string) resourceProvider.GetResource("PendingProductTAB", CultureInfo.CurrentUICulture.Name);
                }
             }
+
+        ///<summary>初始商品</summary>
+        public static string InitialProduct {
+            get {
+                return (string)resourceProvider.GetResource("InitialProduct", CultureInfo.CurrentUICulture.Name);
+            }
+        }
             
         /// <summary>取消审核商品</summary>
         public static string CancelPendingProduct {
@@ -1196,7 +1180,16 @@ namespace Resources {
                    return (string) resourceProvider.GetResource("DeviceStatus", CultureInfo.CurrentUICulture.Name);
                }
             }
-            
+
+        /// <summary>是否在线</summary>
+        public static string IsRun
+        {
+            get
+            {
+                return (string)resourceProvider.GetResource("IsRun", CultureInfo.CurrentUICulture.Name);
+            }
+        }
+
         /// <summary>设备详细</summary>
         public static string DeviceDetail {
                get {
@@ -1679,5 +1672,18 @@ namespace Resources {
                    return (string) resourceProvider.GetResource("SelectRoom", CultureInfo.CurrentUICulture.Name);
                }
             }
+
+
+        /// <summary>同步淘宝商品</summary>
+        public static string SyncTaboProducts
+        {
+            get
+            {
+                return (string)resourceProvider.GetResource("SyncTaboProducts", CultureInfo.CurrentUICulture.Name);
+            }
+        }
     }
+
+    
+
 }

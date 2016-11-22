@@ -1,18 +1,27 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data.Entity;
+using System.Diagnostics;
+using System.Linq;
 using System.Net.Mail;
 using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
+using SendGrid;
+using Sensing.Core;
 using Sensing.Entities.Users;
 using Sensing.Data;
 using SensingCloud.Helpers;
 using Microsoft.Owin.Security.DataProtection;
-using Sensing.Entities.SystemSettings;
 using SensingCloud.Services;
+using Sensing.Entities.SystemSettings;
 
 namespace SensingCloud
 {
@@ -49,7 +58,7 @@ namespace SensingCloud
                 smtpServer.Port = int.Parse(setting.ServerPort);
                 smtpServer.Timeout = 10000;
 
-                mail.From = new MailAddress(setting.EmailName);
+                mail.From = new MailAddress("qule@troncell.com");
                 mail.To.Add(message.Destination);
                 mail.Subject = "Password recovery";
                 mail.Body = message.Body;

@@ -1,47 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using Microsoft.AspNet.Identity;
-using Sensing.Entities;
-using Sensing.Entities.SystemSettings;
-using Sensing.Entities.Entity;
 using Sensing.Entities.Users;
+using Sensing.Entities;
+using Sensing.Entities.Versions;
+using Sensing.Entities.Entity;
+using Sensing.Entities.SystemSettings;
+using System.Diagnostics;
 
 namespace Sensing.Data
 {
     public class SensingSiteDbContext : IdentityDbContext<ApplicationUser>
     {
-        //private static bool _created = true;
+        private static bool _created = true;
 
         public DbSet<Group> Groups { get; set; }
 
-        public DbSet<UserLog> UserActivities { get; set; }
+        public DbSet<SoftwareClientDetails> ClientDetails { get; set; }
+        public DbSet<UserActivity> UserActivities { get; set; }
 
         //系统参数设置
+        public DbSet<ApproveProcess> ApproveProcesss { get; set; }
         public DbSet<PlatformNotification> PlatformNotifications { get; set; }
-
-        public DbSet<Menu> Menus { get; set; }
+        public DbSet<TerminalContentUpdate> TerminalContentUpdates { get; set; }
+        public DbSet<TerminalSoftUpdate> TerminalSoftUpdates { get; set; }
 
         public DbSet<Media> Medias { get; set; }
 
+        public DbSet<Menu> Menus { get; set; }
 
 
-
-
-        //public DbSet<ActivityGame> ActivityGames { get; set; }
         static SensingSiteDbContext()
         {
-           // System.Data.Entity.Database.SetInitializer(new SensingSiteSampleData());
+            // System.Data.Entity.Database.SetInitializer(new SensingSiteSampleData());
         }
         public SensingSiteDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
-            //Database.SetInitializer<SensingSiteDbContext>(new CreateDatabaseIfNotExists<SensingSiteDbContext>());
+#if DEBUG
+            Database.Log = (log) => { Debug.WriteLine(log); };
+#endif
+
         }
 
         public virtual void Commit()
@@ -52,11 +54,6 @@ namespace Sensing.Data
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-
-//modelBuilder.Entity<ActivityUserData>().HasRequired(p => p.WeixinUserInfo).WithMany().WillCascadeOnDelete(false);
-           // modelBuilder.Entity<WeixinUserAward>().HasRequired(p => p.WeixinUserInfo).WithMany().WillCascadeOnDelete(false);
-            //modelBuilder.Entity<WeixinUserAward>().HasRequired(p => p.ActivityGame).WithMany().WillCascadeOnDelete(false);
-            //modelBuilder.Entity<Activity_Thirtparty>().HasRequired(p => p.Activity).WithMany().WillCascadeOnDelete(false);
             base.OnModelCreating(modelBuilder);
 
             //modelBuilder.Entity<Product>()

@@ -1,19 +1,21 @@
-﻿@using SensingCloud.Helpers;
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta charset="utf-8" />
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-    <title>@ViewBag.Title -感知游戏</title>
+    <title>@ViewBag.Title - TronCell Management Application</title>
     @{Html.RenderPartial("_Styles");}
-    @RenderSection("styles", required: false)
 </head>
-<body class="no-skin">
+<body class="no-skin ">
     <!-- #section:basics/navbar.layout -->
-    <div id="navbar" class="navbar navbar-default          ace-save-state">
-        <div class="navbar-container ace-save-state" id="navbar-container">
+    <div id="navbar" class="navbar navbar-default">
+        <script type="text/javascript">
+				try{ace.settings.check('navbar' , 'fixed')}catch(e){}
+        </script>
+
+        <div class="navbar-container" id="navbar-container">
             <!-- #section:basics/sidebar.mobile.toggle -->
             <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
                 <span class="sr-only">Toggle sidebar</span>
@@ -25,42 +27,118 @@
                 <span class="icon-bar"></span>
             </button>
 
+
             <!-- /section:basics/sidebar.mobile.toggle -->
             <div class="navbar-header pull-left">
                 <!-- #section:basics/navbar.layout.brand -->
-                <a href="/" class="navbar-brand">
+                <a href="#" class="navbar-brand">
                     <small>
-                        <i class="icon-logo"></i>
-                        @{
-                            string Title = "感知互动游戏云平台";
-                        }
-                        @if (Session[ConstConfig.SessionKey_CurrentLoginGroup] != null)
-                        {
-                            Title = (Session[ConstConfig.SessionKey_CurrentLoginGroup] as Sensing.Entities.Group).DisplayName + "游戏云平台";
-                        }
-
-                        @Title
+                        @*<img src="~/content/img/flogo.png" height="20" />*@
+                        创思感知商城平台管理系统
+                        @*<i class="fa fa-leaf"></i>*@
+                        @*Troncell Cloud Admin*@
                     </small>
                 </a>
+
+                <!-- /section:basics/navbar.layout.brand -->
+                <!-- #section:basics/navbar.toggle -->
+                <!-- /section:basics/navbar.toggle -->
             </div>
+
+
+            <!-- #section:basics/navbar.dropdown -->
             <div class="navbar-buttons navbar-header pull-right" role="navigation">
                 <ul class="nav ace-nav">
+
+                    <li class="purple">
+                        @*<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <i class="ace-icon fa fa-bell icon-animated-bell"></i>
+                            <span class="badge badge-important">8</span>
+                        </a>*@
+
+                        <ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
+                            <li class="dropdown-header">
+                                <i class="ace-icon fa fa-exclamation-triangle"></i>
+                                8 Notifications
+                            </li>
+
+                            <li class="dropdown-content">
+                                <ul class="dropdown-menu dropdown-navbar navbar-pink">
+                                    <li>
+                                        <a href="#">
+                                            <div class="clearfix">
+                                                <span class="pull-left">
+                                                    <i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>
+                                                    New Comments
+                                                </span>
+                                                <span class="pull-right badge badge-info">+12</span>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+                                            <i class="btn btn-xs btn-primary fa fa-user"></i>
+                                            Bob just signed up as an editor ...
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+                                            <div class="clearfix">
+                                                <span class="pull-left">
+                                                    <i class="btn btn-xs no-hover btn-success fa fa-shopping-cart"></i>
+                                                    New Orders
+                                                </span>
+                                                <span class="pull-right badge badge-success">+8</span>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+                                            <div class="clearfix">
+                                                <span class="pull-left">
+                                                    <i class="btn btn-xs no-hover btn-info fa fa-twitter"></i>
+                                                    Followers
+                                                </span>
+                                                <span class="pull-right badge badge-info">+11</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown-footer">
+                                <a href="#">
+                                    See all notifications
+                                    <i class="ace-icon fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- #section:basics/navbar.user_menu -->
                     @Html.Partial("_LoginPartial")
+
+                    <!-- /section:basics/navbar.user_menu -->
                 </ul>
             </div>
-        </div>
+
+            <!-- /section:basics/navbar.dropdown -->
+        </div><!-- /.navbar-container -->
     </div>
 
     <!-- /section:basics/navbar.layout -->
-    <div class="main-container ace-save-state" id="main-container">
+    <div class="main-container" id="main-container">
         <script type="text/javascript">
-            try { ace.settings.loadState('main-container') } catch (e) { }
+				try{ace.settings.check('main-container' , 'fixed')}catch(e){}
         </script>
 
         <!-- #section:basics/sidebar -->
-        <div id="sidebar" class="sidebar                  responsive                    ace-save-state">
+        <div id="sidebar" class="sidebar                  responsive">
             <script type="text/javascript">
-                    try{ace.settings.loadState('sidebar')}catch(e){}
+					try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
             </script>
 
             <div class="sidebar-shortcuts" id="sidebar-shortcuts">
@@ -95,22 +173,49 @@
                     <span class="btn btn-danger"></span>
                 </div>
             </div><!-- /.sidebar-shortcuts -->
-
             @Html.MvcSiteMap().Menu(false)
             <!-- #section:basics/sidebar.layout.minimize -->
             <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
-                <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+                <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
             </div>
 
             <!-- /section:basics/sidebar.layout.minimize -->
+            <script type="text/javascript">
+					try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+            </script>
         </div>
 
         <!-- /section:basics/sidebar -->
         <div class="main-content">
             <div class="main-content-inner">
                 <!-- #section:basics/content.breadcrumbs -->
-                <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                <div class="breadcrumbs" id="breadcrumbs">
+                    <script type="text/javascript">
+							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+                    </script>
                     @Html.MvcSiteMap().SiteMapPath()
+                    @*<ul class="breadcrumb">
+                            <li>
+                                <i class="ace-icon fa fa-home home-icon"></i>
+                                <a href="#">Home</a>
+                            </li>
+
+                            <li>
+                                <a href="#">Other Pages</a>
+                            </li>
+                            <li class="active">Blank Page</li>
+                        </ul>*@<!-- /.breadcrumb -->
+                    <!-- #section:basics/content.searchbox -->
+                    <!-- #section:basics/content.searchbox -->
+                    <div class="nav-search" id="nav-search">
+                        <form class="form-search">
+                            <span class="input-icon">
+                                <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                                <i class="ace-icon fa fa-search nav-search-icon"></i>
+                            </span>
+                        </form>
+                    </div><!-- /.nav-search -->
+                    <!-- /section:basics/content.searchbox -->
                 </div>
 
                 <!-- /section:basics/content.breadcrumbs -->
@@ -139,35 +244,35 @@
                                 <!-- /section:settings.skins -->
                                 <!-- #section:settings.navbar -->
                                 <div class="ace-settings-item">
-                                    <input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-navbar" autocomplete="off" />
+                                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-navbar" />
                                     <label class="lbl" for="ace-settings-navbar"> Fixed Navbar</label>
                                 </div>
 
                                 <!-- /section:settings.navbar -->
                                 <!-- #section:settings.sidebar -->
                                 <div class="ace-settings-item">
-                                    <input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-sidebar" autocomplete="off" />
+                                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-sidebar" />
                                     <label class="lbl" for="ace-settings-sidebar"> Fixed Sidebar</label>
                                 </div>
 
                                 <!-- /section:settings.sidebar -->
                                 <!-- #section:settings.breadcrumbs -->
                                 <div class="ace-settings-item">
-                                    <input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-breadcrumbs" autocomplete="off" />
+                                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-breadcrumbs" />
                                     <label class="lbl" for="ace-settings-breadcrumbs"> Fixed Breadcrumbs</label>
                                 </div>
 
                                 <!-- /section:settings.breadcrumbs -->
                                 <!-- #section:settings.rtl -->
                                 <div class="ace-settings-item">
-                                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" autocomplete="off" />
+                                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" />
                                     <label class="lbl" for="ace-settings-rtl"> Right To Left (rtl)</label>
                                 </div>
 
                                 <!-- /section:settings.rtl -->
                                 <!-- #section:settings.container -->
                                 <div class="ace-settings-item">
-                                    <input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-add-container" autocomplete="off" />
+                                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-add-container" />
                                     <label class="lbl" for="ace-settings-add-container">
                                         Inside
                                         <b>.container</b>
@@ -180,17 +285,17 @@
                             <div class="pull-left width-50">
                                 <!-- #section:basics/sidebar.options -->
                                 <div class="ace-settings-item">
-                                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-hover" autocomplete="off" />
+                                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-hover" />
                                     <label class="lbl" for="ace-settings-hover"> Submenu on Hover</label>
                                 </div>
 
                                 <div class="ace-settings-item">
-                                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-compact" autocomplete="off" />
+                                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-compact" />
                                     <label class="lbl" for="ace-settings-compact"> Compact Sidebar</label>
                                 </div>
 
                                 <div class="ace-settings-item">
-                                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-highlight" autocomplete="off" />
+                                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-highlight" />
                                     <label class="lbl" for="ace-settings-highlight"> Alt. Active Item</label>
                                 </div>
 
@@ -200,61 +305,69 @@
                     </div><!-- /.ace-settings-container -->
                     <!-- /section:settings.box -->
 
+                    @*<div class="page-header">
+                        @RenderSection("pageheader", required: false)
+                        @*<h1>
+                            UI Elements
+                            <small>
+                                <i class="ace-icon fa fa-angle-double-right"></i>
+                                Common UI Features &amp; Elements
+                            </small>
+                        </h1>
+                    </div>*@<!-- /.page-header -->
 
+                       
                     <div class="row">
                         <div class="col-xs-12">
                             <!-- PAGE CONTENT BEGINS -->
+                            <img id="loading-indicator"  style="display:none;position:fixed;left:50%;z-index:30;" />
                             @RenderBody()
                             <!-- PAGE CONTENT ENDS -->
                         </div><!-- /.col -->
                     </div><!-- /.row -->
-
+ 
                 </div><!-- /.page-content -->
             </div>
-        </div><!-- /.main-content -->
+            </div><!-- /.main-content -->
 
-        <div class="footer">
-            <div class="footer-inner">
-                <!-- #section:basics/footer -->
-                <div class="footer-content">
-                    <span class="bigger-120">
-                        <span class="blue bolder">SensingGame</span>
-                        Application &copy; 2013-2016
-                    </span>
 
-                    &nbsp; &nbsp;
-                    <span class="action-buttons">
-                        <a href="#">
-                            <i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
-                        </a>
+            <div class="footer">
 
-                        <a href="#">
-                            <i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
-                        </a>
+                <div class="footer-inner">
 
-                        <a href="#">
-                            <i class="ace-icon fa fa-rss-square orange bigger-150"></i>
-                        </a>
-                    </span>
+                    <!-- #section:basics/footer -->
+                    <div class="footer-content">
+                        @*<span class="bigger-120">
+                            <span class="blue bolder">Panasonic</span>
+                            Application &copy; 2013-2015
+                        </span>*@
+
+                        &nbsp; &nbsp;
+                        @*<span class="social-icons" style="float:none;position:relative">
+                            <span class="weixincode"><img src="../Content/img/weixincode.png" width="121" height="120" alt="创思感知微信公众平台" /></span>
+                            <span class="sinacode"><img src="../Content/img/sinacode.png" width="121" height="120" alt="创思感知新浪微博" /></span>
+                            <span class="weixin" style="float:none;display:inline-block"></span>
+                            <span class="sina" style="float: none; display: inline-block"><a target="_blank" href="http://weibo.com/troncell"></a></span>
+                        </span>*@
+                        &nbsp; &nbsp;
+                        @{Html.RenderPartial("_LanguageSelector"); }
+                    </div>
+
+                    <!-- /section:basics/footer -->
                 </div>
-
-                <!-- /section:basics/footer -->
             </div>
-        </div>
 
+            <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+                <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+            </a>
 
-        <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-            <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-        </a>
-    </div><!-- /.main-container -->  
-    @{Html.RenderPartial("_Scripts");}
-    <script>
-        $.ajaxSetup({
-            cache: false //关闭AJAX缓存
-        });
-    </script>
-    @RenderSection("scripts", required: false)
+        </div><!-- /.main-container -->
+        @{Html.RenderPartial("_Scripts");}
+        <script>
+                $.ajaxSetup({
+                    cache: false //关闭AJAX缓存
+                });
+        </script>
+        @RenderSection("scripts", required: false)
 </body>
-
-
 </html>

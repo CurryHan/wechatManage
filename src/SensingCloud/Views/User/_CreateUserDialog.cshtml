@@ -27,7 +27,7 @@
                     <label class="control-label col-md-2">@Resources.Head</label>
                     <div class="col-md-10" data-target-parent="true" style="max-width:190px">
                         <img data-target-preview="true" style="width: 100px; height: 100px;" src="~/Content/img/fileupload.jpg" alt="Image preview">
-                        <input type="file" name="avatar" id="file" multiple accept="image/*" style="display:none">
+                        <input type="file" name="icon" id="file" multiple accept="image/*" style="display:none">
                         <button data-action-select="true" type="button" class="btn btn-info btn-sm no-border" style="margin-top:10px">选择图片</button>
                     </div>
 
@@ -40,13 +40,13 @@
                     </div>
                 </div>
 
-                @*<div class="form-group">
+                <div class="form-group">
                     <label class="control-label col-md-2">@Resources.CompanyName</label>
                     <div class="col-md-4">
                         @Html.EditorFor(model => model.Company, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Company, "", new { @class = "text-danger" })
                     </div>
-                </div>*@
+                </div>
 
                 <div class="form-group">
                     <label class="control-label col-md-2">@Resources.PhoneNumber</label>
@@ -63,16 +63,13 @@
                         @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label class="control-label col-md-2">@Resources.GroupName</label>
                     <div class="col-md-4">
-                        @Html.DropDownListFor(m => m.SelectedGroupId, Model.GroupItems, new { @class = "form-control " })
+                        @Html.DropDownListFor(m => m.SelectedGroupId, Model.GroupItems, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.SelectedGroupId, "", new { @class = "text-danger" })
                     </div>
                 </div>
-
-
                 <div class="form-group">
                     <label class="control-label col-md-2">@Resources.RoleName</label>
                     <div class="col-md-4">
@@ -80,26 +77,19 @@
                         @Html.ValidationMessageFor(m => m.SelectRoleName, "", new { @class = "text-danger" })
                     </div>
                 </div>
-
-
             </div>
         </div>
         <div class="form-group">
             <div>
                 <div>
-                    <a href="#/" class="label label-info arrowed arrowed-in-right">@Resources.ReturnToList</a>
+                    <a href="/User/Index" class="label label-info arrowed arrowed-in-right">@Resources.ReturnToList</a>
                     <button type="submit" style="float:right" class="btn btn-primary btn-xs no-border">&nbsp;&nbsp;&nbsp;@Resources.Save&nbsp;&nbsp;&nbsp;</button>
                 </div>
             </div>
         </div>
-
-
-
-
 }
 
-    
-    <script>
+<script>
         $(function () {
             if ($("#UserName").val() != "")
             {
@@ -109,19 +99,18 @@
             $("#SelectedGroupId").change(function () {
                 $("#SelectRoleName").removeAttr("disabled");
                 if ($("#SelectedGroupId").val() == "@ViewBag.CurrentGroupID") {
-                    $("#SelectRoleName option[value='Admin']").remove();
+                    $("#SelectRoleName option[value='Administrator']").remove();
                 }
                 else {
-                    if ($("#SelectRoleName").find("option[value='Admin']").length > 0) {
+                    if ($("#SelectRoleName").find("option[value='Administrator']").length > 0) {
 
                     }
                     else {
-                        $("#SelectRoleName").append("<option value='Admin'>Admin</option>");
+                        $("#SelectRoleName").append("<option value='Administrator'>Administrator</option>");
                     }
                 }
             });
         });
 
-    </script>
-
+</script>
 

@@ -10,7 +10,6 @@
   
   <!--通用-->
   <resource culture="zh-cn" name="Save" value="保存"></resource>
-  <resource culture="zh-cn" name="Copy" value="复制"></resource>
   <resource culture="zh-cn" name="Confirm" value=" 确认"></resource>
   <resource culture="zh-cn" name="Search" value="检索"></resource>
   <resource culture="zh-cn" name="Edit" value="编辑"></resource>
@@ -38,8 +37,6 @@
   <!--验证-->
    <resource culture="zh-cn" name="InvalidIP" value="IP地址格式不符"></resource>
    <resource culture="zh-cn" name="InvalidMac" value="Mac地址格式不符"></resource>
-  <resource culture="zh-cn" name="InvalidUrl" value="Url地址格式不符"></resource>
-  <resource culture="zh-cn" name="InvalidPhone" value="手机格式不符"></resource>
 
   <!--商品-->
   <resource culture="zh-cn" name="Product" value="商品"></resource>
@@ -137,6 +134,7 @@
   <resource culture="zh-cn" name="OneKeyApplyOnLine" value="一键申请上线"></resource>
   <resource culture="zh-cn" name="PendingProduct" value="待审核商品"></resource>
   <resource culture="zh-cn" name="PendingProductTAB" value="待审核商品一览表"></resource>
+  <resource culture="zh-cn" name="InitialProduct" value="初始商品"></resource>
   <resource culture="zh-cn" name="CancelPendingProduct" value="取消审核商品"></resource>
   <resource culture="zh-cn" name="OneKeyCancelPendingProduct" value="一键取消待审核商品"></resource>
 
@@ -184,7 +182,7 @@
   <resource culture="zh-cn" name="Category" value="分类"></resource>
   <resource culture="zh-cn" name="Priority" value="排列序号"></resource>
   <resource culture="zh-cn" name="Image" value="类目图片"></resource>
-  <resource culture="zh-cn" name="WebShowImg" value="后台展示图"></resource>
+  <resource culture="zh-cn" name="WebShowImg" value="展示图"></resource>
    
   <!---设备类型-->
   <resource culture="zh-cn" name="CreateDeviceType" value="新建设备类型"></resource>
@@ -198,6 +196,7 @@
   <resource culture="zh-cn" name="DeviceGroup" value="设备分组"></resource>
   <resource culture="zh-cn" name="DeviceStatus" value="设备状态"></resource>
   <resource culture="zh-cn" name="DeviceDetail" value="设备详细"></resource>
+  <resource culture="zh-cn" name="IsRun" value="是否立即使用"></resource>
   <resource culture="zh-cn" name="AuditOnlineDevice" value="审核上线设备"></resource>
   <resource culture="zh-cn" name="AuditOfflineDevice" value="审核下线设备"></resource>
   <resource culture="zh-cn" name="OneKeyOnlineDevices" value="一键同意上线"></resource>
@@ -272,7 +271,8 @@
   <resource culture="zh-cn" name="SelectBuilding" value="选择楼宇"></resource>
   <resource culture="zh-cn" name="SelectFloor" value="选择楼层"></resource>
   <resource culture="zh-cn" name="SelectRoom" value="选择房间"></resource>
-  
+
+  <resource culture="zh-cn" name="SyncTaboProducts" value="同步淘宝商品"></resource>
 
   <!-- Spanish (zh-CN) -->
 
@@ -287,7 +287,6 @@
 
   <!--通用-->
   <resource culture="en-us" name="Save" value="Save"></resource>
-
   <resource culture="en-us" name="Confirm" value="Confirm"></resource>
   <resource culture="en-us" name="Search" value="Search"></resource>
   <resource culture="en-us" name="Edit" value="Edit"></resource>
@@ -313,8 +312,6 @@
     <!--验证-->
    <resource culture="en-us" name="InvalidIP" value="Invalid IP"></resource>
    <resource culture="en-us" name="InvalidMac" value="Invalid Mac"></resource>
-  <resource culture="en-us" name="InvalidUrl" value="Invalid Url"></resource>
-  <resource culture="en-us" name="InvalidPhone" value="Invalid Phone"></resource>
 
   <!--商品-->
   <resource culture="en-us" name="Product" value="Product"></resource>
@@ -394,6 +391,7 @@
   <resource culture="en-us" name="OneKeyApplyOnLine" value="OneKeyApplyOnLine"></resource>
   <resource culture="en-us" name="PendingProduct" value="PendingProduct"></resource>
   <resource culture="en-us" name="PendingProductTAB" value="PendingProductTAB"></resource>
+  <resource culture="en-us" name="InitialProduct" value="InitialProduct"></resource>
   <resource culture="en-us" name="CancelPendingProduct" value="CancelPendingProduct"></resource>
   <resource culture="en-us" name="OneKeyCancelPendingProduct" value="OneKeyCancelPendingProduct"></resource>
 
@@ -465,6 +463,7 @@
   <resource culture="en-us" name="DeviceType" value="Device Type"></resource>
   <resource culture="en-us" name="DeviceAuditStatus" value="Audit Status"></resource>
   <resource culture="en-us" name="DeviceGroup" value="Device Group"></resource>
+  <resource culture="en-us" name="IsRun" value="IsRunning"></resource>
   <resource culture="en-us" name="DeviceStatus" value="Device Status"></resource>
   <resource culture="en-us" name="DeviceDetail" value="Device Detail"></resource>
   <resource culture="en-us" name="DeviceList" value="Device List"></resource>
@@ -548,7 +547,7 @@
   <resource culture="en-us" name="SelectBuilding" value="Select Building"></resource>
   <resource culture="en-us" name="SelectFloor" value="Select Floor"></resource>
   <resource culture="en-us" name="SelectRoom" value="Select Room"></resource>
-  
+  <resource culture="en-us" name="SyncTaboProducts" value="Sync Products from Taobao"></resource>
 
   <!-- English (en-US) -->
 

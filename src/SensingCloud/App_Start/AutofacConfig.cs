@@ -1,4 +1,6 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Collections.Generic;
+using System.Reflection;
 using System.Web.Hosting;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -12,17 +14,20 @@ using MvcSiteMapProvider.Builder;
 using MvcSiteMapProvider.Loader;
 using MvcSiteMapProvider.Web.Mvc;
 using MvcSiteMapProvider.Xml;
+using SensingCloud;
 using Sensing.Data.Infrastructure;
 using SensingCloud.Modules;
 using Sensing.Entities.Users;
 using Sensing.Data;
+using Sensing.Data.Repository;
+using SensingCloud.Services;
+using SensingCloud.Authentication;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.DataProtection;
 using Owin;
 using System.Web;
 using SensingCloud.Helpers;
-using Sensing.Data.Repository;
-using SensingCloud.Services;
+
 
 namespace SensingCloud
 {
@@ -63,12 +68,12 @@ namespace SensingCloud
                 .As<IReservedAttributeNameProvider>()
                 .WithParameter("attributesToIgnore", new string[]{"icon"});
 
-            builder.RegisterAssemblyTypes(typeof(UserRepository).Assembly)
+            builder.RegisterAssemblyTypes(typeof(SoftwareUpdateRepository).Assembly)
                 .Where(t => t.Name.EndsWith("Repository"))
                 .AsImplementedInterfaces().InstancePerRequest();
 
 
-            builder.RegisterAssemblyTypes(typeof(UserService).Assembly)
+            builder.RegisterAssemblyTypes(typeof(SoftwareUpdateService).Assembly)
                 .Where(t => t.Name.EndsWith("Service"))
                 .AsImplementedInterfaces().InstancePerRequest();
 

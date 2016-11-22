@@ -27,10 +27,7 @@ input,
 textarea,
 th,
 td {
-  font-family: Helvetica, Tahoma, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei", STXihei, STHeiti, Heiti, SimSun, sans-serif;
-}
-input{
-    cursor:default !important;
+  font-family: 'Microsoft YaHei', 'Helvetica Neue', 'Helvetica', 'Arial', 'STHeiti', 'simsun', sans-serif;
 }
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -64,13 +61,13 @@ a:hover {
 }
 @font-face {
   font-family: 'troncell';
-  src: url('../fonts/icomoon.eot?4i5d2d');
-  src: url('../fonts/icomoon.eot?#iefix4i5d2d') format('embedded-opentype'), url('../fonts/icomoon.woff?4i5d2d') format('woff'), url('../fonts/icomoon.ttf?4i5d2d') format('truetype'), url('../fonts/icomoon.svg?4i5d2d#icomoon') format('svg');
+  src: url('../fonts/troncell.eot?4i5d2d');
+  src: url('../fonts/troncell.eot?#iefix4i5d2d') format('embedded-opentype'), url('../fonts/troncell.woff?4i5d2d') format('woff'), url('../fonts/troncell.ttf?4i5d2d') format('truetype'), url('../fonts/troncell.svg?4i5d2d#troncell') format('svg');
   font-weight: normal;
   font-style: normal;
 }
-[class^="icon-logo"],
-[class*="icon-logo"] {
+[class^="icon-tc"],
+[class*=" icon-tc"] {
   font-family: 'troncell';
   speak: none;
   font-style: normal;
@@ -82,9 +79,8 @@ a:hover {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-.icon-logo:before {
-    content: "\e900";
+.icon-tc-logo:before {
+  content: "\e600";
 }
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
@@ -97,10 +93,10 @@ a:hover {
   margin-left: auto;
   margin-right: auto;
 }
-/*.login-head {
+.login-head {
   margin-left: 10px;
   margin-right: 10px;
-}*/
+}
 .leftbar {
   float: left;
   width: 475px;
@@ -351,7 +347,7 @@ a:hover {
 }
 .login-img {
   margin-top: 100px;
-  width: 100%;
+  width: 350px;
 }
 .login-foot-nav-container {
   background-color: #d3d3d3;
@@ -730,7 +726,7 @@ section#list-section .row-table {
 }
 table th:first-of-type,
 table td:first-of-type{
-    /*width:60px;*/
+    width:60px;
  }
 table th:last-of-type,
 table td:last-of-type{
@@ -744,8 +740,4 @@ img.device-image-preview{
     height:150px;
     box-shadow:1px 1px 3px hsla(0,0%,0%,.2);
     padding:5px;
-}
-
-.game-header{
-    font-size:18px;
 }

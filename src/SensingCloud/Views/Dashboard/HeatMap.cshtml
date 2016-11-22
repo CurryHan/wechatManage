@@ -1,0 +1,84 @@
+﻿@using SensingCloud.Models
+@model List<HeatMapViewModel>
+    @{ Layout = null;}
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+</head>
+
+
+<style>
+    .heatmap-pane{
+        position:relative;
+        height:600px;
+    }
+    .heatmap-pane img{
+        position:absolute;
+        height:600px;
+    }
+    .heatmap{
+      
+    }
+</style>
+
+<form id="queryForm" style="width:600px" method="get">
+    <h4>选择日期：</h4>
+    <div class="row">
+        <div class="col-lg-5">
+            <div class="input-group">
+                <input id="qDay" name="qDay" class="form-control datepicker" data-date-format="yyyy-mm-dd" type="text" value="@DateTime.Today.ToString("yyyy-MM-dd")" />
+                <span class="input-group-addon">
+                    <i class="fa fa-calendar bigger-110"></i>
+                </span>
+            </div>
+        </div>
+        <div class="col-lg-5" id="daypicker2" style="display:none">
+            <div class="input-group">
+                <input id="qDay2" name="qDay2" class="form-control datepicker" data-date-format="yyyy-mm-dd" type="text" value="@DateTime.Today.ToString("yyyy-MM-dd")" />
+                <span class="input-group-addon">
+                    <i class="fa fa-calendar bigger-110"></i>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-lg-2">
+            <button id="btnSearch" class="btn btn-primary btn-sm">查询</button>
+        </div>
+    </div>
+    <h4>时间单位：</h4>
+    <div data-toggle="buttons" class="btn-group">
+        <label class="btn btn-primary active">
+            <input name="timeunit" type="radio" value="1">
+            时
+        </label>
+        <label class="btn btn-primary ">
+            <input name="timeunit" type="radio" value="2">
+            周
+        </label>
+
+        <label class="btn btn-primary">
+            <input name="timeunit" type="radio" value="3">
+            月
+        </label>
+        <label class="btn btn-primary">
+            <input name="timeunit" type="radio" value="4">
+            时间段
+        </label>
+    </div>
+</form>
+<script src="~/Scripts/jquery-2.1.4.js"></script>
+
+<script src="~/Scripts/bootstrap-datepicker.js"></script>
+<script src="~/Scripts/bootstrap-datepicker.zh-CN.js"></script>
+
+<script>
+        $(function () {
+
+         
+            $("input[name='qDay']").datepicker({language:'zh-CN'});
+            $("input[name='qDay2']").datepicker();
+
+
+        });
+</script>

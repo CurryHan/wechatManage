@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SensingCloud</RootNamespace>
     <AssemblyName>SensingCloud</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -21,18 +21,16 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;Use_Local</DefineConstants>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -43,10 +41,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aliyun.OSS, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0ad4175f0dac0b9b, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Aliyun.OSS.SDK.2.3.0\lib\Aliyun.OSS.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
@@ -67,8 +61,8 @@
       <HintPath>..\..\packages\Autofac.Owin.3.1.0\lib\net45\Autofac.Integration.Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+    <Reference Include="AutoMapper, Version=4.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.4.0.0-alpha1\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
@@ -87,10 +81,6 @@
       <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Gma.QrCodeNet.Encoding, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\QrCode.Net.0.4.0.0\lib\net45\Gma.QrCodeNet.Encoding.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
       <Private>True</Private>
@@ -107,13 +97,11 @@
       <HintPath>..\..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.AspNet.SignalR.Core">
       <HintPath>..\..\packages\Microsoft.AspNet.SignalR.Core.2.2.0\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
-      <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb">
       <HintPath>..\..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.0\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MvcSiteMapProvider, Version=4.6.18.0, Culture=neutral, PublicKeyToken=1923abe4657913cc, processorArchitecture=MSIL">
@@ -124,8 +112,16 @@
       <HintPath>..\..\packages\MvcSiteMapProvider.MVC5.4.6.18\lib\net45\MvcSiteMapProvider.WebActivator.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SendGrid.SmtpApi, Version=1.3.1.0, Culture=neutral, PublicKeyToken=2ae73662c35d80e4, processorArchitecture=MSIL">
@@ -136,31 +132,25 @@
       <HintPath>..\..\packages\Sendgrid.6.1.0\lib\SendGridMail.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Senparc.Weixin, Version=4.5.20.25374, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Senparc.Weixin.4.5.20\lib\net45\Senparc.Weixin.dll</HintPath>
+    <Reference Include="Senparc.Weixin, Version=4.9.0.832, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Senparc.Weixin.4.9.0\lib\net45\Senparc.Weixin.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Senparc.Weixin.MP, Version=13.8.4.26917, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Senparc.Weixin.MP.13.8.4\lib\net45\Senparc.Weixin.MP.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Senparc.Weixin.Open, Version=1.6.5.36610, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Senparc.Weixin.Open.1.6.5\lib\net45\Senparc.Weixin.Open.dll</HintPath>
+    <Reference Include="Senparc.Weixin.MP, Version=14.3.104.859, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Senparc.Weixin.MP.14.3.104\lib\net45\Senparc.Weixin.MP.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
@@ -201,6 +191,11 @@
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="TopSdk, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\TopSdk.dll</HintPath>
     </Reference>
     <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
       <HintPath>..\..\packages\WebActivatorEx.2.0.6\lib\net40\WebActivatorEx.dll</HintPath>
@@ -257,6 +252,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Apis\BaseApiController.cs" />
+    <Compile Include="Apis\SoftwareClientApiController.cs" />
+    <Compile Include="App_Start\WeixinConfig.cs" />
+    <Compile Include="Controllers\MediaController.cs" />
+    <Compile Include="Controllers\ReceiveController.cs" />
+    <Compile Include="Controllers\WeChatController.cs" />
     <Compile Include="App_Start\AutofacConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -266,15 +267,13 @@
     <Compile Include="App_Start\Startup.App.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="App_Start\WeixinConfig.cs" />
     <Compile Include="Authentication\DefaultFormsAuthentication.cs" />
     <Compile Include="Authentication\IFormsAuthentication.cs" />
-    <Compile Include="Authentication\ISensingPrincipal .cs" />
     <Compile Include="Authentication\UserAuthenticationTicketBuilder.cs" />
     <Compile Include="Authorization\ClaimsAuthorizeAttribute.cs" />
     <Compile Include="Authorization\GroupAuthorizeAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ErrorPageController.cs" />
+    <Compile Include="Controllers\IUnIUnitOfWork.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\SensingBaseController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
@@ -282,73 +281,51 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SoftwareController.cs" />
     <Compile Include="Controllers\SystemSettingController.cs" />
-    <Compile Include="Controllers\WeixinController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Filters\HMACAuthenticationAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Handlers\QrcodeRouteHandler.cs" />
-    <Compile Include="Handlers\QrcodeHandler.cs" />
     <Compile Include="Helpers\ConstConfig.cs" />
     <Compile Include="Helpers\CultureHelper.cs" />
     <Compile Include="Helpers\DateTimeExtensions.cs" />
     <Compile Include="Helpers\EnumExtensions.cs" />
-    <Compile Include="Helpers\EnumHelpers.cs" />
-    <Compile Include="Helpers\OSSHelper.cs" />
+    <Compile Include="Helpers\Helper.cs" />
+    <Compile Include="Helpers\UIHelper.cs" />
     <Compile Include="Helpers\IPrincipalExtensions.cs" />
     <Compile Include="Helpers\SMSHelper.cs" />
-    <Compile Include="Helpers\UtilExtensions.cs" />
-    <Compile Include="Helpers\WeixinWarning.cs" />
-    <Compile Include="Helpers\XmlHelper.cs" />
+    <Compile Include="Helpers\StringExtensions.cs" />
+    <Compile Include="Helpers\PostHttpResponse.cs" />
+    <Compile Include="Helpers\WebUtilHelper.cs" />
+    <Compile Include="Hubs\ChartsHub.cs" />
+    <Compile Include="Hubs\RawConnection.cs" />
     <Compile Include="Infrastructure\ApiResult.cs" />
     <Compile Include="Infrastructure\ForcedModelError.cs" />
     <Compile Include="Infrastructure\PagedList.cs" />
     <Compile Include="Infrastructure\SmartJsonResult.cs" />
     <Compile Include="Infrastructure\SortExpression.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\ActivityAddAdsViewModel.cs" />
-    <Compile Include="Models\AdsTagsSubModel.cs" />
-    <Compile Include="Models\CommonSettingModels.cs" />
-    <Compile Include="Models\DeviceContracts\DeviceInfo.cs" />
-    <Compile Include="Models\DeviceContracts\DeviceProfile.cs" />
-    <Compile Include="Models\DeviceContracts\DeviceResource.cs" />
-    <Compile Include="Models\DeviceContracts\DeviceSetting.cs" />
-    <Compile Include="Models\DeviceContracts\DeviceShowArea.cs" />
-    <Compile Include="Models\DeviceContracts\DeviceShowModel.cs" />
-    <Compile Include="Models\ErrorMsgViewModel.cs" />
-    <Compile Include="Models\WeChatSDKViewModel.cs" />
-    <Compile Include="Models\DeviceViewModel.cs" />
+    <Compile Include="Models\DashboardViewModel.cs" />
+    <Compile Include="Models\HeatMapViewModel.cs" />
+    <Compile Include="Models\IntroductionViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\ResourceViewModel.cs" />
-    <Compile Include="Models\TagValueViewModel.cs" />
-    <Compile Include="Models\TagViewModel.cs" />
-    <Compile Include="Models\ThirtPartyViewModel.cs" />
-    <Compile Include="Models\ActivityUserDataModel.cs" />
     <Compile Include="Modules\AuthenticatedVisibilityProvider.cs" />
     <Compile Include="Modules\BasicAuthentication.cs" />
     <Compile Include="Modules\CommonConventions.cs" />
     <Compile Include="Modules\MvcModule.cs" />
     <Compile Include="Modules\MvcSiteMapProviderModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resource.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resource.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Scripts\UEditor\net\App_Code\Config.cs" />
-    <Compile Include="Scripts\UEditor\net\App_Code\ConfigHandler.cs" />
-    <Compile Include="Scripts\UEditor\net\App_Code\CrawlerHandler.cs" />
-    <Compile Include="Scripts\UEditor\net\App_Code\Handler.cs" />
-    <Compile Include="Scripts\UEditor\net\App_Code\ListFileHandler.cs" />
-    <Compile Include="Scripts\UEditor\net\App_Code\NotSupportedHandler.cs" />
-    <Compile Include="Scripts\UEditor\net\App_Code\PathFormater.cs" />
-    <Compile Include="Scripts\UEditor\net\App_Code\UploadHandler.cs" />
-    <Compile Include="Sitemap\BehaviorSiteMapNodeVisibilityProvider.cs" />
+    <Compile Include="Sitemap\SiteMapNodeVisibilityProvider.cs" />
     <Compile Include="Sitemap\SystemDynamicNodeProvider.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="Weixin\WeixinHelper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Chart\charts.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Chart\heatmaps.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Content Include="Content\ace\avatars\avatar.png" />
     <Content Include="Content\ace\avatars\avatar1.png" />
     <Content Include="Content\ace\avatars\avatar2.png" />
@@ -363,7 +340,6 @@
     <Content Include="Content\ace\css\ace-rtl.min.css" />
     <Content Include="Content\ace\css\ace-skins.min.css" />
     <Content Include="Content\ace\css\ace.min.css" />
-    <Content Include="Content\ace\css\bootstrap-datepicker3.min.css" />
     <Content Include="Content\ace\css\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\ace\css\bootstrap-duallistbox.min.css" />
     <Content Include="Content\ace\css\bootstrap-editable.min.css" />
@@ -452,11 +428,9 @@
     <Content Include="Content\ace\img\loading.gif" />
     <Content Include="Content\ace\js\ace-elements.min.js" />
     <Content Include="Content\ace\js\ace-extra.min.js" />
-    <Content Include="Content\ace\js\ace-require.min.js" />
     <Content Include="Content\ace\js\ace.min.js" />
     <Content Include="Content\ace\js\ace.settings-skin.js" />
     <Content Include="Content\ace\js\additional-methods.min.js" />
-    <Content Include="Content\ace\js\autosize.min.js" />
     <Content Include="Content\ace\js\bootbox.min.js" />
     <Content Include="Content\ace\js\bootstrap-colorpicker.min.js" />
     <Content Include="Content\ace\js\bootstrap-multiselect.min.js" />
@@ -464,17 +438,7 @@
     <Content Include="Content\ace\js\bootstrap-wysiwyg.min.js" />
     <Content Include="Content\ace\js\bootstrap.min.js" />
     <Content Include="Content\ace\js\chosen.jquery.min.js" />
-    <Content Include="Content\ace\js\dataTables\extensions\Buttons\js\buttons.bootstrap.min.js" />
-    <Content Include="Content\ace\js\dataTables\extensions\Buttons\js\buttons.colVis.min.js" />
-    <Content Include="Content\ace\js\dataTables\extensions\Buttons\js\buttons.flash.min.js" />
-    <Content Include="Content\ace\js\dataTables\extensions\Buttons\js\buttons.foundation.min.js" />
-    <Content Include="Content\ace\js\dataTables\extensions\Buttons\js\buttons.html5.min.js" />
-    <Content Include="Content\ace\js\dataTables\extensions\Buttons\js\buttons.jqueryui.min.js" />
-    <Content Include="Content\ace\js\dataTables\extensions\Buttons\js\buttons.print.min.js" />
-    <Content Include="Content\ace\js\dataTables\extensions\Buttons\js\dataTables.buttons.min.js" />
-    <Content Include="Content\ace\js\dataTables\extensions\Buttons\swf\flashExport.swf" />
     <Content Include="Content\ace\js\dataTables\extensions\ColVis\js\dataTables.colVis.min.js" />
-    <Content Include="Content\ace\js\dataTables\extensions\Select\js\dataTables.select.min.js" />
     <Content Include="Content\ace\js\dataTables\extensions\TableTools\js\dataTables.tableTools.min.js" />
     <Content Include="Content\ace\js\dataTables\extensions\TableTools\swf\copy_csv_xls.swf" />
     <Content Include="Content\ace\js\dataTables\extensions\TableTools\swf\copy_csv_xls_pdf.swf" />
@@ -494,13 +458,10 @@
     <Content Include="Content\ace\js\fuelux\fuelux.tree.min.js" />
     <Content Include="Content\ace\js\fuelux\fuelux.wizard.min.js" />
     <Content Include="Content\ace\js\fullcalendar.min.js" />
-    <Content Include="Content\ace\js\holder.min.js" />
-    <Content Include="Content\ace\js\html5shiv-printshiv.min.js" />
     <Content Include="Content\ace\js\html5shiv.min.js" />
     <Content Include="Content\ace\js\jqGrid\i18n\grid.locale-ar.js" />
     <Content Include="Content\ace\js\jqGrid\i18n\grid.locale-bg.js" />
     <Content Include="Content\ace\js\jqGrid\i18n\grid.locale-bg1251.js" />
-    <Content Include="Content\ace\js\jqGrid\i18n\grid.locale-ca.js" />
     <Content Include="Content\ace\js\jqGrid\i18n\grid.locale-cat.js" />
     <Content Include="Content\ace\js\jqGrid\i18n\grid.locale-cn.js" />
     <Content Include="Content\ace\js\jqGrid\i18n\grid.locale-cs.js" />
@@ -524,7 +485,6 @@
     <Content Include="Content\ace\js\jqGrid\i18n\grid.locale-ja.js" />
     <Content Include="Content\ace\js\jqGrid\i18n\grid.locale-kr.js" />
     <Content Include="Content\ace\js\jqGrid\i18n\grid.locale-lt.js" />
-    <Content Include="Content\ace\js\jqGrid\i18n\grid.locale-me.js" />
     <Content Include="Content\ace\js\jqGrid\i18n\grid.locale-mne.js" />
     <Content Include="Content\ace\js\jqGrid\i18n\grid.locale-nl.js" />
     <Content Include="Content\ace\js\jqGrid\i18n\grid.locale-no.js" />
@@ -541,7 +501,6 @@
     <Content Include="Content\ace\js\jqGrid\i18n\grid.locale-tr.js" />
     <Content Include="Content\ace\js\jqGrid\i18n\grid.locale-tw.js" />
     <Content Include="Content\ace\js\jqGrid\i18n\grid.locale-ua.js" />
-    <Content Include="Content\ace\js\jqGrid\i18n\grid.locale-uk.js" />
     <Content Include="Content\ace\js\jqGrid\i18n\grid.locale-vi.js" />
     <Content Include="Content\ace\js\jqGrid\jquery.jqGrid.min.js" />
     <Content Include="Content\ace\js\jquery-ui.custom.min.js" />
@@ -569,308 +528,26 @@
     <Content Include="Content\ace\js\markdown\markdown.min.js" />
     <Content Include="Content\ace\js\markdown\to-markdown.min.js" />
     <Content Include="Content\ace\js\pace.min.js" />
-    <Content Include="Content\ace\js\pace1.min.js" />
     <Content Include="Content\ace\js\prettify.min.js" />
-    <Content Include="Content\ace\js\require.min.js" />
     <Content Include="Content\ace\js\respond.min.js" />
     <Content Include="Content\ace\js\select2.min.js" />
     <Content Include="Content\ace\js\spin.min.js" />
     <Content Include="Content\ace\js\typeahead.jquery.min.js" />
     <Content Include="Content\ace\js\x-editable\ace-editable.min.js" />
     <Content Include="Content\ace\js\x-editable\bootstrap-editable.min.js" />
-    <Content Include="Content\action\font-awesome.min.css" />
-    <Content Include="Content\action\qiandaohudong.css" />
-    <Content Include="Content\award\happy\award.css" />
-    <Content Include="Content\award\happy\imgs\bg.jpg" />
-    <Content Include="Content\award\happy\imgs\qrcode.png" />
-    <Content Include="Content\award\happy\imgs\qrtest.png" />
-    <Content Include="Content\award\happy\imgs\zhid.png" />
-    <Content Include="Content\award\happy\imgs\zhit.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\chart\Chart.min.js" />
-    <Content Include="Content\chart\legend.css" />
-    <Content Include="Content\chart\legend.js" />
-    <Content Include="Content\csshake-master\dist\csshake-crazy.css" />
-    <Content Include="Content\csshake-master\dist\csshake-crazy.min.css" />
-    <Content Include="Content\csshake-master\dist\csshake-hard.css" />
-    <Content Include="Content\csshake-master\dist\csshake-hard.min.css" />
-    <Content Include="Content\csshake-master\dist\csshake-horizontal.css" />
-    <Content Include="Content\csshake-master\dist\csshake-horizontal.min.css" />
-    <Content Include="Content\csshake-master\dist\csshake-little.css" />
-    <Content Include="Content\csshake-master\dist\csshake-little.min.css" />
-    <Content Include="Content\csshake-master\dist\csshake-rotate.css" />
-    <Content Include="Content\csshake-master\dist\csshake-rotate.min.css" />
-    <Content Include="Content\csshake-master\dist\csshake-slow.css" />
-    <Content Include="Content\csshake-master\dist\csshake-slow.min.css" />
-    <Content Include="Content\csshake-master\dist\csshake-vertical.css" />
-    <Content Include="Content\csshake-master\dist\csshake-vertical.min.css" />
-    <Content Include="Content\csshake-master\dist\csshake.css" />
-    <Content Include="Content\csshake-master\dist\csshake.min.css" />
-    <Content Include="Content\csshake-master\dist\index.html" />
-    <Content Include="Content\game\BallonShoot\ballonfly.min.js" />
-    <Content Include="Content\game\BallonShoot\cocos2d-js-v3.12.js" />
-    <Content Include="Content\game\BallonShoot\index.html" />
-    <Content Include="Content\game\BallonShoot\main.js" />
-    <Content Include="Content\game\BallonShoot\orientation.js" />
-    <Content Include="Content\game\BallonShoot\res\bg.png" />
-    <Content Include="Content\game\BallonShoot\res\board.png" />
-    <Content Include="Content\game\BallonShoot\res\fore.png" />
-    <Content Include="Content\game\BallonShoot\res\main.png" />
-    <Content Include="Content\game\BallonShoot\res\Music\bgMusic.mp3" />
-    <Content Include="Content\game\OnLineGame\BallonShootPhone\bg.png" />
-    <Content Include="Content\game\OnLineGame\BallonShootPhone\button.png" />
-    <Content Include="Content\game\OnLineGame\BallonShootPhone\cursor.png" />
-    <Content Include="Content\game\OnLineGame\BallonShootPhone\player.png" />
-    <Content Include="Content\game\OnLineGame\BallonShootPhone\player1.png" />
-    <Content Include="Content\game\OnLineGame\BallonShootPhone\player2.png" />
-    <Content Include="Content\game\OnLineGame\BallonShootPhone\shadow.png" />
-    <Content Include="Content\game\OnLineGame\BallonShootPhone\title.png" />
-    <Content Include="Content\game\OnLineGame\ControlBoard\font-noprizewithnoaward.png" />
-    <Content Include="Content\game\OnLineGame\ControlBoard\font-prizerepeate.png" />
-    <Content Include="Content\imgs\error_logo.png" />
-    <Content Include="Content\game.css">
-      <DependentUpon>game.scss</DependentUpon>
-    </Content>
-    <Content Include="Content\game.min.css">
-      <DependentUpon>game.css</DependentUpon>
-    </Content>
-    <Content Include="Content\game\cocos2d-js-v3.12-troncell.js" />
-    <Content Include="Content\game\css\animate.min.css" />
-    <Content Include="Content\game\css\bootstrap.css" />
-    <Content Include="Content\game\css\bootstrap.min.css" />
-    <Content Include="Content\game\css\default.css" />
-    <Content Include="Content\game\css\normalize.css" />
-    <Content Include="Content\game\css\style.css" />
-    <Content Include="Content\game\css\swiper.min.css" />
-    <Content Include="Content\game\css\tron.css" />
-    <Content Include="Content\game\img\default.jpg" />
-    <Content Include="Content\game\img\dot.png" />
-    <Content Include="Content\game\img\Elements\foot.png" />
-    <Content Include="Content\game\img\Elements\HD01.png" />
-    <Content Include="Content\game\img\Elements\HY01.png" />
-    <Content Include="Content\game\img\Elements\HY02.png" />
-    <Content Include="Content\game\img\Elements\JC01.png" />
-    <Content Include="Content\game\img\Elements\JC02.png" />
-    <Content Include="Content\game\img\Elements\JC02_1.png" />
-    <Content Include="Content\game\img\Elements\JC02_2.png" />
-    <Content Include="Content\game\img\Elements\JC02_3.png" />
-    <Content Include="Content\game\img\Elements\logo.png" />
-    <Content Include="Content\game\img\Elements\P4_sjyh.png" />
-    <Content Include="Content\game\img\Elements\QQ.png" />
-    <Content Include="Content\game\img\Elements\SHEJIA01.png" />
-    <Content Include="Content\game\img\Elements\shou.png" />
-    <Content Include="Content\game\img\Elements\SJ01.png" />
-    <Content Include="Content\game\img\Elements\SJ02.png" />
-    <Content Include="Content\game\img\Elements\TG01.png" />
-    <Content Include="Content\game\img\Elements\TG02.png" />
-    <Content Include="Content\game\img\Elements\title_2.png" />
-    <Content Include="Content\game\img\Elements\title_3.png" />
-    <Content Include="Content\game\img\Elements\title_4.png" />
-    <Content Include="Content\game\img\Elements\WB.png" />
-    <Content Include="Content\game\img\Elements\WC.png" />
-    <Content Include="Content\game\img\Elements\WX01.png" />
-    <Content Include="Content\game\img\Elements\WX02.png" />
-    <Content Include="Content\game\img\Elements\WX03.png" />
-    <Content Include="Content\game\img\Elements\wxcode.png" />
-    <Content Include="Content\game\img\Elements\xxyxxf.png" />
-    <Content Include="Content\game\img\gamecenter\gameImage.jpg" />
-    <Content Include="Content\game\img\P1.jpg" />
-    <Content Include="Content\game\img\P1_1.jpg" />
-    <Content Include="Content\game\img\P1_2.jpg" />
-    <Content Include="Content\game\img\P1_3.jpg" />
-    <Content Include="Content\game\img\P1_4.jpg" />
-    <Content Include="Content\game\img\P2.jpg" />
-    <Content Include="Content\game\img\P4.jpg" />
-    <Content Include="Content\game\img\P5.jpg" />
-    <Content Include="Content\game\img\P6.jpg" />
-    <Content Include="Content\game\img\P7.jpg" />
-    <Content Include="Content\game\img\tronstarImg\bg.png" />
-    <Content Include="Content\game\img\tronstarImg\cha.png" />
-    <Content Include="Content\game\img\tronstarImg\chenjiali.png" />
-    <Content Include="Content\game\img\tronstarImg\erweima.png" />
-    <Content Include="Content\game\img\tronstarImg\guangge.png" />
-    <Content Include="Content\game\img\tronstarImg\guize.png" />
-    <Content Include="Content\game\img\tronstarImg\huijian1.png" />
-    <Content Include="Content\game\img\tronstarImg\huijian2.png" />
-    <Content Include="Content\game\img\tronstarImg\huijian3.png" />
-    <Content Include="Content\game\img\tronstarImg\huijian4.png" />
-    <Content Include="Content\game\img\tronstarImg\huojianbody.png" />
-    <Content Include="Content\game\img\tronstarImg\huojianhuo1.png" />
-    <Content Include="Content\game\img\tronstarImg\huojianhuo2.png" />
-    <Content Include="Content\game\img\tronstarImg\indexyun.png" />
-    <Content Include="Content\game\img\tronstarImg\jianengliang.png" />
-    <Content Include="Content\game\img\tronstarImg\ligang.png" />
-    <Content Include="Content\game\img\tronstarImg\lock.png" />
-    <Content Include="Content\game\img\tronstarImg\me.png" />
-    <Content Include="Content\game\img\tronstarImg\mingcheng.png" />
-    <Content Include="Content\game\img\tronstarImg\qule.png" />
-    <Content Include="Content\game\img\tronstarImg\redyunqi.png" />
-    <Content Include="Content\game\img\tronstarImg\rules.png" />
-    <Content Include="Content\game\img\tronstarImg\star.png" />
-    <Content Include="Content\game\img\tronstarImg\touxiang.png" />
-    <Content Include="Content\game\img\tronstarImg\wukong1.png" />
-    <Content Include="Content\game\img\tronstarImg\wukong2.png" />
-    <Content Include="Content\game\img\tronstarImg\xiaotang.png" />
-    <Content Include="Content\game\img\tronstarImg\xiaoyong.png" />
-    <Content Include="Content\game\img\tronstarImg\xingqiu.png" />
-    <Content Include="Content\game\img\tronstarImg\xuge.png" />
-    <Content Include="Content\game\img\tronstarImg\xxjt.png" />
-    <Content Include="Content\game\img\tronstarImg\yege.png" />
-    <Content Include="Content\game\img\tronstarImg\yun.png" />
-    <Content Include="Content\game\img\tronstarImg\zhuan.png" />
-    <Content Include="Content\game\img\tronstarImg\zzdlbtn.png" />
-    <Content Include="Content\game\InvitationLetter\css\index.css" />
-    <Content Include="Content\game\InvitationLetter\images\1bg.png" />
-    <Content Include="Content\game\InvitationLetter\images\2bg.png" />
-    <Content Include="Content\game\InvitationLetter\images\3bg.png" />
-    <Content Include="Content\game\InvitationLetter\images\4bg.png" />
-    <Content Include="Content\game\InvitationLetter\images\5bg.png" />
-    <Content Include="Content\game\InvitationLetter\images\6bg.png" />
-    <Content Include="Content\game\InvitationLetter\images\abs.png" />
-    <Content Include="Content\game\InvitationLetter\images\arrow.png" />
-    <Content Include="Content\game\InvitationLetter\images\baom.png" />
-    <Content Include="Content\game\InvitationLetter\images\biaoti.png" />
-    <Content Include="Content\game\InvitationLetter\images\chaxie.png" />
-    <Content Include="Content\game\InvitationLetter\images\chuangsi.png" />
-    <Content Include="Content\game\InvitationLetter\images\close.png" />
-    <Content Include="Content\game\InvitationLetter\images\dahuijianjie.png" />
-    <Content Include="Content\game\InvitationLetter\images\daohang.png" />
-    <Content Include="Content\game\InvitationLetter\images\dibiao.png" />
-    <Content Include="Content\game\InvitationLetter\images\dizhi.png" />
-    <Content Include="Content\game\InvitationLetter\images\dizhifangkuai.png" />
-    <Content Include="Content\game\InvitationLetter\images\dizidetail.png" />
-    <Content Include="Content\game\InvitationLetter\images\erwm.png" />
-    <Content Include="Content\game\InvitationLetter\images\go.png" />
-    <Content Include="Content\game\InvitationLetter\images\go2.png" />
-    <Content Include="Content\game\InvitationLetter\images\guanbi.png" />
-    <Content Include="Content\game\InvitationLetter\images\huidong.png" />
-    <Content Include="Content\game\InvitationLetter\images\huiyiricheng.png" />
-    <Content Include="Content\game\InvitationLetter\images\kouhao.png" />
-    <Content Include="Content\game\InvitationLetter\images\kuang.png" />
-    <Content Include="Content\game\InvitationLetter\images\kuang1.png" />
-    <Content Include="Content\game\InvitationLetter\images\kuang2.png" />
-    <Content Include="Content\game\InvitationLetter\images\lianxiewom.png" />
-    <Content Include="Content\game\InvitationLetter\images\logo1.png" />
-    <Content Include="Content\game\InvitationLetter\images\logo2.png" />
-    <Content Include="Content\game\InvitationLetter\images\logo3.png" />
-    <Content Include="Content\game\InvitationLetter\images\logo4.png" />
-    <Content Include="Content\game\InvitationLetter\images\logo5.png" />
-    <Content Include="Content\game\InvitationLetter\images\luntan.png" />
-    <Content Include="Content\game\InvitationLetter\images\open.png" />
-    <Content Include="Content\game\InvitationLetter\images\qiandao.png" />
-    <Content Include="Content\game\InvitationLetter\images\qianmu.png" />
-    <Content Include="Content\game\InvitationLetter\images\quan.png" />
-    <Content Include="Content\game\InvitationLetter\images\riqi.png" />
-    <Content Include="Content\game\InvitationLetter\images\sanjiao.png" />
-    <Content Include="Content\game\InvitationLetter\images\shanghai.png" />
-    <Content Include="Content\game\InvitationLetter\images\shanghaifangkuai.png" />
-    <Content Include="Content\game\InvitationLetter\images\shixinquan.png" />
-    <Content Include="Content\game\InvitationLetter\images\troncell_logo.png" />
-    <Content Include="Content\game\InvitationLetter\images\tu.png" />
-    <Content Include="Content\game\InvitationLetter\images\yaoqinghan.mp3" />
-    <Content Include="Content\game\InvitationLetter\images\yaoqinghan.wav" />
-    <Content Include="Content\game\InvitationLetter\images\yunjia.png" />
-    <Content Include="Content\game\InvitationLetter\images\zhubandanwei.png" />
-    <Content Include="Content\game\InvitationLetter\images\zi.png" />
-    <Content Include="Content\game\OnLineGame\ControlBoard\1.png" />
-    <Content Include="Content\game\OnLineGame\ControlBoard\2.png" />
-    <Content Include="Content\game\OnLineGame\ControlBoard\3.png" />
-    <Content Include="Content\game\OnLineGame\ControlBoard\4.png" />
-    <Content Include="Content\game\OnLineGame\ControlBoard\5.png" />
-    <Content Include="Content\game\OnLineGame\ControlBoard\6.png" />
-    <Content Include="Content\game\OnLineGame\ControlBoard\bg.jpg" />
-    <Content Include="Content\game\OnLineGame\ControlBoard\font-noprize.png" />
-    <Content Include="Content\game\OnLineGame\ControlBoard\font-noterepeate.png" />
-    <Content Include="Content\game\OnLineGame\ControlBoard\font-noteSuccess.png" />
-    <Content Include="Content\game\OnLineGame\ControlBoard\font-prize.png" />
-    <Content Include="Content\game\OnLineGame\ControlBoard\font.png" />
-    <Content Include="Content\game\OnLineGame\ControlBoard\head.png" />
-    <Content Include="Content\game\OnLineGame\PlayPlane\bg_01.jpg" />
-    <Content Include="Content\game\OnLineGame\PlayPlane\bg_02.jpg" />
-    <Content Include="Content\game\OnLineGame\PlayPlane\blast1.png" />
-    <Content Include="Content\game\OnLineGame\PlayPlane\blast2.png" />
-    <Content Include="Content\game\OnLineGame\PlayPlane\blast3.png" />
-    <Content Include="Content\game\OnLineGame\PlayPlane\bullet_blue.png" />
-    <Content Include="Content\game\OnLineGame\PlayPlane\bullet_king_1.png" />
-    <Content Include="Content\game\OnLineGame\PlayPlane\bullet_king_2.png" />
-    <Content Include="Content\game\OnLineGame\PlayPlane\bullet_king_3.png" />
-    <Content Include="Content\game\OnLineGame\PlayPlane\bullet_king_4.png" />
-    <Content Include="Content\game\OnLineGame\PlayPlane\bullet_red.png" />
-    <Content Include="Content\game\OnLineGame\PlayPlane\fatal.png" />
-    <Content Include="Content\game\OnLineGame\PlayPlane\icon36x36.png" />
-    <Content Include="Content\game\OnLineGame\PlayPlane\icon48x48.png" />
-    <Content Include="Content\game\OnLineGame\PlayPlane\icon72x72.png" />
-    <Content Include="Content\game\OnLineGame\PlayPlane\king.png" />
-    <Content Include="Content\game\OnLineGame\PlayPlane\king2.png" />
-    <Content Include="Content\game\OnLineGame\PlayPlane\king3.png" />
-    <Content Include="Content\game\OnLineGame\PlayPlane\loading.gif" />
-    <Content Include="Content\game\OnLineGame\PlayPlane\my.png" />
-    <Content Include="Content\game\OnLineGame\PlayPlane\my_speed.gif" />
-    <Content Include="Content\game\OnLineGame\PlayPlane\my_speed.png" />
-    <Content Include="Content\game\OnLineGame\PlayPlane\pause.png" />
-    <Content Include="Content\game\OnLineGame\PlayPlane\prop_blue.png" />
-    <Content Include="Content\game\OnLineGame\PlayPlane\prop_red.png" />
-    <Content Include="Content\game\OnLineGame\PlayPlane\start.png" />
-    <Content Include="Content\game\spacewarriors\airwarriors.min.js" />
-    <Content Include="Content\game\spacewarriors\index.html" />
-    <Content Include="Content\game\spacewarriors\main.js" />
-    <Content Include="Content\game\spacewarriors\res\arial-14.png" />
-    <Content Include="Content\game\spacewarriors\res\b01.png" />
-    <Content Include="Content\game\spacewarriors\res\cocos2d-html5.png" />
-    <Content Include="Content\game\spacewarriors\res\displayTexturePack.png" />
-    <Content Include="Content\game\spacewarriors\res\explosion.png" />
-    <Content Include="Content\game\spacewarriors\res\flare.jpg" />
-    <Content Include="Content\game\spacewarriors\res\gameoverBack.png" />
-    <Content Include="Content\game\spacewarriors\res\hp_progressbarback.png" />
-    <Content Include="Content\game\spacewarriors\res\hp_progressbarfront.png" />
-    <Content Include="Content\game\spacewarriors\res\loading.png" />
-    <Content Include="Content\game\spacewarriors\res\menu.png" />
-    <Content Include="Content\game\spacewarriors\res\menuTitle.png" />
-    <Content Include="Content\game\spacewarriors\res\Music\bgMusic.mp3" />
-    <Content Include="Content\game\spacewarriors\res\Music\bgMusic.wav" />
-    <Content Include="Content\game\spacewarriors\res\Music\buttonEffet.mp3" />
-    <Content Include="Content\game\spacewarriors\res\Music\buttonEffet.wav" />
-    <Content Include="Content\game\spacewarriors\res\Music\explodeEffect.mp3" />
-    <Content Include="Content\game\spacewarriors\res\Music\explodeEffect.wav" />
-    <Content Include="Content\game\spacewarriors\res\Music\fireEffect.mp3" />
-    <Content Include="Content\game\spacewarriors\res\Music\fireEffect.wav" />
-    <Content Include="Content\game\spacewarriors\res\Music\mainMainMusic.mp3" />
-    <Content Include="Content\game\spacewarriors\res\Music\mainMainMusic.wav" />
-    <Content Include="Content\game\spacewarriors\res\Music\shipDestroyEffect.mp3" />
-    <Content Include="Content\game\spacewarriors\res\Music\shipDestroyEffect.wav" />
-    <Content Include="Content\game\spacewarriors\res\textureOpaquePack.png" />
-    <Content Include="Content\game\spacewarriors\res\textureTransparentPack.png" />
-    <Content Include="Content\game\YiLi\1.png" />
-    <Content Include="Content\game\YiLi\2.jpg" />
-    <Content Include="Content\game\YiLi\3.jpg" />
-    <Content Include="Content\game\YiLi\FirstPrize.jpg" />
-    <Content Include="Content\game\YiLi\GameMain.png" />
-    <Content Include="Content\game\YiLi\kongzhipan.png" />
-    <Content Include="Content\game\YiLi\kuang.png" />
-    <Content Include="Content\game\YiLi\OtherPrize.png" />
-    <Content Include="Content\game\YiLi\queren.png" />
-    <Content Include="Content\game\YiLi\ReturnRepat.jpg" />
-    <Content Include="Content\game\YiLi\ReturnRepate.png" />
-    <Content Include="Content\game\YiLi\ReturnSuccess.png" />
-    <Content Include="Content\game\YiLi\tishi.png" />
-    <Content Include="Content\game\YiLi\YiLiShare.png" />
-    <Content Include="Content\game\YiLi\zi.png" />
-    <Content Include="Content\imgs\error_desc.png" />
-    <Content Include="Content\img\001a.png" />
     <Content Include="Content\img\alpha.png" />
-    <Content Include="Content\img\awardNewsDefault.jpg" />
     <Content Include="Content\img\BB61Cmd.png" />
     <Content Include="Content\img\camera_icon_1.png" />
     <Content Include="Content\img\ch22.png" />
-    <Content Include="Content\img\emptyResource.png" />
     <Content Include="Content\img\fileupload.jpg" />
+    <Content Include="Content\img\flogo.png" />
     <Content Include="Content\img\hue.png" />
     <Content Include="Content\img\icon-china.png" />
     <Content Include="Content\img\icon-english.png" />
-    <Content Include="Content\img\icon-loading.gif" />
     <Content Include="Content\img\icon.png" />
     <Content Include="Content\img\icon_1.jpg" />
     <Content Include="Content\img\icon_2.png" />
@@ -879,7 +556,6 @@
     <Content Include="Content\img\icon_5.jpg" />
     <Content Include="Content\img\icon_camera_ball.png" />
     <Content Include="Content\img\icon_notebook.png" />
-    <Content Include="Content\img\loginBg.png" />
     <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\main_1.png" />
     <Content Include="Content\img\main_1_1.png" />
@@ -890,101 +566,23 @@
     <Content Include="Content\img\main_3_2.png" />
     <Content Include="Content\img\main_4_1.png" />
     <Content Include="Content\img\main_4_2.png" />
-    <Content Include="Content\img\newsDefault.png" />
-    <Content Include="Content\img\nopicture.png" />
     <Content Include="Content\img\saturation.png" />
-    <Content Include="Content\img\shareDefault.png" />
     <Content Include="Content\img\sina.jpg" />
     <Content Include="Content\img\sina.png" />
     <Content Include="Content\img\sinacode.jpg" />
     <Content Include="Content\img\sinacode.png" />
     <Content Include="Content\img\sina_light.png" />
-    <Content Include="Content\img\thyHP.png" />
-    <Content Include="Content\img\thyLogo.png" />
     <Content Include="Content\img\weixin.jpg" />
     <Content Include="Content\img\weixin.png" />
     <Content Include="Content\img\weixincode.png" />
     <Content Include="Content\img\weixin_light.png" />
-    <Content Include="Content\img\wxOP1.png" />
-    <Content Include="Content\img\wxOp2.png" />
-    <Content Include="Content\img\wxOp3.png" />
-    <Content Include="Content\img\wxOpAuth.png" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\foundation.min.css" />
-    <Content Include="Content\ui-bootstrap-csp.css" />
-    <Content Include="Content\weixinImage\casio\bg.png" />
-    <Content Include="Content\weixinImage\casio\photoframe.png" />
-    <Content Include="Content\weixinImage\Mcdonald\bottom.png" />
-    <Content Include="Content\weixinImage\Mcdonald\bg.png" />
-    <Content Include="Content\weixinImage\Mcdonald\defaultHeadImage.png" />
-    <Content Include="Content\weixinImage\Mcdonald\head.png" />
-    <Content Include="Content\weixinImage\Mcdonald\icon.png" />
-    <Content Include="Content\weixinImage\Mcdonald\save.png" />
-    <Content Include="Content\weixinImage\NianhuiImg\0.jpg" />
-    <Content Include="Content\weixinImage\NianhuiImg\1.png" />
-    <Content Include="Content\weixinImage\NianhuiImg\awardredquan.png" />
-    <Content Include="Content\weixinImage\NianhuiImg\awardtitleImg.png" />
-    <Content Include="Content\weixinImage\NianhuiImg\bgredimg.jpg" />
-    <Content Include="Content\weixinImage\NianhuiImg\car.png" />
-    <Content Include="Content\weixinImage\NianhuiImg\csxq.png" />
-    <Content Include="Content\weixinImage\NianhuiImg\ddd.png" />
-    <Content Include="Content\weixinImage\NianhuiImg\dhk.png" />
-    <Content Include="Content\weixinImage\NianhuiImg\dhk2.png" />
-    <Content Include="Content\weixinImage\NianhuiImg\fs.png" />
-    <Content Include="Content\weixinImage\NianhuiImg\fudai.png" />
-    <Content Include="Content\weixinImage\NianhuiImg\inputtextbg.png" />
-    <Content Include="Content\weixinImage\NianhuiImg\lybtnimg.png" />
-    <Content Include="Content\weixinImage\NianhuiImg\paperbg.png" />
-    <Content Include="Content\weixinImage\NianhuiImg\promotetext.png" />
-    <Content Include="Content\weixinImage\NianhuiImg\quan.png" />
-    <Content Include="Content\weixinImage\NianhuiImg\redquan.png" />
-    <Content Include="Content\weixinImage\NianhuiImg\ren.png" />
-    <Content Include="Content\weixinImage\NianhuiImg\sendawardbg.jpg" />
-    <Content Include="Content\weixinImage\NianhuiImg\textbg.png" />
-    <Content Include="Content\weixinImage\NianhuiImg\TitleImg.png" />
-    <Content Include="Content\weixinImage\NianhuiImg\tj.png" />
-    <Content Include="Content\weixinImage\NianhuiImg\tk.png" />
-    <Content Include="Content\weixinImage\NianhuiImg\weixincode.png" />
-    <Content Include="Content\weixinImage\NianhuiImg\yun.png" />
-    <Content Include="Content\weixinImage\photoshare\13e.jpg" />
-    <Content Include="Content\weixinImage\photoshare\arrowdown.png" />
-    <Content Include="Content\weixinImage\photoshare\bg.png" />
-    <Content Include="Content\weixinImage\photoshare\bg_01.png" />
-    <Content Include="Content\weixinImage\photoshare\defaultHeadImage.png" />
-    <Content Include="Content\weixinImage\photoshare\defaultView.jpg" />
-    <Content Include="Content\weixinImage\photoshare\eye.png" />
-    <Content Include="Content\weixinImage\photoshare\good.png" />
-    <Content Include="Content\weixinImage\photoshare\jiantou.png" />
-    <Content Include="Content\weixinImage\photoshare\kuang.png" />
-    <Content Include="Content\weixinImage\photoshare\logo.png" />
-    <Content Include="Content\weixinImage\photoshare\power.png" />
-    <Content Include="Content\weixinImage\photoshare\ren.png" />
-    <Content Include="Content\weixinImage\photoshare\save.png" />
-    <Content Include="Content\weixinImage\photoshare\share.png" />
-    <Content Include="Content\weixinImage\photoshare\whiteGridBg.png" />
-    <Content Include="Content\weixinImage\photoshare\wwdz.png" />
-    <Content Include="Content\weixinImage\photoshare\wwdzlike.png" />
-    <Content Include="Content\weixinImage\photoshare\体感赛车.png" />
-    <Content Include="Content\weixinImage\photoshare\商品接物.png" />
-    <Content Include="Content\weixinImage\photoshare\微信抽奖.png" />
-    <Content Include="Content\weixinImage\photoshare\更多游戏.png" />
-    <Content Include="Content\weixinImage\RankList\1.png" />
-    <Content Include="Content\weixinImage\RankList\2.png" />
-    <Content Include="Content\weixinImage\RankList\3.png" />
-    <Content Include="Content\weixinImage\RankList\headbg.png" />
-    <Content Include="Content\weixinImage\RankList\history.png" />
-    <Content Include="Content\weixinImage\RankList\ranklist.png" />
-    <Content Include="Content\weixinImage\RankList\selected.png" />
-    <Content Include="Content\weui\weui-tron.css" />
-    <Content Include="Content\weui\weui.css" />
-    <Content Include="Content\weui\weui.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.png" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="fonts\hyg3gjm.svg" />
-    <Content Include="fonts\icomoon.svg" />
     <Content Include="fonts\troncell.png" />
     <Content Include="fonts\troncell.svg" />
     <Content Include="Global.asax" />
@@ -1016,400 +614,33 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
-    <Content Include="Scripts\app\group.js" />
-    <Content Include="Scripts\Chart.js" />
-    <Content Include="Scripts\Chart.min.js" />
-    <Content Include="Scripts\CreateJs\_assets\libs\preloadjs-NEXT.min.js" />
-    <Content Include="Scripts\CreateJs\_assets\libs\soundjs-NEXT.min.js" />
-    <Content Include="Scripts\CreateJs\lib\easeljs-NEXT.combined.js" />
-    <Content Include="Scripts\jquery-file-upload\jquery.fileupload.js" />
-    <Content Include="Scripts\jquery-file-upload\jquery.iframe-transport.js" />
-    <Content Include="Scripts\jquery-file-upload\jquery.ui.widget.js" />
-    <Content Include="Scripts\jquery.extend.js" />
-    <Content Include="Scripts\jquery.qrcode.min.js" />
-    <Content Include="Scripts\jquery.signalR-2.2.0.js" />
-    <Content Include="Scripts\jquery.signalR-2.2.0.min.js" />
-    <Content Include="Scripts\layer\extend\layer.ext.js" />
-    <Content Include="Scripts\layer\layer-mobile.js" />
-    <Content Include="Scripts\layer\layer.js" />
-    <Content Include="Scripts\layer\need\layer.css" />
-    <Content Include="Scripts\layer\skin\default\icon-ext.png" />
-    <Content Include="Scripts\layer\skin\default\icon.png" />
-    <Content Include="Scripts\layer\skin\default\loading-0.gif" />
-    <Content Include="Scripts\layer\skin\default\loading-1.gif" />
-    <Content Include="Scripts\layer\skin\default\loading-2.gif" />
-    <Content Include="Scripts\layer\skin\layer.css" />
-    <Content Include="Scripts\layer\skin\layer.ext.css" />
-    <Content Include="Scripts\swiper.animate.letterSpecial.min.js" />
-    <Content Include="Scripts\swiper.animate1.0.2.min.js" />
-    <Content Include="Scripts\swiper.js" />
-    <Content Include="Scripts\swiper.min.js" />
-    <Content Include="Scripts\UEditor\dialogs\anchor\anchor.html" />
-    <Content Include="Scripts\UEditor\dialogs\attachment\attachment.css" />
-    <Content Include="Scripts\UEditor\dialogs\attachment\attachment.html" />
-    <Content Include="Scripts\UEditor\dialogs\attachment\attachment.js" />
-    <Content Include="Scripts\UEditor\dialogs\attachment\fileTypeImages\icon_chm.gif" />
-    <Content Include="Scripts\UEditor\dialogs\attachment\fileTypeImages\icon_default.png" />
-    <Content Include="Scripts\UEditor\dialogs\attachment\fileTypeImages\icon_doc.gif" />
-    <Content Include="Scripts\UEditor\dialogs\attachment\fileTypeImages\icon_exe.gif" />
-    <Content Include="Scripts\UEditor\dialogs\attachment\fileTypeImages\icon_jpg.gif" />
-    <Content Include="Scripts\UEditor\dialogs\attachment\fileTypeImages\icon_mp3.gif" />
-    <Content Include="Scripts\UEditor\dialogs\attachment\fileTypeImages\icon_mv.gif" />
-    <Content Include="Scripts\UEditor\dialogs\attachment\fileTypeImages\icon_pdf.gif" />
-    <Content Include="Scripts\UEditor\dialogs\attachment\fileTypeImages\icon_ppt.gif" />
-    <Content Include="Scripts\UEditor\dialogs\attachment\fileTypeImages\icon_psd.gif" />
-    <Content Include="Scripts\UEditor\dialogs\attachment\fileTypeImages\icon_rar.gif" />
-    <Content Include="Scripts\UEditor\dialogs\attachment\fileTypeImages\icon_txt.gif" />
-    <Content Include="Scripts\UEditor\dialogs\attachment\fileTypeImages\icon_xls.gif" />
-    <Content Include="Scripts\UEditor\dialogs\attachment\images\alignicon.gif" />
-    <Content Include="Scripts\UEditor\dialogs\attachment\images\alignicon.png" />
-    <Content Include="Scripts\UEditor\dialogs\attachment\images\bg.png" />
-    <Content Include="Scripts\UEditor\dialogs\attachment\images\file-icons.gif" />
-    <Content Include="Scripts\UEditor\dialogs\attachment\images\file-icons.png" />
-    <Content Include="Scripts\UEditor\dialogs\attachment\images\icons.gif" />
-    <Content Include="Scripts\UEditor\dialogs\attachment\images\icons.png" />
-    <Content Include="Scripts\UEditor\dialogs\attachment\images\image.png" />
-    <Content Include="Scripts\UEditor\dialogs\attachment\images\progress.png" />
-    <Content Include="Scripts\UEditor\dialogs\attachment\images\success.gif" />
-    <Content Include="Scripts\UEditor\dialogs\attachment\images\success.png" />
-    <Content Include="Scripts\UEditor\dialogs\background\background.css" />
-    <Content Include="Scripts\UEditor\dialogs\background\background.html" />
-    <Content Include="Scripts\UEditor\dialogs\background\background.js" />
-    <Content Include="Scripts\UEditor\dialogs\background\images\bg.png" />
-    <Content Include="Scripts\UEditor\dialogs\background\images\success.png" />
-    <Content Include="Scripts\UEditor\dialogs\charts\chart.config.js" />
-    <Content Include="Scripts\UEditor\dialogs\charts\charts.css" />
-    <Content Include="Scripts\UEditor\dialogs\charts\charts.html" />
-    <Content Include="Scripts\UEditor\dialogs\charts\charts.js" />
-    <Content Include="Scripts\UEditor\dialogs\charts\images\charts0.png" />
-    <Content Include="Scripts\UEditor\dialogs\charts\images\charts1.png" />
-    <Content Include="Scripts\UEditor\dialogs\charts\images\charts2.png" />
-    <Content Include="Scripts\UEditor\dialogs\charts\images\charts3.png" />
-    <Content Include="Scripts\UEditor\dialogs\charts\images\charts4.png" />
-    <Content Include="Scripts\UEditor\dialogs\charts\images\charts5.png" />
-    <Content Include="Scripts\UEditor\dialogs\emotion\emotion.css" />
-    <Content Include="Scripts\UEditor\dialogs\emotion\emotion.html" />
-    <Content Include="Scripts\UEditor\dialogs\emotion\emotion.js" />
-    <Content Include="Scripts\UEditor\dialogs\emotion\images\0.gif" />
-    <Content Include="Scripts\UEditor\dialogs\emotion\images\bface.gif" />
-    <Content Include="Scripts\UEditor\dialogs\emotion\images\cface.gif" />
-    <Content Include="Scripts\UEditor\dialogs\emotion\images\fface.gif" />
-    <Content Include="Scripts\UEditor\dialogs\emotion\images\jxface2.gif" />
-    <Content Include="Scripts\UEditor\dialogs\emotion\images\neweditor-tab-bg.png" />
-    <Content Include="Scripts\UEditor\dialogs\emotion\images\tface.gif" />
-    <Content Include="Scripts\UEditor\dialogs\emotion\images\wface.gif" />
-    <Content Include="Scripts\UEditor\dialogs\emotion\images\yface.gif" />
-    <Content Include="Scripts\UEditor\dialogs\gmap\gmap.html" />
-    <Content Include="Scripts\UEditor\dialogs\help\help.css" />
-    <Content Include="Scripts\UEditor\dialogs\help\help.html" />
-    <Content Include="Scripts\UEditor\dialogs\help\help.js" />
-    <Content Include="Scripts\UEditor\dialogs\image\image.css" />
-    <Content Include="Scripts\UEditor\dialogs\image\image.html" />
-    <Content Include="Scripts\UEditor\dialogs\image\image.js" />
-    <Content Include="Scripts\UEditor\dialogs\image\images\alignicon.jpg" />
-    <Content Include="Scripts\UEditor\dialogs\image\images\bg.png" />
-    <Content Include="Scripts\UEditor\dialogs\image\images\icons.gif" />
-    <Content Include="Scripts\UEditor\dialogs\image\images\icons.png" />
-    <Content Include="Scripts\UEditor\dialogs\image\images\image.png" />
-    <Content Include="Scripts\UEditor\dialogs\image\images\progress.png" />
-    <Content Include="Scripts\UEditor\dialogs\image\images\success.gif" />
-    <Content Include="Scripts\UEditor\dialogs\image\images\success.png" />
-    <Content Include="Scripts\UEditor\dialogs\insertframe\insertframe.html" />
-    <Content Include="Scripts\UEditor\dialogs\internal.js" />
-    <Content Include="Scripts\UEditor\dialogs\link\link.html" />
-    <Content Include="Scripts\UEditor\dialogs\map\map.html" />
-    <Content Include="Scripts\UEditor\dialogs\map\show.html" />
-    <Content Include="Scripts\UEditor\dialogs\music\music.css" />
-    <Content Include="Scripts\UEditor\dialogs\music\music.html" />
-    <Content Include="Scripts\UEditor\dialogs\music\music.js" />
-    <Content Include="Scripts\UEditor\dialogs\preview\preview.html" />
-    <Content Include="Scripts\UEditor\dialogs\scrawl\images\addimg.png" />
-    <Content Include="Scripts\UEditor\dialogs\scrawl\images\brush.png" />
-    <Content Include="Scripts\UEditor\dialogs\scrawl\images\delimg.png" />
-    <Content Include="Scripts\UEditor\dialogs\scrawl\images\delimgH.png" />
-    <Content Include="Scripts\UEditor\dialogs\scrawl\images\empty.png" />
-    <Content Include="Scripts\UEditor\dialogs\scrawl\images\emptyH.png" />
-    <Content Include="Scripts\UEditor\dialogs\scrawl\images\eraser.png" />
-    <Content Include="Scripts\UEditor\dialogs\scrawl\images\redo.png" />
-    <Content Include="Scripts\UEditor\dialogs\scrawl\images\redoH.png" />
-    <Content Include="Scripts\UEditor\dialogs\scrawl\images\scale.png" />
-    <Content Include="Scripts\UEditor\dialogs\scrawl\images\scaleH.png" />
-    <Content Include="Scripts\UEditor\dialogs\scrawl\images\size.png" />
-    <Content Include="Scripts\UEditor\dialogs\scrawl\images\undo.png" />
-    <Content Include="Scripts\UEditor\dialogs\scrawl\images\undoH.png" />
-    <Content Include="Scripts\UEditor\dialogs\scrawl\scrawl.css" />
-    <Content Include="Scripts\UEditor\dialogs\scrawl\scrawl.html" />
-    <Content Include="Scripts\UEditor\dialogs\scrawl\scrawl.js" />
-    <Content Include="Scripts\UEditor\dialogs\searchreplace\searchreplace.html" />
-    <Content Include="Scripts\UEditor\dialogs\searchreplace\searchreplace.js" />
-    <Content Include="Scripts\UEditor\dialogs\snapscreen\snapscreen.html" />
-    <Content Include="Scripts\UEditor\dialogs\spechars\spechars.html" />
-    <Content Include="Scripts\UEditor\dialogs\spechars\spechars.js" />
-    <Content Include="Scripts\UEditor\dialogs\table\dragicon.png" />
-    <Content Include="Scripts\UEditor\dialogs\table\edittable.css" />
-    <Content Include="Scripts\UEditor\dialogs\table\edittable.html" />
-    <Content Include="Scripts\UEditor\dialogs\table\edittable.js" />
-    <Content Include="Scripts\UEditor\dialogs\table\edittd.html" />
-    <Content Include="Scripts\UEditor\dialogs\table\edittip.html" />
-    <Content Include="Scripts\UEditor\dialogs\template\config.js" />
-    <Content Include="Scripts\UEditor\dialogs\template\images\bg.gif" />
-    <Content Include="Scripts\UEditor\dialogs\template\images\pre0.png" />
-    <Content Include="Scripts\UEditor\dialogs\template\images\pre1.png" />
-    <Content Include="Scripts\UEditor\dialogs\template\images\pre2.png" />
-    <Content Include="Scripts\UEditor\dialogs\template\images\pre3.png" />
-    <Content Include="Scripts\UEditor\dialogs\template\images\pre4.png" />
-    <Content Include="Scripts\UEditor\dialogs\template\template.css" />
-    <Content Include="Scripts\UEditor\dialogs\template\template.html" />
-    <Content Include="Scripts\UEditor\dialogs\template\template.js" />
-    <Content Include="Scripts\UEditor\dialogs\video\images\bg.png" />
-    <Content Include="Scripts\UEditor\dialogs\video\images\center_focus.jpg" />
-    <Content Include="Scripts\UEditor\dialogs\video\images\file-icons.gif" />
-    <Content Include="Scripts\UEditor\dialogs\video\images\file-icons.png" />
-    <Content Include="Scripts\UEditor\dialogs\video\images\icons.gif" />
-    <Content Include="Scripts\UEditor\dialogs\video\images\icons.png" />
-    <Content Include="Scripts\UEditor\dialogs\video\images\image.png" />
-    <Content Include="Scripts\UEditor\dialogs\video\images\left_focus.jpg" />
-    <Content Include="Scripts\UEditor\dialogs\video\images\none_focus.jpg" />
-    <Content Include="Scripts\UEditor\dialogs\video\images\progress.png" />
-    <Content Include="Scripts\UEditor\dialogs\video\images\right_focus.jpg" />
-    <Content Include="Scripts\UEditor\dialogs\video\images\success.gif" />
-    <Content Include="Scripts\UEditor\dialogs\video\images\success.png" />
-    <Content Include="Scripts\UEditor\dialogs\video\video.css" />
-    <Content Include="Scripts\UEditor\dialogs\video\video.html" />
-    <Content Include="Scripts\UEditor\dialogs\video\video.js" />
-    <Content Include="Scripts\UEditor\dialogs\webapp\webapp.html" />
-    <Content Include="Scripts\UEditor\dialogs\wordimage\fClipboard_ueditor.swf" />
-    <Content Include="Scripts\UEditor\dialogs\wordimage\imageUploader.swf" />
-    <Content Include="Scripts\UEditor\dialogs\wordimage\tangram.js" />
-    <Content Include="Scripts\UEditor\dialogs\wordimage\wordimage.html" />
-    <Content Include="Scripts\UEditor\dialogs\wordimage\wordimage.js" />
-    <Content Include="Scripts\UEditor\index.html" />
-    <Content Include="Scripts\UEditor\lang\en\en.js" />
-    <Content Include="Scripts\UEditor\lang\en\images\addimage.png" />
-    <Content Include="Scripts\UEditor\lang\en\images\alldeletebtnhoverskin.png" />
-    <Content Include="Scripts\UEditor\lang\en\images\alldeletebtnupskin.png" />
-    <Content Include="Scripts\UEditor\lang\en\images\background.png" />
-    <Content Include="Scripts\UEditor\lang\en\images\button.png" />
-    <Content Include="Scripts\UEditor\lang\en\images\copy.png" />
-    <Content Include="Scripts\UEditor\lang\en\images\deletedisable.png" />
-    <Content Include="Scripts\UEditor\lang\en\images\deleteenable.png" />
-    <Content Include="Scripts\UEditor\lang\en\images\listbackground.png" />
-    <Content Include="Scripts\UEditor\lang\en\images\localimage.png" />
-    <Content Include="Scripts\UEditor\lang\en\images\music.png" />
-    <Content Include="Scripts\UEditor\lang\en\images\rotateleftdisable.png" />
-    <Content Include="Scripts\UEditor\lang\en\images\rotateleftenable.png" />
-    <Content Include="Scripts\UEditor\lang\en\images\rotaterightdisable.png" />
-    <Content Include="Scripts\UEditor\lang\en\images\rotaterightenable.png" />
-    <Content Include="Scripts\UEditor\lang\en\images\upload.png" />
-    <Content Include="Scripts\UEditor\lang\zh-cn\images\copy.png" />
-    <Content Include="Scripts\UEditor\lang\zh-cn\images\localimage.png" />
-    <Content Include="Scripts\UEditor\lang\zh-cn\images\music.png" />
-    <Content Include="Scripts\UEditor\lang\zh-cn\images\upload.png" />
-    <Content Include="Scripts\UEditor\lang\zh-cn\zh-cn.js" />
-    <Content Include="Scripts\UEditor\net\Bin\Newtonsoft.Json.dll" />
-    <Content Include="Scripts\UEditor\net\Bin\Newtonsoft.Json.pdb" />
-    <Content Include="Scripts\UEditor\net\Bin\Newtonsoft.Json.xml" />
-    <Content Include="Scripts\UEditor\net\net.sln" />
-    <Content Include="Scripts\UEditor\themes\default\css\ueditor.css" />
-    <Content Include="Scripts\UEditor\themes\default\css\ueditor.min.css" />
-    <Content Include="Scripts\UEditor\themes\default\dialogbase.css" />
-    <Content Include="Scripts\UEditor\themes\default\images\anchor.gif" />
-    <Content Include="Scripts\UEditor\themes\default\images\arrow.png" />
-    <Content Include="Scripts\UEditor\themes\default\images\arrow_down.png" />
-    <Content Include="Scripts\UEditor\themes\default\images\arrow_up.png" />
-    <Content Include="Scripts\UEditor\themes\default\images\button-bg.gif" />
-    <Content Include="Scripts\UEditor\themes\default\images\cancelbutton.gif" />
-    <Content Include="Scripts\UEditor\themes\default\images\charts.png" />
-    <Content Include="Scripts\UEditor\themes\default\images\cursor_h.gif" />
-    <Content Include="Scripts\UEditor\themes\default\images\cursor_h.png" />
-    <Content Include="Scripts\UEditor\themes\default\images\cursor_v.gif" />
-    <Content Include="Scripts\UEditor\themes\default\images\cursor_v.png" />
-    <Content Include="Scripts\UEditor\themes\default\images\dialog-title-bg.png" />
-    <Content Include="Scripts\UEditor\themes\default\images\filescan.png" />
-    <Content Include="Scripts\UEditor\themes\default\images\highlighted.gif" />
-    <Content Include="Scripts\UEditor\themes\default\images\icons-all.gif" />
-    <Content Include="Scripts\UEditor\themes\default\images\icons.gif" />
-    <Content Include="Scripts\UEditor\themes\default\images\icons.png" />
-    <Content Include="Scripts\UEditor\themes\default\images\loaderror.png" />
-    <Content Include="Scripts\UEditor\themes\default\images\loading.gif" />
-    <Content Include="Scripts\UEditor\themes\default\images\lock.gif" />
-    <Content Include="Scripts\UEditor\themes\default\images\neweditor-tab-bg.png" />
-    <Content Include="Scripts\UEditor\themes\default\images\pagebreak.gif" />
-    <Content Include="Scripts\UEditor\themes\default\images\scale.png" />
-    <Content Include="Scripts\UEditor\themes\default\images\sortable.png" />
-    <Content Include="Scripts\UEditor\themes\default\images\spacer.gif" />
-    <Content Include="Scripts\UEditor\themes\default\images\sparator_v.png" />
-    <Content Include="Scripts\UEditor\themes\default\images\table-cell-align.png" />
-    <Content Include="Scripts\UEditor\themes\default\images\tangram-colorpicker.png" />
-    <Content Include="Scripts\UEditor\themes\default\images\toolbar_bg.png" />
-    <Content Include="Scripts\UEditor\themes\default\images\unhighlighted.gif" />
-    <Content Include="Scripts\UEditor\themes\default\images\upload.png" />
-    <Content Include="Scripts\UEditor\themes\default\images\videologo.gif" />
-    <Content Include="Scripts\UEditor\themes\default\images\word.gif" />
-    <Content Include="Scripts\UEditor\themes\default\images\wordpaste.png" />
-    <Content Include="Scripts\UEditor\themes\iframe.css" />
-    <Content Include="Scripts\UEditor\third-party\codemirror\codemirror.css" />
-    <Content Include="Scripts\UEditor\third-party\codemirror\codemirror.js" />
-    <Content Include="Scripts\UEditor\third-party\highcharts\adapters\mootools-adapter.js" />
-    <Content Include="Scripts\UEditor\third-party\highcharts\adapters\mootools-adapter.src.js" />
-    <Content Include="Scripts\UEditor\third-party\highcharts\adapters\prototype-adapter.js" />
-    <Content Include="Scripts\UEditor\third-party\highcharts\adapters\prototype-adapter.src.js" />
-    <Content Include="Scripts\UEditor\third-party\highcharts\adapters\standalone-framework.js" />
-    <Content Include="Scripts\UEditor\third-party\highcharts\adapters\standalone-framework.src.js" />
-    <Content Include="Scripts\UEditor\third-party\highcharts\highcharts-more.js" />
-    <Content Include="Scripts\UEditor\third-party\highcharts\highcharts-more.src.js" />
-    <Content Include="Scripts\UEditor\third-party\highcharts\highcharts.js" />
-    <Content Include="Scripts\UEditor\third-party\highcharts\highcharts.src.js" />
-    <Content Include="Scripts\UEditor\third-party\highcharts\modules\annotations.js" />
-    <Content Include="Scripts\UEditor\third-party\highcharts\modules\annotations.src.js" />
-    <Content Include="Scripts\UEditor\third-party\highcharts\modules\canvas-tools.js" />
-    <Content Include="Scripts\UEditor\third-party\highcharts\modules\canvas-tools.src.js" />
-    <Content Include="Scripts\UEditor\third-party\highcharts\modules\data.js" />
-    <Content Include="Scripts\UEditor\third-party\highcharts\modules\data.src.js" />
-    <Content Include="Scripts\UEditor\third-party\highcharts\modules\drilldown.js" />
-    <Content Include="Scripts\UEditor\third-party\highcharts\modules\drilldown.src.js" />
-    <Content Include="Scripts\UEditor\third-party\highcharts\modules\exporting.js" />
-    <Content Include="Scripts\UEditor\third-party\highcharts\modules\exporting.src.js" />
-    <Content Include="Scripts\UEditor\third-party\highcharts\modules\funnel.js" />
-    <Content Include="Scripts\UEditor\third-party\highcharts\modules\funnel.src.js" />
-    <Content Include="Scripts\UEditor\third-party\highcharts\modules\heatmap.js" />
-    <Content Include="Scripts\UEditor\third-party\highcharts\modules\heatmap.src.js" />
-    <Content Include="Scripts\UEditor\third-party\highcharts\modules\map.js" />
-    <Content Include="Scripts\UEditor\third-party\highcharts\modules\map.src.js" />
-    <Content Include="Scripts\UEditor\third-party\highcharts\modules\no-data-to-display.js" />
-    <Content Include="Scripts\UEditor\third-party\highcharts\modules\no-data-to-display.src.js" />
-    <Content Include="Scripts\UEditor\third-party\highcharts\themes\dark-blue.js" />
-    <Content Include="Scripts\UEditor\third-party\highcharts\themes\dark-green.js" />
-    <Content Include="Scripts\UEditor\third-party\highcharts\themes\gray.js" />
-    <Content Include="Scripts\UEditor\third-party\highcharts\themes\grid.js" />
-    <Content Include="Scripts\UEditor\third-party\highcharts\themes\skies.js" />
-    <Content Include="Scripts\UEditor\third-party\jquery-1.10.2.js" />
-    <Content Include="Scripts\UEditor\third-party\jquery-1.10.2.min.js" />
-    <Content Include="Scripts\UEditor\third-party\snapscreen\UEditorSnapscreen.exe" />
-    <Content Include="Scripts\UEditor\third-party\SyntaxHighlighter\shCore.js" />
-    <Content Include="Scripts\UEditor\third-party\SyntaxHighlighter\shCoreDefault.css" />
-    <Content Include="Scripts\UEditor\third-party\video-js\font\vjs.svg" />
-    <Content Include="Scripts\UEditor\third-party\video-js\video-js.css" />
-    <Content Include="Scripts\UEditor\third-party\video-js\video-js.min.css" />
-    <Content Include="Scripts\UEditor\third-party\video-js\video-js.swf" />
-    <Content Include="Scripts\UEditor\third-party\video-js\video.dev.js" />
-    <Content Include="Scripts\UEditor\third-party\video-js\video.js" />
-    <Content Include="Scripts\UEditor\third-party\webuploader\Uploader.swf" />
-    <Content Include="Scripts\UEditor\third-party\webuploader\webuploader.css" />
-    <Content Include="Scripts\UEditor\third-party\webuploader\webuploader.custom.js" />
-    <Content Include="Scripts\UEditor\third-party\webuploader\webuploader.custom.min.js" />
-    <Content Include="Scripts\UEditor\third-party\webuploader\webuploader.flashonly.js" />
-    <Content Include="Scripts\UEditor\third-party\webuploader\webuploader.flashonly.min.js" />
-    <Content Include="Scripts\UEditor\third-party\webuploader\webuploader.html5only.js" />
-    <Content Include="Scripts\UEditor\third-party\webuploader\webuploader.html5only.min.js" />
-    <Content Include="Scripts\UEditor\third-party\webuploader\webuploader.js" />
-    <Content Include="Scripts\UEditor\third-party\webuploader\webuploader.min.js" />
-    <Content Include="Scripts\UEditor\third-party\webuploader\webuploader.withoutimage.js" />
-    <Content Include="Scripts\UEditor\third-party\webuploader\webuploader.withoutimage.min.js" />
-    <Content Include="Scripts\UEditor\third-party\xss.min.js" />
-    <Content Include="Scripts\UEditor\third-party\zeroclipboard\ZeroClipboard.js" />
-    <Content Include="Scripts\UEditor\third-party\zeroclipboard\ZeroClipboard.min.js" />
-    <Content Include="Scripts\UEditor\third-party\zeroclipboard\ZeroClipboard.swf" />
-    <Content Include="Scripts\UEditor\ueditor.all.js" />
-    <Content Include="Scripts\UEditor\ueditor.all.min.js" />
-    <Content Include="Scripts\UEditor\ueditor.config.js" />
-    <Content Include="Scripts\UEditor\ueditor.parse.js" />
-    <Content Include="Scripts\UEditor\ueditor.parse.min.js" />
-    <Content Include="Scripts\wlog.js" />
-    <Content Include="Sounds\bullet.mp3" />
-    <Content Include="Sounds\button.mp3" />
-    <Content Include="Sounds\enemy1_down.mp3" />
-    <Content Include="Sounds\game_over.mp3" />
-    <Content Include="WeixinResource\wx37e46819d148d5fb\menu.txt" />
-    <Content Include="fonts\icomoon.eot" />
-    <Content Include="fonts\icomoon.ttf" />
-    <Content Include="fonts\icomoon.woff" />
-    <Content Include="Content\ace\fonts\fontawesome-webfont.woff2" />
-    <Content Include="Content\ace\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Content\csshake-master\scss\csshake-crazy.scss" />
-    <Content Include="Content\csshake-master\scss\csshake-hard.scss" />
-    <Content Include="Content\csshake-master\scss\csshake-horizontal.scss" />
-    <Content Include="Content\csshake-master\scss\csshake-little.scss" />
-    <Content Include="Content\csshake-master\scss\csshake-rotate.scss" />
-    <Content Include="Content\csshake-master\scss\csshake-slow.scss" />
-    <Content Include="Content\csshake-master\scss\csshake-vertical.scss" />
-    <Content Include="Content\csshake-master\scss\csshake.scss" />
-    <Content Include="Content\csshake-master\scss\_tools.scss" />
-    <Content Include="Content\csshake-master\.gitignore" />
-    <Content Include="Content\csshake-master\bower.json" />
-    <Content Include="Content\csshake-master\LICENSE" />
-    <Content Include="Content\csshake-master\package.json" />
-    <Content Include="Content\csshake-master\params.json" />
-    <Content Include="Content\csshake-master\README.md" />
-    <Content Include="Content\csshake-master\sache.json" />
-    <Content Include="fonts\hyg3gjm.ttf" />
-    <Content Include="fonts\hyg3gjm.eot" />
-    <Content Include="fonts\hyg3gjm.woff" />
-    <Content Include="fonts\fzmmt.ttf" />
-    <Content Include="Content\game.scss" />
-    <None Include="compilerconfig.json" />
-    <None Include="compilerconfig.json.defaults">
-      <DependentUpon>compilerconfig.json</DependentUpon>
-    </None>
-    <Content Include="Content\game\spacewarriors\res\arial-14.fnt" />
-    <Content Include="Content\game\spacewarriors\res\arial-14.GlyphProject" />
-    <Content Include="Content\game\spacewarriors\res\b01.plist" />
-    <Content Include="Content\game\spacewarriors\res\displayTexturePack.plist" />
-    <Content Include="Content\game\spacewarriors\res\explosion.plist" />
-    <Content Include="Content\game\spacewarriors\res\level01.tmx" />
-    <Content Include="Content\game\spacewarriors\res\textureOpaquePack.plist" />
-    <Content Include="Content\game\spacewarriors\res\textureTransparentPack.plist" />
-    <Content Include="Content\game\spacewarriors\res\fonts\arial.ttf" />
-    <Content Include="Content\game\spacewarriors\res\Music\bgMusic.ogg" />
-    <Content Include="Content\game\spacewarriors\res\Music\buttonEffet.ogg" />
-    <Content Include="Content\game\spacewarriors\res\Music\explodeEffect.ogg" />
-    <Content Include="Content\game\spacewarriors\res\Music\fireEffect.ogg" />
-    <Content Include="Content\game\spacewarriors\res\Music\mainMainMusic.ogg" />
-    <Content Include="Content\game\spacewarriors\res\Music\shipDestroyEffect.ogg" />
-    <Content Include="Content\game\spacewarriors\project.json" />
-    <Content Include="Content\game\BallonShoot\project.json" />
-    <Content Include="Content\game\BallonShoot\res\fonts\arial.ttf" />
-    <Content Include="Content\game\OnLineGame\BallonShootPhone\player.plist" />
-    <Content Include="Content\game\BallonShoot\res\main.plist" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Scripts\angular-animate.js" />
-    <Content Include="Scripts\angular-animate.min.js" />
-    <Content Include="Scripts\angular-local-storage.js" />
-    <Content Include="Scripts\angular-mocks.js" />
-    <Content Include="Scripts\angular-route.js" />
-    <Content Include="Scripts\angular-route.min.js" />
-    <Content Include="Scripts\angular-ui-router.js" />
-    <Content Include="Scripts\angular-ui-router.min.js" />
-    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
-    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />
-    <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
-    <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
-    <Content Include="Scripts\angular.js" />
-    <Content Include="Scripts\angular.min.js" />
-    <Content Include="Scripts\angular.min.js.map" />
-    <Content Include="Scripts\angular-route.min.js.map" />
-    <Content Include="Scripts\angular-animate.min.js.map" />
-    <None Include="Properties\PublishProfiles\gameClound.pubxml" />
-    <None Include="Properties\PublishProfiles\krupp.pubxml" />
-    <None Include="Properties\PublishProfiles\zhuweixin.pubxml" />
+    <None Include="Properties\PublishProfiles\brookstone.pubxml" />
+    <None Include="Properties\PublishProfiles\c-store.pubxml" />
+    <None Include="Properties\PublishProfiles\file.pubxml" />
+    <None Include="Properties\PublishProfiles\SensingStore.pubxml" />
+    <None Include="Properties\PublishProfiles\Store.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\app\admin\device.js" />
     <Content Include="Scripts\app\auditor\device.js" />
     <Content Include="Scripts\app\login.js" />
     <Content Include="Scripts\app\editor\device.js" />
     <Content Include="Scripts\app\devicegroup.js" />
-    <Content Include="Scripts\app\tag.js" />
     <Content Include="Scripts\app\user.js" />
-    <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-datepicker.zh-CN.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Chart.js" />
+    <Content Include="Scripts\echarts.js" />
     <Content Include="Scripts\hubs\raw.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jquery.form.js" />
     <Content Include="Scripts\jquery.pictureSelector.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.0.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.0.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.switchbutton.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -1478,9 +709,23 @@
     <Content Include="Scripts\sammy\plugins\sammy.title.js" />
     <Content Include="Scripts\sammy\plugins\sammy.tmpl.js" />
     <Content Include="Scripts\sammy\sammy.js" />
-    <Content Include="Scripts\toastr.js" />
-    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\image\addr.png" />
+    <Content Include="Content\image\bg.png" />
+    <Content Include="Content\image\bg1.jpg" />
+    <Content Include="Content\image\bg2.jpg" />
+    <Content Include="Content\image\bg3.jpg" />
+    <Content Include="Content\image\bg4.jpg" />
+    <Content Include="Content\image\gaik.png" />
+    <Content Include="Content\image\huiyi.png" />
+    <Content Include="Content\image\lx.png" />
+    <Content Include="Content\image\map.png" />
+    <Content Include="Content\image\meishi.png" />
+    <Content Include="Content\image\n.jpg" />
+    <Content Include="Content\image\taofang.png" />
+    <Content Include="Content\image\yule.png" />
+    <Content Include="Content\image\zp.png" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1497,6 +742,18 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
     <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
     <Content Include="Views\Manage\ChangePassword.cshtml" />
     <Content Include="Views\Manage\Index.cshtml" />
@@ -1515,6 +772,7 @@
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
     <Content Include="Views\Shared\_Scripts.cshtml" />
     <Content Include="Views\Shared\_Styles.cshtml" />
+    <Content Include="Views\Software\Index.cshtml" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
     <Content Include="Views\Shared\DisplayTemplates\SiteMapHelperModel.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
@@ -1537,52 +795,26 @@
     <Content Include="Views\SystemSetting\_EditPlatNotifications.cshtml" />
     <Content Include="Views\SystemSetting\_EditUpdateCleintContent.cshtml" />
     <Content Include="Views\SystemSetting\_EditUpdateCleintSoft.cshtml" />
+    <Content Include="Views\Account\_ResetPassword.cshtml" />
     <Content Include="Views\Shared\_LanguageSelector.cshtml" />
     <Content Include="Views\Home\Chat.cshtml" />
     <Content Include="Views\Home\Dashboard.cshtml" />
-    <Content Include="Views\CommonSetting\Index.cshtml" />
-    <Content Include="Views\CommonSetting\IPadPasswordPartial.cshtml" />
-    <Content Include="Views\CommonSetting\OtherSettingPartial.cshtml" />
-    <Content Include="Views\CommonSetting\_EditPlatNotifications.cshtml" />
-    <Content Include="Views\Group\_DetailsPartial.cshtml" />
-    <Content Include="Views\Home\Game.cshtml" />
-    <Content Include="Views\Shared\_Menu.cshtml" />
-    <Content Include="Views\Home\GameCenter.cshtml" />
-    <Content Include="Views\Shared\_UploadImagePartial.cshtml" />
-    <Content Include="Views\Home\_GameList.cshtml" />
-    <Content Include="Views\Shared\_WeixinLayout.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\ActivityFlow.cshtml" />
-    <Content Include="Scripts\UEditor\net\.vs\net\v14\.suo" />
-    <Content Include="Scripts\UEditor\net\config.json" />
-    <Content Include="Scripts\UEditor\net\controller.ashx" />
-    <Content Include="Scripts\UEditor\net\README.md" />
-    <Content Include="Scripts\UEditor\net\Web.config" />
-    <Content Include="Scripts\UEditor\third-party\jquery-1.10.2.min.map" />
-    <Content Include="Scripts\UEditor\third-party\video-js\font\vjs.eot" />
-    <Content Include="Scripts\UEditor\third-party\video-js\font\vjs.ttf" />
-    <Content Include="Scripts\UEditor\third-party\video-js\font\vjs.woff" />
-    <Content Include="Views\Weixin\Index.cshtml" />
-    <Content Include="Views\Shared\_BaseListLayout.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\Login - Copy.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\_ResetPassword.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Dashboard\_Charts.cshtml" />
+    <Content Include="Views\Dashboard\HeatMap.cshtml" />
+    <Content Include="Views\Dashboard\_HeatMaps.cshtml" />
+    <Content Include="Views\Dashboard\_Dashboard.cshtml" />
+    <Content Include="Views\Group\_DetailsPartial.cshtml" />
+    <Content Include="Views\Shared\Base\_PageListLayout.cshtml" />
+    <Content Include="Views\WeChat\Index.cshtml" />
+    <Content Include="Views\Shared\_BaseListLayout.cshtml" />
+    <Content Include="Views\Media\Index.cshtml" />
+    <Content Include="Views\Shared\_Menu.cshtml" />
+    <Content Include="Views\WeChat\Introduction.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\img\NewFolder1\" />
-    <Folder Include="Filters\DynamicNodeProvider\" />
-    <Folder Include="Views\Menu\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -1611,14 +843,6 @@
       <Project>{e8497f93-6e57-432f-b056-9f6b6dcd6c84}</Project>
       <Name>Sensing.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Sensing.Thirtparty.Exstension\Sensing.Thirtparty.Exstension.csproj">
-      <Project>{a4209ed8-ae0c-439e-b70c-37fe5a0e3020}</Project>
-      <Name>Sensing.Thirtparty.Exstension</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Sensing.WeChat\Sensing.WeChat.csproj">
-      <Project>{14609191-35e8-41a6-8dbe-11fc7abff8d3}</Project>
-      <Name>Sensing.WeChat</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SensingCloud.Services\SensingCloud.Services.csproj">
       <Project>{50515967-72ff-44bd-ba41-2bc4a04e54c3}</Project>
       <Name>SensingCloud.Services</Name>
@@ -1626,12 +850,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resource.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -1651,9 +869,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>3205</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:4469/</IISUrl>
-          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
-          <IISAppRootUrl>http://localhost:4469/</IISAppRootUrl>
+          <IISUrl>http://localhost:4468/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -1663,13 +879,6 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <Import Project="..\..\packages\BuildWebCompiler.1.11.315\build\BuildWebCompiler.targets" Condition="Exists('..\..\packages\BuildWebCompiler.1.11.315\build\BuildWebCompiler.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\..\packages\BuildWebCompiler.1.11.315\build\BuildWebCompiler.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\BuildWebCompiler.1.11.315\build\BuildWebCompiler.targets'))" />
-  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

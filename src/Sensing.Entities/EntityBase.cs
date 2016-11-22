@@ -1,14 +1,12 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using rs = Resources.Resource;
+
 namespace Sensing.Entities
 {
     public abstract class EntityBase
     {
-        [Key]
         public int Id { get; set; }
-
-        [Display(Name = nameof(rs.HtmlTemplate), ResourceType = typeof(rs))]
+        [Display(Name = "LastUpdated", ResourceType = typeof(Resources.Resources))]
         public DateTime? LastUpdated { get; set; }
 
         [Display(Name = "Updater", ResourceType = typeof(Resources.Resources))]
