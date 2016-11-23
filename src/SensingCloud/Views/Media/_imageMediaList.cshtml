@@ -1,0 +1,25 @@
+﻿@using Sensing.Entities;
+@using Webdiyer.WebControls.Mvc;
+@model PagedList<Media>
+<div class="row">
+    <div class="col-xs-12">
+        <ul class="ace-thumbnails clearfix productgridul">
+
+            @foreach (var item in Model)
+            {
+                <li class="productgridli" @*style="margin-left: 40px;margin-bottom:35px;border: 1px solid #d4d4d4;"*@>
+                    <div class="text-center" style="width: 190px; height: 240px;">
+                        <img src="@item.Url" height="167" />
+                        <br />
+                        <span style="margin-top:5px; display:-moz-inline-box;display:inline-block;width:150px;line-height:17px;height:35px;overflow:hidden">
+                            @item.Title
+                        </span>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+<div class="row row-pager col-xs-12" style="float:right;text-align:right">
+    @Html.Pager(Model, new PagerOptions { ActionName = "GetList", PrevPageText = "上页", NextPageText = "下页", FirstPageText = "首页", LastPageText = "尾页", PageIndexParameterName = "pageIndex", ContainerTagName = "ul", CssClass = "pagination", CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>", DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>", PagerItemTemplate = "<li>{0}</li>" })
+</div>

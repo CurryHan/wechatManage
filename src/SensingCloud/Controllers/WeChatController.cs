@@ -28,9 +28,9 @@ namespace SensingCloud.Controllers
             Menu info = db.Menus.Find(id);
             if (info != null)
             {
-                ViewBag.MediaList = db.Medias.Where(m => m.Deleted == false)
+                ViewBag.MediaList = db.Medias.Where(m => m.Deleted == false && m.Type == info.Type)
     .Select(t => new SelectListItem { Text = t.Title, Value = t.Id.ToString() });
-                return PartialView("_EditDialog",info);
+                return PartialView("_EditDialog", info);
             }
             return Json("fail");
         }
@@ -64,30 +64,26 @@ namespace SensingCloud.Controllers
             return View(model);
         }
 
-        public ActionResult Ticket()
+        public ActionResult About()
         {
             IntroductionViewModel model = new IntroductionViewModel();
             var list1 = db.Menus.Find(6);
             model.Url1 = list1 == null ? "" : list1.Media == null ? "" : list1.Media.Url;
-
-            var list2 = db.Menus.Find(7);
-            model.Url2 = list2 == null ? "" : list2.Media == null ? "" : list2.Media.Url;
-
-            var list3 = db.Menus.Find(8);
-            model.Url3 = list3 == null ? "" : list3.Media == null ? "" : list3.Media.Url;
             return View(model);
         }
 
-        public ActionResult About()
+        public ActionResult Ticket()
         {
-            IntroductionViewModel model = new IntroductionViewModel();
-            var list1 = db.Menus.Find(9);
-            model.Url1 = list1 == null ? "" : list1.Media == null ? "" : list1.Media.Url;
-
-            var list2 = db.Menus.Find(10);
-            model.Url2 = list2 == null ? "" : list2.Media == null ? "" : list2.Media.Url;
-            return View(model);
+            var list = db.Menus.Where(m => m.Id >= 6&&m.Deleted==false).ToList();
+            return View(list);
         }
+
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
+
 
 
     }

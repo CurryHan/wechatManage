@@ -815,6 +815,9 @@
     <Content Include="Views\WeChat\_EditDialog.cshtml" />
     <Content Include="Views\WeChat\About.cshtml" />
     <Content Include="Views\WeChat\Ticket.cshtml" />
+    <Content Include="Views\WeChat\Contact.cshtml" />
+    <Content Include="Views\Media\_newsMediadList.cshtml" />
+    <Content Include="Views\Media\_imageMediaList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

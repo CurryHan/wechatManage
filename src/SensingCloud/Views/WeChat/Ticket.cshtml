@@ -1,7 +1,61 @@
-﻿@model  SensingCloud.Models.IntroductionViewModel
+﻿@model  List<Sensing.Entities.Menu>
 @{
     Layout = null;
 }
 
-<h2>Ticket</h2>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+ <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>酒店</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
 
+
+
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="shortcut icon" href="favicon.ico">
+
+
+
+    <!-- Theme Style -->
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+
+    <!-- FOR IE9 below -->
+    <!--[if lt IE 9]>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        body {
+            background-color: #030009;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="page page3">
+        <div class="show-list-box">
+            @foreach (var item in Model)
+            {
+                if (item.MediaId.HasValue)
+                {
+                    <div class="show-list">
+                        <div class="show-img"><img src="@item.Media.Url" /></div>
+                        <a href="#">@item.Media.Title</a>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+
+</body>
+</html>

@@ -3,12 +3,9 @@
 @using SensingCloud.Helpers
 @using Sensing.Entities.Users;
 @using Webdiyer.WebControls.Mvc;
-@using Sensing.Entities;
-@model PagedList<Media>
+
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var index = 0;
-    var sequence = 0;
 }
 <style>
     th, td {
@@ -41,54 +38,59 @@
                             </span>
                         </div>
                     </div>
-
                 </form>
             </div>
             <div class="col-xs-4">
-                <a id="addNewBtn" class="btn btn-sm btn-primary no-border" style="float:right">
+                <a id="CreateMenu" class="btn btn-sm btn-primary no-border" style="float:right">
                     <i class="fa fa-plus"></i>
-                    获取微信素材列表
+                    创建自定义菜单
                 </a>
             </div>
         </div><!-- /.row -->
     </section>
-    <section class="user-table">
-        <div class="row">
-            <div class="col-xs-12" id="table">
-                <table id="simple-table" class="table table-bordered table-striped table-hover table-condensed text-center">
-                    <thead>
-                        <tr>
-                            <th class="hidden-xs">
-                                序号
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Title)
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            index++;
-                            sequence = (ViewBag.pageIndex - 1) * ViewBag.pageSize + index;
+    <div class="col-sm-12">
+        <!-- #section:elements.tab.option -->
+        <div class="tabbable row">
+            <ul class="nav nav-tabs" id="myTab4">
+                <li id="tab_1_li" class="active">
+                    <a data-toggle="tab" href="#tab_1_container" aria-expanded="false">图文</a>
+                </li>
 
-                            <tr id="@item.Id">
-                                <td class="hidden-xs">@sequence</td>
-                                <td>
-                                    @item.Title
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-                <div class="row row-pager">
-                    <div class="col-md-12">
-                        @Html.Pager(Model, new PagerOptions { ActionName = "Index", PrevPageText = "上页", NextPageText = "下页", FirstPageText = "首页", LastPageText = "尾页", PageIndexParameterName = "pageIndex", ContainerTagName = "ul", CssClass = "pagination", CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>", DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>", PagerItemTemplate = "<li>{0}</li>" })
+                <li class="" id="tab_2_li">
+                    <a data-toggle="tab" href="#tab_2_container" aria-expanded="false">图片</a>
+                </li>
+            </ul>
+            <div id="productTabble" class="tab-content">
+                <div id="tab_1_container" class="tab-pane active">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h4 class="text-primary col-xs-8">图文素材</h4> 
+                            <div class="align-right-large">
+                                <button class="btn btn-primary btn-sm no-border" id="SyscMedias">获取微信图文素材</button>
+                            </div>
+                        </div>
+
+                        <div id="tab_1_content" class="col-sm-12">
+
+                        </div>
                     </div>
                 </div>
-            </div><!-- /.span -->
-        </div><!-- /.row -->
-    </section>
+
+                <div id="tab_2_container" class="tab-pane ">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4 class="text-primary col-sm-8">图片素材</h4>
+                            <div class="align-right-large">
+                                <button class="btn btn-primary btn-sm no-border" id="SyscPic">获取微信图片素材</button>
+                            </div>
+                        </div>
+                        <div id="tab_2_content" class="col-sm-12">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div id="dialog_container"></div>
 
@@ -102,17 +104,121 @@
     <script src="~/Scripts/jquery.extend.js"></script>
     <script src="~/Content/ace/js/bootstrap-multiselect.min.js"></script>
     <script>
+        var tab_1 = "tab_1";
+        var tab_2 = "tab_2";
+        var currentTab = "tab_1";
         $(function () {
+            (function () {
+                
+                var options = {
+                    method: 'get',
+                    data: { query: $('input[name=query]').val() }
+                };
+                options.data.type = 'news';
+                var url = "/Media/GetList";
+                $.ajax(url, options).success(function (data) {
+                    $('#tab_1_content').html(data);
+                });
+            })();
+
+            $('.search-form').submit(function (e) {
+                e.preventDefault();
+
+                var options = {
+                    method: 'get',
+                    data: { query: $('input[name=query]').val() }
+                };
+                var SearchTab_Content = "";
+                if (currentTab == tab_1) {
+                    SearchTab_Content = "#tab_1_content";
+                    options.data.type = 'news';
+                } else if (currentTab == tab_2) {
+                    SearchTab_Content = "#tab_2_content";
+                    options.data.type = 'image';
+                }
+                $.ajax("/Media/GetList", options).success(function (data) {
+                    $(SearchTab_Content).html(data);
+                });
+                return false;
+            });
+
             $('.date-picker').datepicker({
                 autoclose: true,
                 todayHighlight: true
-            })
+            });
+
+            //使用ajax请求分页
+            $('#tab_1_content').on('click', '.row-pager a', function (e) {
+                e.preventDefault();
+                var url = $(e.target).attr('href');
+                if (url) {
+                    var options = {
+                        method: 'get',
+                    };
+                    $.ajax(url, options).success(function (data) {
+                        $('#tab_1_content').html(data);
+                    });
+                }
+                return false;
+            });
+            $('#tab_2_content').on('click', '.row-pager a', function (e) {
+                e.preventDefault();
+                var url = $(e.target).attr('href');
+                if (url) {
+                    var options = {
+                        method: 'get',
+                    };
+                    $.ajax(url, options).success(function (data) {
+                        $('#tab_2_content').html(data);
+                    });
+                }
+                return false;
+            });
+
+            $('a[href=#tab_1_container]').click(function () {
+                var options = {
+                    method: 'get',
+                    data: { query: $('input[name=query]').val() }
+                };
+                options.data.type = 'news';
+                var url = "/Media/GetList";
+                $.ajax(url, options).success(function (data) {
+                    currentTab = tab_1;
+                    $('#tab_1_content').html(data);
+                });
+            });
+
+            $('a[href=#tab_2_container]').click(function () {
+                var options = {
+                    method: 'get',
+                    data: { query: $('input[name=query]').val() }
+                };
+                options.data.type = 'image';
+                var url = "/Media/GetList";
+                $.ajax(url, options).success(function (data) {
+                    currentTab = tab_2;
+                    $('#tab_2_content').html(data);
+                });
+            });
 
 
-            $("#list").on('click', '#addNewBtn', function () {
+            $("#list").on('click', '#SyscMedias', function () {
                 var url = "/Media/SyscMedias";
                 $.ajax(url).success(function (data) {
                     location.href = location.href;
+                });
+            });
+
+            $("#list").on('click', '#SyscPic', function () {
+                var url = "/Media/SyscPic";
+                $.ajax(url).success(function (data) {
+                    location.href = location.href;
+                });
+            });
+            $("#list").on('click', '#CreateMenu', function () {
+                var url = "/Media/CreateMenu";
+                $.ajax(url).success(function (data) {
+                    alert("成功");
                 });
             });
         });

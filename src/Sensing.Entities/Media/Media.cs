@@ -13,5 +13,13 @@ namespace Sensing.Entities
         public string Url { get; set; }
 
         public string Title { get; set; }
+
+        public EnumType Type { get; set; }
+    }
+
+    public enum EnumType
+    {
+        news,
+        image
     }
 }

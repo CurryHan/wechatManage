@@ -1,0 +1,44 @@
+﻿@using Sensing.Entities;
+@using Webdiyer.WebControls.Mvc;
+@{ 
+    var index = 0;
+    var sequence = 0;
+}
+@model PagedList<Media>
+<section class="user-table">
+    <div class="row">
+        <div class="col-xs-12" id="table">
+            <table id="simple-table" class="table table-bordered table-striped table-hover table-condensed text-center">
+                <thead>
+                    <tr>
+                        <th class="hidden-xs">
+                            序号
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Title)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        index++;
+                        sequence = (ViewBag.pageIndex - 1) * ViewBag.pageSize + index;
+
+                        <tr id="@item.Id">
+                            <td class="hidden-xs">@sequence</td>
+                            <td>
+                                @item.Title
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="row row-pager">
+                <div class="col-md-12">
+                    @Html.Pager(Model, new PagerOptions { ActionName = "GetList", PrevPageText = "上页", NextPageText = "下页", FirstPageText = "首页", LastPageText = "尾页", PageIndexParameterName = "pageIndex", ContainerTagName = "ul", CssClass = "pagination", CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>", DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>", PagerItemTemplate = "<li>{0}</li>" })
+                </div>
+            </div>
+        </div><!-- /.span -->
+    </div><!-- /.row -->
+</section>

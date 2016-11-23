@@ -10,6 +10,8 @@ namespace Sensing.Entities
     {
         public string Name { get; set; }
 
+        public EnumType Type { get; set; }
+
         public int? MediaId { get; set; }
         public virtual Media Media { get; set; }
     }
