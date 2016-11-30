@@ -137,9 +137,6 @@ namespace SensingCloud.Controllers
 				current = index * 20;
 				if (isFirst) isFirst = false;
 			}
-
-
-
 			return null;
 		}
 
@@ -160,7 +157,6 @@ namespace SensingCloud.Controllers
 					if (diff / 20 > 0)
 					{
 						count = 20;
-
 					}
 					else
 					{
