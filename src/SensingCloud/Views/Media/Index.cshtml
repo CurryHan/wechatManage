@@ -45,6 +45,14 @@
                     <i class="fa fa-plus"></i>
                     创建自定义菜单
                 </a>
+                <a id="DeleteMenu" class="btn btn-sm btn-primary no-border" style="float:right">
+                    <i class="fa fa-plus"></i>
+                    删除自定义菜单
+                </a>
+                <a id="GetMenu" class="btn btn-sm btn-primary no-border" style="float:right">
+                    <i class="fa fa-plus"></i>
+                    获取自定义菜单
+                </a>
             </div>
         </div><!-- /.row -->
     </section>
@@ -97,12 +105,6 @@
 @section scripts{
     <script src="~/Scripts/jquery.form.js"></script>
     <script src="~/Scripts/moment-with-locales.js"></script>
-    <script src="~/Scripts/bootstrap-datetimepicker.js"></script>
-    <script src="~/Scripts/jquery.pictureSelector.js"></script>
-    <script src="~/Content/ace/js/date-time/bootstrap-datepicker.min.js"></script>
-    <script src="~/Scripts/layer/layer.js"></script>
-    <script src="~/Scripts/jquery.extend.js"></script>
-    <script src="~/Content/ace/js/bootstrap-multiselect.min.js"></script>
     <script>
         var tab_1 = "tab_1";
         var tab_2 = "tab_2";
@@ -120,6 +122,8 @@
                     $('#tab_1_content').html(data);
                 });
             })();
+
+           
 
             $('.search-form').submit(function (e) {
                 e.preventDefault();
@@ -142,10 +146,6 @@
                 return false;
             });
 
-            $('.date-picker').datepicker({
-                autoclose: true,
-                todayHighlight: true
-            });
 
             //使用ajax请求分页
             $('#tab_1_content').on('click', '.row-pager a', function (e) {
@@ -221,9 +221,22 @@
                     alert("成功");
                 });
             });
+            $("#list").on('click', '#DeleteMenu', function () {
+                var url = "/Media/DeleteMenu";
+                $.ajax(url).success(function (data) {
+                    alert("成功");
+                });
+            });
+            $("#list").on('click', '#GetMenu', function () {
+                var url = "/Media/GetMenu";
+                $.ajax(url).success(function (data) {
+                    alert("成功");
+                });
+            });
         });
 
 
 
     </script>
+
 }

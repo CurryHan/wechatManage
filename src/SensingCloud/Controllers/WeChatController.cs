@@ -74,7 +74,7 @@ namespace SensingCloud.Controllers
 
         public ActionResult Ticket()
         {
-            var list = db.Menus.Where(m => m.Id >= 6&&m.Deleted==false).ToList();
+            var list = db.Menus.Where(m => m.Id > 6&&m.Deleted==false).ToList();
             return View(list);
         }
 

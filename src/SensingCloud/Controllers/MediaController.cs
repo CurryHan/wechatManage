@@ -58,16 +58,16 @@ namespace SensingCloud.Controllers
 	 {	
 		  ""type"":""view"",
 		  ""name"":""酒店印象"",
-		  ""url"":""bl.troncell.com/Introduction""
+		  ""url"":""http://bl.troncell.com/WeChat/Introduction""
 	  },
 	  {
 		   ""name"":""优惠促销"",
 		   ""type"":""view"",
-		   ""url"":""bl.troncell.com/Ticket""
+		   ""url"":""http://bl.troncell.com/WeChat/Ticket""
 	   },{
-			""type"":""click"",
+			""type"":""view"",
 			""name"":""粉丝专享"",
-			""url"":""bl.troncell.com/About""
+			""url"":""http://bl.troncell.com/WeChat/About""
 	   }]
 }";
 			string result = PostHttpResponse.PostHttpResponseJson(url, json);
@@ -75,7 +75,29 @@ namespace SensingCloud.Controllers
 			return Json(true);
 		}
 
-		public ActionResult SyscMedias()
+        public ActionResult DeleteMenu()
+        {
+
+            var group = _groupSvc.GetAll().FirstOrDefault();
+
+            var url = $"https://api.weixin.qq.com/cgi-bin/menu/delete?access_token={group.access_token}";
+            string result = PostHttpResponse.PostHttpResponseJson(url);
+            logger.Debug(result);
+            return Json(true);
+        }
+
+        public ActionResult GetMenu()
+        {
+            var group = _groupSvc.GetAll().FirstOrDefault();
+            var url = $"https://api.weixin.qq.com/cgi-bin/get_current_selfmenu_info?access_token={group.access_token}";
+            string result = PostHttpResponse.PostHttpResponseJson(url);
+            logger.Debug(result);
+            return Json(true);
+        }
+
+
+
+        public ActionResult SyscMedias()
 		{
 			int total = 0;
 			int index = 0;
