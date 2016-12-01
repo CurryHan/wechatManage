@@ -550,7 +550,7 @@ namespace SensingCloud.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Menu");
+            return RedirectToAction("Index", "WeChat");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult
