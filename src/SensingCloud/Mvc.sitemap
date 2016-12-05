@@ -4,7 +4,7 @@
             xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
 
   <mvcSiteMapNode title="系统首页" controller="Account" action="Index" icon="ace-icon fa fa-home home-icon">
-    <mvcSiteMapNode title="菜单管理" controller="Account" action="Login" visibility="*" clickable="false" icon="menu-icon fa fa-shopping-cart">
+    <mvcSiteMapNode title="管理" controller="Account" action="Login" visibility="*" clickable="false" icon="menu-icon fa fa-cog">
       <mvcSiteMapNode title="菜单管理" controller="WeChat" action="Index" visibility="*"  />
       <mvcSiteMapNode title="素材管理" controller="Media" action="Index" visibility="*"  />
     </mvcSiteMapNode>

@@ -617,6 +617,7 @@
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\PublishProfiles\baile.pubxml" />
     <None Include="Properties\PublishProfiles\brookstone.pubxml" />
     <None Include="Properties\PublishProfiles\c-store.pubxml" />
     <None Include="Properties\PublishProfiles\file.pubxml" />
