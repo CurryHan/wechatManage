@@ -9,7 +9,7 @@
     var UserManager = new Microsoft.AspNet.Identity.UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new SensingSiteDbContext()));
     var currentUser = UserManager.FindByName(userName);
     var rolsString = UserManager.GetRoles(currentUser.Id)[0];
-    <li class="green">
+    @*<li class="green">
         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
             <i class="ace-icon fa fa-users icon-animated-vertical"></i>
             <span class="h5">@(currentUser.Group.GroupType.ToName() + "(" + rolsString + ")")</span>
@@ -21,7 +21,7 @@
                 您当前所在的组为: @(currentUser.Group.GroupType.ToName())
             </li>
         </ul>
-    </li>
+    </li>*@
     <li class="light-blue">
         <a data-toggle="dropdown" href="#" class="dropdown-toggle">
             <img src="@currentUser.AvatarUrl" class="nav-user-photo" />

@@ -36,12 +36,12 @@ namespace SensingCloud.Controllers
 			ViewBag.pageSize = 20;
 			if (type == "news")
 			{
-				var list = db.Medias.Where(m => m.Deleted == false && m.Type == EnumType.news).OrderBy(m => m.Id).ToPagedList(pageIndex, 20);
+				var list = db.Medias.Where(m => m.Deleted == false && m.Type == EnumType.news&&m.Title.Contains(query)).OrderBy(m => m.Id).ToPagedList(pageIndex, 20);
 				return PartialView("_newsMediadList", list);
 			}
 			else
 			{
-				var list = db.Medias.Where(m => m.Deleted == false && m.Type == EnumType.image).OrderBy(m => m.Id).ToPagedList(pageIndex, 20);
+				var list = db.Medias.Where(m => m.Deleted == false && m.Type == EnumType.image && m.Title.Contains(query)).OrderBy(m => m.Id).ToPagedList(pageIndex, 20);
 				return PartialView("_imageMediaList", list);
 			}
 		}

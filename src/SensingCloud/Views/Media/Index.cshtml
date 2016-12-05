@@ -29,7 +29,7 @@
                 <form class="form-inline" method="post">
                     <div class="from-group">
                         <div class="input-group">
-                            <input name="qstr" type="text" class="form-control search-query" placeholder="名称,组名" value="@ViewBag.qstr">
+                            <input name="query" type="text" class="form-control search-query" placeholder="名称" value="@ViewBag.qstr">
                             <span class="input-group-btn">
                                 <button type="submit" class="btn btn-primary btn-sm">
                                     检索
@@ -125,7 +125,7 @@
 
            
 
-            $('.search-form').submit(function (e) {
+            $('.form-inline').submit(function (e) {
                 e.preventDefault();
 
                 var options = {
