@@ -711,7 +711,7 @@
     <Content Include="Scripts\sammy\plugins\sammy.tmpl.js" />
     <Content Include="Scripts\sammy\sammy.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Content\css\style.css" />
+    <Content Include="Content\style.css" />
     <Content Include="Content\image\addr.png" />
     <Content Include="Content\image\bg.png" />
     <Content Include="Content\image\bg1.jpg" />
