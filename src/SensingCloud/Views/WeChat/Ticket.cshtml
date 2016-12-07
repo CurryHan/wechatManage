@@ -1,4 +1,5 @@
-﻿@model  List<Sensing.Entities.Menu>
+﻿
+@model  List<SensingCloud.Models.TicketViewModel>
 @{
     Layout = null;
 }
@@ -9,7 +10,7 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="no-js">
- <!--<![endif]-->
+<!--<![endif]-->
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -33,8 +34,9 @@
             $(".show-list-box img").each(function () {
                 var img = $(this);
                 var img_src = img.attr("src");
+                var img_path=img.attr("data-path");
                 var frameid = 'frameimg' + Math.random();
-                window.img = '<img id="img" style="width:100%" src=\'' + img_src + '?' + Math.random() + '\' /><script>window.onload = function() { parent.document.getElementById(\'' + frameid + '\').height = document.getElementById(\'img\').height+\'px\'; }<' + '/script>';
+                window.img = "<img id='img' onclick='window.parent.location.href=\""+img_path+"\";' style='width:100%' src=\'" + img_src + '?' + Math.random() + '\' /><script>window.onload = function() { parent.document.getElementById(\'' + frameid + '\').height = document.getElementById(\'img\').height+\'px\'; }<' + '/script>';
                 img.parent().append('<iframe id="' + frameid + '" src="javascript:parent.img;" frameborder="0" scrolling="no" width="100%" marginwidht="0" hspeace= "0" vspace= "0"></iframe>');
                 img.remove();
             });
@@ -51,8 +53,12 @@
                 if (item.MediaId.HasValue)
                 {
                     <div class="show-list">
-                        <div class="show-img"><img src="@item.Media.Url" /></div>
-                        <a href="#">@item.Media.Title.Substring(0,item.Media.Title.LastIndexOf('.'))</a>
+                        <a href="@item.Media.Url">
+                            <div class="show-img">
+                                <img src="@item.Thumb_url" data-path="@item.Media.Url" />
+                            </div>
+                        </a>
+                        <a href="#">@item.Media.Title.Substring(0, item.Media.Title.LastIndexOf('.'))</a>
                     </div>
                 }
             }

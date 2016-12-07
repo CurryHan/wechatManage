@@ -10,6 +10,8 @@ namespace Sensing.Entities
     {
         public string MediaKey { get; set; }
 
+        public string Thumb_MediaId { get; set; }
+
         public string Url { get; set; }
 
         public string Title { get; set; }

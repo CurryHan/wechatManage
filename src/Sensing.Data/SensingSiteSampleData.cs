@@ -246,11 +246,11 @@ namespace Sensing.Data
             context.Menus.Add(new Menu() { Name = "招聘信息", Type = EnumType.news });
             //context.Menus.Add(new Menu() { Name = "联系我们" });
 
-            context.Menus.Add(new Menu() { Name = "优惠信息1",Type=EnumType.image });
-            context.Menus.Add(new Menu() { Name = "优惠信息2", Type = EnumType.image });
-            context.Menus.Add(new Menu() { Name = "优惠信息3", Type = EnumType.image });
-            context.Menus.Add(new Menu() { Name = "优惠信息4", Type = EnumType.image });
-            context.Menus.Add(new Menu() { Name = "优惠信息5", Type = EnumType.image });
+            context.Menus.Add(new Menu() { Name = "优惠信息1",Type=EnumType.news });
+            context.Menus.Add(new Menu() { Name = "优惠信息2", Type = EnumType.news });
+            context.Menus.Add(new Menu() { Name = "优惠信息3", Type = EnumType.news });
+            context.Menus.Add(new Menu() { Name = "优惠信息4", Type = EnumType.news });
+            context.Menus.Add(new Menu() { Name = "优惠信息5", Type = EnumType.news });
             //context.Menus.Add(new Menu() { Name = "优惠信息6" });
 
             context.SaveChanges();

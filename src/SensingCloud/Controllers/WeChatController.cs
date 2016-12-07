@@ -75,7 +75,21 @@ namespace SensingCloud.Controllers
         public ActionResult Ticket()
         {
             var list = db.Menus.Where(m => m.Id > 6&&m.Deleted==false).ToList();
-            return View(list);
+            List<TicketViewModel> tList = new List<TicketViewModel>();
+            foreach (var item in list)
+            {
+                TicketViewModel model = new TicketViewModel();
+                model.Name = item.Name;
+                model.MediaId = item.MediaId;
+                model.Media = item.Media;
+                if (item.Media != null) {
+                    var pic_meida = db.Medias.FirstOrDefault(p => p.MediaKey == item.Media.Thumb_MediaId);
+                    if (pic_meida != null)
+                        model.Thumb_url = pic_meida.Url;
+                }
+                tList.Add(model);
+            }
+            return View(tList);
         }
 
         public ActionResult Contact()

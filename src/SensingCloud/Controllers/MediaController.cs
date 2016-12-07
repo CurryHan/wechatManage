@@ -141,7 +141,8 @@ namespace SensingCloud.Controllers
 						info.MediaKey = mediaId;
 						info.Title = item["content"]["news_item"][0]["title"].ToString();
 						info.Url = item["content"]["news_item"][0]["url"].ToString();
-						info.Type = EnumType.news;
+                        info.Thumb_MediaId = item["content"]["news_item"][0]["thumb_media_id"].ToString();
+                        info.Type = EnumType.news;
 						db.Entry(info).State = System.Data.Entity.EntityState.Added;
 						db.SaveChanges();
 					}
@@ -149,7 +150,8 @@ namespace SensingCloud.Controllers
 					{
 						media.Title = item["content"]["news_item"][0]["title"].ToString();
 						media.Url = item["content"]["news_item"][0]["url"].ToString();
-						db.Entry(media).State = System.Data.Entity.EntityState.Modified;
+                        media.Thumb_MediaId = item["content"]["news_item"][0]["thumb_media_id"].ToString();
+                        db.Entry(media).State = System.Data.Entity.EntityState.Modified;
 						db.SaveChanges();
 					}
 				}

@@ -309,6 +309,7 @@
     <Compile Include="Models\HeatMapViewModel.cs" />
     <Compile Include="Models\IntroductionViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\TicketViewModel.cs" />
     <Compile Include="Modules\AuthenticatedVisibilityProvider.cs" />
     <Compile Include="Modules\BasicAuthentication.cs" />
     <Compile Include="Modules\CommonConventions.cs" />
