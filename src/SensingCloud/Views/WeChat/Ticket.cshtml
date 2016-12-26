@@ -3,12 +3,18 @@
 @{
     Layout = null;
 }
+@functions{
+    public string GetCanReturnUrl(string url)
+    {
+        if (url.IndexOf("#") >= 0)
+        {
+            var index = url.LastIndexOf("#");
+            return url.Substring(0, index) + "wechat_redirect";
+        }
+        return url + "#wechat_redirect";
+    }
+}
 
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
 <html class="no-js">
 <!--<![endif]-->
 <head>
@@ -145,7 +151,7 @@
     {
         <div class="hasImg" style="height:42%;">
 
-            <img src="@Model[0].Thumb_url" data-path="@Model[0].Media.Url" />
+            <img src="@Model[0].Thumb_url" data-path="@GetCanReturnUrl(Model[0].Media.Url)" />
             <div style="width:50%;position:absolute;bottom:0;left:0;background-color:black;">
                 @Model[0].Media.Title.Substring(0, Model[0].Media.Title.LastIndexOf('.'))
             </div>
@@ -162,7 +168,7 @@
     {
         <div class="hasImg" style="height:13%;">
 
-            <img src="@Model[1].Thumb_url" data-path="@Model[1].Media.Url" />
+            <img src="@Model[1].Thumb_url" data-path="@GetCanReturnUrl(Model[1].Media.Url)" />
             <div style="width:50%;position:absolute;bottom:0;left:0;background-color:black;">
                 @Model[1].Media.Title.Substring(0, Model[1].Media.Title.LastIndexOf('.'))
             </div>
@@ -176,9 +182,9 @@
     }
     @if (Model[2].MediaId.HasValue)
     {
-        <div class=" hasImg" style="height:13%;background-image:url(@Url.Content("~/Content/image/yhcx_bg_black_3.png"))">
+        <div class="hasImg" style="height:13%;background-image:url(@Url.Content("~/Content/image/yhcx_bg_black_3.png"))">
 
-            <img src="@Model[2].Thumb_url" data-path="@Model[2].Media.Url" />
+            <img src="@Model[2].Thumb_url" data-path="@GetCanReturnUrl(Model[2].Media.Url)" />
             <div style="width:50%;position:absolute;bottom:0;left:0;background-color:black;">
                 @Model[2].Media.Title.Substring(0, Model[2].Media.Title.LastIndexOf('.'))
             </div>
@@ -195,7 +201,7 @@
     {
         <div class="hasImg" style="height:13%;">
 
-            <img src="@Model[3].Thumb_url" data-path="@Model[3].Media.Url" />
+            <img src="@Model[3].Thumb_url" data-path="@GetCanReturnUrl(Model[3].Media.Url)" />
             <div style="width:50%;position:absolute;bottom:0;left:0;background-color:black;">
                 @Model[3].Media.Title.Substring(0, Model[3].Media.Title.LastIndexOf('.'))
             </div>
@@ -210,9 +216,9 @@
     }
     @if (Model[4].MediaId.HasValue)
     {
-        <div class=" hasImg" style="height:13%;">
+        <div class="hasImg" style="height:13%;">
 
-            <img src="@Model[4].Thumb_url" data-path="@Model[4].Media.Url" />
+            <img src="@Model[4].Thumb_url" data-path="@GetCanReturnUrl(Model[4].Media.Url)" />
             <div style="width:50%;position:absolute;bottom:0;left:0;background-color:black;">
                 @Model[4].Media.Title.Substring(0, Model[4].Media.Title.LastIndexOf('.'))
             </div>
