@@ -24,7 +24,7 @@
                                 <div class="form-group">
                                     <label class="control-label col-md-3">素材名称</label>
                                     <div class="col-md-7">
-                                        @Html.DropDownListFor(model => model.MediaId, (IEnumerable<SelectListItem>)ViewBag.MediaList, new { @class = "form-control" })
+                                        @Html.DropDownListFor(model => model.MediaId, (IEnumerable<SelectListItem>)ViewBag.MediaList, "--选择--", new { @class = "form-control" })
                                         @Html.ValidationMessageFor(model => model.MediaId, "", new { @class = "text-danger" })
                                     </div>
                                 </div>

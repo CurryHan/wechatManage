@@ -28,7 +28,8 @@ namespace SensingCloud.Controllers
             Menu info = db.Menus.Find(id);
             if (info != null)
             {
-                ViewBag.MediaList = db.Medias.Where(m => m.Deleted == false && m.Type == info.Type)
+                var exist = db.Menus.Where(m => m.MediaId.HasValue).Select(m => m.MediaId);
+                ViewBag.MediaList = db.Medias.Where(m => m.Deleted == false && m.Type == info.Type&& !exist.Contains(m.Id))
     .Select(t => new SelectListItem { Text = t.Title, Value = t.Id.ToString() });
                 return PartialView("_EditDialog", info);
             }

@@ -30,7 +30,7 @@
 
 
     <!-- Theme Style -->
-    <link rel="stylesheet" href="css/style.css">
+    @*<link rel="stylesheet" href="css/style.css">*@
 
     <!-- FOR IE9 below -->
     <!--[if lt IE 9]>
@@ -53,11 +53,16 @@
             margin: 0px;
             padding: 0px;
             z-index: 1;
+            background-color:#CCD5E0;
         }
 
         div > img {
             width: 100%;
             height: 100%;
+        }
+        .hasImg {
+            position:relative;
+            font-size:40px;
         }
 
         .rowbox {
@@ -111,7 +116,7 @@
                 var img_src = img.attr("src");
                 var img_path = img.attr("data-path");
                 var frameid = 'frameimg' + Math.random();
-                window.img = "<img id='img' onclick='window.parent.location.href=\"" + img_path + "\";' style='width:100%;height:100%;' src=\'" + img_src + '?' + Math.random() + '\' /><script>window.onload = function() {var frame=parent.document.getElementById(\'' + frameid + '\');console.log(frame.parentNode);  }<' + '/script>';
+                window.img = "<img id='img' onclick='window.parent.location.href=\"" + img_path + "\";' style='width:100%;height:100%;' src=\'" + img_src + '?' + Math.random() + '\' /><script>window.onload = function() {var frame=parent.document.getElementById(\'' + frameid + '\');document.body.style.margin=\'0px\';console.log(frame.style.margin); }<' + '/script>';
                 img.parent().append('<iframe id="' + frameid + '" src="javascript:parent.img;" frameborder="0" scrolling="no" width="100%" height="100%" marginwidht="0" hspeace= "0" vspace= "0"></iframe>');
                 img.remove();
             });
@@ -119,128 +124,107 @@
     </script>
 </head>
 <body>
-    <div class="columnbox">
-        <div class="columnitem" style="flex-basis:10%;background-image:url(@Url.Content("~/Content/image/yhcx_bg_black_2.png"))">
-            <div class="rowbox" style="height:100%;padding-top:1%;padding-bottom:1%;">
-                <div class="rowitem" style="padding-left:5px;">
-                    <a href="/WeChat/Introduction">
-                        <img src="~/Content/image/home.png" />
-                    </a>
-                </div>
-                <div class="rowitem" style="flex:10; font-size:40px;">
-                    <span style="text-align:center;vertical-align:middle;line-height:2;">优惠促销</span>
-                </div>
-                <div class="rowitem" style="padding-right:5px;">
-                    <a href="tel:0510-83592222">
-                        <img src="~/Content/image/phonecall.png" />
-                    </a>
-                </div>
+    <div style="height:10%;background-image:url(@Url.Content("~/Content/image/yhcx_bg_black_2.png"))">
+        <div class="rowbox" style="height:100%;padding-top:1%;padding-bottom:1%;">
+            <div class="rowitem" style="padding-left:5px;">
+                <a href="/WeChat/Introduction">
+                    <img src="~/Content/image/home.png" />
+                </a>
+            </div>
+            <div class="rowitem" style="flex:10; font-size:40px;">
+                <span style="text-align:center;vertical-align:middle;line-height:2;">优惠促销</span>
+            </div>
+            <div class="rowitem" style="padding-right:5px;">
+                <a href="tel:0510-83592222">
+                    <img src="~/Content/image/phonecall.png" />
+                </a>
             </div>
         </div>
-        @if (Model[0].MediaId.HasValue)
-        {
-            <div class="columnitem hasImg" style="flex-basis:400px;">
-
-                <img src="@Model[0].Thumb_url" data-path="@Model[0].Media.Url" />
-                <div style="width:50%;position:absolute;bottom:0;left:0;background-color:black;">
-                    @Model[0].Media.Title.Substring(0, Model[0].Media.Title.LastIndexOf('.'))
-                </div>
-
-            </div>
-        }
-        else
-        {
-            <div class="columnitem" style="flex-basis:42%;">
-                <img src="~/Content/image/yhcx_bg_black_1.png" />
-            </div>
-        }
-        @if (Model[1].MediaId.HasValue)
-        {
-            <div class="columnitem hasImg" style="flex-basis:14%;">
-
-                <img src="@Model[1].Thumb_url" data-path="@Model[1].Media.Url" />
-                <div style="width:50%;position:absolute;bottom:0;left:0;background-color:black;">
-                    @Model[1].Media.Title.Substring(0, Model[1].Media.Title.LastIndexOf('.'))
-                </div>
-
-            </div>
-        }
-        else
-        {
-            <div class="columnitem" style="flex-basis:14%;">
-                <img src="~/Content/image/yhcx_bg_black_2.png" />
-            </div>
-        }
-        @if (Model[2].MediaId.HasValue)
-        {
-            <div class="columnitem hasImg" style="flex-basis:14%;background-image:url(@Url.Content("~/Content/image/yhcx_bg_black_3.png"))">
-
-                <img src="@Model[2].Thumb_url" data-path="@Model[2].Media.Url" />
-                <div style="width:50%;position:absolute;bottom:0;left:0;background-color:black;">
-                    @Model[2].Media.Title.Substring(0, Model[2].Media.Title.LastIndexOf('.'))
-                </div>
-
-            </div>
-        }
-        else
-        {
-            <div class="columnitem" style="flex-basis:14%;">
-                <img src="~/Content/image/yhcx_bg_black_3.png" />
-            </div>
-        }
-
-        @if (Model[3].MediaId.HasValue)
-        {
-            <div class="columnitem hasImg" style="flex-basis:14%;">
-
-                <img src="@Model[3].Thumb_url" data-path="@Model[3].Media.Url" />
-                <div style="width:50%;position:absolute;bottom:0;left:0;background-color:black;">
-                    @Model[3].Media.Title.Substring(0, Model[3].Media.Title.LastIndexOf('.'))
-                </div>
-
-            </div>
-        }
-        else
-        {
-            <div class="columnitem" style="flex-basis:14%;">
-                <img src="~/Content/image/yhcx_bg_black_4.png" />
-            </div>
-        }
-        @if (Model[4].MediaId.HasValue)
-        {
-            <div class="columnitem hasImg" style="flex-basis:14%;">
-
-                <img src="@Model[4].Thumb_url" data-path="@Model[4].Media.Url" />
-                <div style="width:50%;position:absolute;bottom:0;left:0;background-color:black;">
-                    @Model[4].Media.Title.Substring(0, Model[4].Media.Title.LastIndexOf('.'))
-                </div>
-            </div>
-        }
-        else
-        {
-            <div class="columnitem" style="flex-basis:14%;">
-                <img src="~/Content/image/yhcx_bg_black_5.png" />
-            </div>
-        }
     </div>
-    @*<div class="page">
-            <div class="show-list-box">
-                @foreach (var item in Model)
-                {
-                    if (item.MediaId.HasValue)
-                    {
-                        <div class="show-list">
-                            <a href="@item.Media.Url">
-                                <div class="show-img">
-                                    <img src="@item.Thumb_url" data-path="@item.Media.Url" />
-                                </div>
-                            </a>
-                            <a href="#">@item.Media.Title.Substring(0, item.Media.Title.LastIndexOf('.'))</a>
-                        </div>
-                    }
-                }
+    @if (Model[0].MediaId.HasValue)
+    {
+        <div class="hasImg" style="height:42%;">
+
+            <img src="@Model[0].Thumb_url" data-path="@Model[0].Media.Url" />
+            <div style="width:50%;position:absolute;bottom:0;left:0;background-color:black;">
+                @Model[0].Media.Title.Substring(0, Model[0].Media.Title.LastIndexOf('.'))
             </div>
-        </div>*@
+
+        </div>
+    }
+    else
+    {
+        <div style="height:42%;">
+            <img src="~/Content/image/yhcx_bg_black_1.png" />
+        </div>
+    }
+    @if (Model[1].MediaId.HasValue)
+    {
+        <div class="hasImg" style="height:13%;">
+
+            <img src="@Model[1].Thumb_url" data-path="@Model[1].Media.Url" />
+            <div style="width:50%;position:absolute;bottom:0;left:0;background-color:black;">
+                @Model[1].Media.Title.Substring(0, Model[1].Media.Title.LastIndexOf('.'))
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="" style="height:13%;">
+            <img src="~/Content/image/yhcx_bg_black_2.png" />
+        </div>
+    }
+    @if (Model[2].MediaId.HasValue)
+    {
+        <div class=" hasImg" style="height:13%;background-image:url(@Url.Content("~/Content/image/yhcx_bg_black_3.png"))">
+
+            <img src="@Model[2].Thumb_url" data-path="@Model[2].Media.Url" />
+            <div style="width:50%;position:absolute;bottom:0;left:0;background-color:black;">
+                @Model[2].Media.Title.Substring(0, Model[2].Media.Title.LastIndexOf('.'))
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="" style="height:13%;">
+            <img src="~/Content/image/yhcx_bg_black_3.png" />
+        </div>
+    }
+
+    @if (Model[3].MediaId.HasValue)
+    {
+        <div class="hasImg" style="height:13%;">
+
+            <img src="@Model[3].Thumb_url" data-path="@Model[3].Media.Url" />
+            <div style="width:50%;position:absolute;bottom:0;left:0;background-color:black;">
+                @Model[3].Media.Title.Substring(0, Model[3].Media.Title.LastIndexOf('.'))
+            </div>
+
+        </div>
+    }
+    else
+    {
+        <div class="" style="height:13%;">
+            <img src="~/Content/image/yhcx_bg_black_4.png" />
+        </div>
+    }
+    @if (Model[4].MediaId.HasValue)
+    {
+        <div class=" hasImg" style="height:13%;">
+
+            <img src="@Model[4].Thumb_url" data-path="@Model[4].Media.Url" />
+            <div style="width:50%;position:absolute;bottom:0;left:0;background-color:black;">
+                @Model[4].Media.Title.Substring(0, Model[4].Media.Title.LastIndexOf('.'))
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="" style="height:13%;">
+            <img src="~/Content/image/yhcx_bg_black_5.png" />
+        </div>
+    }
+
 
 </body>
 </html>
