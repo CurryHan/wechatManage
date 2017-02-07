@@ -22,8 +22,8 @@ namespace SensingCloud
         public static Func<string, string> GetAuthorizerRefreshTokenFunc;
         //public static Action<string, RefreshAuthorizerTokenResult> AuthorizerTokenRefreshedFunc;
 
-        private const string AppID = "wx3a01457937e273a1";
-        private const string AppSecret = "daaa2763975d353b74da5e38bb59eae4";
+        private const string AppID = "wx37e46819d148d5fb";
+        private const string AppSecret = "5e896cc3c37b6f5d40a895abe108f940";
 
         public static void RegisterComponentContainer()
         {
