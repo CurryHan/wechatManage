@@ -163,6 +163,17 @@ public class PostHttpResponse
                         }
                     default:
                         {
+                            //string filePath = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "图片");
+                            //using (var fileStream = File.Create(filePath))
+                            //{
+                            //    byte[] buffer = new byte[1024];
+                            //    int bytesRead = 0;
+                            //    while ((bytesRead = response.GetResponseStream().Read(buffer, 0, buffer.Length)) != 0)
+                            //    {
+                            //        fileStream.Write(buffer, 0, bytesRead);
+                            //    }
+                            //    fileStream.Flush();
+                            //}
                             using (StreamReader sr = new StreamReader(response.GetResponseStream(), encoding))
                             {
                                 string result = sr.ReadToEnd();

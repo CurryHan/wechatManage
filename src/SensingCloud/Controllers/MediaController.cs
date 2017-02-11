@@ -144,11 +144,24 @@ namespace SensingCloud.Controllers
 
         public ActionResult GetMenu()
         {
+            //var group = _groupSvc.GetAll().FirstOrDefault();
+            //var url = $"https://api.weixin.qq.com/cgi-bin/get_current_selfmenu_info?access_token={group.access_token}";
+            //string result = PostHttpResponse.PostHttpResponseJson(url);
+            //logger.Debug(result);
+            //return Json(true);
+
             var group = _groupSvc.GetAll().FirstOrDefault();
-            var url = $"https://api.weixin.qq.com/cgi-bin/get_current_selfmenu_info?access_token={group.access_token}";
-            string result = PostHttpResponse.PostHttpResponseJson(url);
+            var url = $"https://api.weixin.qq.com/cgi-bin/material/get_material?access_token={group.access_token}";
+            Dictionary<string, string> pout = new Dictionary<string, string>();
+            //pout.Add("media_id", "LhrXKnrdxUwIwIZ-SscuaDFnjyvo8RxQPEflOMpsOFk");
+            pout.Add("media_id", "D1TmV7wbdwUiPW_T85Ui5ii5oAVhZjfrVqI6stsUpZw");
+            string json = (new JavaScriptSerializer()).Serialize(pout);
+            string result = PostHttpResponse.PostHttpResponseJson(url,json);
+            
+
             logger.Debug(result);
             return Json(true);
+
         }
 
 
@@ -199,6 +212,8 @@ namespace SensingCloud.Controllers
                         info.Url = item["content"]["news_item"][0]["url"].ToString();
                         info.Thumb_MediaId = item["content"]["news_item"][0]["thumb_media_id"].ToString();
                         info.Type = EnumType.news;
+                        info.Description = item["content"]["news_item"][0]["digest"].ToString();
+                        info.LastUpdated = formatTime(long.Parse(item["content"]["update_time"].ToString()));
                         db.Entry(info).State = System.Data.Entity.EntityState.Added;
                         db.SaveChanges();
                     }
@@ -207,6 +222,8 @@ namespace SensingCloud.Controllers
                         media.Title = item["content"]["news_item"][0]["title"].ToString();
                         media.Url = item["content"]["news_item"][0]["url"].ToString();
                         media.Thumb_MediaId = item["content"]["news_item"][0]["thumb_media_id"].ToString();
+                        media.Description = item["content"]["news_item"][0]["digest"].ToString();
+                        media.LastUpdated = formatTime(long.Parse(item["content"]["update_time"].ToString()));
                         db.Entry(media).State = System.Data.Entity.EntityState.Modified;
                         db.SaveChanges();
                     }
@@ -218,6 +235,16 @@ namespace SensingCloud.Controllers
                 if (isFirst) isFirst = false;
             }
             return null;
+        }
+
+        public static DateTime formatTime(long createTime)
+        {
+            long time_JAVA_Long = createTime * 1000L;//java长整型日期，毫秒为单位               
+            DateTime dt_1970 = new DateTime(1970, 1, 1, 0, 0, 0);
+            long tricks_1970 = dt_1970.Ticks;//1970年1月1日刻度                        
+            long time_tricks = tricks_1970 + time_JAVA_Long * 10000;//日志日期刻度                        
+            DateTime dt = new DateTime(time_tricks).AddHours(8);//转化为DateTime
+            return dt;
         }
 
         public ActionResult SyscPic()

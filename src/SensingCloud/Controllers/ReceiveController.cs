@@ -63,7 +63,6 @@ namespace SensingCloud.Controllers
             string timestamp = HttpContext.Request.QueryString["timestamp"];
             string nonce = HttpContext.Request.QueryString["nonce"];
             string echostr = HttpContext.Request.QueryString["echostr"];
-            logger.Debug(111);
             if (HttpContext.Request.HttpMethod == "GET")
             {
                 if (Validate(signature, timestamp, nonce))

@@ -253,6 +253,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Apis\BaseApiController.cs" />
+    <Compile Include="Apis\NewsController.cs" />
     <Compile Include="Apis\SoftwareClientApiController.cs" />
     <Compile Include="App_Start\WeixinConfig.cs" />
     <Compile Include="Controllers\MediaController.cs" />
