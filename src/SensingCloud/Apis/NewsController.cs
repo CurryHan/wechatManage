@@ -17,10 +17,12 @@ namespace SensingCloud.Apis
 
         [Route("api/news")]
         [HttpGet]
-        public ActionResult GetAllNews()
+        public ActionResult GetAllNews(int pageSize=10,string lasttime="")
         {
             string callback=HttpContext.Request.QueryString["callback"];
-            List<Media> list = db.Medias.Where(m => m.Deleted == false&&m.Type==EnumType.news).ToList();
+            var date = DateTime.Now;
+            if (lasttime != "") date = Convert.ToDateTime(lasttime);
+            List<Media> list = db.Medias.Where(m => m.Deleted == false&&m.Type==EnumType.news&&m.LastUpdated<date).OrderByDescending(m=>m.LastUpdated).Take(pageSize).ToList();
             List<MediaViewModel> result = new List<MediaViewModel>();
             foreach (var item in list)
             {
@@ -33,7 +35,7 @@ namespace SensingCloud.Apis
                     Url = item.Url,
                     ThumbMediaUrl = picUrl,
                     Digest = string.IsNullOrEmpty(item.Description)?"":item.Description.Length>100?item.Description.Substring(0,99):item.Description,
-                    Updatetime = item.LastUpdated.HasValue ? string.Format("{0:yyyy-MM-dd}", item.LastUpdated.Value) : string.Format("{0:yyyy-MM-dd}", DateTime.Today)
+                    Updatetime = item.LastUpdated.HasValue ? string.Format("{0:yyyy-MM-dd HH:mm:ss}", item.LastUpdated.Value) : string.Format("{0:yyyy-MM-dd HH:mm:ss}", DateTime.Now)
                 };
                 result.Add(newMedia);
             }
